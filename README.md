@@ -1,3 +1,3 @@
 # my-config
 
-- all my config setup for nvim tmux zshrc bashrc ...
+- all my config setup for work
