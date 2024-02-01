@@ -17,10 +17,8 @@ require("vim-options")
 
 require("lazy").setup("plugins")
 
--- make the cursor is block for mode
-vim.opt.guicursor = ""
-
--- slove problem opicaty for background nvim
-
 -- Set termguicolors to enable true color support
 vim.o.termguicolors = true
+vim.g.netrw_bufsettings = 'noma nomod nu rnu nobl nowrap ro'
+
+
