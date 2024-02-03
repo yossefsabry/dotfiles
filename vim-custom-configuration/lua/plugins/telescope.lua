@@ -13,7 +13,11 @@ return {
       require('telescope').setup {
          defaults = {
             file_ignore_patterns = {
-               "node_modules"
+               "node_modules",
+                "lib",
+                "lib64",
+                ".git",
+                "include/site"
             }
          }
       }
