@@ -16,11 +16,27 @@ return {
         lazy = false,
         priority = 1000,
         opts = {},
-          config = function()
-            vim.cmd.colorscheme("tokyonight")
+        -- config = function()
+        --     vim.cmd.colorscheme("tokyonight")
+        --     vim.g.enfocado_style = 'nature'
+        --     vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
+        --     vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
+        -- end
+    },
+    {
+        'rose-pine/neovim',
+        lazy=false,
+        as = 'rose-pine',
+        config = function()
+            vim.cmd('colorscheme rose-pine')
+            vim.cmd.colorscheme("rose-pine")
             vim.g.enfocado_style = 'nature'
             vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
             vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
-          end
+        end
+    },
+    {
+        -- transparnet background color for nvim
+        'tribela/vim-transparent',
     },
 }
