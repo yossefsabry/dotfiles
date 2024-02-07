@@ -8,7 +8,11 @@ export ZSH="$HOME/.oh-my-zsh"
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME="gozilla"  #linuxonly
+
+######## themes #########
+# ZSH_THEME="gozilla"  #linuxonly
+# starship theme
+eval "$(starship init zsh)"
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -72,6 +76,7 @@ ZSH_THEME="gozilla"  #linuxonly
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(git
     zsh-autosuggestions
+    vi-mode
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -108,6 +113,9 @@ bindkey -v
 # Set KEYTIMEOUT to recognize key sequences faster
 export KEYTIMEOUT=1
 
+# for change to visual mode in vim
+bindkey -M vicmd v edit-command-line
+bindkey -M viins 'jj' vi-cmd-mode
 
 # set default editor
 export EDITOR=nvim

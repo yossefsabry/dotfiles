@@ -22,4 +22,8 @@ require("lazy").setup("plugins")
 vim.o.termguicolors = true
 vim.g.netrw_bufsettings = "noma nomod nu rnu nobl nowrap ro"
 
+-- diable auto comment nextline 
+vim.cmd([[autocmd FileType * set formatoptions-=ro]])
+
+
 

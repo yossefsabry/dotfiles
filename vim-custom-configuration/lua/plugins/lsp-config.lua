@@ -18,7 +18,7 @@ return {
 			end
 			-- Enable some language servers with the additional completion capabilities offered by nvim-cmp
 			local lspconfig = require("lspconfig")
-			local servers = { "clangd", "rust_analyzer", "pyright", "tsserver", "html", "lua_ls", "ast_grep" }
+			local servers = { "clangd", "rust_analyzer", "pyright", "tsserver", "html", "lua_ls", "ast_grep" , "cssls"}
 			for _, lsp in ipairs(servers) do
 				lspconfig[lsp].setup({
 					-- on_attach = my_custom_on_attach,

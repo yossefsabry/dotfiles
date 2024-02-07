@@ -1,7 +1,3 @@
 return {
-	-- {
-		-- "windwp/nvim-ts-autotag",
-		-- event = "LazyFile",
-		-- opts = {},
-	-- },
+  "alvan/vim-closetag"
 }
