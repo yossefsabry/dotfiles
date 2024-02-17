@@ -609,8 +609,7 @@ trim()
 	var="${var%"${var##*[![:space:]]}"}"  # remove trailing whitespace characters
 	echo -n "$var"
 }
-# GitHub Titus Additions
-
+# GitHub  Additions
 gcom() {
 	git add .
 	git commit -m "$1"
@@ -620,6 +619,7 @@ lazyg() {
 	git commit -m "$1"
 	git push
 }
+
 _z_cd() {
     cd "$@" || return "$?"
 
@@ -695,3 +695,4 @@ else
 	echo "can't found the autojump script"
 fi
 
+source /etc/profile.d/bash_completion.sh

@@ -1,8 +1,7 @@
 -- Define key mapping function
 local function keymap(mode, lhs, rhs, opts)
-    vim.api.nvim_set_keymap(mode, lhs, rhs, opts or {})
+  vim.api.nvim_set_keymap(mode, lhs, rhs, opts or {})
 end
-
 -- Define terminal key mapping options
 local term_opts = { noremap = true, silent = true, nowait = true }
 
@@ -11,10 +10,10 @@ vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
 -- netre custom
-vim.g.netrw_browse_split = 10
-vim.g.netrw_banner = 20
-vim.g.netrw_winsize = 25
-vim.g.netrw_liststyle = 3
+vim.g.netrw_browse_split = 0
+vim.g.netrw_banner = 0
+vim.g.netrw_winsize = 0
+vim.g.netrw_liststyle = 0
 
 -- Modes
 vim.opt.hlsearch = false -- disable search highlight
@@ -46,7 +45,6 @@ vim.opt.isfname:append("@-@")
 
 vim.opt.updatetime = 50
 
-
 -- Normal mode mappings switch between the split window
 keymap("n", "<C-h>", "<C-w>h", term_opts)
 keymap("n", "<C-j>", "<C-w>j", term_opts)
@@ -58,14 +56,16 @@ keymap("n", "<C-d>", "<C-d>zz", term_opts)
 keymap("n", "<C-u>", "<C-u>zz", term_opts)
 keymap("n", "n", "nzzzv", term_opts)
 keymap("n", "N", "Nzzzv", term_opts)
-keymap("n","G", "Gzz", term_opts)
+keymap("n", "G", "Gzz", term_opts)
 
 -- Set keymaps for indenting selected lines in visual mode
-vim.api.nvim_set_keymap('x', 'J', ":m '>+1<CR>gv=gv", term_opts)
-vim.api.nvim_set_keymap('x', 'K', ":m '<-2<CR>gv=gv", term_opts)
+vim.api.nvim_set_keymap("x", "J", ":m '>+1<CR>gv=gv", term_opts)
+vim.api.nvim_set_keymap("x", "K", ":m '<-2<CR>gv=gv", term_opts)
 
 -- for default noe tree
-keymap("n", "<leader>e", ":Lex 20<cr>", term_opts)
+-- keymap("n", "<leader>e", ":Lex 20<cr>", term_opts)
+keymap("n", "<leader>e", ":Neotree left toggle reveal_force_cwd selector<cr>", term_opts)
+keymap("n", "<leader>vp", ":Neotree/home/yossef/Documents float<cr>", term_opts)
 
 -- Resize with arrows
 keymap("n", "<C-Up>", ":resize +4<CR>", term_opts)
@@ -104,9 +104,8 @@ vim.keymap.set("n", "<c-j>", ":wincmd j<CR>", term_opts)
 vim.keymap.set("n", "<c-h>", ":wincmd h<CR>", term_opts)
 vim.keymap.set("n", "<c-l>", ":wincmd l<CR>", term_opts)
 
-
 -- insert mode
-keymap('i', 'jk', '<Esc>', { noremap = true, silent = true })
+keymap("i", "jk", "<Esc>", { noremap = true, silent = true })
 
 -- disabkeymapys in insert mode ---
 keymap("i", "<left>", "<nop>", term_opts)
@@ -129,16 +128,12 @@ vim.keymap.set({ "n", "v" }, "<leader>d", [["_d]])
 
 vim.keymap.set("n", "Q", "<nop>")
 
-
-vim.keymap.set("n", "<leader><leader>", function()
-    vim.cmd("Ex")
-end)
-
-
 vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
 vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
-
 
 -- create folds
 keymap("n", "<leader>z", "zfaB", term_opts)
 
+vim.keymap.set("n", "<leader><leader>", function()
+  vim.cmd("so")
+end)
