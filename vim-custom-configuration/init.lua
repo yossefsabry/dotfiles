@@ -36,3 +36,4 @@ vim.api.nvim_create_autocmd({"BufWinEnter"}, {
   desc = "load view (folds), when opening file",
   command = "silent! loadview"
 })
+
