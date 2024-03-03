@@ -199,6 +199,7 @@ alias openports='netstat -nape --inet'
 
 # Alias's for safe and forced reboots
 alias rebootsafe='sudo shutdown -r now'
+alias shutdownsafe='sudo shutdown now'
 alias rebootforce='sudo shutdown -r -n now'
 
 # Alias's to show disk space and space used in a folder
@@ -696,3 +697,7 @@ else
 fi
 
 source /etc/profile.d/bash_completion.sh
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion

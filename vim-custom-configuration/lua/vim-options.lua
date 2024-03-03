@@ -1,6 +1,6 @@
 -- Define key mapping function
 local function keymap(mode, lhs, rhs, opts)
-  vim.api.nvim_set_keymap(mode, lhs, rhs, opts or {})
+	vim.api.nvim_set_keymap(mode, lhs, rhs, opts or {})
 end
 -- Define terminal key mapping options
 local term_opts = { noremap = true, silent = true, nowait = true }
@@ -135,5 +135,10 @@ vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
 keymap("n", "<leader>z", "zfaB", term_opts)
 
 vim.keymap.set("n", "<leader><leader>", function()
-  vim.cmd("so")
+	vim.cmd("so")
 end)
+
+-- keymap for copilot
+vim.g.copilot_no_tab_map = true
+vim.g.copilot_assume_mapped = true
+vim.api.nvim_set_keymap("i", "<M-l>", 'copilot#Accept("<CR>")', { silent = true, expr = true })
