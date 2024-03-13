@@ -159,7 +159,6 @@ alias svi='sudo vi'
 alias vis='nvim "+set si"'
 
 # Change directory aliases
-alias home='cd'
 alias cd..='cd ..'
 alias ..='cd ..'
 alias ...='cd ../..'
