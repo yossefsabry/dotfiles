@@ -45,12 +45,6 @@ vim.opt.isfname:append("@-@")
 
 vim.opt.updatetime = 50
 
--- Normal mode mappings switch between the split window
-keymap("n", "<C-h>", "<C-w>h", term_opts)
-keymap("n", "<C-j>", "<C-w>j", term_opts)
-keymap("n", "<C-k>", "<C-w>k", term_opts)
-keymap("n", "<C-l>", "<C-w>l", term_opts)
-
 -- Center the screen after moving with search n/N
 keymap("n", "<C-d>", "<C-d>zz", term_opts)
 keymap("n", "<C-u>", "<C-u>zz", term_opts)
