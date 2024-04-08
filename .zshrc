@@ -257,3 +257,12 @@ export FZF_DEFAULT_OPS="--extended"
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 
 
+# go lang setup
+export GOPATH="$HOME/go"
+export GOPATH="$HOME/go/bin"
+export GOBIN="$GOPATH/bin"
+export PATH="$PATH:$GOBIN"
+export PATH="$PATH:$HOME/go/bin/"
+export PATH=$PATH:/usr/local/go/bin
+
+
