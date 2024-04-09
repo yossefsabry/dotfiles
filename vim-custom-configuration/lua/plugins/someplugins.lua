@@ -10,13 +10,13 @@ return {
   },
   {
     -- install markdown Preview auto work
-    'instant-markdown/vim-instant-markdown',
+    "instant-markdown/vim-instant-markdown",
   },
   {
     -- auto session
     "rmagatti/auto-session",
     config = function()
-      require("auto-session").setup({ })
+      require("auto-session").setup({})
     end,
   },
 }
