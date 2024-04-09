@@ -1,4 +1,4 @@
----@diagnostic disable: undefined-global
+---@diagnosticjdisable: undefined-global
 return {
   {
     "VonHeikemen/lsp-zero.nvim",
@@ -23,7 +23,7 @@ return {
       },
     },
     config = function()
-      -- Here is where you configure the autocompletion settings.
+      -- Herk is where you configure the autocompletion settings.
       local lsp_zero = require("lsp-zero")
       lsp_zero.extend_cmp()
 

@@ -107,6 +107,21 @@ keymap("i", "<right>", "<nop>", term_opts)
 keymap("i", "<up>", "<nop>", term_opts)
 keymap("i", "<down>", "<nop>", term_opts)
 
+-- lsp Config rempap
+vim.keymap.set('n', 'K', '<cmd>lua vim.lsp.buf.hover()<cr>', term_opts)
+vim.keymap.set('n', '<leader>gd', '<cmd>lua vim.lsp.buf.definition()<cr>', term_opts)
+vim.keymap.set('n', '<leader>gD', '<cmd>lua vim.lsp.buf.declaration()<cr>', term_opts)
+vim.keymap.set('n', '<leader>gi', '<cmd>lua vim.lsp.buf.implementation()<cr>', term_opts)
+vim.keymap.set('n', '<leader>go', '<cmd>lua vim.lsp.buf.type_definition()<cr>', term_opts)
+vim.keymap.set('n', '<leader>gr', '<cmd>lua vim.lsp.buf.references()<cr>', term_opts)
+vim.keymap.set('n', '<leader>gs', '<cmd>lua vim.lsp.buf.signature_help()<cr>', term_opts)
+vim.keymap.set('n', '<F2>', '<cmd>lua vim.lsp.buf.rename()<cr>', term_opts)
+vim.keymap.set({'n', 'x'}, '<F3>', '<cmd>lua vim.lsp.buf.format({async = true})<cr>', term_opts)
+vim.keymap.set('n', '<leader>vca', '<cmd>lua vim.lsp.buf.code_action()<cr>', term_opts)
+vim.keymap.set('n', '<leader>gl', '<cmd>lua vim.diagnostic.open_float()<cr>', term_opts)
+vim.keymap.set('n', '[d', '<cmd>lua vim.diagnostic.goto_prev()<cr>', term_opts)
+vim.keymap.set('n', ']d', '<cmd>lua vim.diagnostic.goto_next()<cr>', term_opts)
+
 -- Key mkeymape_runner.nvim
 keymap("n", "<A-r>", ":RunCode<CR>", term_opts)
 keymap("n", "<A-r>f", ":RunFile<CR>", term_opts)
