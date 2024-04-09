@@ -31,6 +31,8 @@ return {
       local cmp = require("cmp")
       local cmp_action = lsp_zero.cmp_action()
 
+      -- for vscode snippets
+      require('luasnip.loaders.from_vscode').lazy_load()
       cmp.setup({
         formatting = lsp_zero.cmp_format({ details = true }),
         mapping = cmp.mapping.preset.insert({
