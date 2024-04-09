@@ -37,6 +37,7 @@ return {
         "emmet_ls",
         "prismals",
         "pyright",
+        "gopls",
       },
       -- auto-install configured servers (with lspconfig)
       automatic_installation = true, -- not the same as ensure_installed
@@ -45,8 +46,10 @@ return {
     mason_tool_installer.setup({
       ensure_installed = {
         "prettier", -- prettier formatter
+        "prettierd", -- prettier formatter
         "stylua", -- lua formatter
         "eslint_d", -- js linter
+        "biome", -- js linterk
       },
     })
   end,
