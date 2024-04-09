@@ -19,4 +19,8 @@ return {
       require("auto-session").setup({})
     end,
   },
+  {
+    -- for auto close html tags
+    "windwp/nvim-ts-autotag"
+  },
 }
