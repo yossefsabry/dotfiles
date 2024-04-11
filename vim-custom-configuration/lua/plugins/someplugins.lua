@@ -21,6 +21,6 @@ return {
   },
   {
     -- for auto close html tags
-    "windwp/nvim-ts-autotag"
+    "windwp/nvim-ts-autotag",
   },
 }

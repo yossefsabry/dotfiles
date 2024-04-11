@@ -20,6 +20,7 @@ return {
       {
         "L3MON4D3/LuaSnip",
         "rafamadriz/friendly-snippets",
+        "epilande/vim-react-snippets", -- react snippets
       },
     },
     config = function()
@@ -32,7 +33,7 @@ return {
       local cmp_action = lsp_zero.cmp_action()
 
       -- for vscode snippets
-      require('luasnip.loaders.from_vscode').lazy_load()
+      require("luasnip.loaders.from_vscode").lazy_load()
       cmp.setup({
         formatting = lsp_zero.cmp_format({ details = true }),
         mapping = cmp.mapping.preset.insert({
@@ -51,9 +52,10 @@ return {
           end,
         },
         sources = cmp.config.sources({
-          { name = "copilot" },
+          { name = "copilot", group_index = 2 },
           { name = "nvim_lsp" },
           { name = "luasnip" },
+          { name = "path",    group_index = 2 },
         }, {
           { name = "buffer" },
         }),
