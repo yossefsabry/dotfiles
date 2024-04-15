@@ -120,7 +120,8 @@ vim.keymap.set('n', '<leader>vca', '<cmd>lua vim.lsp.buf.code_action()<cr>', ter
 vim.keymap.set('n', 'gl', '<cmd>lua vim.diagnostic.open_float()<cr>', term_opts)
 vim.keymap.set('n', '[d', '<cmd>lua vim.diagnostic.goto_prev()<cr>', term_opts)
 vim.keymap.set('n', ']d', '<cmd>lua vim.diagnostic.goto_next()<cr>', term_opts)
-
+vim.keymap.set("n", "<leader>vd", function() vim.diagnostic.open_float() end, term_opts)
+vim.keymap.set("n", "[d", function() vim.diagnostic.goto_next() end, term_opts)
 -- Key mkeymape_runner.nvim
 keymap("n", "<A-r>", ":RunCode<CR>", term_opts)
 keymap("n", "<A-r>f", ":RunFile<CR>", term_opts)
