@@ -18,17 +18,36 @@ require("lazy").setup({
 
   -- adding colorscheme
   {
-    "ellisonleao/gruvbox.nvim", priority = 1000 , config = true,
-    config = function() 
+		-- transparnet background color for nvim
+		"tribela/vim-transparent",
+	},
+  {
+    "ellisonleao/gruvbox.nvim", priority = 1000 ,
+    config = function()
       vim.cmd([[colorscheme gruvbox]])
       vim.o.background = "dark" -- or "light" for light mode
     end
   },
+
   -- adding telescope
   {
     'nvim-telescope/telescope.nvim', tag = '0.1.6',
-    dependencies = { 'nvim-lua/plenary.nvim' }
+    dependencies = { 'nvim-lua/plenary.nvim' },
+    config = function ()
+      require('telescope').setup {
+        defaults = {
+          file_ignore_patterns = {
+            "node_modules",
+            "lib",
+            "lib64",
+            ".git",
+            "include/site"
+          }
+        }
+      }
+    end
   },
+
   -- adding noetree
   {
     "nvim-tree/nvim-tree.lua",
@@ -61,30 +80,10 @@ require("lazy").setup({
   {
     'nvim-lualine/lualine.nvim',
     dependencies = { 'nvim-tree/nvim-web-devicons' },
-    config = function() 
-      require('lualine').setup {
-        options = { theme = 'gruvbox' } 
-      }
-    end
-  },
-
-  -- autosession
-  {
-    "folke/persistence.nvim",
-    event = "BufReadPre",
-    opts = { options = vim.opt.sessionoptions:get() },
-    keys = {
-      { "<leader>qs", function() require("persistence").load() end,                desc = "Restore Session" },
-      { "<leader>ql", function() require("persistence").load({ last = true }) end, desc = "Restore Last Session" },
-      { "<leader>qd", function() require("persistence").stop() end,                desc = "Don't Save Current Session" },
-    },
-  },
-
-  {
-    -- auto session
-    "rmagatti/auto-session",
     config = function()
-      require("auto-session").setup({})
+      require('lualine').setup {
+        options = { theme = 'gruvbox' }
+      }
     end
   },
 
@@ -187,16 +186,18 @@ require("lazy").setup({
 
         -- And you can configure cmp even more, if you want to.
         local cmp = require('cmp')
-        local cmp_action = lsp_zero.cmp_action()
 
         cmp.setup({
           formatting = lsp_zero.cmp_format({details = true}),
           mapping = cmp.mapping.preset.insert({
-            ['<C-Space>'] = cmp.mapping.complete(),
-            ['<C-u>'] = cmp.mapping.scroll_docs(-4),
-            ['<C-d>'] = cmp.mapping.scroll_docs(4),
-            ['<C-f>'] = cmp_action.luasnip_jump_forward(),
-            ['<C-b>'] = cmp_action.luasnip_jump_backward(),
+            ["<C-b>"] = cmp.mapping.scroll_docs(-4),
+            ["<C-f>"] = cmp.mapping.scroll_docs(4),
+            ["<C-Space>"] = cmp.mapping.complete(),
+            ["<C-e>"] = cmp.mapping.abort(),
+            ["<CR>"] = cmp.mapping.confirm({
+              behavior = cmp.ConfirmBehavior.Replace,
+              select = true,
+            }),
           }),
           snippet = {
             expand = function(args)
@@ -204,6 +205,18 @@ require("lazy").setup({
             end,
           },
         })
+        vim.diagnostic.config({
+          virtual_text = {
+            prefix = "--", -- Could be '■', '▎', 'x'
+          },
+        })
+        lsp_zero.set_sign_icons({
+          error = '',
+          warn = '',
+          hint = '',
+          info = ''
+        })
+
       end
     },
 
@@ -218,6 +231,9 @@ require("lazy").setup({
       },
       config = function()
         local lsp_zero = require('lsp-zero')
+
+        -- end the shape for the lsp
+
         lsp_zero.extend_lspconfig()
 
         lsp_zero.on_attach(function(client, bufnr)
@@ -234,10 +250,9 @@ require("lazy").setup({
               local lua_opts = lsp_zero.nvim_lua_ls()
               require('lspconfig').lua_ls.setup(lua_opts)
             end,
-          }
+          },
         })
       end
     }
   },
-
 })
