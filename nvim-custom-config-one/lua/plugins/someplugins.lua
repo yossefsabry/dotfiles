@@ -13,13 +13,6 @@ return {
     "instant-markdown/vim-instant-markdown",
   },
   {
-    -- auto session
-    "rmagatti/auto-session",
-    config = function()
-      require("auto-session").setup({})
-    end,
-  },
-  {
     -- for auto close html tags
     "windwp/nvim-ts-autotag",
   },
