@@ -60,6 +60,17 @@ return {
 					{ name = "buffer" },
 				}),
 			})
+        vim.diagnostic.config({
+        virtual_text = {
+          prefix = "--", -- Could be '■', '▎', 'x'
+        },
+      })
+      lsp_zero.set_sign_icons({
+        error = '',
+        warn = '',
+        hint = '',
+        info = ''
+      })
 		end,
 	},
 
@@ -104,11 +115,6 @@ return {
 				handlers = {
 					lsp_zero.default_setup,
 				},
-				vim.diagnostic.config({
-					virtual_text = {
-						prefix = "--", -- Could be '■', '▎', 'x'
-					},
-				}),
 			})
 
 			-- (Optional) Configure lua language server for neovim
