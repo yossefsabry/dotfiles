@@ -77,6 +77,9 @@ eval "$(starship init zsh)"
 plugins=(git
     zsh-autosuggestions
     vi-mode
+    gitignore 
+    command-not-found
+    zsh-syntax-highlighting
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -234,6 +237,8 @@ if [ -f "/usr/share/autojump/autojump.sh" ]; then
     . /usr/share/autojump/autojump.sh
 elif [ -f "/usr/share/autojump/autojump.bash" ]; then
     . /usr/share/autojump/autojump.bash
+elif [ -f "/usr/share/autojump/autojump.zsh" ]; then
+    . /usr/share/autojump/autojump.basi
 else
     echo "can't find the autojump script"
 fi
