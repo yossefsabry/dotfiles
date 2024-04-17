@@ -115,7 +115,7 @@ export KEYTIMEOUT=1
 
 # for change to visual mode in vim
 bindkey -M vicmd v edit-command-line
-bindkey -M viins 'jj' vi-cmd-mode
+bindkey -M viins 'jk' vi-cmd-mode
 
 # set default editor
 export EDITOR=nvim
@@ -135,14 +135,10 @@ alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo
 alias ebrc='edit ~/.bashrc'
 alias etmux='nvim ~/.tmux.conf'
 
-# Show help for this .bashrc file
-alias hlp='less ~/.bashrc_help'
-
 # alias to show the date
 alias da='date "+%Y-%m-%d %A %T %Z"'
 
 # adding shourtcuts for bash
-alias ll='ls -AL'
 alias mkdir='mkdir -p'
 alias rm='rm -rf'
 alias cp='cp -Ri'
@@ -164,16 +160,12 @@ alias ..='cd ..'
 alias ...='cd ../..'
 alias ....='cd ../../..'
 alias .....='cd ../../../..'
+alias cdp="cd ~/works/projects"
 
-# cd into the old directory
-alias bd='cd "$OLDPWD"'
-
-# Remove a directory and all files
-alias rmd='/bin/rm  --recursive --force --verbose '
 
 # Alias's for multiple directory listing commands
-alias la='ls -Alh' # show hidden files
-alias ls='ls -aFh --color=always' # add colors and file type extensions
+alias la='ls -AFlh' # show hidden files
+alias ls='ls -Fh --color=always' # add colors and file type extensions
 alias lx='ls -lXBh' # sort by extension
 alias lsz='ls -lSrh' # sort by size
 alias lc='ls -lcrh' # sort by change time
@@ -185,6 +177,7 @@ alias lw='ls -xAh' # wide listing format
 alias ll='ls -Fls' # long listing format
 alias labc='ls -lap' #alphabetical sort
 alias lf="ls -l | egrep -v '^d'" # files only
+alias lfa="ls -aFhl | egrep -v '^d'" # files only
 alias ldir="ls -l | egrep '^d'" # directories only
 
 # alias chmod commands
@@ -212,14 +205,9 @@ alias countfiles="for t in files links directories; do echo \`find . -type \${t:
 alias checkcommand="type -t"
 
 
-# Alias's for safe and forced reboots
-alias rebootsafe='sudo shutdown -r now'
-alias rebootforce='sudo shutdown -r -n now'
-
 # Alias's to show disk space and space used in a folder
 alias diskspace="du -S | sort -n -r |more"
 alias folders='du -h --max-depth=1'
-alias folderssort='find . -maxdepth 1 -type d -print0 | xargs -0 du -sk | sort -rn'
 alias tree='tree -CAhF --dirsfirst'
 alias treed='tree -CAFd'
 alias mountedinfo='df -hT'
