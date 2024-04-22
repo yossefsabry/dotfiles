@@ -36,4 +36,6 @@ vim.opt.isfname:append("@-@")
 vim.opt.updatetime = 50
 
 
-
+if vim.fn.has("nvim-0.10") == 1 then
+  vim.opt.smoothscroll = true
+end

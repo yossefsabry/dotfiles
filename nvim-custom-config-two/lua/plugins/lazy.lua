@@ -207,7 +207,7 @@ require("lazy").setup({
         })
         vim.diagnostic.config({
           virtual_text = {
-            prefix = "--", -- Could be '■', '▎', 'x'
+            prefix = "◆◆", -- Could be '■', '▎', 'x'
           },
         })
         lsp_zero.set_sign_icons({
@@ -255,4 +255,94 @@ require("lazy").setup({
       end
     }
   },
+
+
+  -- session managment
+  {
+    'rmagatti/auto-session',
+    config = function()
+      require("auto-session").setup {
+        log_level = "error",
+        auto_session_enable_last_session = true,
+        session_lens = {
+          buftypes_to_ignore = {}, -- list of buffer types what should not be deleted from current session
+          load_on_setup = true,
+          theme_conf = { border = true },
+          previewer = false,
+        },
+      }
+    end
+  },
+
+  -- session navigetor
+  {
+    'rmagatti/session-lens',
+    requires = {'rmagatti/auto-session', 'nvim-telescope/telescope.nvim'},
+    config = function()
+      require("telescope").load_extension("session-lens")
+      require('session-lens').setup {
+        path_display = {'shorten'},
+        theme = 'ivy', -- default is dropdown
+        theme_conf = { border = false },
+        previewer = true
+      }
+      vim.diagnostic.config({
+        virtual_text = {
+          prefix = "◆◆", -- Could be '■', '▎', 'x'
+        },
+      })
+    end
+  },
+
+  {
+    "mfussenegger/nvim-dap",
+    -- "mfussenegger/nvim-jdtls", -- for java debug
+    -- "mfussenegger/nvim-dap-python", -- for python
+    dependencies = {
+        "rcarriga/nvim-dap-ui",
+    },
+    config = function()
+        require("dapui").setup()
+        local dap, dapui = require("dap"), require("dapui")
+
+      -- ///////// c++ ///////////// --
+      dap.adapters.gdb = {
+        type = "executable",
+        command = "gdb",
+        args = { "-i", "dap" }
+      }
+      dap.configurations.c = {
+        {
+          name = "Launch",
+          type = "gdb",
+          request = "launch",
+          program = function()
+            return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
+          end,
+          cwd = "${workspaceFolder}",
+          stopAtBeginningOfMainSubprogram = false,
+        },
+      }
+      -- ///////// c++ ///////////// --
+      dap.listeners.before.attach.dapui_config = function()
+        dapui.open()
+      end
+      dap.listeners.before.launch.dapui_config = function()
+        dapui.open()
+      end
+      dap.listeners.before.event_terminated.dapui_config = function()
+        dapui.close()
+      end
+      dap.listeners.before.event_exited.dapui_config = function()
+        dapui.close()
+      end
+      vim.keymap.set("n", "<Leader>dt", ":DapToggleBreakpoint<CR>")
+      vim.keymap.set("n", "<Leader>dc", ":DapContinue<CR>")
+      vim.keymap.set("n", "<Leader>dx", ":DapTerminate<CR>")
+      vim.keymap.set("n", "<Leader>do", ":DapStepOver<CR>")
+    end,
+  },
+
+
 })
+
