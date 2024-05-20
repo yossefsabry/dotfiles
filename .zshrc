@@ -161,6 +161,7 @@ alias ...='cd ../..'
 alias ....='cd ../../..'
 alias .....='cd ../../../..'
 alias cdg="cd ~/projects/go-course"
+alias cdv="cd ~/.config/nvim"
 alias config="cd ~/my-config"
 
 
