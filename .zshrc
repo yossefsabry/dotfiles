@@ -10,9 +10,9 @@ export ZSH="$HOME/.oh-my-zsh"
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
 
 ######## themes #########
-# ZSH_THEME="gozilla"  #linuxonly
+ ZSH_THEME="robbyrussell"  #linuxonly
 # starship theme
-eval "$(starship init zsh)"
+#eval "$(starship init zsh)"
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -77,9 +77,6 @@ eval "$(starship init zsh)"
 plugins=(git
     zsh-autosuggestions
     vi-mode
-    gitignore 
-    command-not-found
-    zsh-syntax-highlighting
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -163,12 +160,13 @@ alias ..='cd ..'
 alias ...='cd ../..'
 alias ....='cd ../../..'
 alias .....='cd ../../../..'
-alias cdp="cd ~/works/projects"
+alias cdg="cd ~/projects/go-course"
+alias config="cd ~/my-config"
 
 
 # Alias's for multiple directory listing commands
 alias la='ls -AFlh' # show hidden files
-alias ls='ls -Fh --color=always' # add colors and file type extensions
+alias ls='ls -ah --color=always' # add colors and file type extensions
 alias lx='ls -lXBh' # sort by extension
 alias lsz='ls -lSrh' # sort by size
 alias lc='ls -lcrh' # sort by change time
@@ -232,16 +230,16 @@ alias idh='tmux split-window -h -l 25% && tmux split-window -v -l 50% && tmux se
 alias logs="sudo find /var/log -type f -exec file {} \; | grep 'text' | cut -d' ' -f1 | sed -e's/:$//g' | grep -v '[0-9]$' | xargs tail -f"
 
 
-# auto jump command for zshrc
-if [ -f "/usr/share/autojump/autojump.sh" ]; then
-    . /usr/share/autojump/autojump.sh
-elif [ -f "/usr/share/autojump/autojump.bash" ]; then
-    . /usr/share/autojump/autojump.bash
-elif [ -f "/usr/share/autojump/autojump.zsh" ]; then
-    . /usr/share/autojump/autojump.basi
-else
-    echo "can't find the autojump script"
-fi
+### auto jump command for zshrc
+#if [ -f "/usr/share/autojump/autojump.sh" ]; then
+#    . /usr/share/autojump/autojump.sh
+#elif [ -f "/usr/share/autojump/autojump.bash" ]; then
+#    . /usr/share/autojump/autojump.bash
+#elif [ -f "/usr/share/autojump/autojump.zsh" ]; then
+#    . /usr/share/autojump/autojump.basi
+#else
+#    echo "can't find the autojump script"
+#fi
 
 
 

@@ -18,14 +18,26 @@ require("lazy").setup({
 
   -- adding colorscheme
   {
-		-- transparnet background color for nvim
-		"tribela/vim-transparent",
-	},
+    -- transparnet background color for nvim
+    "tribela/vim-transparent",
+  },
   {
-    "ellisonleao/gruvbox.nvim", priority = 1000 ,
+    "rose-pine/neovim", as = "rose-pine",
+    priority = 1000 ,
     config = function()
-      vim.cmd([[colorscheme gruvbox]])
+      vim.cmd([[colorscheme rose-pine]])
       vim.o.background = "dark" -- or "light" for light mode
+    end
+  },
+
+  -- lualine for nvim
+  {
+    'nvim-lualine/lualine.nvim',
+    dependencies = { 'nvim-tree/nvim-web-devicons' },
+    config = function()
+      require('lualine').setup {
+        options = { theme = 'seoul256' }
+      }
     end
   },
 
@@ -74,17 +86,6 @@ require("lazy").setup({
     opts = {
     },
     lazy = false,
-  },
-
-  -- lualine for nvim
-  {
-    'nvim-lualine/lualine.nvim',
-    dependencies = { 'nvim-tree/nvim-web-devicons' },
-    config = function()
-      require('lualine').setup {
-        options = { theme = 'gruvbox' }
-      }
-    end
   },
 
   -- adding autoClose Tags
@@ -293,56 +294,5 @@ require("lazy").setup({
       })
     end
   },
-
-  {
-    "mfussenegger/nvim-dap",
-    -- "mfussenegger/nvim-jdtls", -- for java debug
-    -- "mfussenegger/nvim-dap-python", -- for python
-    dependencies = {
-        "rcarriga/nvim-dap-ui",
-    },
-    config = function()
-        require("dapui").setup()
-        local dap, dapui = require("dap"), require("dapui")
-
-      -- ///////// c++ ///////////// --
-      dap.adapters.gdb = {
-        type = "executable",
-        command = "gdb",
-        args = { "-i", "dap" }
-      }
-      dap.configurations.c = {
-        {
-          name = "Launch",
-          type = "gdb",
-          request = "launch",
-          program = function()
-            return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
-          end,
-          cwd = "${workspaceFolder}",
-          stopAtBeginningOfMainSubprogram = false,
-        },
-      }
-      -- ///////// c++ ///////////// --
-      dap.listeners.before.attach.dapui_config = function()
-        dapui.open()
-      end
-      dap.listeners.before.launch.dapui_config = function()
-        dapui.open()
-      end
-      dap.listeners.before.event_terminated.dapui_config = function()
-        dapui.close()
-      end
-      dap.listeners.before.event_exited.dapui_config = function()
-        dapui.close()
-      end
-      vim.keymap.set("n", "<Leader>dt", ":DapToggleBreakpoint<CR>")
-      vim.keymap.set("n", "<Leader>dc", ":DapContinue<CR>")
-      vim.keymap.set("n", "<Leader>dx", ":DapTerminate<CR>")
-      vim.keymap.set("n", "<Leader>do", ":DapStepOver<CR>")
-    end,
-  },
-
-
 })
 
