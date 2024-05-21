@@ -102,9 +102,6 @@ return {
 				-- Replace the language servers listed here
 				-- with the ones you want to install
 				ensure_installed = {
-					"clangd",
-					"rust_analyzer",
-					"pyright",
 					"tsserver",
 					"html",
 					"lua_ls",
