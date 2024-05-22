@@ -103,10 +103,6 @@ source $ZSH/oh-my-zsh.sh
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
 # For a full list of active aliases, run `alias`.
 #
-# Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
-
 # enable vim mode
 bindkey -v
 
@@ -153,6 +149,7 @@ alias cls='clear'
 alias vi='nvim'
 alias svi='sudo vi'
 alias vis='nvim "+set si"'
+alias removeNvimCache="rm -rf ~/.local/share/nvim/"
 
 # Change directory aliases
 alias cd..='cd ..'
@@ -181,6 +178,7 @@ alias labc='ls -lap' #alphabetical sort
 alias lf="ls -l | egrep -v '^d'" # files only
 alias lfa="ls -aFhl | egrep -v '^d'" # files only
 alias ldir="ls -l | egrep '^d'" # directories only
+
 
 # alias chmod commands
 alias mx='chmod a+x'
