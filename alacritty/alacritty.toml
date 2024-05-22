@@ -24,7 +24,7 @@ TERM                  = "xterm-256color"
 padding               = { x = 2, y = 10 }
 dynamic_padding       = true
 decorations           = "None"
-opacity               = 0.7
+opacity               = 0.6
 blur                  = true
 #startup_mode          = "Windowed"
 #title                 = "Alacritty"
@@ -52,33 +52,33 @@ glyph_offset          = { x = 1, y = 1 }
 
 # catpuccin-mocha, ported from .yml
 [colors.primary]
-background            = "#1E1E2E"
+background            = "#3a3e28"
 foreground            = "#CDD6F4"
 dim_foreground        = "#CDD6F4"
 bright_foreground     = "#CDD6F4"
 
 [colors.cursor]
-text                  = "#1E1E2E"
+text                  = "#3a3e28"
 cursor                = "#F5E0DC"
 
 [colors.vi_mode_cursor]
-text                  = "#1E1E2E"
+text                  = "#3a3e28"
 cursor                = "#B4BEFE"
 
 [colors.search.matches]
-foreground            = "#1E1E2E"
+foreground            = "#3a3e28"
 background            = "#A6ADC8"
 
 [colors.search.focused_match]
-foreground            = "#1E1E2E"
+foreground            = "#3a3e28"
 background            = "#A6E3A1"
 
 [colors.hints.start]
-foreground            = "#1E1E2E"
+foreground            = "#3a3e28"
 background            = "#F9E2AF"
 
 [colors.hints.end]
-foreground            = "#1E1E2E"
+foreground            = "#3a3e28"
 background            = "#A6ADC8"
 
 [colors.line_indicator]
@@ -86,11 +86,11 @@ background            = "#A6ADC8"
 #background            = "None"
 
 [colors.footer_bar]
-foreground            = "#1E1E2E"
+foreground            = "#3a3e28"
 background            = "#A6ADC8"
 
 [colors.selection]
-text                  = "#1E1E2E"
+text                  = "#3a3e28"
 background            = "#F5E0DC"
 
 [colors.normal]
