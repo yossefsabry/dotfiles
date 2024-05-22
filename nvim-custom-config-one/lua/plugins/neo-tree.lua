@@ -1,10 +1,11 @@
 return {
-  "nvim-neo-tree/neo-tree.nvim",
-  branch = "v3.x",
-  dependencies = {
-    "nvim-lua/plenary.nvim",
-    "nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
-    "MunifTanjim/nui.nvim",
-    -- "3rd/image.nvim", -- Optional image support in preview window: See `# Preview Mode` for more information
-  },
+  "elihunter173/dirbuf.nvim",
+  config = function()
+    require("dirbuf").setup({
+      hash_padding = 2,
+      show_hidden = true,
+      sort_order = "default",
+      write_cmd = "DirbufSync",
+    })
+  end,
 }
