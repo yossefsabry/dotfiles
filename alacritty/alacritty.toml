@@ -24,7 +24,7 @@ TERM                  = "xterm-256color"
 padding               = { x = 2, y = 10 }
 dynamic_padding       = true
 decorations           = "None"
-opacity               = 0.8
+opacity               = 0.7
 blur                  = true
 #startup_mode          = "Windowed"
 #title                 = "Alacritty"
@@ -40,13 +40,13 @@ history               = 65535
 #multiplier            = 3
 
 [font]
-# normal                = { family = "MeslolGS NF Regular", style = "Regular" }
-# bold                  = { family = "MeslolGS NF Bold", style = "Bold" }
-# italic                = { family = "MeslolGS NF Italic", style = "Italic" }
-# bold_italic           = { family = "MeslolGS NF Bold Italic", style = "Bold Italic" }
-size                  = 14.65
+normal                = { family = "SourceCodeVF", style = "Regular" }
+bold                  = { family = "SourceCodeVF", style = "Bold" }
+italic                = { family = "SourceCodeVF", style = "Italic" }
+bold_italic           = { family = "SourceCodeVF", style = "Bold Italic" }
+size                  = 15.45
 offset                = { x = 0, y = 0 }
-glyph_offset          = { x = 0, y = 0 }
+glyph_offset          = { x = 1, y = 1 }
 #builtin_box_drawing   = true
 
 
@@ -131,11 +131,11 @@ indexed_colors = [
 #transparent_background_colors = false
 draw_bold_text_with_bright_colors = true
 
-[bell]
-animation             = "EaseOutExpo"
-duration              = 0
-color                 = "#C0C5CE"
-command               = { program = "notify-send", args = ["alacritty", "bell",] }
+# [bell]
+# animation             = "EaseOutExpo"
+# duration              = 0
+# color                 = "#C0C5CE"
+# command               = { program = "notify-send", args = ["alacritty", "bell",] }
 
 [selection]
 #semantic_escape_chars = ",│‘|:"' ()[]{}<>t"
@@ -202,11 +202,11 @@ bindings = [
 
 
 [debug]
-#render_timer          = false
-#persistent_logging    = false
-#log_level             = "Warn"
-#renderer              = "None"
-#print_events          = false
-#highlight_damage      = false
-#prefer_egl            = false
+render_timer          = false
+persistent_logging    = false
+log_level             = "Warn"
+renderer              = "None"
+print_events          = false
+highlight_damage      = false
+prefer_egl            = false
 
