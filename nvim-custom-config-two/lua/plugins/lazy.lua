@@ -71,7 +71,7 @@ require("lazy").setup({
     config = function()
       require("nvim-tree").setup {}
     end,
-  },  -- adding lsp-zero
+  },
 
   {
     "iamcco/markdown-preview.nvim",
@@ -154,18 +154,13 @@ require("lazy").setup({
       end,
     },
   },
-
+  -- adding lsp-zero
   {
     {
       'VonHeikemen/lsp-zero.nvim',
       branch = 'v3.x',
       lazy = true,
       config = false,
-      init = function()
-        -- Disable automatic setup, we are doing it manually
-        vim.g.lsp_zero_extend_cmp = 0
-        vim.g.lsp_zero_extend_lspconfig = 0
-      end,
     },
     {
       'williamboman/mason.nvim',
@@ -278,7 +273,7 @@ require("lazy").setup({
   -- session navigetor
   {
     'rmagatti/session-lens',
-    requires = {'rmagatti/auto-session', 'nvim-telescope/telescope.nvim'},
+    dependencies = {'rmagatti/auto-session', 'nvim-telescope/telescope.nvim'},
     config = function()
       require("telescope").load_extension("session-lens")
       require('session-lens').setup {
