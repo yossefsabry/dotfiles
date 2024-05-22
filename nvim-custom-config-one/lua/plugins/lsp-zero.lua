@@ -62,7 +62,7 @@ return {
 			})
         vim.diagnostic.config({
         virtual_text = {
-          prefix = "--", -- Could be '■', '▎', 'x'
+          prefix = "✦✦", -- Could be '■', '▎', 'x'
         },
       })
       lsp_zero.set_sign_icons({
@@ -97,22 +97,33 @@ return {
 				lsp_zero.default_keymaps({ buffer = bufnr })
 			end)
 
-			require("mason").setup({})
-			require("mason-lspconfig").setup({
-				-- Replace the language servers listed here
-				-- with the ones you want to install
-				ensure_installed = {
-					"tsserver",
-					"html",
-					"lua_ls",
-					"ast_grep",
-					"cssls",
-					"gopls",
-				},
-				handlers = {
-					lsp_zero.default_setup,
-				},
-			})
+      require("mason").setup({})
+      require("mason-lspconfig").setup({
+        -- Replace the language servers listed here
+        -- with the ones you want to install
+        ensure_installed = {
+          "tsserver",
+          "html",
+          "lua_ls",
+          "ast_grep",
+          "cssls",
+          "gopls",
+        },
+        handlers = {
+          lsp_zero.default_setup,
+        },
+      })
+      vim.diagnostic.config({
+        virtual_text = {
+          prefix = "✦✦", -- Could be '■', '▎', 'x'
+        },
+      })
+      lsp_zero.set_sign_icons({
+        error = '',
+        warn = '',
+        hint = '',
+        info = ''
+      })
 
 			-- (Optional) Configure lua language server for neovim
 			local lua_opts = lsp_zero.nvim_lua_ls()
