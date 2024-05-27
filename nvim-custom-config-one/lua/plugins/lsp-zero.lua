@@ -62,7 +62,7 @@ return {
 			})
         vim.diagnostic.config({
         virtual_text = {
-          prefix = "✦✦", -- Could be '■', '▎', 'x'
+          prefix = "--", -- Could be '■', '▎', 'x'
         },
       })
       lsp_zero.set_sign_icons({
@@ -108,6 +108,7 @@ return {
           "ast_grep",
           "cssls",
           "gopls",
+          "clangd",
         },
         handlers = {
           lsp_zero.default_setup,
@@ -115,7 +116,7 @@ return {
       })
       vim.diagnostic.config({
         virtual_text = {
-          prefix = "✦✦", -- Could be '■', '▎', 'x'
+          prefix = "--", -- Could be '■', '▎', 'x'
         },
       })
       lsp_zero.set_sign_icons({

@@ -10,7 +10,7 @@ return {
   },
   {
     -- install markdown Preview auto work
-    "instant-markdown/vim-instant-markdown",
+    -- "instant-markdown/vim-instant-markdown", -- make some problem when see info about any thing shift+k  file
   },
   {
     -- for auto close html tags
