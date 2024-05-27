@@ -24,7 +24,7 @@ TERM                  = "xterm-256color"
 padding               = { x = 2, y = 10 }
 dynamic_padding       = true
 decorations           = "None"
-opacity               = 0.6
+opacity               = 0.89
 blur                  = true
 #startup_mode          = "Windowed"
 #title                 = "Alacritty"
@@ -44,7 +44,8 @@ normal                = { family = "SourceCodeVF", style = "Regular" }
 bold                  = { family = "SourceCodeVF", style = "Bold" }
 italic                = { family = "SourceCodeVF", style = "Italic" }
 bold_italic           = { family = "SourceCodeVF", style = "Bold Italic" }
-size                  = 15.45
+size                  = 9.45
+# size                  = 14.45
 offset                = { x = 0, y = 0 }
 glyph_offset          = { x = 1, y = 1 }
 #builtin_box_drawing   = true
@@ -52,33 +53,33 @@ glyph_offset          = { x = 1, y = 1 }
 
 # catpuccin-mocha, ported from .yml
 [colors.primary]
-background            = "#3a3e28"
+background            = "#374f3e"
 foreground            = "#CDD6F4"
 dim_foreground        = "#CDD6F4"
 bright_foreground     = "#CDD6F4"
 
 [colors.cursor]
-text                  = "#3a3e28"
+text                  = "#374f3e"
 cursor                = "#F5E0DC"
 
 [colors.vi_mode_cursor]
-text                  = "#3a3e28"
+text                  = "#374f3e"
 cursor                = "#B4BEFE"
 
 [colors.search.matches]
-foreground            = "#3a3e28"
+foreground            = "#374f3e"
 background            = "#A6ADC8"
 
 [colors.search.focused_match]
-foreground            = "#3a3e28"
+foreground            = "#374f3e"
 background            = "#A6E3A1"
 
 [colors.hints.start]
-foreground            = "#3a3e28"
+foreground            = "#374f3e"
 background            = "#F9E2AF"
 
 [colors.hints.end]
-foreground            = "#3a3e28"
+foreground            = "#374f3e"
 background            = "#A6ADC8"
 
 [colors.line_indicator]
@@ -86,11 +87,11 @@ background            = "#A6ADC8"
 #background            = "None"
 
 [colors.footer_bar]
-foreground            = "#3a3e28"
+foreground            = "#374f3e"
 background            = "#A6ADC8"
 
 [colors.selection]
-text                  = "#3a3e28"
+text                  = "#374f3e"
 background            = "#F5E0DC"
 
 [colors.normal]
@@ -178,29 +179,29 @@ bindings = [
 #binding               = { key = "U", mods = "Control|Shift" }
 #regex                 = "(ipfs:|ipns:|magnet:|mailto:|gemini://|gopher://|https://|http://|news:|file:|git://|ssh:|ftp://)[^\u0000-\u001F\u007F-\u009F<>\"\\s{-}\\^⟨⟩‘]+"
 
-[keyboard]
-bindings = [
-  { key = "V",        mods = "Control|Shift", action = "Paste" },
-  { key = "C",        mods = "Control|Shift", action = "Copy" },
-  { key = "Paste",                            action = "Paste" },
-  { key = "Copy",                             action = "Copy" },
-  { key = "Insert",   mods = "Shift",         action = "PasteSelection" },
-  { key = "F",        mods = "Control|Shift", action = "SearchForward",     mode = "~Search" },
-  { key = "B",        mods = "Control|Shift", action = "SearchBackward",    mode = "~Search" },
-  { key = "Key0",     mods = "Control",       action = "ResetFontSize" },
-  { key = "Equals",   mods = "Control",       action = "IncreaseFontSize" },
-  { key = "Minus",    mods = "Control",       action = "DecreaseFontSize" },
-  { key = "L",        mods = "Control",       action = "ClearLogNotice" },
-  { key = "L",        mods = "Control",       chars  = "\f" },
-  { key = "PageUp",   mods = "Shift",         action = "ScrollPageUp",      mode = "~Alt" },
-  { key = "PageDown", mods = "Shift",         action = "ScrollPageDown",    mode = "~Alt" },
-  { key = "Up",       mods = "Shift",         action = "ScrollLineUp",      mode = "~Alt" },
-  { key = "Down",     mods = "Shift",         action = "ScrollLineDown",    mode = "~Alt" },
-  { key = "Home",     mods = "Shift",         action = "ScrollToTop",       mode = "~Alt" },
-  { key = "End",      mods = "Shift",         action = "ScrollToBottom",    mode = "~Alt" },
-]
-
-
+# [keyboard]
+# bindings = [
+#   { key = "V",        mods = "Control|Shift", action = "Paste" },
+#   { key = "C",        mods = "Control|Shift", action = "Copy" },
+#   { key = "Paste",                            action = "Paste" },
+#   { key = "Copy",                             action = "Copy" },
+#   { key = "Insert",   mods = "Shift",         action = "PasteSelection" },
+#   { key = "F",        mods = "Control|Shift", action = "SearchForward",     mode = "~Search" },
+#   { key = "B",        mods = "Control|Shift", action = "SearchBackward",    mode = "~Search" },
+#   { key = "Key0",     mods = "Control",       action = "ResetFontSize" },
+#   { key = "Equals",   mods = "Control",       action = "IncreaseFontSize" },
+#   { key = "Minus",    mods = "Control",       action = "DecreaseFontSize" },
+#   { key = "L",        mods = "Control",       action = "ClearLogNotice" },
+#   { key = "L",        mods = "Control",       chars  = "\f" },
+#   { key = "PageUp",   mods = "Shift",         action = "ScrollPageUp",      mode = "~Alt" },
+#   { key = "PageDown", mods = "Shift",         action = "ScrollPageDown",    mode = "~Alt" },
+#   { key = "Up",       mods = "Shift",         action = "ScrollLineUp",      mode = "~Alt" },
+#   { key = "Down",     mods = "Shift",         action = "ScrollLineDown",    mode = "~Alt" },
+#   { key = "Home",     mods = "Shift",         action = "ScrollToTop",       mode = "~Alt" },
+#   { key = "End",      mods = "Shift",         action = "ScrollToBottom",    mode = "~Alt" },
+# ]
+#
+#
 [debug]
 render_timer          = false
 persistent_logging    = false
