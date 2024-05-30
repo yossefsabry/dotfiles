@@ -109,7 +109,7 @@ vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
 keymap("n", "<leader>z", "zfaB", term_opts)
 
 vim.keymap.set("n", "<leader><leader>", function()
-  vim.cmd("so")
+  vim.cmd("Ex")
 end)
 
 

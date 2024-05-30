@@ -160,7 +160,7 @@ alias .....='cd ../../../..'
 alias cdg="cd ~/projects/go-course"
 alias cdc="cd ~/projects/c-course"
 alias cdv="cd ~/.config/nvim"
-alias config="cd ~/my-config"
+alias dotfiles="cd ~/dotfiles"
 alias build="./build"
 alias fz="fzf --preview 'bat --style=numbers --color=always --line-range :500 {}'"
 
@@ -234,7 +234,7 @@ alias logs="sudo find /var/log -type f -exec file {} \; | grep 'text' | cut -d' 
 
 ### auto jump command for zshrc
 #if [ -f "/usr/share/autojump/autojump.sh" ]; then
-#    . /usr/share/autojump/autojump.sh
+#    . /usr/share/autojump/autojump.s 
 #elif [ -f "/usr/share/autojump/autojump.bash" ]; then
 #    . /usr/share/autojump/autojump.bash
 #elif [ -f "/usr/share/autojump/autojump.zsh" ]; then
@@ -257,5 +257,8 @@ export GOBIN="$GOPATH/bin"
 export PATH="$PATH:$GOBIN"
 export PATH="$PATH:$HOME/go/bin/"
 export PATH=$PATH:/usr/local/go/bin
+
+#for stow the dotfiles
+#stow --adopt --ignore=background --ignore=dwm-config --ignore=nvim --ignore=mybash-config .
 
 
