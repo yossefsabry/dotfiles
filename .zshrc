@@ -161,11 +161,13 @@ alias cdg="cd ~/projects/go-course"
 alias cdc="cd ~/projects/c-course"
 alias cdv="cd ~/.config/nvim"
 alias config="cd ~/my-config"
-
+alias build="./build"
+alias fz="fzf --preview 'bat --style=numbers --color=always --line-range :500 {}'"
 
 # Alias's for multiple directory listing commands
 alias la='ls -AFlh' # show hidden files
 alias ls='ls -ah --color=always' # add colors and file type extensions
+alias lsg='ls -alfh --color=always | grep ' # add colors and file type extensions
 alias lx='ls -lXBh' # sort by extension
 alias lsz='ls -lSrh' # sort by size
 alias lc='ls -lcrh' # sort by change time
