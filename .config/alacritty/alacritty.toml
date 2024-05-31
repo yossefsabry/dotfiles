@@ -2,7 +2,7 @@
 # commented lines are the defaults
 # man 5 alacritty (>0.13) for full config manual
 
-#import = 
+#import = [
 #"~/.config/alacritty/catpuccin-mocha.toml",
 #"~/.config/alacritty/keybindings.toml",
 #]
@@ -52,33 +52,33 @@ glyph_offset          = { x = 1, y = 1 }
 
 # catpuccin-mocha, ported from .yml
 [colors.primary]
-background            = "#2e221c"
+background            = "#282916"
 foreground            = "#CDD6F4"
 dim_foreground        = "#CDD6F4"
 bright_foreground     = "#CDD6F4"
 
 [colors.cursor]
-text                  = "#2e221c"
+text                  = "#282916"
 cursor                = "#F5E0DC"
 
 [colors.vi_mode_cursor]
-text                  = "#2e221c"
+text                  = "#282916"
 cursor                = "#B4BEFE"
 
 [colors.search.matches]
-foreground            = "#2e221c"
+foreground            = "#282916"
 background            = "#A6ADC8"
 
 [colors.search.focused_match]
-foreground            = "#2e221c"
+foreground            = "#282916"
 background            = "#A6E3A1"
 
 [colors.hints.start]
-foreground            = "#2e221c"
+foreground            = "#282916"
 background            = "#F9E2AF"
 
 [colors.hints.end]
-foreground            = "#2e221c"
+foreground            = "#282916"
 background            = "#A6ADC8"
 
 [colors.line_indicator]
@@ -86,11 +86,11 @@ background            = "#A6ADC8"
 #background            = "None"
 
 [colors.footer_bar]
-foreground            = "#2e221c"
+foreground            = "#282916"
 background            = "#A6ADC8"
 
 [colors.selection]
-text                  = "#2e221c"
+text                  = "#282916"
 background            = "#F5E0DC"
 
 [colors.normal]
