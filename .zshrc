@@ -137,8 +137,7 @@ alias da='date "+%Y-%m-%d %A %T %Z"'
 # adding shourtcuts for bash
 alias mkdir='mkdir -p'
 alias rm='rm -rf'
-alias cp='cp -Ri'
-alias mv='mv -i'
+alias cp='yes | cp -Ri'
 alias ebrc='nvim ~/.bashrc'
 alias ezsh='nvim ~/.zshrc'
 alias etmux='nvim ~/.tmux.conf'
@@ -163,6 +162,8 @@ alias cdv="cd ~/.config/nvim"
 alias dotfiles="cd ~/dotfiles"
 alias build="./build"
 alias fz="fzf --preview 'bat --style=numbers --color=always --line-range :500 {}'"
+alias gf="fzf --height=40% --bind 'enter:become(nvim {}),ctrl-e:become(vim {})'"
+
 
 # Alias's for multiple directory listing commands
 alias la='ls -AFlh' # show hidden files
@@ -261,4 +262,33 @@ export PATH=$PATH:/usr/local/go/bin
 #for stow the dotfiles
 #stow --adopt --ignore=background --ignore=dwm-config --ignore=nvim --ignore=mybash-config .
 
+# Function to search for a folder and create a new tmux session in that folder
+tmux_new_session() {
+  export FZF_DEFAULT_OPTS='--layout=reverse --height=40% '
+  selected_dir=$(find ~ -type d 2>/dev/null | fzf)
+  
+  if [ -n "$selected_dir" ]; then
+    session_name=$(basename "$selected_dir")
+    
+    if [ -n "$TMUX" ]; then
+      # If inside an existing tmux session, offer to create a nested session
+      printf "You are already in a tmux session. Do you want to create a nested session? (y/n) "
+      read choice
+      case "$choice" in 
+        y|Y ) 
+          tmux new-session -s "$session_name" -c "$selected_dir"
+          ;;
+        * ) 
+          echo "Aborting nested tmux session creation."
+          ;;
+      esac
+    else
+      tmux new-session -s "$session_name" -c "$selected_dir"
+      tmux attach-session -t "$session_name"
+    fi
+  fi
+}
+
+# Bind Alt+c to the tmux_new_session function
+bindkey -s '^[c' 'tmux_new_session\n'
 
