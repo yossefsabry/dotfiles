@@ -163,6 +163,7 @@ alias dotfiles="cd ~/dotfiles"
 alias build="./build"
 alias fz="fzf --preview 'bat --style=numbers --color=always --line-range :500 {}'"
 alias gf="fzf --height=40% --bind 'enter:become(nvim {}),ctrl-e:become(vim {})'"
+alias fcd="fzf_cd"
 
 
 # Alias's for multiple directory listing commands
@@ -292,3 +293,21 @@ tmux_new_session() {
 # Bind Alt+c to the tmux_new_session function
 bindkey -s '^[c' 'tmux_new_session\n'
 
+
+# go folder and show structure
+# Function to search for a folder and navigate to it using fzf
+function fzf_cd() {
+    # Find directories, use fzf to select one, and navigate to it
+    local folder
+    folder=$(find . -type d 2>/dev/null | fzf --height 40% --layout=reverse --border --preview 'tree -C {} | head -n 20')
+    
+    # Check if a folder was selected
+    if [[ -n "$folder" ]]; then
+        cd "$folder" || return
+        # Display the structure of the selected folder
+        tree -C
+    else
+        echo "No folder selected." >&2
+        return 1
+    fi
+}
