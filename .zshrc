@@ -138,6 +138,8 @@ alias da='date "+%Y-%m-%d %A %T %Z"'
 alias mkdir='mkdir -p'
 alias rm='rm -rf'
 alias cp='yes | cp -Ri'
+alias pbcopy='xsel --input --clipboard' 
+alias pbpaste='xsel --output --clipboard'
 alias ebrc='nvim ~/.bashrc'
 alias ezsh='nvim ~/.zshrc'
 alias etmux='nvim ~/.tmux.conf'
@@ -149,6 +151,8 @@ alias vi='nvim'
 alias svi='sudo vi'
 alias vis='nvim "+set si"'
 alias removeNvimCache="rm -rf ~/.local/share/nvim/"
+# for search in history
+bindkey '\er' history-incremental-search-backward
 
 # Change directory aliases
 alias cd..='cd ..'
@@ -263,7 +267,7 @@ export PATH=$PATH:/usr/local/go/bin
 #for stow the dotfiles
 #stow --adopt --ignore=background --ignore=dwm-config --ignore=nvim --ignore=mybash-config .
 
-# Function to search for a folder and create a new tmux session in that folder
+# ----- Function to search for a folder and create a new tmux session in that folder ------
 tmux_new_session() {
   export FZF_DEFAULT_OPTS='--layout=reverse --height=40% '
   selected_dir=$(find ~ -type d 2>/dev/null | fzf)
@@ -289,25 +293,94 @@ tmux_new_session() {
     fi
   fi
 }
-
 # Bind Alt+c to the tmux_new_session function
 bindkey -s '^[c' 'tmux_new_session\n'
+# ***** Function to search for a folder and create a new tmux session in that folder ******
 
 
-# go folder and show structure
-# Function to search for a folder and navigate to it using fzf
+
+# ----- Function to search for a folder and navigate to it using fzf -----
 function fzf_cd() {
     # Find directories, use fzf to select one, and navigate to it
     local folder
     folder=$(find . -type d 2>/dev/null | fzf --height 40% --layout=reverse --border --preview 'tree -C {} | head -n 20')
-    
     # Check if a folder was selected
     if [[ -n "$folder" ]]; then
         cd "$folder" || return
         # Display the structure of the selected folder
-        tree -C
+        # tree -C
     else
         echo "No folder selected." >&2
         return 1
     fi
 }
+# ***** Function to search for a folder and navigate to it using fzf *****
+
+# --------- for the notes function shourtcuts ------------- 
+# Function to add a new note
+add_note() {
+  # Ensure correct number of arguments
+  if [ "$#" -ne 2 ]; then
+    echo "Usage: add_note <folder> <name>"
+    return 1
+  fi
+  local folder="$1"
+  local name="$2"
+  local notes_dir="$HOME/notes/$folder"
+  local file_path="$notes_dir/$name.md"
+  local timestamp=$(date "+%Y-%m-%d %H:%M:%S")
+  # Create the directory if it does not exist
+  if ! mkdir -p "$notes_dir"; then
+    echo "Error: Unable to create directory $notes_dir"
+    return 1
+  fi
+  # Check if the file already exists
+  if [ -f "$file_path" ]; then
+    echo "Error: File $file_path already exists"
+    return 1
+  fi
+  # Create the markdown file with the template
+  cat <<EOL > "$file_path"
+<div style="padding: 5px 20px; display: block; marign: auto; font-family: sans;
+2ont-size: 18px; line-height: 1.8; letter-spacing: 1.2px;">
+
+title: "$folder - $name"
+---
+
+- <h3>fileName: $name</h4>
+- <h4>Created on: $timestamp</h4>
+
+---
+<!-- Your notes here -->
+<!-- end notes here -->
+</div>
+
+EOL
+  # Check if the file was created successfully
+  if [ ! -f "$file_path" ]; then
+    echo "Error: Unable to create file $file_path"
+    return 1
+  fi
+  # Open the file in Neovim
+  nvim "$file_path"
+}
+# Define an alias for the add_note function
+alias addnote='add_note'
+# Usage message
+usage() {
+  echo "Usage: addnote <folder> <name>"
+}
+# ********* for the notes function shourtcuts ************* 
+
+# -------- for search in history -----------
+fzf_history() {
+  # Use fzf to search through the command history
+  local cmd=$(fc -rl 1 | awk '{$1=""; print substr($0,2)}' | fzf --height=40%)
+  # If a command is selected, execute it
+  if [ -n "$cmd" ]; then
+    eval $cmd
+  fi
+}
+alias fh="fzf_history"
+# ********* for search in history********* 
+

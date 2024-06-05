@@ -10,7 +10,8 @@ return {
   },
   {
     -- install markdown Preview auto work
-    -- "instant-markdown/vim-instant-markdown", -- make some problem when see info about any thing shift+k  file
+    -- some denpeneds is ( pandoc, npm install -g @compodoc/live-server)
+    "davidgranstrom/nvim-markdown-preview", -- make some problem when see info about any thing shift+k  file
   },
   {
     -- for auto close html tags
