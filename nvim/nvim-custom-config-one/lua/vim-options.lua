@@ -117,7 +117,7 @@ vim.keymap.set('n', 'go', '<cmd>lua vim.lsp.buf.type_definition()<cr>', term_opt
 vim.keymap.set('n', 'gr', '<cmd>lua vim.lsp.buf.references()<cr>', term_opts)
 vim.keymap.set('n', 'gs', '<cmd>lua vim.lsp.buf.signature_help()<cr>', term_opts)
 vim.keymap.set({'n', 'x'}, '<F3>', '<cmd>lua vim.lsp.buf.format({async = true})<cr>', term_opts)
-vim.keymap.set('n', '<leader>vca', '<cmd>lua vim.lsp.buf.code_action()<cr>', term_opts)
+vim.keymap.set('n', '<leader>ca', '<cmd>lua vim.lsp.buf.code_action()<cr>', term_opts)
 vim.keymap.set('n', 'gl', '<cmd>lua vim.diagnostic.open_float()<cr>', term_opts)
 vim.keymap.set('n', '[d', '<cmd>lua vim.diagnostic.goto_prev()<cr>', term_opts)
 vim.keymap.set('n', ']d', '<cmd>lua vim.diagnostic.goto_next()<cr>', term_opts)

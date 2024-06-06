@@ -163,6 +163,7 @@ alias .....='cd ../../../..'
 alias cdg="cd ~/projects/go-course"
 alias cdc="cd ~/projects/c-course"
 alias cdv="cd ~/.config/nvim"
+alias notes="cd ~/notes"
 alias dotfiles="cd ~/dotfiles"
 alias build="./build"
 alias fz="fzf --preview 'bat --style=numbers --color=always --line-range :500 {}'"
@@ -341,20 +342,22 @@ add_note() {
   fi
   # Create the markdown file with the template
   cat <<EOL > "$file_path"
+
 <div style="padding: 5px 20px; display: block; marign: auto; font-family: sans;
 2ont-size: 18px; line-height: 1.8; letter-spacing: 1.2px;">
 
-title: "$folder - $name"
----
+># **title**: "$folder - $name.md"
 
-- <h3>fileName: $name</h4>
-- <h4>Created on: $timestamp</h4>
+\`\`\`
+- **fileName**: $name
+- **Created on**: $timestamp
+\`\`\`
 
----
 <!-- Your notes here -->
-<!-- end notes here -->
-</div>
 
+<!-- end notes here -->
+
+</div>
 EOL
   # Check if the file was created successfully
   if [ ! -f "$file_path" ]; then
