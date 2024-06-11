@@ -160,11 +160,11 @@ alias ..='cd ..'
 alias ...='cd ../..'
 alias ....='cd ../../..'
 alias .....='cd ../../../..'
-alias cdg="cd ~/projects/go-course"
-alias cdc="cd ~/projects/c-course"
-alias cdv="cd ~/.config/nvim"
-alias notes="cd ~/notes"
-alias dotfiles="cd ~/dotfiles"
+alias cdg="cd /home/$USER/projects/go-course"
+alias cdc="cd /home/$USER/projects/c-course"
+alias cdv="cd /home/$USER/.config/nvim"
+alias notes="cd /home/$USER/notes"
+alias dotfiles="cd /home/$USER/dotfiles"
 alias build="./build"
 alias fz="fzf --preview 'bat --style=numbers --color=always --line-range :500 {}'"
 alias gf="fzf --height=40% --bind 'enter:become(nvim {}),ctrl-e:become(vim {})'"
@@ -369,10 +369,6 @@ EOL
 }
 # Define an alias for the add_note function
 alias addnote='add_note'
-# Usage message
-usage() {
-  echo "Usage: addnote <folder> <name>"
-}
 # ********* for the notes function shourtcuts ************* 
 
 # -------- for search in history -----------
