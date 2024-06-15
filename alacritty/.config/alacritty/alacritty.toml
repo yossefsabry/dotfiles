@@ -40,11 +40,11 @@ history               = 65535
 #multiplier            = 3
 
 [font]
-normal                = { family = "SourceCodeVF", style = "Regular" }
-bold                  = { family = "SourceCodeVF", style = "Bold" }
-italic                = { family = "SourceCodeVF", style = "Italic" }
-bold_italic           = { family = "SourceCodeVF", style = "Bold Italic" }
-size                  = 13.45
+normal                = { family = "FiraMono Nerd Font Propo", style = "Regular" }
+bold                  = { family = "FiraMono Nerd Font Propo", style = "Bold" }
+italic                = { family = "FiraMono Nerd Font Propo", style = "Italic" }
+bold_italic           = { family = "FiraMono Nerd Font Propo", style = "Bold Italic" }
+size                  = 14.45
 offset                = { x = 0, y = 0 }
 glyph_offset          = { x = 1, y = 1 }
 #builtin_box_drawing   = true
