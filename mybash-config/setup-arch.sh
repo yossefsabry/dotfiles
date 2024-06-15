@@ -19,12 +19,6 @@ checkEnv(){
         echo -e "${RED}To run me,https://github.com/fearlessgeekmedia/mybash you need: ${REQUIREMENTS}${RC}"
         exit 1
     fi
-
-    ## Check if member of the wheel group.
-    if ! groups|grep wheel>/dev/null;then
-        echo -e "${RED}You need to be a member of the wheel to run me!"
-        exit 1
-    fi
 }
 
 installDepend(){
