@@ -75,7 +75,6 @@ export ZSH="$HOME/.oh-my-zsh"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(git
-    # zsh-autosuggestions
     vi-mode
 )
 
@@ -414,6 +413,31 @@ toggle_touchpad() {
 }
 # Optionally, you can bind this function to a keyboard shortcut or call it directly
 # ********* toogle touchpad -> disable and enable ******** 
+
+
+nvim_checker() {
+  # Prompt the user for the Neovim configuration choice
+  echo "---- choose the config for nvim ----"
+  echo "1- nvim-1 (first config split files-> default)"
+  echo "2- nvim-2 (second config one file)"
+  echo "3- nvim-3 (lazy custom config)"
+  read -r option
+  # Define the paths
+  config_path="/home/$USER/.config/nvim"
+  dotfiles_path="/home/$USER/dotfiles/nvims"
+  # Remove any existing Neovim configuration directory
+  if [ -d "$config_path" ]; then
+    rm -rf "$config_path"
+    echo "Existing Neovim configuration removed"
+  fi
+  # Create the symbolic link based on the user's choice
+  case "${option}" in
+    1) ln -svf "$dotfiles_path/nvim-1" "$config_path" ;;
+    2) ln -svf "$dotfiles_path/nvim-2" "$config_path" ;;
+    3) ln -svf "$dotfiles_path/nvim-3" "$config_path" ;;
+    *) ln -svf "$dotfiles_path/nvim-1" "$config_path" ;;
+  esac
+}
 
 
 

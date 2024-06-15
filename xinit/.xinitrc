@@ -2,7 +2,7 @@
 
 
 exec picom &
-exec feh --bg-fill ~/dotfiles/background/image8.jpg &
+exec feh --bg-center --bg-scale   ~/dotfiles/background/image2.jpg &
 exec xrandr --output HDMI-1 --mode 1920x1080  --rate 60 &
 exec slstatus &
 exec unclutter -idle 0 & #for hide the mouse
