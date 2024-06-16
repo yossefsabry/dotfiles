@@ -8,3 +8,4 @@ exec slstatus &
 exec unclutter -idle 0 & #for hide the mouse
 exec dwm > ~/.dwm.log 2>&1
 
+
