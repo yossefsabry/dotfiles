@@ -1,5 +1,5 @@
 [credential]
-	helper = manager
+	helper = store
 [user]
 	email = yossefsabry66@gmail.com
 	name = yossefsabry
