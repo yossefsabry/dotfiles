@@ -1,0 +1,230 @@
+#!/usr/bin/bash
+
+echo "----- starting install script (; -----" 
+echo "----- enter the username for the user: "
+read username
+
+## main package for install ##
+array_packages=(
+  "zsh" "git" "neovim" "tmux" "alacritty" "picom" "vim" "nemo" "feh" "unclutter" "xrandr" "zip" "ripgrep" "xclip" "neofetch"  "fzf" "unzip" "stow"
+  "nodejs" "go" "gcc"
+  "xorg" "xorg-xinit"
+  "iwd" "NetworkManager" "dhcpcd" "nmcli"
+  "wget" "firefox" "rclone"
+)
+
+# creating .config for save the config for packages
+mkdir -p ~/.config
+
+# update  packages
+updateSys() {
+  echo "----- stating update the system -----"
+  pacman -Syn 
+} 
+
+# Function to check if a command exists
+command_exists() {
+  command -v "$1" >/dev/null 2>&1
+}
+
+# Function to install packages
+install_packages() {
+  for element in "${array_packages[@]}"; do
+    if command_exists "$element"; then
+      echo "------- $element is already installed -------"
+      continue
+    else
+      echo "------- installing $element -------"
+      sudo pacman -S --noconfirm "$element"
+      if [ $? -eq 0 ]; then
+        echo "------- $element installed successfully -------"
+      else
+        echo "****** Error occurred while installing $element ******"
+      fi
+    fi
+  done
+}
+
+# insatll yay
+install_yay() {
+  if command_exists yay; then
+    echo "------ command already exits -------"
+  else
+    echo "----------- install some dependences git base-devel -----------"
+    pacman -Sy --needed git base-devel
+    if [ $? -qe 0 ]; then
+      echo "----------- install yay -----------"
+      cd /home/$username
+      git clone https://aur.archlinux.org/yay.git
+      if [ $? -qe 0 ]; then
+        cd yay
+        makepkg -si  
+        echo "-------- install yay sucessfuly ---------"
+      else
+        echo "******** error happend in clone yay *********"
+      fi
+    else
+      echo "********* error happend in install base-devel ********"
+    fi
+  fi
+} 
+
+# install tmp for tmux
+install_tmp() {
+  dir="/home/$username/.tmux/plugins/tpm"
+  if [ -d "$dir" ]; then
+    echo "------- tmp already cloned $dir -----------"
+  else
+    git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+    if [ $? -eq 0 ]; then
+      echo "----------- cloning tmp sucessfuly ----------- "
+    else
+      echo "********** error happend in clone tmp ***********"
+    fi
+  fi
+}
+
+# setting some settting for network
+checkInternet() {
+  echo "------ starting setting for network ------- "
+  # Extend the sudo session
+  sudo -v
+  # Execute the commands in sequence
+  sudo dhcpcd enp0s3 && \
+  sudo systemctl enable iwd && \
+  sudo systemctl start iwd && \
+  sudo systemctl enable NetworkManager && \
+  sudo systemctl start NetworkManager && \
+  sudo systemctl enable dhcpcd && \
+  sudo systemctl start dhcpcd
+  echo "------ finish setting for network ------- "
+}
+
+# for get the dotfiles config from git
+dotfile() {
+  dir=/home/$username/dotfiles
+  if [ -d "$dir" ]; then
+    echo "----------- the dotfile is cloned ----------- "
+  else 
+    dotfileUrl="https://github.com/yossefsabry/dotfiles.git"
+    echo "----------- cloning the config from ${dotfileUrl} ----------- "
+    cd /home/$username
+    git clone $dotfileUrl
+    if [ $? -qe 0 ]; then
+      echo "-------- cloning successfly -> ${dotfileUrl} -------"
+    else 
+      echo "****** error happend in cloning -> ${dotfileUrl} ******"
+    fi
+    cd - 
+  fi
+}
+
+# Function to configure Neovim with symbolic links without backup
+nvim_checker() {
+  # Prompt the user for the Neovim configuration choice
+  echo "---- choose the config for nvim ----"
+  echo "1- nvim-1 (first config split files-> default)"
+  echo "2- nvim-2 (second config one file)"
+  echo "3- nvim-3 (lazy custom config)"
+  read -r option
+  # Define the paths
+  config_path="/home/$username/.config/nvim"
+  dotfiles_path="/home/$username/dotfiles/nvims"
+  # Remove any existing Neovim configuration directory
+  if [ -d "$config_path" ]; then
+    rm -rf "$config_path"
+    echo "Existing Neovim configuration removed"
+  fi
+  # Create the symbolic link based on the user's choice
+  case "${option}" in
+    1) ln -svf "$dotfiles_path/nvim-1" "$config_path" ;;
+    2) ln -svf "$dotfiles_path/nvim-2" "$config_path" ;;
+    3) ln -svf "$dotfiles_path/nvim-3" "$config_path" ;;
+    *) ln -svf "$dotfiles_path/nvim-1" "$config_path" ;;
+  esac
+}
+
+# setting touchpad and keyboard settings
+settingsTouchKeyboard() {
+  dir="/etc/X11/xorg.conf.d"
+  if [ -d "$dir" ]; then
+    echo "------- removing $dir and creating new symlink -------- "
+    rm -rf "$dir"
+    ln -svf "/home/$username/dotfiles/xorg.conf.d" "/etc/X11/"
+  else
+    echo "--------- creating symlink ----------"
+    ln -svf "/home/$username/dotfiles/xorg.conf.d" "/etc/X11/"
+  fi
+  if [ $? -eq 0 ]; then
+    echo "----------- creating symlink successfully ----------- "
+  else
+    echo "********** error happened in creating symlink for $dir ********** "
+  fi
+}
+
+# gitconfig setup
+gitconfig() {
+  dir="/home/$username/dotfiles"
+  if [ -d "$dir" ]; then
+    echo "----------- setting git config file -----------"
+    cd $dir
+    ln -svf $dir/.gitconfig /home/$username
+  else 
+    echo "*********** cant found thie dotfile dir $dir ************** "
+  fi
+}
+
+# for stow the config 
+stowFiles() {
+  dir=/home/$username/dotfiles
+  if [ -d "$dir" ]; then
+    cd $dir
+    stow alacritty picom zsh tmux suckless xinit
+    echo "-------- stow alacritty.....xinit successfly ---------- "
+    nvim_checker    
+    gitconfig
+    settingsTouchKeyboard
+  else
+    echo "******** can't found the dotfile folder $dir ********"
+  fi
+}
+
+install_zsh_bash() {
+  echo "--- starting choose config for zsh or bash"
+  echo "1- zsh -> dafault"
+  echo "2- bash"
+  read -r option
+
+  case "${option}" in
+    1)
+      sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+      chsh -s /bin/zsh "$username"
+      echo "Shell changed to zsh for user $username."
+      ;;
+    2)
+      sudo /home/$username/dotfiles/mybash-config/setup-arch.sh
+      chsh -s /bin/bash "$username"
+      echo "Shell changed to bash for user $username."
+      ;;
+    *)
+      sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+      chsh -s /bin/zsh "$username"
+      echo "Shell changed to zsh for user $username."
+      ;;
+  esac
+}
+
+# Execute all functions in order
+main() {
+  updateSys
+  install_packages
+  install_yay
+  install_tmp
+  checkInternet
+  install_zsh_bash
+  dotfile
+  stowFiles
+}
+# Run the main function
+main
+
