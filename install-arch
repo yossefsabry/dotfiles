@@ -1,16 +1,22 @@
 #!/usr/bin/bash
 
-echo "----- starting install script (; -----" 
-echo "----- enter the username for the user: "
+RC='\e[0m'
+RED='\e[31m'
+YELLOW='\e[33m'
+GREEN='\e[32m'
+
+echo -e "${GREEN}----- starting install script (; -----${RC}"
+echo -e "${GREEN}----- enter the username for the user: ${RC}"
 read username
 
 ## main package for install ##
 array_packages=(
   "zsh" "git" "neovim" "tmux" "alacritty" "picom" "vim" "nemo" "feh" "unclutter" "xrandr" "zip" "ripgrep" "xclip" "neofetch"  "fzf" "unzip" "stow"
-  "nodejs" "go" "gcc"
-  "xorg" "xorg-xinit"
-  "iwd" "NetworkManager" "dhcpcd" "nmcli"
-  "wget" "firefox" "rclone"
+  "nodejs" "go" "gcc" # lang
+  "xorg" "xorg-xinit" "xbindkeys" "xmodmap" # keybind
+  "iwd" "NetworkManager" "dhcpcd" "nmcli" # network
+  "alsamixer" "pulseaudio" "pavucontrol" "amixer" # audio
+  "wget" "firefox" "rclone" # apps and some packages
 )
 
 # creating .config for save the config for packages
@@ -18,7 +24,7 @@ mkdir -p ~/.config
 
 # update  packages
 updateSys() {
-  echo "----- stating update the system -----"
+  echo -e "${GREEN}----- stating update the system -----${RC}"
   pacman -Syn 
 } 
 
@@ -31,15 +37,15 @@ command_exists() {
 install_packages() {
   for element in "${array_packages[@]}"; do
     if command_exists "$element"; then
-      echo "------- $element is already installed -------"
+      echo -e "${GREEN}------- $element is already installed -------${RC}"
       continue
     else
-      echo "------- installing $element -------"
-      sudo pacman -S --noconfirm "$element"
+      echo -e "${GREEN}------- installing $element -------${RC}"
+      sudo pacman -S --noconfirm "${element}"
       if [ $? -eq 0 ]; then
-        echo "------- $element installed successfully -------"
+        echo -e "${GREEN}------- $element installed successfully -------${RC}"
       else
-        echo "****** Error occurred while installing $element ******"
+        echo -e "${RED}****** Error occurred while installing $element ******${RC}"
       fi
     fi
   done
@@ -48,23 +54,23 @@ install_packages() {
 # insatll yay
 install_yay() {
   if command_exists yay; then
-    echo "------ command already exits -------"
+    echo -e "${GREEN}------ command already exits -------${RC}"
   else
-    echo "----------- install some dependences git base-devel -----------"
+    echo -e "${GREEN}----------- install some dependences git base-devel -----------${RC}"
     pacman -Sy --needed git base-devel
     if [ $? -qe 0 ]; then
-      echo "----------- install yay -----------"
+      echo -e "${GREEN}----------- install yay -----------${RC}"
       cd /home/$username
       git clone https://aur.archlinux.org/yay.git
       if [ $? -qe 0 ]; then
         cd yay
         makepkg -si  
-        echo "-------- install yay sucessfuly ---------"
+        echo -e "${GREEN}-------- install yay sucessfuly ---------${RC}"
       else
-        echo "******** error happend in clone yay *********"
+        echo -e "${RED}******** error happend in clone yay *********${RC}"
       fi
     else
-      echo "********* error happend in install base-devel ********"
+      echo -e "${RED}********* error happend in install base-devel ********${RC}"
     fi
   fi
 } 
@@ -73,20 +79,20 @@ install_yay() {
 install_tmp() {
   dir="/home/$username/.tmux/plugins/tpm"
   if [ -d "$dir" ]; then
-    echo "------- tmp already cloned $dir -----------"
+    echo -e "${GREEN}------- tmp already cloned $dir -----------${RC}"
   else
     git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
     if [ $? -eq 0 ]; then
-      echo "----------- cloning tmp sucessfuly ----------- "
+      echo -e "${GREEN}----------- cloning tmp sucessfuly ----------- ${RC}"
     else
-      echo "********** error happend in clone tmp ***********"
+      echo -e "${RED}********** error happend in clone tmp ***********${RC}"
     fi
   fi
 }
 
 # setting some settting for network
 checkInternet() {
-  echo "------ starting setting for network ------- "
+  echo -e "${GREEN}------ starting setting for network ------- ${RC}"
   # Extend the sudo session
   sudo -v
   # Execute the commands in sequence
@@ -97,23 +103,23 @@ checkInternet() {
   sudo systemctl start NetworkManager && \
   sudo systemctl enable dhcpcd && \
   sudo systemctl start dhcpcd
-  echo "------ finish setting for network ------- "
+  echo -e "${GREEN}------ finish setting for network ------- ${RC}"
 }
 
 # for get the dotfiles config from git
 dotfile() {
   dir=/home/$username/dotfiles
   if [ -d "$dir" ]; then
-    echo "----------- the dotfile is cloned ----------- "
+    echo -e "${GREEN}----------- the dotfile is cloned ----------- ${RC}"
   else 
     dotfileUrl="https://github.com/yossefsabry/dotfiles.git"
-    echo "----------- cloning the config from ${dotfileUrl} ----------- "
+    echo -e "${GREEN}----------- cloning the config from ${dotfileUrl} ----------- ${RC}"
     cd /home/$username
     git clone $dotfileUrl
     if [ $? -qe 0 ]; then
-      echo "-------- cloning successfly -> ${dotfileUrl} -------"
+      echo -e "${GREEN}-------- cloning successfly -> ${dotfileUrl} -------${RC}"
     else 
-      echo "****** error happend in cloning -> ${dotfileUrl} ******"
+      echo -e "${RED}****** error happend in cloning -> ${dotfileUrl} ******${RC}"
     fi
     cd - 
   fi
@@ -122,10 +128,10 @@ dotfile() {
 # Function to configure Neovim with symbolic links without backup
 nvim_checker() {
   # Prompt the user for the Neovim configuration choice
-  echo "---- choose the config for nvim ----"
-  echo "1- nvim-1 (first config split files-> default)"
-  echo "2- nvim-2 (second config one file)"
-  echo "3- nvim-3 (lazy custom config)"
+  echo -e "${GREEN}---- choose the config for nvim ----${RC}"
+  echo -e "${GREEN}1- nvim-1 (first config split files-> default)${RC}"
+  echo -e "${GREEN}2- nvim-2 (second config one file)${RC}"
+  echo -e "${GREEN}3- nvim-3 (lazy custom config)${RC}"
   read -r option
   # Define the paths
   config_path="/home/$username/.config/nvim"
@@ -133,7 +139,7 @@ nvim_checker() {
   # Remove any existing Neovim configuration directory
   if [ -d "$config_path" ]; then
     rm -rf "$config_path"
-    echo "Existing Neovim configuration removed"
+    echo -e "${GREEN}Existing Neovim configuration removed${RC}"
   fi
   # Create the symbolic link based on the user's choice
   case "${option}" in
@@ -148,17 +154,17 @@ nvim_checker() {
 settingsTouchKeyboard() {
   dir="/etc/X11/xorg.conf.d"
   if [ -d "$dir" ]; then
-    echo "------- removing $dir and creating new symlink -------- "
+    echo -e "${GREEN}------- removing $dir and creating new symlink -------- ${RC}"
     rm -rf "$dir"
     ln -svf "/home/$username/dotfiles/xorg.conf.d" "/etc/X11/"
   else
-    echo "--------- creating symlink ----------"
+    echo -e "${GREEN}--------- creating symlink ----------${RC}"
     ln -svf "/home/$username/dotfiles/xorg.conf.d" "/etc/X11/"
   fi
   if [ $? -eq 0 ]; then
-    echo "----------- creating symlink successfully ----------- "
+    echo -e "${GREEN}----------- creating symlink successfully ----------- ${RC}"
   else
-    echo "********** error happened in creating symlink for $dir ********** "
+    echo -e "${RED}********** error happened in creating symlink for $dir ********** ${RC}"
   fi
 }
 
@@ -166,11 +172,11 @@ settingsTouchKeyboard() {
 gitconfig() {
   dir="/home/$username/dotfiles"
   if [ -d "$dir" ]; then
-    echo "----------- setting git config file -----------"
+    echo -e "${GREEN}----------- setting git config file -----------${RC}"
     cd $dir
     ln -svf $dir/.gitconfig /home/$username
   else 
-    echo "*********** cant found thie dotfile dir $dir ************** "
+    echo -e "${RED}*********** cant found thie dotfile dir $dir ************** ${RC}"
   fi
 }
 
@@ -180,36 +186,36 @@ stowFiles() {
   if [ -d "$dir" ]; then
     cd $dir
     stow alacritty picom zsh tmux suckless xinit
-    echo "-------- stow alacritty.....xinit successfly ---------- "
+    echo -e "${GREEN}-------- stow alacritty.....xinit successfly ---------- ${RC}"
     nvim_checker    
     gitconfig
     settingsTouchKeyboard
   else
-    echo "******** can't found the dotfile folder $dir ********"
+    echo -e "${RED}******** can't found the dotfile folder $dir ********${RC}"
   fi
 }
 
 install_zsh_bash() {
-  echo "--- starting choose config for zsh or bash"
-  echo "1- zsh -> dafault"
-  echo "2- bash"
+  echo -e "${GREEN}--- starting choose config for zsh or bash${RC}"
+  echo -e "${GREEN}1- zsh -> dafault${RC}"
+  echo -e "${GREEN}2- bash${RC}"
   read -r option
 
   case "${option}" in
     1)
       sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
       chsh -s /bin/zsh "$username"
-      echo "Shell changed to zsh for user $username."
+      echo -e "${GREEN}Shell changed to zsh for user $username.${RC}"
       ;;
     2)
       sudo /home/$username/dotfiles/mybash-config/setup-arch.sh
       chsh -s /bin/bash "$username"
-      echo "Shell changed to bash for user $username."
+      echo -e "${GREEN}Shell changed to bash for user $username.${RC}"
       ;;
     *)
       sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
       chsh -s /bin/zsh "$username"
-      echo "Shell changed to zsh for user $username."
+      echo -e "${GREEN}Shell changed to zsh for user $username.${RC}"
       ;;
   esac
 }
