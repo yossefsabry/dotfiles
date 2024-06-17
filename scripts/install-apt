@@ -1,0 +1,175 @@
+#!/usr/bin/bash
+
+RC='\e[0m'
+RED='\e[31m'
+YELLOW='\e[33m'
+GREEN='\e[32m'
+
+echo -e "${GREEN}----- starting install script (; -----${RC}"
+echo -e "${GREEN}----- enter the username for the user: ${RC}"
+read username
+
+## main package for install ##
+array_packages=(
+  "zsh" "git" "neovim" "tmux" "alacritty" "picom" "vim" "zip" "ripgrep" "xclip" "neofetch"  "fzf" "unzip" "stow"
+  "nodejs" "go" "gcc" # lang
+  "wget" "firefox" "rclone" # apps and some packages
+)
+
+# creating .config for save the config for packages
+mkdir -p ~/.config
+
+# update  packages
+updateSys() {
+  echo -e "${GREEN}----- stating update the system -----${RC}"
+  sudo apt update; sudo apt upgrade;
+} 
+
+# Function to check if a command exists
+command_exists() {
+  command -v "$1" >/dev/null 2>&1
+}
+
+# Function to install packages
+install_packages() {
+  for element in "${array_packages[@]}"; do
+    if command_exists "$element"; then
+      echo -e "${GREEN}------- $element is already installed -------${RC}"
+      continue
+    else
+      echo -e "${GREEN}------- installing $element -------${RC}"
+      sudo apt install -y "${element}"
+      if [ $? -eq 0 ]; then
+        echo -e "${GREEN}------- $element installed successfully -------${RC}"
+      else
+        echo -e "${RED}****** Error occurred while installing $element ******${RC}"
+      fi
+    fi
+  done
+}
+
+
+# install tmp for tmux
+install_tmp() {
+  dir="/home/$username/.tmux/plugins/tpm"
+  if [ -d "$dir" ]; then
+    echo -e "${GREEN}------- tmp already cloned $dir -----------${RC}"
+  else
+    git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+    if [ $? -eq 0 ]; then
+      echo -e "${GREEN}----------- cloning tmp sucessfuly ----------- ${RC}"
+    else
+      echo -e "${RED}********** error happend in clone tmp ***********${RC}"
+    fi
+  fi
+}
+
+# for get the dotfiles config from git
+dotfile() {
+  dir=/home/$username/dotfiles
+  if [ -d "$dir" ]; then
+    echo -e "${GREEN}----------- the dotfile is cloned ----------- ${RC}"
+  else 
+    dotfileUrl="https://github.com/yossefsabry/dotfiles.git"
+    echo -e "${GREEN}----------- cloning the config from ${dotfileUrl} ----------- ${RC}"
+    cd /home/$username
+    git clone $dotfileUrl
+    if [ $? -qe 0 ]; then
+      echo -e "${GREEN}-------- cloning successfly -> ${dotfileUrl} -------${RC}"
+    else 
+      echo -e "${RED}****** error happend in cloning -> ${dotfileUrl} ******${RC}"
+    fi
+    cd - 
+  fi
+}
+
+# Function to configure Neovim with symbolic links without backup
+nvim_checker() {
+  # Prompt the user for the Neovim configuration choice
+  echo -e "${GREEN}---- choose the config for nvim ----${RC}"
+  echo -e "${GREEN}1- nvim-1 (first config split files-> default)${RC}"
+  echo -e "${GREEN}2- nvim-2 (second config one file)${RC}"
+  echo -e "${GREEN}3- nvim-3 (lazy custom config)${RC}"
+  read -r option
+  # Define the paths
+  config_path="/home/$username/.config/nvim"
+  dotfiles_path="/home/$username/dotfiles/nvims"
+  # Remove any existing Neovim configuration directory
+  if [ -d "$config_path" ]; then
+    rm -rf "$config_path"
+    echo -e "${GREEN}Existing Neovim configuration removed${RC}"
+  fi
+  # Create the symbolic link based on the user's choice
+  case "${option}" in
+    1) ln -svf "$dotfiles_path/nvim-1" "$config_path" ;;
+    2) ln -svf "$dotfiles_path/nvim-2" "$config_path" ;;
+    3) ln -svf "$dotfiles_path/nvim-3" "$config_path" ;;
+    *) ln -svf "$dotfiles_path/nvim-1" "$config_path" ;;
+  esac
+}
+
+
+# gitconfig setup
+gitconfig() {
+  dir="/home/$username/dotfiles"
+  if [ -d "$dir" ]; then
+    echo -e "${GREEN}----------- setting git config file -----------${RC}"
+    cd $dir
+    ln -svf $dir/.gitconfig /home/$username
+  else 
+    echo -e "${RED}*********** cant found thie dotfile dir $dir ************** ${RC}"
+  fi
+}
+
+# for stow the config 
+stowFiles() {
+  dir=/home/$username/dotfiles
+  if [ -d "$dir" ]; then
+    cd $dir
+    stow alacritty picom zsh tmux
+    echo -e "${GREEN}-------- stow alacritty.....xinit successfly ---------- ${RC}"
+    nvim_checker    
+    gitconfig
+  else
+    echo -e "${RED}******** can't found the dotfile folder $dir ********${RC}"
+  fi
+}
+
+install_zsh_bash() {
+  echo -e "${GREEN}--- starting choose config for zsh or bash${RC}"
+  echo -e "${GREEN}1- zsh -> dafault${RC}"
+  echo -e "${GREEN}2- bash${RC}"
+  read -r option
+
+  case "${option}" in
+    1)
+      sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+      chsh -s /bin/zsh "$username"
+      echo -e "${GREEN}Shell changed to zsh for user $username.${RC}"
+      ;;
+    2)
+      sudo /home/$username/dotfiles/mybash-config/setup.sh
+      chsh -s /bin/bash "$username"
+      echo -e "${GREEN}Shell changed to bash for user $username.${RC}"
+      ;;
+    *)
+      sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+      chsh -s /bin/zsh "$username"
+      echo -e "${GREEN}Shell changed to zsh for user $username.${RC}"
+      ;;
+  esac
+}
+
+# Execute all functions in order
+main() {
+  updateSys
+  install_packages
+  install_tmp
+  checkInternet
+  install_zsh_bash
+  dotfile
+  stowFiles
+}
+# Run the main function
+main
+

@@ -1,0 +1,80 @@
+#!/usr/bin/bash
+
+RC='\e[0m'
+RED='\e[31m'
+YELLOW='\e[33m'
+GREEN='\e[32m'
+
+echo -e "${GREEN}----- running fonts script (; -----${RC}"
+echo -e "${GREEN}----- enter the username for the user: ${RC}"
+read username
+FontsDir="/home/$username/.local/share/fonts"
+mkdir -p ${FontsDir}
+
+defaultFont="${FileMono}"
+ChoosenFont="FileMono"
+FiraMono="https://github.com/ryanoasis/nerd-fonts/releases/download/v3.2.1/FiraMono.zip"
+D2Coding="https://github.com/ryanoasis/nerd-fonts/releases/download/v3.2.1/D2Coding.zip"
+Noto="https://github.com/ryanoasis/nerd-fonts/releases/download/v3.2.1/Noto.zip"
+CodeNewRoman="https://github.com/ryanoasis/nerd-fonts/releases/download/v3.2.1/CodeNewRoman.zip"
+SpaceMono="https://github.com/ryanoasis/nerd-fonts/releases/download/v3.2.1/SpaceMono.zip"
+
+checkFont() {
+
+  echo -e "${GREEN} ----- welcome pls choose fonts: ------${RC}"
+  echo -e "${GREEN} 1- FireMono -> default${RC}"
+  echo -e "${GREEN} 2- D2Coding ${RC}"
+  echo -e "${GREEN} 3- Note ${RC}"
+  echo -e "${GREEN} 4- CodeNewRoman ${RC}"
+  echo -e "${GREEN} 5- SpaceMono ${RC}"
+
+  read option
+
+  case "${option}" in
+    1)
+      wget "${FiraMono}"
+      ;;
+    2)
+      ChoosenFont="D2Coding"
+      wget "${D2Coding}" 
+      ;;
+    3)
+      ChoosenFont="Note"
+      wget "${Noto}" 
+      ;;
+    4)
+      ChoosenFont="CodeNewRoman"
+      wget "${CodeNewRoman}"  
+      ;;
+    5)
+      ChoosenFont="SpaceMono"
+      wget "${SpaceMono}" 
+      ;;
+    *) wget "${defaultFont}" ;;
+  esac
+
+  if [ $? -ne 0 ]; then
+    echo -e "${RED}----- failed to download the font file -----${RC}"
+    exit 1
+  else
+    echo -e "${GREEN}----- font file downloaded successfully -----${RC}"
+    echo -e "${GREEN}----- moving the choosen ${ChoosenFont} to ${FontsDir} -----${RC}"
+    mv "${ChoosenFont}.zip" ${FontsDir}
+  fi
+
+  if [ $? -ne 0 ]; then
+    echo -e "${RED}----- failed to move the font file -----${RC}"
+    exit 1
+  else
+    echo -e "${GREEN}----- font file moved successfully -----${RC}"
+    echo -e "${GREEN}----- unzipping the font file -----${RC}"
+    unzip "${FontsDir}/${ChoosenFont}.zip" -d ${FontsDir}
+    rm -rf "${FontsDir}/README.md" "${FontsDir}/Llicense.txt"
+    echo -e "${GREEN} --- finish install --- ${RC}"
+  fi
+
+}
+
+checkFont
+
+
