@@ -267,6 +267,10 @@ export PATH="$PATH:$GOBIN"
 export PATH="$PATH:$HOME/go/bin/"
 export PATH=$PATH:/usr/local/go/bin
 
+# for scripts dotfiles
+export PATH="$HOME/dotfiles/scripts:$PATH"
+
+
 
 # ----- Function to search for a folder and create a new tmux session in that folder ------
 tmux_new_session() {

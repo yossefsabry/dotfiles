@@ -15,7 +15,7 @@ array_packages=(
   "nodejs" "go" "gcc" # lang
   "xorg" "xorg-xinit" "xbindkeys" "xmodmap" # keybind
   "iwd" "NetworkManager" "dhcpcd" "nmcli" # network
-  "alsamixer" "pulseaudio" "pavucontrol" "amixer" # audio
+  "alsamixer" "pavucontrol" "amixer" "brightnessctl" # audio and screen
   "wget" "firefox" "rclone" # apps and some packages
 )
 
