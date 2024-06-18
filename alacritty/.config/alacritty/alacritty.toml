@@ -52,33 +52,33 @@ glyph_offset          = { x = 1, y = 1 }
 
 # catpuccin-mocha, ported from .yml
 [colors.primary]
-background            = "#383737"
+background            = "#383739"
 foreground            = "#CDD6F4"
 dim_foreground        = "#CDD6F4"
 bright_foreground     = "#CDD6F4"
 
 [colors.cursor]
-text                  = "#383737"
+text                  = "#383739"
 cursor                = "#F5E0DC"
 
 [colors.vi_mode_cursor]
-text                  = "#383737"
+text                  = "#383739"
 cursor                = "#B4BEFE"
 
 [colors.search.matches]
-foreground            = "#383737"
+foreground            = "#383739"
 background            = "#A6ADC8"
 
 [colors.search.focused_match]
-foreground            = "#383737"
+foreground            = "#383739"
 background            = "#A6E3A1"
 
 [colors.hints.start]
-foreground            = "#383737"
+foreground            = "#383739"
 background            = "#F9E2AF"
 
 [colors.hints.end]
-foreground            = "#383737"
+foreground            = "#383739"
 background            = "#A6ADC8"
 
 [colors.line_indicator]
@@ -86,11 +86,11 @@ background            = "#A6ADC8"
 #background            = "None"
 
 [colors.footer_bar]
-foreground            = "#383737"
+foreground            = "#383739"
 background            = "#A6ADC8"
 
 [colors.selection]
-text                  = "#383737"
+text                  = "#383739"
 background            = "#F5E0DC"
 
 [colors.normal]
