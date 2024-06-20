@@ -7,5 +7,5 @@ exec feh --bg-center --bg-scale   ~/dotfiles/background/image2.jpg &
 exec slstatus &
 exec unclutter -idle 0 & #for hide the mouse
 exec dwm > ~/.dwm.log 2>&1
-
+#exec syncthing & # for start syncthing
 

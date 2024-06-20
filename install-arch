@@ -16,7 +16,7 @@ array_packages=(
   "xorg" "xorg-xinit" "xbindkeys" "xmodmap" # keybind
   "iwd" "NetworkManager" "dhcpcd" "nmcli" # network
   "alsamixer" "pavucontrol" "amixer" "brightnessctl" # audio and screen
-  "wget" "firefox" "rclone" # apps and some packages
+  "wget" "firefox" "rclone" "syncthing" # apps and some packages
 )
 
 # creating .config for save the config for packages
@@ -132,6 +132,7 @@ nvim_checker() {
   echo -e "${GREEN}1- nvim-1 (first config split files-> default)${RC}"
   echo -e "${GREEN}2- nvim-2 (second config one file)${RC}"
   echo -e "${GREEN}3- nvim-3 (lazy custom config)${RC}"
+  echo -e "${GREEN}4- nvim-4 (astro nvim config)${RC}"
   read -r option
   # Define the paths
   config_path="/home/$username/.config/nvim"
@@ -146,6 +147,7 @@ nvim_checker() {
     1) ln -svf "$dotfiles_path/nvim-1" "$config_path" ;;
     2) ln -svf "$dotfiles_path/nvim-2" "$config_path" ;;
     3) ln -svf "$dotfiles_path/nvim-3" "$config_path" ;;
+    4) ln -svf "$dotfiles_path/nvim-4" "$config_path" ;;
     *) ln -svf "$dotfiles_path/nvim-1" "$config_path" ;;
   esac
 }

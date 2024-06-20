@@ -146,9 +146,6 @@ alias ps='ps auxf'
 alias ping='ping -c 10'
 alias less='less -R'
 alias cls='clear'
-alias vi='nvim'
-alias svi='sudo vi'
-alias vis='nvim "+set si"'
 alias removeNvimCache="rm -rf ~/.local/share/nvim/"
 # for search in history
 bindkey '\er' history-incremental-search-backward
@@ -392,60 +389,12 @@ alias fh="fzf_history"
 # ********* for search in history********* 
 
 
-# ********* toogle touchpad -> disable and enable ******** 
-toggle_touchpad() {
-  # Dynamically find the touchpad device
-  DEVICE_NAME=$(xinput list | grep -i 'TouchPad' | grep -o 'AlpsPS/2 ALPS DualPoint TouchPad')
-  if [ -z "$DEVICE_NAME" ]; then
-    echo "Touchpad not found!"
-    return 1
-  fi
-  DEVICE_ID=$(xinput list --id-only "$DEVICE_NAME")
-  if [ -z "$DEVICE_ID" ]; then
-    echo "Touchpad ID not found!"
-    return 1
-  fi
-  DEVICE_ENABLED=$(xinput list-props "$DEVICE_ID" | grep "Device Enabled" | grep -o "[01]$")
-  if [ "$DEVICE_ENABLED" -eq 1 ]; then
-    xinput disable "$DEVICE_ID"
-    notify-send "Touchpad disabled"
-  else
-    xinput enable "$DEVICE_ID"
-    notify-send "Touchpad enabled"
-  fi
-  unclutter -idle 0  #for hide the mouse
-}
-# Optionally, you can bind this function to a keyboard shortcut or call it directly
-# ********* toogle touchpad -> disable and enable ******** 
 
 
-nvim_checker() {
-  # Prompt the user for the Neovim configuration choice
-  echo "---- choose the config for nvim ----"
-  echo "1- nvim-1 (first config split files-> default)"
-  echo "2- nvim-2 (second config one file)"
-  echo "3- nvim-3 (lazy custom config)"
-  read -r option
-  # Define the paths
-  config_path="/home/$USER/.config/nvim"
-  dotfiles_path="/home/$USER/dotfiles/nvims"
-  # Remove any existing Neovim configuration directory
-  if [ -d "$config_path" ]; then
-    rm -rf "$config_path"
-    echo "Existing Neovim configuration removed"
-  fi
-  # Create the symbolic link based on the user's choice
-  case "${option}" in
-    1) ln -svf "$dotfiles_path/nvim-1" "$config_path" ;;
-    2) ln -svf "$dotfiles_path/nvim-2" "$config_path" ;;
-    3) ln -svf "$dotfiles_path/nvim-3" "$config_path" ;;
-    *) ln -svf "$dotfiles_path/nvim-1" "$config_path" ;;
-  esac
-}
-
-
-
+# setting some default apps
+BROWSER=firefox
 # ------------- some info ---------
 # alsamixer -> for change the sound level arch
 #stow --adopt --ignore=background --ignore=dwm-config --ignore=nvim --ignore=mybash-config -> stow the dotfiles
 # ------------- some info ---------
+

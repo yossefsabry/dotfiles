@@ -1,0 +1,54 @@
+#!/usr/bin/bash
+
+# --------- for the notes function shortcuts ------------- 
+# Function to add a new note
+add_note() {
+  # Ensure correct number of arguments
+  if [ "$#" -ne 2 ]; then
+    echo "Usage: add_note <folder> <name>"
+    return 1
+  fi
+  local folder="$1"
+  local name="$2"
+  local notes_dir="$HOME/notes/$folder"
+  local file_path="$notes_dir/$name.md"
+  local timestamp=$(date "+%Y-%m-%d %H:%M:%S")
+  
+  # Create the directory if it does not exist
+  if ! mkdir -p "$notes_dir"; then
+    echo "Error: Unable to create directory $notes_dir"
+    return 1
+  fi
+  
+  # Check if the file already exists
+  if [ -f "$file_path" ]; then
+    echo "Error: File $file_path already exists"
+    return 1
+  fi
+  
+  # Create the markdown file with the template
+  cat <<EOL > "$file_path"
+  ># path: $folder/$name.md
+  \`\`\`
+  - **fileName**: $name
+  - **Created on**: $timestamp
+  \`\`\`
+
+  **continue**:[[]]
+  **before**:[[]]
+
+EOL
+  
+  # Check if the file was created successfully
+  if [ ! -f "$file_path" ]; then
+    echo "Error: Unable to create file $file_path"
+    return 1
+  fi
+  
+  # Open the file in Neovim
+  nvim "$file_path"
+}
+
+# Function declaration check
+add_note "$@"
+
