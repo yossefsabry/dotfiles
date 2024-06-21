@@ -68,7 +68,7 @@ static const struct arg args[] = {
     {datetime, "| %s |", " %a %b %r "},
     {cpu_perc, " CPU:%s%% |", NULL},
     {ram_perc, " RAM:%s%% |", NULL},
-    {battery_perc, " BAT:%s%%|", "BAT0"},
+    {battery_perc, " BAT:%s%% |", "BAT0"},
     {netspeed_rx, " netspeed:%sB/s |", "wlan0"},
     {ipv4, " ip:%s |", "wlan0"},
 };
