@@ -14,7 +14,7 @@ array_packages=(
   "zsh" "git" "neovim" "tmux" "alacritty" "picom" "vim" "nemo" "feh" "unclutter" "xrandr" "zip" "ripgrep" "xclip" "neofetch"  "fzf" "unzip" "stow"
   "nodejs" "go" "gcc" # lang
   "xorg" "xorg-xinit" "xbindkeys" "xmodmap" # keybind
-  "iwd" "NetworkManager" "dhcpcd" "nmcli" # network
+  "iwd" "NetworkManager" "dhcpcd" "nmcli" "core/net-tools" # network
   "alsamixer" "pavucontrol" "amixer" "brightnessctl" # audio and screen
   "wget" "firefox" "rclone" "syncthing" # apps and some packages
 )
@@ -97,12 +97,12 @@ checkInternet() {
   sudo -v
   # Execute the commands in sequence
   sudo dhcpcd enp0s3 && \
-  sudo systemctl enable iwd && \
-  sudo systemctl start iwd && \
+  # sudo systemctl enable iwd && \ # cuase some problem in network config
+  # sudo systemctl start iwd && \ # cuase some problem in network config
   sudo systemctl enable NetworkManager && \
   sudo systemctl start NetworkManager && \
-  sudo systemctl enable dhcpcd && \
-  sudo systemctl start dhcpcd
+  # sudo systemctl enable dhcpcd && \ # some problem
+  # sudo systemctl start dhcpcd
   echo -e "${GREEN}------ finish setting for network ------- ${RC}"
 }
 

@@ -158,6 +158,7 @@ alias ....='cd ../../..'
 alias .....='cd ../../../..'
 alias cdg="cd /home/$USER/projects/go-course"
 alias cdc="cd /home/$USER/projects/c-projects"
+alias cda="cd /home/$USER/projects/courseAuth"
 alias cdv="cd /home/$USER/.config/nvim"
 alias notes="cd /home/$USER/notes"
 alias dotfiles="cd /home/$USER/dotfiles"
@@ -318,63 +319,6 @@ function fzf_cd() {
 }
 # ***** Function to search for a folder and navigate to it using fzf *****
 
-# --------- for the notes function shourtcuts ------------- 
-# Function to add a new note
-add_note() {
-  # Ensure correct number of arguments
-  if [ "$#" -ne 2 ]; then
-    echo "Usage: add_note <folder> <name>"
-    return 1
-  fi
-  local folder="$1"
-  local name="$2"
-  local notes_dir="$HOME/notes/$folder"
-  local file_path="$notes_dir/$name.md"
-  local timestamp=$(date "+%Y-%m-%d %H:%M:%S")
-  # Create the directory if it does not exist
-  if ! mkdir -p "$notes_dir"; then
-    echo "Error: Unable to create directory $notes_dir"
-    return 1
-  fi
-  # Check if the file already exists
-  if [ -f "$file_path" ]; then
-    echo "Error: File $file_path already exists"
-    return 1
-  fi
-  # Create the markdown file with the template
-  cat <<EOL > "$file_path"
-
-<div style="padding: 5px 20px; display: block; marign: auto; font-family: sans;
-2ont-size: 18px; line-height: 1.8; letter-spacing: 1.2px;">
-
-># **title**: "$folder - $name.md"
-
-\`\`\`
-- **fileName**: $name
-- **Created on**: $timestamp
-\`\`\`
-
-<!-- Your notes here -->
-
-<!-- end notes here -->
-
-</div>
-
-**continue**:[[]]
-**before**:[[]]
-
-EOL
-  # Check if the file was created successfully
-  if [ ! -f "$file_path" ]; then
-    echo "Error: Unable to create file $file_path"
-    return 1
-  fi
-  # Open the file in Neovim
-  nvim "$file_path"
-}
-# Define an alias for the add_note function
-alias addnote='add_note'
-# ********* for the notes function shourtcuts ************* 
 
 # -------- for search in history -----------
 fzf_history() {
@@ -392,7 +336,7 @@ alias fh="fzf_history"
 
 
 # setting some default apps
-BROWSER=firefox
+#BROWSER=firefox
 # ------------- some info ---------
 # alsamixer -> for change the sound level arch
 #stow --adopt --ignore=background --ignore=dwm-config --ignore=nvim --ignore=mybash-config -> stow the dotfiles
