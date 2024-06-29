@@ -6,7 +6,7 @@ return {
       options = {
         icons_enabled = true,
         theme = "auto",
-        component_separators = { left = "撃瀬", right = "後" },
+        component_separators = { left = "男", right = "後" },
         section_separators = { left = "▓", right = "▓" },
         disabled_filetypes = {
           statusline = {},
@@ -24,7 +24,7 @@ return {
         lualine_a = { "mode" },
         lualine_b = { "branch", "diff", "diagnostics" },
         lualine_c = { "filename" },
-        lualine_x = { "撃", "fileformat", "filetype" },
+        lualine_x = { "fileformat", "filetype" },
         lualine_y = { "progress" },
         lualine_z = { "" },
       },
