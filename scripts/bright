@@ -1,0 +1,25 @@
+#!/usr/bin/bash
+
+checkCommand() {
+  which $1 &> /dev/null
+}
+
+setBrightness() {
+  checkCommand brightnessctl
+  if [ $? -eq 0 ]; then
+    brightnessctl set $1%
+    exit 0
+  else
+    echo -e "=> brightnessctl not found"
+    echo -e "=> starting installation"
+    sudo pacman -S brightnessctl
+    if [ $? -eq 0 ]; then
+      sudo brightnessctl set $1
+      exit 0
+    else
+      echo -e "=> failed to install brightnessctl"
+      exit 1
+    fi
+  fi
+}
+setBrightness $1

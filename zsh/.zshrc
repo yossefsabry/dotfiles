@@ -12,7 +12,7 @@ export ZSH="$HOME/.oh-my-zsh"
 ######## themes #########
  ZSH_THEME="robbyrussell"  #linuxonly
 # starship theme
-#eval "$(starship init zsh)"
+# eval "$(starship init zsh)"
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -115,10 +115,10 @@ bindkey -M viins 'jk' vi-cmd-mode
 # set default editor
 export EDITOR=nvim
 export VISUAL=nvim
-alias pico='edit'
-alias spico='sedit'
-alias nano='edit'
-alias snano='sedit'
+# alias pico='edit'
+# alias spico='sedit'
+# alias nano='edit'
+# alias snano='sedit'
 alias vim='nvim'
 
 
@@ -164,7 +164,7 @@ alias notes="cd /home/$USER/notes"
 alias dotfiles="cd /home/$USER/dotfiles"
 alias build="./build"
 alias fz="fzf --preview 'bat --style=numbers --color=always --line-range :500 {}'"
-alias gf="fzf --height=40% --bind 'enter:become(nvim {}),ctrl-e:become(vim {})'"
+alias gf="fzf -m --preview="bat {}" --height=40% --bind 'enter:become(nvim {}),ctrl-e:become(vim {})'"
 alias fcd="fzf_cd"
 
 
