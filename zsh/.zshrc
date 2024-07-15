@@ -335,6 +335,11 @@ alias fh="fzf_history"
 
 
 
+
+# adding command for fetch-master
+./fm6000 -random -c "random" -m 1 -de "dwm" -l 10
+
+
 # setting some default apps
 #BROWSER=firefox
 # ------------- some info ---------

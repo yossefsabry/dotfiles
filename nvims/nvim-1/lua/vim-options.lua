@@ -154,3 +154,9 @@ vim.g.copilot_assume_mapped = true
 vim.api.nvim_set_keymap("i", "<M-l>", 'copilot#Accept("<CR>")', { silent = true, expr = true })
 -- Define the key mapping
 
+
+-- dap config
+vim.keymap.set("n", "<Leader>dt", ":DapToggleBreakpoint<CR>")
+vim.keymap.set("n", "<Leader>dc", ":DapContinue<CR>")
+vim.keymap.set("n", "<Leader>dx", ":DapTerminate<CR>")
+vim.keymap.set("n", "<Leader>do", ":DapStepOver<CR>")
