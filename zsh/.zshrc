@@ -156,10 +156,8 @@ alias ..='cd ..'
 alias ...='cd ../..'
 alias ....='cd ../../..'
 alias .....='cd ../../../..'
-alias cdg="cd /home/$USER/projects/go-course"
-alias cdc="cd /home/$USER/projects/c-projects"
-alias cda="cd /home/$USER/projects/courseAuth"
 alias cdv="cd /home/$USER/.config/nvim"
+alias cd3d="cd /home/$USER/projects/c-projects/3d"
 alias notes="cd /home/$USER/notes"
 alias dotfiles="cd /home/$USER/dotfiles"
 alias build="./build"
@@ -337,7 +335,7 @@ alias fh="fzf_history"
 
 
 # adding command for fetch-master
-./fm6000 -random -c "random" -m 1 -de "dwm" -l 10
+fm6000 -random -c "random" -m 1 -de "dwm" -l 10
 
 
 # setting some default apps

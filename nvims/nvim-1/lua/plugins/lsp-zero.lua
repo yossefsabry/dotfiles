@@ -20,7 +20,8 @@ return {
 			{
 				"L3MON4D3/LuaSnip",
 				"rafamadriz/friendly-snippets",
-				"epilande/vim-react-snippets", -- react snippets
+        "saadparwaiz1/cmp_luasnip",
+        "mlaursen/vim-react-snippets",
 			},
 		},
 		config = function()
@@ -32,47 +33,49 @@ return {
 			local cmp = require("cmp")
 			local cmp_action = lsp_zero.cmp_action()
 
-			-- for vscode snippets
-			require("luasnip.loaders.from_vscode").lazy_load()
-			cmp.setup({
-				formatting = lsp_zero.cmp_format({ details = true }),
-				mapping = cmp.mapping.preset.insert({
-					["<C-b>"] = cmp.mapping.scroll_docs(-4),
-					["<C-f>"] = cmp.mapping.scroll_docs(4),
-					["<C-Space>"] = cmp.mapping.complete(),
-					["<C-e>"] = cmp.mapping.abort(),
-					["<CR>"] = cmp.mapping.confirm({
-						behavior = cmp.ConfirmBehavior.Replace,
-						select = true,
-					}),
-				}),
-				snippet = {
-					expand = function(args)
-						require("luasnip").lsp_expand(args.body)
-					end,
-				},
-				sources = cmp.config.sources({
-					{ name = "copilot", group_index = 2 },
-					{ name = "nvim_lsp" },
-					{ name = "luasnip" },
-					{ name = "path", group_index = 2 },
-				}, {
-					{ name = "buffer" },
-				}),
-			})
-        vim.diagnostic.config({
-        virtual_text = {
-          prefix = "--", -- Could be '■', '▎', 'x'
-        },
-      })
-      lsp_zero.set_sign_icons({
-        error = '',
-        warn = '',
-        hint = '',
-        info = ''
-      })
-		end,
-	},
+         -- for vscode snippets
+         require("luasnip.loaders.from_vscode").lazy_load()
+         cmp.setup({
+            formatting = lsp_zero.cmp_format({ details = true }),
+            mapping = cmp.mapping.preset.insert({
+               ["<C-b>"] = cmp.mapping.scroll_docs(-4),
+               ["<C-f>"] = cmp.mapping.scroll_docs(4),
+               ["<C-Space>"] = cmp.mapping.complete(),
+               ["<C-e>"] = cmp.mapping.abort(),
+               ["<CR>"] = cmp.mapping.confirm({
+                  behavior = cmp.ConfirmBehavior.Replace,
+                  select = true,
+               }),
+            }),
+            performance = {
+               max_view_entries = 3,
+            },
+            snippet = {
+               expand = function(args)
+                  require("luasnip").lsp_expand(args.body)
+               end,
+            },
+            sources = cmp.config.sources({
+               { name = "nvim_lsp" },
+               { name = "luasnip" },
+               { name = "path", group_index = 2 },
+               }, {
+                  { name = "buffer" },
+            }),
+         })
+         vim.diagnostic.config({
+            virtual_text = {
+               prefix = "--", -- Could be '■', '▎', 'x'
+            },
+         })
+         lsp_zero.set_sign_icons({
+            error = '',
+            warn = '',
+            hint = '',
+            info = ''
+         })
+      end,
+   },
 
 	-- LSP
 	{

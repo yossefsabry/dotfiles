@@ -21,10 +21,10 @@ TERM                  = "xterm-256color"
 [window]
 #dimensions            = { columns = 0, lines = 0 }
 #position              = { x = 0, y = 0 }
-padding               = { x = 2, y = 10 }
+padding               = { x = 0, y = 0 }
 dynamic_padding       = true
 decorations           = "None"
-opacity               = 0.85
+opacity               = 0.95
 blur                  = true
 #startup_mode          = "Windowed"
 #title                 = "Alacritty"
@@ -44,7 +44,7 @@ normal                = { family = "FiraMono Nerd Font Propo", style = "Regular"
 bold                  = { family = "FiraMono Nerd Font Propo", style = "Bold" }
 italic                = { family = "FiraMono Nerd Font Propo", style = "Italic" }
 bold_italic           = { family = "FiraMono Nerd Font Propo", style = "Bold Italic" }
-size                  = 14.45
+size                  = 17.45
 offset                = { x = 0, y = 0 }
 glyph_offset          = { x = 1, y = 1 }
 #builtin_box_drawing   = true
@@ -52,33 +52,33 @@ glyph_offset          = { x = 1, y = 1 }
 
 # catpuccin-mocha, ported from .yml
 [colors.primary]
-background            = "#383739"
+background            = "#191724"
 foreground            = "#CDD6F4"
 dim_foreground        = "#CDD6F4"
 bright_foreground     = "#CDD6F4"
 
 [colors.cursor]
-text                  = "#383739"
+text                  = "#191724"
 cursor                = "#F5E0DC"
 
 [colors.vi_mode_cursor]
-text                  = "#383739"
+text                  = "#191724"
 cursor                = "#B4BEFE"
 
 [colors.search.matches]
-foreground            = "#383739"
+foreground            = "#191724"
 background            = "#A6ADC8"
 
 [colors.search.focused_match]
-foreground            = "#383739"
+foreground            = "#191724"
 background            = "#A6E3A1"
 
 [colors.hints.start]
-foreground            = "#383739"
+foreground            = "#191724"
 background            = "#F9E2AF"
 
 [colors.hints.end]
-foreground            = "#383739"
+foreground            = "#191724"
 background            = "#A6ADC8"
 
 [colors.line_indicator]
@@ -86,11 +86,11 @@ background            = "#A6ADC8"
 #background            = "None"
 
 [colors.footer_bar]
-foreground            = "#383739"
+foreground            = "#191724"
 background            = "#A6ADC8"
 
 [colors.selection]
-text                  = "#383739"
+text                  = "#191724"
 background            = "#F5E0DC"
 
 [colors.normal]

@@ -187,7 +187,7 @@ stowFiles() {
   dir=/home/$username/dotfiles
   if [ -d "$dir" ]; then
     cd $dir
-    stow alacritty picom zsh tmux suckless xinit
+    stow alacritty picom zsh tmux suckless xinit 
     echo -e "${GREEN}-------- stow alacritty.....xinit successfly ---------- ${RC}"
     nvim_checker    
     gitconfig

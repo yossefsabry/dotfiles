@@ -25,9 +25,9 @@ vim.opt.relativenumber = true
 
 -- set highlight in cursor line
 vim.opt.cursorline = true
-vim.opt.tabstop = 2
-vim.opt.softtabstop = 2
-vim.opt.shiftwidth = 2
+vim.opt.tabstop = 3
+vim.opt.softtabstop = 3
+vim.opt.shiftwidth = 3
 vim.opt.expandtab = true
 vim.opt.smartindent = true
 
@@ -43,7 +43,7 @@ vim.opt.termguicolors = true
 vim.opt.scrolloff = 8
 vim.opt.isfname:append("@-@")
 
-vim.opt.updatetime = 50
+vim.opt.updatetime = 250
 
 -- Center the screen after moving with search n/N
 keymap("n", "<C-d>", "<C-d>zz", term_opts)
@@ -160,3 +160,4 @@ vim.keymap.set("n", "<Leader>dt", ":DapToggleBreakpoint<CR>")
 vim.keymap.set("n", "<Leader>dc", ":DapContinue<CR>")
 vim.keymap.set("n", "<Leader>dx", ":DapTerminate<CR>")
 vim.keymap.set("n", "<Leader>do", ":DapStepOver<CR>")
+

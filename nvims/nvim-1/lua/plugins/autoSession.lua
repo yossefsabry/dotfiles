@@ -28,11 +28,6 @@ return {
         theme_conf = { border = false },
         previewer = true
       }
-      vim.diagnostic.config({
-        virtual_text = {
-          prefix = "◆◆", -- Could be '■', '▎', 'x'
-        },
-      })
     end
   },
 }
