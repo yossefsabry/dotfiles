@@ -11,12 +11,12 @@ read username
 
 ## main package for install ##
 array_packages=(
-  "zsh" "git" "neovim" "tmux" "alacritty" "picom" "vim" "nemo" "feh" "unclutter" "xrandr" "zip" "ripgrep" "xclip" "neofetch"  "fzf" "unzip" "stow"
+  "zsh" "git" "neovim" "tmux" "alacritty" "picom" "vim" "nemo" "feh" "unclutter" "xrandr" "zip" "ripgrep" "xclip" "fastfetch"  "fzf" "unzip" "stow"
   "nodejs" "go" "gcc" # lang
-  "xorg" "xorg-xinit" "xbindkeys" "xmodmap" # keybind
-  "iwd" "NetworkManager" "dhcpcd" "nmcli" "core/net-tools" # network
-  "alsamixer" "pavucontrol" "amixer" "brightnessctl" # audio and screen
-  "wget" "firefox" "rclone" "syncthing" # apps and some packages
+  "xorg" "xorg-xev" "xorg-xinit" "xbindkeys" "xorg-setxkbmap" "sxhkd" # keybind
+  "iwd" "NetworkManager" "dhcpcd" "nmcli" # network
+  "pavucontrol" "brightnessctl" # audio and screen
+  "wget" "firefox" "syncthing" # apps and some packages
 )
 
 # creating .config for save the config for packages

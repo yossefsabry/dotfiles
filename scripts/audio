@@ -1,0 +1,20 @@
+#!/usr/bin/bash
+
+audio() {
+   case $1 in
+      "up")
+         amixer sset Master 5%+ > /dev/null
+         ;;
+      "down")
+         amixer sset Master 5%- > /dev/null
+         ;;
+      "mute")
+         amixer sset Master toggle  > /dev/null
+         ;;
+      *)
+         continue
+         exit 1
+         ;;
+   esac
+}
+audio "$1"

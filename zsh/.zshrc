@@ -110,7 +110,6 @@ export KEYTIMEOUT=1
 
 # for change to visual mode in vim
 bindkey -M vicmd v edit-command-line
-bindkey -M viins 'jk' vi-cmd-mode
 
 # set default editor
 export EDITOR=nvim
@@ -129,6 +128,8 @@ alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo
 # Edit this .bashrc file
 alias ebrc='edit ~/.bashrc'
 alias etmux='nvim ~/.tmux.conf'
+
+alias o="xdg-open"
 
 # alias to show the date
 alias da='date "+%Y-%m-%d %A %T %Z"'
@@ -337,7 +338,9 @@ alias fh="fzf_history"
 # adding command for fetch-master
 fm6000 -random -c "random" -m 1 -de "dwm" -l 10
 
-
+# seting the font for the tty
+# setfont /usr/share/kbd/consolefonts/ter-132n.psf.gz
+#
 # setting some default apps
 #BROWSER=firefox
 # ------------- some info ---------

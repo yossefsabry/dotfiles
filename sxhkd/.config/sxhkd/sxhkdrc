@@ -1,0 +1,10 @@
+
+
+super + t
+   /home/$USER/dotfiles/scripts/toggle_touchpad
+
+{ XF86AudioRaiseVolume, XF86AudioLowerVolume, XF86AudioMute }
+   /home/$USER/dotfiles/scripts/audio {up, down, mute }
+
+super + {Up, Down}
+   /home/$USER/dotfiles/scripts/bright {up, down}

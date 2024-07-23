@@ -6,20 +6,29 @@ checkCommand() {
 
 setBrightness() {
   checkCommand brightnessctl
+
   if [ $? -eq 0 ]; then
-    brightnessctl set $1%
-    exit 0
+     if [[ $1 == "up" ]]; then
+        brightnessctl set +15% > /dev/null
+        exit 0
+     elif [[ $1 == "down" ]]; then
+        brightnessctl set 15%- > /dev/null
+        exit 0
+     else
+        brightnessctl set $1%
+        exit 0
+     fi
   else
-    echo -e "=> brightnessctl not found"
-    echo -e "=> starting installation"
-    sudo pacman -S brightnessctl
-    if [ $? -eq 0 ]; then
-      sudo brightnessctl set $1
-      exit 0
-    else
-      echo -e "=> failed to install brightnessctl"
-      exit 1
-    fi
+     echo -e "=> brightnessctl not found"
+     echo -e "=> starting installation"
+     sudo pacman -S brightnessctl
+     if [ $? -eq 0 ]; then
+        sudo brightnessctl set $1
+        exit 0
+     else
+        echo -e "=> failed to install brightnessctl"
+        exit 1
+     fi
   fi
 }
 setBrightness $1

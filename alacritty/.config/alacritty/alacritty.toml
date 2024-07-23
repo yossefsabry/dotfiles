@@ -44,7 +44,7 @@ normal                = { family = "FiraMono Nerd Font Propo", style = "Regular"
 bold                  = { family = "FiraMono Nerd Font Propo", style = "Bold" }
 italic                = { family = "FiraMono Nerd Font Propo", style = "Italic" }
 bold_italic           = { family = "FiraMono Nerd Font Propo", style = "Bold Italic" }
-size                  = 17.45
+size                  = 20
 offset                = { x = 0, y = 0 }
 glyph_offset          = { x = 1, y = 1 }
 #builtin_box_drawing   = true
@@ -167,40 +167,40 @@ bindings = [
 [hints]
 #alphabet              = "jfkdls;ahgurieowpq"
 
-#[[hints.enabled]]
-#command               = "xdg-open"
+[[hints.enabled]]
+command               = "xdg-open"
 ## command             = "open" # On macOS
 ## command             = { program = "cmd", args = [ "/c", "start", "" ] } # On Windows
-#hyperlinks            = true
-#post_processing       = true
-#persist               = false
-#mouse.enabled         = true
-#binding               = { key = "U", mods = "Control|Shift" }
-#regex                 = "(ipfs:|ipns:|magnet:|mailto:|gemini://|gopher://|https://|http://|news:|file:|git://|ssh:|ftp://)[^\u0000-\u001F\u007F-\u009F<>\"\\s{-}\\^⟨⟩‘]+"
+hyperlinks            = true
+post_processing       = true
+persist               = false
+mouse.enabled         = true
+binding               = { key = "U", mods = "Control|Shift" }
+regex                 = "(ipfs:|ipns:|magnet:|mailto:|gemini://|gopher://|https://|http://|news:|file:|git://|ssh:|ftp://)[^\u0000-\u001F\u007F-\u009F<>\"\\s{-}\\^⟨⟩‘]+"
 
-# [keyboard]
-# bindings = [
-#   { key = "V",        mods = "Control|Shift", action = "Paste" },
-#   { key = "C",        mods = "Control|Shift", action = "Copy" },
-#   { key = "Paste",                            action = "Paste" },
-#   { key = "Copy",                             action = "Copy" },
-#   { key = "Insert",   mods = "Shift",         action = "PasteSelection" },
-#   { key = "F",        mods = "Control|Shift", action = "SearchForward",     mode = "~Search" },
-#   { key = "B",        mods = "Control|Shift", action = "SearchBackward",    mode = "~Search" },
-#   { key = "Key0",     mods = "Control",       action = "ResetFontSize" },
-#   { key = "Equals",   mods = "Control",       action = "IncreaseFontSize" },
-#   { key = "Minus",    mods = "Control",       action = "DecreaseFontSize" },
-#   { key = "L",        mods = "Control",       action = "ClearLogNotice" },
-#   { key = "L",        mods = "Control",       chars  = "\f" },
-#   { key = "PageUp",   mods = "Shift",         action = "ScrollPageUp",      mode = "~Alt" },
-#   { key = "PageDown", mods = "Shift",         action = "ScrollPageDown",    mode = "~Alt" },
-#   { key = "Up",       mods = "Shift",         action = "ScrollLineUp",      mode = "~Alt" },
-#   { key = "Down",     mods = "Shift",         action = "ScrollLineDown",    mode = "~Alt" },
-#   { key = "Home",     mods = "Shift",         action = "ScrollToTop",       mode = "~Alt" },
-#   { key = "End",      mods = "Shift",         action = "ScrollToBottom",    mode = "~Alt" },
-# ]
-#
-#
+[keyboard]
+ bindings = [
+   { key = "V",        mods = "Control|Shift", action = "Paste" },
+   { key = "C",        mods = "Control|Shift", action = "Copy" },
+   { key = "Paste",                            action = "Paste" },
+   { key = "Copy",                             action = "Copy" },
+   { key = "Insert",   mods = "Shift",         action = "PasteSelection" },
+   { key = "F",        mods = "Control|Shift", action = "SearchForward",     mode = "~Search" },
+   { key = "B",        mods = "Control|Shift", action = "SearchBackward",    mode = "~Search" },
+   { key = "Key0",     mods = "Control",       action = "ResetFontSize" },
+   { key = "Equals",   mods = "Control",       action = "IncreaseFontSize" },
+   { key = "Minus",    mods = "Control",       action = "DecreaseFontSize" },
+   { key = "L",        mods = "Control",       action = "ClearLogNotice" },
+   { key = "L",        mods = "Control",       chars  = "\f" },
+   { key = "u",        mods = "Control",         action = "ScrollPageUp",      mode = "~Alt" },
+   { key = "d",        mods = "Control",         action = "ScrollPageDown",    mode = "~Alt" },
+   { key = "Up",       mods = "Shift",         action = "ScrollLineUp",      mode = "~Alt" },
+   { key = "Down",     mods = "Shift",         action = "ScrollLineDown",    mode = "~Alt" },
+   { key = "Home",     mods = "Shift",         action = "ScrollToTop",       mode = "~Alt" },
+   { key = "End",      mods = "Shift",         action = "ScrollToBottom",    mode = "~Alt" },
+ ]
+
+
 [debug]
 render_timer          = false
 persistent_logging    = false

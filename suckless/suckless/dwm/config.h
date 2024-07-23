@@ -6,8 +6,8 @@ static const unsigned int gappx     = 7;        /* gaps between windows */
 static const unsigned int snap      = 32;       /* snap pixel */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
-static const int splitstatus        = 1;        /* 1 for split status items */
-static const char *splitdelim        = "<middle>;<right>";       /* Character used for separating status */
+static const int splitstatus        = 2;        /* 1 for split status items */
+static const char *splitdelim        = ";";       /* Character used for separating status */
 static const char *fonts[]          = { "FiraMono Nerd Font Propo:size=9" };
 static const char dmenufont[]       = "FiraMono Nerd Font Propo:size=9";
 static const char col_gray1[]       = "#36292e";
@@ -31,15 +31,26 @@ static const unsigned int alphas[][3]      = {
 /* tagging */
 static const char *tags[] = { "1", "2", "3", "4", "5", "6", "7"};
 
+
 static const Rule rules[] = {
 	/* xprop(1):
 	 *	WM_CLASS(STRING) = instance, class
 	 *	WM_NAME(STRING) = title
 	 */
-	/* class                instance    title       tags mask     isfloating   monitor */
-	{ "firefox",            NULL,       NULL,           2,       0,           -1 },
-	{ "chromium",           NULL,       NULL,           2,       0,           -1 },
+	/* class                      instance                   title             tags mask    isfloating   monitor */
+   {  NULL,                     NULL,                       NULL,             0,           0,           -1 },
+   { "firefox",                 NULL,                       NULL,             1 << 1,      0,           -1 },
+   { "discord",                 NULL,                       NULL,             1 << 2,      0,           -1 },
+   { "obsidian",                NULL,                       NULL,             1 << 3,      0,           -1 },
+   { "Code",                    NULL,                       NULL,             1 << 3,      0,           -1 },
+   { "Nemo",                    NULL,                       NULL,             1 << 4,      0,           -1 },
+   { "Zeal",                    NULL,                       NULL,             1 << 4,      0,           -1 },
+   { "Postman",                 NULL,                       NULL,             1 << 5,      0,           -1 },
+   { "MongoDB Compass",         NULL,                       NULL,             1 << 5,      0,           -1 },
+   { "obs",                     NULL,                       NULL,             1 << 6,      0,           -1 },
+   { "Gimp",                   NULL,                       NULL,             1 << 6,      0,           -1 },
 };
+
 
 /* layout(s) */
 static const float mfact     = 0.55; /* factor of master area size [0.05..0.95] */
@@ -74,7 +85,7 @@ static const char *termcmd[]  = { "/usr/bin/alacritty", NULL };
 static const Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
-	{ MODKEY|ShiftMask,             XK_Return, spawn,          {.v = termcmd } },
+	{ MODKEY,                       XK_Return, spawn,          {.v = termcmd } },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
@@ -82,7 +93,7 @@ static const Key keys[] = {
 	{ MODKEY,                       XK_d,      incnmaster,     {.i = -1 } },
 	{ MODKEY,                       XK_h,      setmfact,       {.f = -0.05} },
 	{ MODKEY,                       XK_l,      setmfact,       {.f = +0.05} },
-	{ MODKEY,                       XK_Return, zoom,           {0} },
+	{ MODKEY|ShiftMask,                       XK_Return, zoom,           {0} },
 	{ MODKEY,                       XK_Tab,    view,           {0} },
 	{ MODKEY,                       XK_w,      killclient,     {0} },
 	{ MODKEY,                       XK_t,      setlayout,      {.v = &layouts[0]} },
