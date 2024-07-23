@@ -6,6 +6,8 @@ static const unsigned int gappx     = 7;        /* gaps between windows */
 static const unsigned int snap      = 32;       /* snap pixel */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
+static const int splitstatus        = 1;        /* 1 for split status items */
+static const char *splitdelim        = "<middle>;<right>";       /* Character used for separating status */
 static const char *fonts[]          = { "FiraMono Nerd Font Propo:size=9" };
 static const char dmenufont[]       = "FiraMono Nerd Font Propo:size=9";
 static const char col_gray1[]       = "#36292e";
