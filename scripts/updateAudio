@@ -13,5 +13,5 @@ updateAudio() {
 
 updateAudio
 
-# Optionally, you can do the same for dwmblocks if you use it
-pkill -SIGUSR1 dwmblocks
+# # Optionally, you can do the same for dwmblocks if you use it
+# pkill -SIGUSR1 dwmblocks

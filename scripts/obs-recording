@@ -1,0 +1,31 @@
+#!/bin/bash
+
+# Configuration
+OBS_HOST="localhost"
+OBS_PORT="4444"
+
+# Check if obs-cli is installed
+if ! command -v obs-cli &> /dev/null; then
+    echo "obs-cli could not be found. Please install it first."
+    exit 1
+fi
+
+# Get the recording status from OBS
+RECORDING_STATUS=$(obs-cli --host $OBS_HOST --port $OBS_PORT recording status 2>&1) # main command
+
+if [ $? -ne 0 ]; then
+    echo "Fooo"
+    exit 1
+fi
+
+# Parse the recording status
+IS_RECORDING=$(echo $RECORDING_STATUS | grep -o 'Recording: true')
+
+# Check if OBS is recording
+if [ -n "$IS_RECORDING" ]; then
+    echo "Recording"
+else
+    echo "Fooo"
+fi
+
+pkill -10 dwmblocks

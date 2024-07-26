@@ -1,0 +1,21 @@
+#!/usr/bin/bash
+
+
+lang() {
+   
+   which xkb-switch > /dev/null 2>&1
+
+   if [ $? -ne 0 ]; then
+      echo "xkb-switch is not installed"
+      yay -S xkb-switch
+      return 1
+   fi
+   current_layout=$(xkb-switch -p)
+   if [ "$current_layout" == "us" ]; then
+      echo "en"
+   else
+      echo "ara"
+   fi
+}
+
+lang
