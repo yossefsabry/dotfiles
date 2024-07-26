@@ -1,5 +1,4 @@
 
-
 super + t
    /home/$USER/dotfiles/scripts/toggle_touchpad
 
@@ -8,3 +7,18 @@ super + t
 
 super + {Up, Down}
    /home/$USER/dotfiles/scripts/bright {up, down}
+
+End
+   scrot -s /home/$USER/Media/Images/scrot1_$(date +%s).png -e 'xclip -selection clipboard -t image/png -i $f && rm $f'
+
+Insert
+   scrot /home/$USER/Media/Images/scrot2_$(date +%s).png -e 'xclip -selection clipboard -t image/png -i $f'
+
+super + F10
+   /home/$USER/dotfiles/scripts/obs-recording
+
+super + space
+   /home/$USER/dotfiles/scripts/lang
+
+super + Tab
+   echo 'yossef280' | sudo -S /home/$USER/dotfiles/scripts/toggle_tty
