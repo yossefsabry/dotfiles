@@ -65,9 +65,10 @@ static const char unknown_str[] = "n/a";
  */
 static const struct arg args[] = {
     /* function format          argument */
-    {run_command, "[ %s ];", "echo 'yooo'"},
-    {run_command, "| %s ", "updateAudio"},
-    {datetime, "| %s |", " %a %b %r "},
+    {run_command, "[ %s ];", "obs-recording"},
+    {run_command, "| lang: %s |", "lang"},
+    {run_command, " %s |", "updateAudio"},
+    {datetime, " %s |", " %a %b %r "},
     {cpu_perc, " CPU:%s%% |", NULL},
     {ram_perc, " RAM:%s%% |", NULL},
     {battery_perc, " BAT:%s%% |", "BAT0"},
