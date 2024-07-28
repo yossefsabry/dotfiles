@@ -22,10 +22,10 @@ return {
 	-- 	-- end,
 	-- },
 	{
-		"folke/tokyonight.nvim",
-		lazy = false,
-		priority = 1000,
-		opts = {},
+		-- "folke/tokyonight.nvim",
+		-- lazy = false,
+		-- priority = 1000,
+		-- opts = {},
 		--   config = function()
 		--       vim.cmd.colorscheme("tokyonight")
 		--       vim.g.enfocado_style = 'nature'
@@ -34,8 +34,8 @@ return {
 		--   end
 	},
 	{
+    -- adding color scheme for user
 		"rose-pine/neovim",
-		lazy = false,
 		as = "rose-pine",
 		config = function()
 			vim.cmd("colorscheme rose-pine-main")

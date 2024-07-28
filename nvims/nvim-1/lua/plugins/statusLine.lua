@@ -1,5 +1,7 @@
 return {
   "nvim-lualine/lualine.nvim",
+  lazy = true,
+  event = "BufAdd",
   config = function()
     require("lualine").setup({
         globalstatus = false,

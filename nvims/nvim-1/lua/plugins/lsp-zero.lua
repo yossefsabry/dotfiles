@@ -15,6 +15,7 @@ return {
 	-- Autocompletion
 	{
 		"hrsh7th/nvim-cmp",
+    lazy = true,
 		event = "InsertEnter",
 		dependencies = {
 			{
@@ -80,6 +81,7 @@ return {
 	-- LSP
 	{
 		"neovim/nvim-lspconfig",
+    lazy = true,
 		cmd = "LspInfo",
 		event = { "BufReadPre", "BufNewFile" },
 		dependencies = {

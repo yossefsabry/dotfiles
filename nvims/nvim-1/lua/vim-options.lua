@@ -5,6 +5,9 @@ end
 -- Define terminal key mapping options
 local term_opts = { noremap = true, silent = true, nowait = true }
 
+
+vim.o.path = vim.o.path .. '**'
+
 -- Set leader key
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
@@ -25,11 +28,12 @@ vim.opt.relativenumber = true
 
 -- set highlight in cursor line
 vim.opt.cursorline = true
-vim.opt.tabstop = 3
-vim.opt.softtabstop = 3
-vim.opt.shiftwidth = 3
+vim.opt.tabstop = 2
+vim.opt.softtabstop = 2
+vim.opt.shiftwidth = 2
 vim.opt.expandtab = true
 vim.opt.smartindent = true
+
 
 vim.opt.wrap = true
 
@@ -45,6 +49,8 @@ vim.opt.isfname:append("@-@")
 
 vim.opt.updatetime = 250
 
+vim.opt.path:append('**')
+
 -- Center the screen after moving with search n/N
 keymap("n", "<C-d>", "<C-d>zz", term_opts)
 keymap("n", "<C-u>", "<C-u>zz", term_opts)
@@ -57,8 +63,8 @@ vim.api.nvim_set_keymap("x", "J", ":m '>+1<CR>gv=gv", term_opts)
 vim.api.nvim_set_keymap("x", "K", ":m '<-2<CR>gv=gv", term_opts)
 
 -- for default noe tree
--- keymap("n", "<leader>e", ":Lex 20<cr>", term_opts)
-keymap("n", "<leader>e", ":Neotree left toggle reveal_force_cwd selector<cr>", term_opts)
+keymap("n", "<leader>e", ":Lex 20<cr>", term_opts)
+-- keymap("n", "<leader>e", ":Neotree left toggle reveal_force_cwd selector<cr>", term_opts)
 -- keymap("n", "<leader>vp", ":Neotree/home/yossef/Documents float<cr>", term_opts)
 -- keymap("n", "<leader>e", ":Dirbuf <CR>", term_opts)
 

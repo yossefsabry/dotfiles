@@ -1,5 +1,6 @@
 return {
 -- 	"mfussenegger/nvim-dap",
+--  Cmd = "Dap",
 -- 	dependencies = {
 --     "nvim-neotest/nvim-nio",
 -- 		"leoluz/nvim-dap-go",

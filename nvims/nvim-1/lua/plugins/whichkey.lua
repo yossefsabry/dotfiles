@@ -1,9 +1,11 @@
 return {
 	"folke/which-key.nvim",
-	event = "VeryLazy",
+	lazy = true,
+  event = { "BufReadPre", "BufNewFile" },
+	Cmd = { "WhichKey" },
 	init = function()
 		vim.o.timeout = true
-		vim.o.timeoutlen = 1000
+		vim.o.timeoutlen = 600
 	end,
 	opts = {
 		-- your configuration comes here
