@@ -6,8 +6,6 @@ end
 local term_opts = { noremap = true, silent = true, nowait = true }
 
 
-vim.o.path = vim.o.path .. '**'
-
 -- Set leader key
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
@@ -16,7 +14,7 @@ vim.g.maplocalleader = " "
 vim.g.netrw_browse_split = 0
 vim.g.netrw_banner = 0
 vim.g.netrw_winsize = 0
-vim.g.netrw_liststyle = 0
+vim.g.netrw_liststyle = 1
 
 -- Modes
 vim.opt.hlsearch = false -- disable search highlight
@@ -28,9 +26,9 @@ vim.opt.relativenumber = true
 
 -- set highlight in cursor line
 vim.opt.cursorline = true
-vim.opt.tabstop = 2
-vim.opt.softtabstop = 2
-vim.opt.shiftwidth = 2
+vim.opt.tabstop = 4
+vim.opt.softtabstop = 4
+vim.opt.shiftwidth = 4
 vim.opt.expandtab = true
 vim.opt.smartindent = true
 
@@ -47,7 +45,7 @@ vim.opt.termguicolors = true
 vim.opt.scrolloff = 8
 vim.opt.isfname:append("@-@")
 
-vim.opt.updatetime = 250
+vim.opt.updatetime = 50
 
 vim.opt.path:append('**')
 
