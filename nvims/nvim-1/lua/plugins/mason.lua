@@ -25,20 +25,21 @@ return {
 			},
 		})
 
-		mason_lspconfig.setup({
-			-- list of servers for mason to install
-			ensure_installed = {
-				"tsserver", -- typescript and javascript
-				"emmet_ls", -- for all css and html files
+        mason_lspconfig.setup({
+            -- list of servers for mason to install
+            ensure_installed = {
+                "tsserver", -- typescript and javascript
+                "emmet_ls", -- for all css and html files
                 -- "tailwindcss", -- tailwindcss
                 "clangd", -- for c and c++
-				"svelte", -- lsp from vscode
-				"lua_ls", -- lua
-				"gopls", -- go
-			},
-			-- auto-install configured servers (with lspconfig)
-			automatic_installation = true, -- not the same as ensure_installed
-		})
+                "svelte", -- lsp from vscode
+                "lua_ls", -- lua
+                "gopls", -- go
+                "bashls", -- bash
+            },
+            -- auto-install configured servers (with lspconfig)
+            automatic_installation = true, -- not the same as ensure_installed
+        })
 
 		mason_tool_installer.setup({
 			ensure_installed = {

@@ -61,8 +61,7 @@ vim.api.nvim_set_keymap("x", "J", ":m '>+1<CR>gv=gv", term_opts)
 vim.api.nvim_set_keymap("x", "K", ":m '<-2<CR>gv=gv", term_opts)
 
 -- for default noe tree
-keymap("n", "<leader>e", ":Lex 20<cr>", term_opts)
--- keymap("n", "<leader>e", ":Neotree left toggle reveal_force_cwd selector<cr>", term_opts)
+vim.keymap.set("n", "<leader>e", ":vertical Ex<CR>", term_opts)
 -- keymap("n", "<leader>vp", ":Neotree/home/yossef/Documents float<cr>", term_opts)
 -- keymap("n", "<leader>e", ":Dirbuf <CR>", term_opts)
 
@@ -148,9 +147,10 @@ vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
 -- create folds
 keymap("n", "<leader>z", "zfaB", term_opts)
 
-vim.keymap.set("n", "<leader><leader>", function()
-  vim.cmd("Ex")
-end)
+-- cause and error
+-- vim.keymap.set("n", "<leader><leader>", function()
+--   vim.cmd("Ex")
+-- end)
 
 -- keymap for copilot
 vim.g.copilot_no_tab_map = true
