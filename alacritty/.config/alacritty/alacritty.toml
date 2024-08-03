@@ -147,7 +147,7 @@ blinking              = "Always"
 
 [cursor.vi_mode_style]
 shape                 = "Block"
-blinking              = "on"
+blinking              = "off"
 
 [cursor]
 blink_interval        = 500
