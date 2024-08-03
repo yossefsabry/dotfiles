@@ -332,11 +332,8 @@ alias fh="fzf_history"
 # ********* for search in history********* 
 
 
-
-
-
-# adding command for fetch-master
-fm6000 -random -c "random" -m 1 -de "dwm" -l 10
+# for adding some info about the pc
+pfetch
 
 # seting the font for the tty
 # setfont /usr/share/kbd/consolefonts/ter-132n.psf.gz
