@@ -335,6 +335,12 @@ alias fh="fzf_history"
 # for adding some info about the pc
 pfetch
 
+
+# for the font for the tty 
+if [ -z "$DISPLAY" ]; then
+    setfont /usr/share/kbd/consolefonts/ter-132b.psf.gz
+fi
+
 # seting the font for the tty
 # setfont /usr/share/kbd/consolefonts/ter-132n.psf.gz
 #
