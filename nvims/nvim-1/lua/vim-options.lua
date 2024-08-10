@@ -124,8 +124,7 @@ vim.keymap.set('n', '<leader>ca', '<cmd>lua vim.lsp.buf.code_action()<cr>', term
 vim.keymap.set('n', 'gl', '<cmd>lua vim.diagnostic.open_float()<cr>', term_opts)
 vim.keymap.set('n', '[d', '<cmd>lua vim.diagnostic.goto_prev()<cr>', term_opts)
 vim.keymap.set('n', ']d', '<cmd>lua vim.diagnostic.goto_next()<cr>', term_opts)
-vim.keymap.set("n", "<leader>vd", function() vim.diagnostic.open_float() end, term_opts)
-vim.keymap.set("n", "[d", function() vim.diagnostic.goto_next() end, term_opts)
+
 -- Key mkeymape_runner.nvim
 keymap("n", "<A-r>", ":RunCode<CR>", term_opts)
 keymap("n", "<A-r>f", ":RunFile<CR>", term_opts)
@@ -164,4 +163,8 @@ vim.keymap.set("n", "<Leader>dt", ":DapToggleBreakpoint<CR>")
 vim.keymap.set("n", "<Leader>dc", ":DapContinue<CR>")
 vim.keymap.set("n", "<Leader>dx", ":DapTerminate<CR>")
 vim.keymap.set("n", "<Leader>do", ":DapStepOver<CR>")
+
+-- for copy the filelj
+keymap("i", "<C-s>", "<C-o>:write<CR>a", { noremap = true })
+
 
