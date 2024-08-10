@@ -48,9 +48,9 @@ static const Rule rules[] = {
    { "QtSpim",                  NULL,                       NULL,             1 << 4,      0,           -1 },
    { "Zeal",                    NULL,                       NULL,             1 << 4,      0,           -1 },
    { "Postman",                 NULL,                       NULL,             1 << 5,      0,           -1 },
+   { "YouTube Music",           NULL,                       NULL,             1 << 5,      0,           -1 },
    { "MongoDB Compass",         NULL,                       NULL,             1 << 5,      0,           -1 },
-   { "obs",                     NULL,                       NULL,             1 << 6,      0,           -1 },
-   { "Gimp",                   NULL,                       NULL,             1 << 6,      0,           -1 },
+   { "Gimp",                    NULL,                       NULL,             1 << 6,      0,           -1 },
 };
 
 
