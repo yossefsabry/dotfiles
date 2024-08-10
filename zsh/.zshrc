@@ -170,7 +170,7 @@ alias fcd="fzf_cd"
 # Alias's for multiple directory listing commands
 alias la='ls -AFlh' # show hidden files
 alias ls='ls -ah --color=always' # add colors and file type extensions
-alias lsg='ls -alfh --color=always | grep ' # add colors and file type extensions
+alias lsg='ls | grep ' # add colors and file type extensions
 alias lx='ls -lXBh' # sort by extension
 alias lsz='ls -lSrh' # sort by size
 alias lc='ls -lcrh' # sort by change time
@@ -341,8 +341,13 @@ if [ -z "$DISPLAY" ]; then
     setfont /usr/share/kbd/consolefonts/ter-132b.psf.gz
 fi
 
-# seting the font for the tty
-# setfont /usr/share/kbd/consolefonts/ter-132n.psf.gz
+# for change the cursor shape to | in nvim and tmux
+# if command -v tmux >/dev/null 2>&1; then
+#     if [ "$(tmux ls 2>/dev/null | grep -c 'attached')" -gt 0 ]; then
+#         printf '\033[6 q'
+#     fi
+# fi
+
 #
 # setting some default apps
 #BROWSER=firefox
