@@ -1,0 +1,16 @@
+#!/bin/bash
+
+#!/bin/bash
+
+# Check if Alacritty is running
+if wmctrl -lx | grep -q "Alacritty"; then
+    # If Alacritty is running, toggle its visibility
+    if xdotool search --class Alacritty windowunmap %@; then
+        xdotool search --class Alacritty windowmap %@ 
+        xdotool search --class Alacritty windowraise %@ 
+    fi
+else
+    # If Alacritty is not running, start it
+    alacritty &
+fi
+

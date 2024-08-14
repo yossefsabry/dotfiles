@@ -356,3 +356,5 @@ fi
 #stow --adopt --ignore=background --ignore=dwm-config --ignore=nvim --ignore=mybash-config -> stow the dotfiles
 # ------------- some info ---------
 
+# for install using cargo(asm-lsp)
+export PATH="$HOME/.cargo/bin:$PATH"

@@ -7,7 +7,6 @@ require("plugins.lazy")
 -- Set termguicolors to enable true color support
 vim.o.termguicolors = true
 vim.g.netrw_bufsettings = "noma nomod nu rnu nobl nowrap ro"
-
 -- diable auto comment nextline 
 vim.cmd([[autocmd FileType * set formatoptions-=ro]])
 
