@@ -2,15 +2,6 @@ return {
     defaults = { lazy = true },
     install = { colorscheme = { "defaults" } },
 
-    -- ui = {
-    --   icons = {
-    --     ft = "",
-    --     lazy = "󰂠 ",
-    --     loaded = "",
-    --     not_loaded = "",
-    --   },
-    -- },
-
     performance = {
         rtp = {
             disabled_plugins = {

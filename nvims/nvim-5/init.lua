@@ -17,6 +17,7 @@ require("lazy").setup({
     {
         "NvChad/NvChad",
         lazy = false,
+        -- jvent ="BufReadPre",
         branch = "v2.5",
         import = "nvchad.plugins",
         config = function()
