@@ -1,0 +1,86 @@
+# place in ~/.config/zathura/
+# Zathura configuration file
+# See man `man zathurarc'
+#-----------------------------
+
+# enable clipboard
+set selection-clipboard clipboard
+set statusbar-h-padding 0
+set statusbar-v-padding 0
+set sandbox none
+set scroll-step 200
+
+# See man `man zathurarc'
+map r reload
+map p print
+map i recolor
+map J zoom out
+map K zoom in
+map R rotate
+
+# # DONT WORK HINT
+# # Explicitly map f and F to follow links
+# map f follow
+# map F follow
+
+unmap f
+map f toggle_fullscreen
+map [fullscreen] f toggle_fullscreen
+
+# zathurarc-dark
+set font "inconsolata 14"
+
+#--- rose pine color scheme ---
+# Page Separator (White Line Between Pages)
+set separator-bg "#ffffff" # Pure white for the line between pages
+
+# Main Colors
+set default-bg "#191724" # base Background
+set default-fg "#e0def4" # base Foreground
+
+# Statusbar Colors
+set statusbar-fg "#e0def4" # base Foreground
+set statusbar-bg "#1f1d2e" # Darker Subtle background
+
+# Inputbar Colors
+set inputbar-bg "#1f1d2e" # Darker Subtle background
+set inputbar-fg "#e0def4" # base Foreground
+
+# Notification Colors
+set notification-error-bg "#b9577c" # Darkened Love (Redish)
+set notification-error-fg "#191724" # Base background
+set notification-warning-bg "#d89b5d" # Darkened Gold (Yellowish)
+set notification-warning-fg "#191724" # Base background
+set notification-bg "#1f1d2e" # Darker Subtle background
+set notification-fg "#e0def4" # base Foreground
+
+# Highlight Colors
+set highlight-color "#a382c6" # Darkened Iris (Purple)
+set highlight-active-color "#6fa2b4" # Darkened Foam (Cyanish)
+
+# Completion Colors
+set completion-group-bg "#191724" # Base background
+set completion-group-fg "#e0def4" # base Foreground
+set completion-bg "#1f1d2e" # Darker Subtle background
+set completion-fg "#e0def4" # base Foreground
+set completion-highlight-bg "#a382c6" # Darkened Iris (Purple)
+set completion-highlight-fg "#191724" # Base background
+
+# Recolor book content's color
+set recolor "true"
+set recolor-lightcolor "#191724" # base Background
+set recolor-darkcolor "#e0def4" # base Foreground
+set recolor-reverse-video "true"
+set recolor-keephue "true"
+
+# Index Mode Colors
+set index-bg "#191724" # base Background
+set index-fg "#e0def4" # base Foreground
+set index-active-bg "#a382c6" # Darkened Iris (Purple)
+set index-active-fg "#1f1d2e" # Darker Subtle background
+
+# Render Loading Colors
+set render-loading true
+set render-loading-fg "#e0def4" # base Foreground
+set render-loading-bg "#191724" # base Background
+
