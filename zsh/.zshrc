@@ -1,4 +1,4 @@
-# If you come from bash you might have to change your $PATH.
+#" If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
@@ -112,12 +112,13 @@ export KEYTIMEOUT=1
 bindkey -M vicmd v edit-command-line
 
 # set default editor
+alias BROWSER=firefox
 export EDITOR=nvim
 export VISUAL=nvim
-# alias pico='edit'
-# alias spico='sedit'
-# alias nano='edit'
-# alias snano='sedit'
+alias pico='edit'
+alias spico='sedit'
+alias nano='edit'
+alias snano='sedit'
 alias vim='nvim'
 
 
@@ -138,8 +139,8 @@ alias da='date "+%Y-%m-%d %A %T %Z"'
 alias mkdir='mkdir -p'
 alias rm='rm -rf'
 alias cp='yes | cp -Ri'
-alias pbcopy='xsel --input --clipboard' 
-alias pbpaste='xsel --output --clipboard'
+alias pc='xsel --input --clipboard' 
+alias pp='xsel --output --clipboard'
 alias ebrc='nvim ~/.bashrc'
 alias ezsh='nvim ~/.zshrc'
 alias etmux='nvim ~/.tmux.conf'
@@ -351,7 +352,6 @@ fi
 
 #
 # setting some default apps
-#BROWSER=firefox
 # ------------- some info ---------
 # alsamixer -> for change the sound level arch
 #stow --adopt --ignore=background --ignore=dwm-config --ignore=nvim --ignore=mybash-config -> stow the dotfiles
