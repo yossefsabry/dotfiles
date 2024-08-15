@@ -24,12 +24,12 @@ M.ui = {
             end
         }
     },
-	theme = "rosepine",
+    theme = "rosepine",
 
-	hl_override = {
-		Comment = { italic = true },
-		["@comment"] = { italic = true },
-	},
+    hl_override = {
+        Comment = { italic = true },
+        ["@comment"] = { italic = true },
+    },
     transparency = false
 }
 

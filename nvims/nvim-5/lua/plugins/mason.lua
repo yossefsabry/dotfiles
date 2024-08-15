@@ -30,7 +30,7 @@ return {
             ensure_installed = {
                 "tsserver", -- typescript and javascript
                 "emmet_ls", -- for all css and html files
-                -- "tailwindcss", -- tailwindcss
+                "tailwindcss", -- tailwindcss
                 "clangd", -- for c and c++
                 "svelte", -- lsp from vscode
                 "lua_ls", -- lua

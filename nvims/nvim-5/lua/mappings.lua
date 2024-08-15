@@ -56,3 +56,13 @@ map('n', '<leader>ca', '<cmd>lua vim.lsp.buf.code_action()<cr>', { desc = " code
 map('n', 'gl', '<cmd>lua vim.diagnostic.open_float()<cr>', { desc = "open diagnostic " })
 map('n', '[d', '<cmd>lua vim.diagnostic.goto_prev()<cr>', { desc = " prev diagnostic " })
 map('n', ']d', '<cmd>lua vim.diagnostic.goto_next()<cr>', { desc = "next diagnostic " })
+
+-- adding maping for coderunner
+map("n", "<A-r>", ":RunCode<CR>", {desc = "run code"})
+map("n", "<A-r>f", ":RunFile<CR>", {desc = "run file"})
+map("n", "<A-r>p", ":RunProject<CR>", {desc = "run project"})
+map("n", "<A-r>c", ":RunClose<CR>", {desc = "run close"})
+map("n", "<A-r>cp", ":CRProjects<CR>", {desc = "run project"})
+
+-- next greatest remap ever : asbjornHaland
+
