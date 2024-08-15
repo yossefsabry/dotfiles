@@ -1,0 +1,21 @@
+#!/usr/bin/bash
+
+# Directory containing the manga files
+manga_dir="/home/yossef/manga-chapters/"
+
+# Ensure the manga directory exists
+if [ ! -d "$manga_dir" ]; then
+    echo "Directory $manga_dir does not exist."
+    exit 1
+fi
+
+manga_files=$(find $manga_dir -type f | sort -t '/' -k 2 | sort -V | fzf)
+
+# Check if a file was selected
+if [ -n "$manga_files" ]; then
+    # Reconstruct the full path of the selected file
+    echo "$manga_files"
+    zathura "$manga_files" 
+else
+    echo "No file selected."
+fi
