@@ -39,3 +39,4 @@ vim.api.nvim_create_autocmd({ "BufWinEnter" }, {
 
 -- adding color for the highlight line
 vim.cmd("highlight Visual guibg=#005b44 guifg=NONE")
+
