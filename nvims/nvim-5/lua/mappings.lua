@@ -30,7 +30,8 @@ map("n", "<C-u>", "<c-u>zz", { desc = "half page down and cursor in center" })
 map("n", "G", "Gzz", { desc = "page down and cursor in center" })
 
 -- new tree mapping
-map("n", "<leader>e", "<cmd>Ex<CR>", { desc = "netrw nvim"})
+map("n", "<leader>e", "<cmd>NvimTreeToggle<CR>", { desc = "nvim tree toggle "})
+map("n", "<leader>-", "<cmd>Ex<CR>", { desc = "netrw nvim"})
 
 -- tab management
 map("n", "<leader>tt", "<cmd>tabnew<CR>", { desc = "open new tab" })

@@ -1,0 +1,22 @@
+
++ ---------------------------------------------
++  NetrwSettings:  by Charles E. Campbell
++ Press <F1> with cursor atop any line for help
++ ---------------------------------------------
+
++ Netrw Protocol Commands
+
++Netrw Transfer Control
+let g:netrw_ftp               = 0
+let g:netrw_ignorenetrc       = 0
+let g:netrw_silent            = 0
+let g:netrw_use_nt_rcp        = 0
+
++ Netrw Messages
+
++ Netrw Browser Control
+let g:netrw_altfile   = 0
+" let g:netrw_bannerbackslash   = (not defined)
+" let g:netrw_browsex_viewer   = (not defined)
+" let g:Netrw_corehandler      = (not defined)
+" let g:netrw_dynamic_maxfilenamelen= (not defined)

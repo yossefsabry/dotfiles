@@ -14,16 +14,6 @@ M.ui = {
             end,
         }
     },
-    statusline = {
-        -- more opts
-        order = {...}, -- check stl/utils.lua file in ui repo 
-        modules = {
-            -- The default cursor module is override
-            cursor = function()
-                return "%#BruhHl#" .. " bruh " -- the highlight group here is BruhHl,
-            end
-        }
-    },
     theme = "rosepine",
 
     hl_override = {
