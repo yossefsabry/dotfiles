@@ -8,6 +8,10 @@ return {
   { "RRethy/vim-illuminate", enabled = false },
   { "folke/trouble.nvim", enabled = false },
   { "echasnovski/mini.pairs", enabled = false },
-  { "nvim-treesitter/nvim-treesitter-context", enabled = false },
   { "nvim-treesitter/nvim-treesitter-textobjects", enabled = false },
+  { "nvim-lualine/lualine.nvim", enabled = false },
+  { "mfussenegger/nvim-lint", enabled = false },
+  { "folke/which-key.nvim", enabled = false },
+  { "folke/tokyonight.nvim", enabled = true },
+  -- { "nvim-neo-tree/neo-tree.nvim", enabled = false },
 }
