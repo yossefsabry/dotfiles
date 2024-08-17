@@ -28,8 +28,6 @@ return {
                 "compiler",
                 "bugreport",
                 "ftplugin",
-                "Gitsigns",
-                "conform",
             },
         },
     },

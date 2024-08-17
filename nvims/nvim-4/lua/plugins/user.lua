@@ -1,98 +1,149 @@
-if true then return {} end -- WARN: REMOVE THIS LINE TO ACTIVATE THIS FILE
-
--- You can also add or configure plugins by creating files in this `plugins/` folder
--- Here are some examples:
-
 ---@type LazySpec
 return {
-
-  -- == Examples of Adding Plugins ==
-
-  "andweeb/presence.nvim",
   {
-    "ray-x/lsp_signature.nvim",
-    event = "BufRead",
-    config = function() require("lsp_signature").setup() end,
-  },
-
-  -- == Examples of Overriding Plugins ==
-
-  -- customize alpha options
-  {
-    "goolord/alpha-nvim",
-    opts = function(_, opts)
-      -- customize the dashboard header
-      opts.section.header.val = {
-        " █████  ███████ ████████ ██████   ██████",
-        "██   ██ ██         ██    ██   ██ ██    ██",
-        "███████ ███████    ██    ██████  ██    ██",
-        "██   ██      ██    ██    ██   ██ ██    ██",
-        "██   ██ ███████    ██    ██   ██  ██████",
-        " ",
-        "    ███    ██ ██    ██ ██ ███    ███",
-        "    ████   ██ ██    ██ ██ ████  ████",
-        "    ██ ██  ██ ██    ██ ██ ██ ████ ██",
-        "    ██  ██ ██  ██  ██  ██ ██  ██  ██",
-        "    ██   ████   ████   ██ ██      ██",
-      }
-      return opts
-    end,
-  },
-
-  -- You can disable default plugins as follows:
-  { "max397574/better-escape.nvim", enabled = false },
-
-  -- You can also easily customize additional setup of plugins that is outside of the plugin's setup call
-  {
-    "L3MON4D3/LuaSnip",
-    config = function(plugin, opts)
-      require "astronvim.plugins.configs.luasnip"(plugin, opts) -- include the default astronvim config that calls the setup call
-      -- add more custom luasnip configuration such as filetype extend or custom snippets
-      local luasnip = require "luasnip"
-      luasnip.filetype_extend("javascript", { "javascriptreact" })
-    end,
-  },
-
-  {
-    "windwp/nvim-autopairs",
-    config = function(plugin, opts)
-      require "astronvim.plugins.configs.nvim-autopairs"(plugin, opts) -- include the default astronvim config that calls the setup call
-      -- add more custom autopairs configuration such as custom rules
-      local npairs = require "nvim-autopairs"
-      local Rule = require "nvim-autopairs.rule"
-      local cond = require "nvim-autopairs.conds"
-      npairs.add_rules(
-        {
-          Rule("$", "$", { "tex", "latex" })
-            -- don't add a pair if the next character is %
-            :with_pair(cond.not_after_regex "%%")
-            -- don't add a pair if  the previous character is xxx
-            :with_pair(
-              cond.not_before_regex("xxx", 3)
-            )
-            -- don't move right when repeat character
-            :with_move(cond.none())
-            -- don't delete if the next character is xx
-            :with_del(cond.not_after_regex "xx")
-            -- disable adding a newline when you press <cr>
-            :with_cr(cond.none()),
+    "andrewferrier/debugprint.nvim",
+    keys = {
+      { "g?", mode = "n", desc = "Debug Print" },
+      { "g?", mode = "x", desc = "Debug Print" },
+    },
+    opts = {
+      keymaps = {
+        normal = {
+          plain_below = "g?p",
+          plain_above = "g?P",
+          variable_below = "g?v",
+          variable_above = "g?V",
+          variable_below_alwaysprompt = nil,
+          variable_above_alwaysprompt = nil,
+          textobj_below = "g?o",
+          textobj_above = "g?O",
+          toggle_comment_debug_prints = nil,
+          delete_debug_prints = nil,
         },
-        -- disable for .vim files, but it work for another filetypes
-        Rule("a", "a", "-vim")
-      )
+        visual = {
+          variable_below = "g?v",
+          variable_above = "g?V",
+        },
+      },
+    },
+  },
+  {
+    "danymat/neogen",
+    dependencies = "nvim-treesitter/nvim-treesitter",
+    cmd = "Neogen",
+    keys = {
+      { "gD", function() require("neogen").generate {} end, desc = "Neogen" },
+    },
+    config = true,
+  },
+  {
+    "smjonas/live-command.nvim",
+    cmd = { "Norm" },
+    config = function()
+      require("live-command").setup {
+        commands = {
+          Norm = { cmd = "norm" },
+        },
+      }
     end,
   },
   {
-    -- transparnet background color for nvim
-    "tribela/vim-transparent",
+    "jxnblk/vim-mdx-js",
+  },
+
+  {
+    "kdheepak/lazygit.nvim",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+    },
+    cmd = { "LazyGit", "LazyGitConfig", "LazyGitCurrentFile" },
+    keys = {
+      { "<leader>gg", "<cmd>LazyGit<cr>", desc = "LazyGit" },
+      { "<leader>lg", "<cmd>LazyGit<cr>", desc = "LazyGit" },
+      { "<leader>lgc", "<cmd>LazyGitConfig<cr>", desc = "LazyGitConfig" },
+      { "<leader>lgf", "<cmd>LazyGitFilterCurrentFile<cr>", desc = "LazyGitFilterCurrentFile" },
+    },
   },
   {
-    "rose-pine/neovim",
+    "petertriho/nvim-scrollbar",
+    opts = {
+      handlers = {
+        cursor = false,
+      },
+    },
+  },
+  {
+    "xlboy/swap-ternary.nvim",
+    opts = {},
+    config = function() end,
+  },
+  {
+    "chrisgrieser/nvim-early-retirement",
+    config = true,
+    event = "VeryLazy",
+  },
+  {
+    "gsuuon/tshjkl.nvim",
+    opts = {
+      keymaps = {
+        toggle = "<S>gv",
+      },
+    },
+  },
+  { "akinsho/git-conflict.nvim", version = "*", config = true },
+  {
+    "xlboy/node-edge-toggler.nvim",
+    dependencies = { "nvim-treesitter/nvim-treesitter" },
+    keys = {
+      { "%", function() require("node-edge-toggler").toggle() end, desc = "Node start/end toggle" },
+    },
+  },
+  {
+    "soulis-1256/eagle.nvim",
+    opts = {},
+  },
+  {
+    "mcauley-penney/visual-whitespace.nvim",
+    config = true,
+  },
+  {
+    "rasulomaroff/reactive.nvim",
+    opts = {
+      builtin = {
+        cursorline = true,
+        cursor = true,
+        modemsg = true,
+      },
+    },
+  },
+  {
+    "folke/drop.nvim",
+    enabled = false,
+    opts = {
+      ---@type DropTheme|string
+      theme = "auto", -- when auto, it will choose a theme based on the date
+    },
+  },
+  {
+    "olrtg/nvim-emmet",
+    config = function() vim.keymap.set({ "n", "v" }, "<leader>xe", require("nvim-emmet").wrap_with_abbreviation) end,
+  },
+  {
+    "sontungexpt/better-diagnostic-virtual-text",
+    event = "LspAttach",
     config = function()
-      vim.cmd "colorscheme rose-pine-main"
-      vim.g.enfocado_style = "nature"
-      vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
-      vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
+      require("better-diagnostic-virtual-text").setup {
+        ui = {
+          wrap_line_after = false, -- Wrap the line after this length to avoid the virtual text is too long
+          left_kept_space = 3, --- The number of spaces kept on the left side of the virtual text, make sure it enough to custom for each line
+          right_kept_space = 3, --- The number of spaces kept on the right side of the virtual text, make sure it enough to custom for each line
+          arrow = "  ",
+          up_arrow = "  ",
+          down_arrow = "  ",
+          above = false, -- The virtual text will be displayed above the line
+        },
+        inline = true,
+      }
     end,
   },
 }

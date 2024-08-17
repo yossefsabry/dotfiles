@@ -44,6 +44,8 @@ vim.opt.termguicolors = true
 
 vim.opt.scrolloff = 8
 vim.opt.isfname:append("@-@")
+-- for ignore some files
+vim.opt.wildignore:append("**/node_modules/**")
 
 vim.opt.updatetime = 50
 

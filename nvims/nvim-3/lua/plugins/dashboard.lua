@@ -33,18 +33,18 @@ return {
       },
       config = {
         header = vim.split(logo, "\n"),
-                -- stylua: ignore
-                center = {
-                    { action = "ene | startinsert", desc = " new file", icon = " ", key = "e" },
-                    { action = "Telescope find_files", desc = " find file", icon = " ", key = "<space>fs" },
-                    { action = "Telescope oldfiles", desc = " recent files", icon = " ", key = "<space>r" },
-                    { action = "Telescope live_grep",                                      desc = " find text",       icon = " ", key = "<space>fg" },
-                    -- { action = [[lua require("lazyvim.util").telescope.config_files()()]], desc = " config",          icon = " ", key = "<space>c" },
-                    -- { action = 'lua require("persistence").load()', desc = " restore session", icon = " ", key = "<space>s" },
-                    -- { action = "LazyExtras",                                               desc = " lazy extras",     icon = " ", key = "<space>x" },
-                    -- { action = "Lazy",                                                     desc = " lazy",            icon = "󰒲 ", key = "<space>l" },
-                    { action = "qa", desc = " quit", icon = " ", key = "q" },
-                },
+        -- stylua: ignore
+        center = {
+          { action = "ene | startinsert", desc = " new file", icon = " ", key = "e" },
+          { action = "Telescope find_files", desc = " find file", icon = " ", key = "<space>fs" },
+          { action = "Telescope oldfiles", desc = " recent files", icon = " ", key = "<space>r" },
+          { action = "Telescope live_grep",                                      desc = " find text",       icon = " ", key = "<space>fg" },
+          -- { action = [[lua require("lazyvim.util").telescope.config_files()()]], desc = " config",          icon = " ", key = "<space>c" },
+          -- { action = 'lua require("persistence").load()', desc = " restore session", icon = " ", key = "<space>s" },
+          -- { action = "LazyExtras",                                               desc = " lazy extras",     icon = " ", key = "<space>x" },
+          -- { action = "Lazy",                                                     desc = " lazy",            icon = "󰒲 ", key = "<space>l" },
+          { action = "qa", desc = " quit", icon = " ", key = "q" },
+        },
         footer = function()
           local stats = require("lazy").stats()
           local ms = (math.floor(stats.startuptime * 100 + 0.5) / 100)
