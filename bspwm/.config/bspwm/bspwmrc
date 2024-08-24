@@ -1,0 +1,30 @@
+#! /bin/sh
+
+
+
+# launch polybar
+$HOME/.config/polybar/launch.sh
+
+# Workspaces
+bspc monitor -d I II III IV V VI VII
+
+bspc config border_width         2
+bspc config window_gap           5
+
+bspc config split_ratio          0.5
+bspc config borderless_monocle   true
+bspc config gapless_monocle      true
+
+bspc rule -a firefox desktop='^2'
+bspc rule -a discord desktop='^3'
+bspc rule -a Microsoft To-Do Unofficial desktop='^3'
+bspc rule -a obsidian desktop='^4'
+bspc rule -a Zathura desktop='^4'
+bspc rule -a code desktop='^4'
+bspc rule -a Nemo desktop='^5'
+bspc rule -a Zeal desktop='^5'
+bspc rule -a QtSpim desktop='^5'
+bspc rule -a Postman desktop='^6'
+bspc rule -a Youtube Music desktop='^6'
+bspc rule -a MongoDB Compass desktop='^6'
+bspc rule -a Gimp desktop='^7'
