@@ -3,6 +3,7 @@
 
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
+export PATH="$HOME/.local/bin/:$PATH"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -112,6 +113,7 @@ export KEYTIMEOUT=1
 bindkey -M vicmd v edit-command-line
 
 # set default editor
+export term=kitty
 alias BROWSER=firefox
 export EDITOR=nvim
 export VISUAL=nvim
@@ -120,7 +122,6 @@ alias spico='sedit'
 alias nano='edit'
 alias snano='sedit'
 alias vim='nvim'
-
 
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
@@ -160,6 +161,7 @@ alias ....='cd ../../..'
 alias .....='cd ../../../..'
 alias cdv="cd /home/$USER/.config/nvim"
 alias cd3d="cd /home/$USER/projects/c-projects/3d"
+alias cdg="cd /home/$USER/projects/go-projects/go-course"
 alias notes="cd /home/$USER/notes"
 alias dotfiles="cd /home/$USER/dotfiles"
 alias scripts="cd /home/$USER/dotfiles/scripts"
@@ -273,7 +275,7 @@ export PATH="$HOME/dotfiles/scripts:$PATH"
 
 # ----- Function to search for a folder and create a new tmux session in that folder ------
 tmux_new_session() {
-  export FZF_DEFAULT_OPTS='--layout=reverse --height=40% '
+  export FZF_DEFAULT_OPTS='--layout=reverse --height=100% '
   selected_dir=$(find ~ -type d 2>/dev/null | fzf)
   
   if [ -n "$selected_dir" ]; then
@@ -298,7 +300,7 @@ tmux_new_session() {
   fi
 }
 # Bind Alt+c to the tmux_new_session function
-bindkey -s '^[c' 'tmux_new_session\n'
+bindkey -s '^F' 'tmux_new_session\n'
 # ***** Function to search for a folder and create a new tmux session in that folder ******
 
 
@@ -307,7 +309,7 @@ bindkey -s '^[c' 'tmux_new_session\n'
 function fzf_cd() {
     # Find directories, use fzf to select one, and navigate to it
     local folder
-    folder=$(find . -type d 2>/dev/null | fzf --height 40% --layout=reverse --border --preview 'tree -C {} | head -n 20')
+    folder=$(find . -type d 2>/dev/null | fzf --height 100% --layout=reverse --border --preview 'tree -C {} | head -n 20')
     # Check if a folder was selected
     if [[ -n "$folder" ]]; then
         cd "$folder" || return
