@@ -2,30 +2,48 @@
 
 
 vim_checker() {
-  # Prompt the user for the Neovim configuration choice
-  echo "---- choose the config for nvim ----"
-  echo "1- nvim-1 (first config split files-> default)"
-  echo "2- nvim-2 (second config one file)"
-  echo "3- nvim-3 (lazy custom config)"
-  echo "4- nvim-4 (astro nvim)"
-  echo "5- nvim-5 (nvim chad)"
-  read -r option
-  # Define the paths
-  config_path="/home/$USER/.config/nvim"
-  dotfiles_path="/home/$USER/dotfiles/nvims"
-  # Remove any existing Neovim configuration directory
-  if [ -d "$config_path" ]; then
-    rm -rf "$config_path"
-    echo "Existing Neovim configuration removed"
-  fi
-  # Create the symbolic link based on the user's choice
-  case "${option}" in
-    1) ln -svf "$dotfiles_path/nvim-1" "$config_path" ;;
-    2) ln -svf "$dotfiles_path/nvim-2" "$config_path" ;;
-    3) ln -svf "$dotfiles_path/nvim-3" "$config_path" ;;
-    4) ln -svf "$dotfiles_path/nvim-4" "$config_path" ;;
-    5) ln -svf "$dotfiles_path/nvim-5" "$config_path" ;;
-    *) ln -svf "$dotfiles_path/nvim-1" "$config_path" ;;
-  esac
+    # Prompt the user for the Neovim configuration choice
+    echo "---- choose the config for nvim ----"
+    echo "1- nvim-1 (first config split files-> default)"
+    echo "2- nvim-2 (second config one file)"
+    echo "3- nvim-3 (lazy custom config)"
+    echo "4- nvim-4 (astro nvim)"
+    echo "5- nvim-5 (nvim chad)"
+    read -r option
+    # Define the paths
+    config_path="/home/$USER/.config/nvim"
+    dotfiles_path="/home/$USER/dotfiles/nvims"
+    # Remove any existing Neovim configuration directory
+    if [ -d "$config_path" ]; then
+        rm -rf "$config_path"
+        echo "Existing Neovim configuration removed"
+    fi
+    # Create the symbolic link based on the user's choice
+    case "${option}" in
+        1) 
+            ln -svf "$dotfiles_path/nvim-1" "$config_path"
+            notify-send -u low -h string:urgency:string "Success" "switch: lazy default "
+            ;;
+        2) 
+            ln -svf "$dotfiles_path/nvim-2" "$config_path" 
+            notify-send -u low -h string:urgency:string "Success" "switch: lazy one file"
+            ;;
+        3) 
+            ln -svf "$dotfiles_path/nvim-3" "$config_path" 
+            notify-send -u low -h string:urgency:string "Success" "switch: lazy custom"
+            ;;
+        4) 
+            ln -svf "$dotfiles_path/nvim-4" "$config_path" 
+            notify-send -u low -h string:urgency:string "Success" "switch: astro nvim"
+            ;;
+        5) 
+            ln -svf "$dotfiles_path/nvim-5" "$config_path" 
+            notify-send -u low -h string:urgency:string "Success" "switch: chad nvim"
+            ;;
+        *) 
+            ln -svf "$dotfiles_path/nvim-1" "$config_path" 
+            notify-send -u low -h string:urgency:string "Success" "switch: lazy default"
+            ;;
+    esac
 }
 vim_checker

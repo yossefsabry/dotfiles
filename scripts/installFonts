@@ -71,6 +71,7 @@ checkFont() {
     unzip "${FontsDir}/${ChoosenFont}.zip" -d ${FontsDir}
     rm -rf "${FontsDir}/README.md" "${FontsDir}/Llicense.txt"
     echo -e "${GREEN} --- finish install --- ${RC}"
+    notify-send -u low -h string:urgency:success "Success" "success download ,install"
   fi
 
 }

@@ -1,34 +1,45 @@
-#!/usr/bin/bash
+#!/usr/bin/env bash
 
 checkCommand() {
-  which $1 &> /dev/null
+  command -v "$1" &> /dev/null
 }
 
 setBrightness() {
-  checkCommand brightnessctl
-
-  if [ $? -eq 0 ]; then
-     if [[ $1 == "up" ]]; then
+  local action="$1"
+  
+  if checkCommand brightnessctl; then
+    case "$action" in
+      up)
         brightnessctl set +15% > /dev/null
-        exit 0
-     elif [[ $1 == "down" ]]; then
+        ;;
+      down)
         brightnessctl set 15%- > /dev/null
-        exit 0
-     else
-        brightnessctl set $1%
-        exit 0
-     fi
+        ;;
+      *)
+        if [[ "$action" =~ ^[0-9]+%$ ]]; then
+          brightnessctl set "$action"
+        else
+          echo "Invalid argument. Use 'up', 'down', or a percentage (e.g., 50%)."
+          exit 1
+        fi
+        ;;
+    esac
   else
-     echo -e "=> brightnessctl not found"
-     echo -e "=> starting installation"
-     sudo pacman -S brightnessctl
-     if [ $? -eq 0 ]; then
-        sudo brightnessctl set $1
-        exit 0
-     else
-        echo -e "=> failed to install brightnessctl"
-        exit 1
-     fi
+    echo "brightnessctl not found."
+    echo "Installing brightnessctl..."
+    if sudo pacman -S --noconfirm brightnessctl; then
+      setBrightness "$action"
+    else
+      echo "Failed to install brightnessctl."
+      exit 1
+    fi
   fi
 }
-setBrightness $1
+
+if [[ $# -eq 0 ]]; then
+  echo "No arguments provided. Usage: $0 [up|down|percentage]"
+  exit 1
+fi
+
+setBrightness "$1"
+

@@ -1,0 +1,14 @@
+#!/bin/bash
+
+# Location for South Sinai, Egypt
+LOCATION="South+Sinai"
+
+# Fetch the weather data
+weatherNow=$(curl -s "wttr.in/${LOCATION}?format=3")
+echo "$weatherNow"
+notify-send -u low -h string:urgency:success "Success" "$weatherNow"
+
+# # Alternatively, you can use other formats:
+# curl -s "wttr.in/${LOCATION}"           # Detailed weather
+# curl -s "wttr.in/${LOCATION}?format=%C+%t"  # Just the weather condition and temperature
+

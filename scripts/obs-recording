@@ -14,7 +14,7 @@ fi
 RECORDING_STATUS=$(obs-cli --host $OBS_HOST --port $OBS_PORT recording status 2>&1) # main command
 
 if [ $? -ne 0 ]; then
-    echo "Fooo"
+    echo -e "\uf03d"  # FontAwesome: Video Camera and Dot Circle (Recording)
     exit 1
 fi
 
@@ -24,8 +24,9 @@ IS_RECORDING=$(echo $RECORDING_STATUS | grep -o 'Recording: true')
 # Check if OBS is recording
 if [ -n "$IS_RECORDING" ]; then
     echo "Recording"
+    echo -e "\u25B6 Recording"  # This is a play icon
 else
-    echo "Fooo"
+    echo -e "\uf192 Stopped"  # This is a stop icon
 fi
 
 pkill -10 dwmblocks
