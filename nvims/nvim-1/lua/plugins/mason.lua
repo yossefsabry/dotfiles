@@ -29,10 +29,8 @@ return {
             -- list of servers for mason to install
             ensure_installed = {
                 "tsserver", -- typescript and javascript
-                "emmet_ls", -- for all css and html files
                 -- "tailwindcss", -- tailwindcss
                 "clangd", -- for c and c++
-                "svelte", -- lsp from vscode
                 "lua_ls", -- lua
                 "gopls", -- go
                 "bashls", -- bash

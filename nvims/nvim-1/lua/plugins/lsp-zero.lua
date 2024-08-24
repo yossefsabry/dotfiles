@@ -4,6 +4,7 @@ return {
         "VonHeikemen/lsp-zero.nvim",
         branch = "v3.x",
         lazy = true,
+        event = "BufReadPre",
         config = false,
         init = function()
             -- Disable automatic setup, we are doing it manually

@@ -40,11 +40,6 @@ map("n", "L", "<cmd>tabn<CR>", { desc = "go to next tab" })
 map("n", "H", "<cmd>tabp<CR>", { desc = "go to prev tab" })
 map("n", "<leader>tf", "<cmd>tabnew %<CR>", { desc = "open current buffer in new tab" })
 
--- telescope
-map("n", "<leader>fs", "<cmd>Telescope find_files<cr>", { desc = "fuzzy find files in cwd" })
-map("n", "<leader>r", "<cmd>Telescope oldfiles<cr>", { desc = "fuzzy find recent files" })
-map("n", "<leader>fg", "<cmd>Telescope live_grep<cr>", { desc = "find string in cwd" })
-
 -- lsp Config rempap
 map('n', 'K', '<cmd>lua vim.lsp.buf.hover()<cr>', { desc = " show info  " })
 map('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<cr>', { desc = " go definition " })
@@ -66,4 +61,9 @@ map("n", "<A-r>c", ":RunClose<CR>", {desc = "run close"})
 map("n", "<A-r>cp", ":CRProjects<CR>", {desc = "run project"})
 
 -- next greatest remap ever : asbjornHaland
+vim.keymap.set({ "n", "v" }, "<leader>y", [["+y]])
+vim.keymap.set("n", "<leader>Y", [["+Y]])
 
+vim.keymap.set({ "n", "v" }, "<leader>d", [["_d]])
+
+vim.keymap.set("n", "Q", "<nop>")

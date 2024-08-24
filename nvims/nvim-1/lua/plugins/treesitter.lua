@@ -1,6 +1,7 @@
 return {
   "nvim-treesitter/nvim-treesitter",
   lazy = true,
+  event = "BufRead",
   Cmd = { "TSInstall", "TSUpdate" }, -- Load the plugin when the TSInstall command is used
   build = ":TSUpdate",
   config = function()
