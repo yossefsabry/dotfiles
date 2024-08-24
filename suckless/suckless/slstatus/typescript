@@ -1,0 +1,23 @@
+Script started on 2024-08-21 23:52:33+00:00 [TERM="xterm-kitty" TTY="/dev/pts/1" COLUMNS="106" LINES="25"]
+[?7l[1m[36m       /\         [35myossef@archlinux[0m 
+[1m[36m[36m      /  \        [34mos[0m     Arch Linux
+[1m[36m[36m     /\   \       [34mhost[0m   Latitude E6540 00
+[1m[36m[34m    /      \      [34mkernel[0m 6.10.2-arch1-1
+[1m[34m[34m   /   ,,   \     [34muptime[0m 3h 42m
+[1m[34m[34m  /   |  |  -\    [34mpkgs[0m   1900
+[1m[34m[34m /_-''    ''-_\   [34mmemory[0m 2322M / 7847M
+
+[?7h[1m[7m%[27m[1m[0m                                                                                                          ]2;yossef@archlinux:~/suckless/slstatus]1;..less/slstatus]7;file://archlinux/home/yossef/suckless/slstatus\[0m[27m[24m[J[01;32m➜  [36mslstatus[00m [K[?1h[?2004h[0m[27m[24m[J[01;32m➜  [36mslstatus[00m [01;34mgit:([31mmain[34m) [33m✗[00m [Ksscc[?2004l
+[1m[7m%[27m[1m[0m                                                                                                          ]2;yossef@archlinux:~/suckless/slstatus]1;..less/slstatus]7;file://archlinux/home/yossef/suckless/slstatus\[0m[27m[24m[J[01;31m➜  [36mslstatus[00m [01;34mgit:([31mmain[34m) [33m✗[00m [K[?1h[?2004hcclear[?1l[?2004l
+]2;clear]1;clear[H[2J[1m[7m%[27m[1m[0m                                                                                                          ]2;yossef@archlinux:~/suckless/slstatus]1;..less/slstatus]7;file://archlinux/home/yossef/suckless/slstatus\[0m[27m[24m[J[01;32m➜  [36mslstatus[00m [01;34mgit:([31mmain[34m) [33m✗[00m [K[?1h[?2004hsscripts[?1l[?2004l
+]2;cd /home/yossef/dotfiles/scripts]1;scripts[1m[7m%[27m[1m[0m                                                                                                          ]2;yossef@archlinux:~/dotfiles/scripts]1;..files/scripts]7;file://archlinux/home/yossef/dotfiles/scripts\[0m[27m[24m[J[01;32m➜  [36mscripts[00m [01;34mgit:([31mmain[34m) [33m✗[00m [K[?1h[?2004hcclear[?1l[?2004l
+]2;clear]1;clear[H[2J[1m[7m%[27m[1m[0m                                                                                                          ]2;yossef@archlinux:~/dotfiles/scripts]1;..files/scripts]7;file://archlinux/home/yossef/dotfiles/scripts\[0m[27m[24m[J[01;32m➜  [36mscripts[00m [01;34mgit:([31mmain[34m) [33m✗[00m [K[?1h[?2004hlls[?1l[?2004l
+]2;ls -ah --color=always]1;ls [0m[01;34m.[0m                      [01;32mbg-screen[0m          [01;32minstall-apt[0m     [01;32mobs-recording[0m           [01;32mtoggle_touchpad[0m
+ [01;34m..[0m                     [01;32mbg-screen2[0m         [01;32minstallFonts[0m    [01;32mrecordScreen[0m            [01;32mtoggle_tty[0m
+[01;34m'~'[0m                     [01;32mbluetooth-status[0m   [01;32mlang[0m            [01;32mredshift-status[0m         [01;32mupdateAudio[0m
+ [01;32maddNote[0m                [01;32mbright[0m             [01;32mmanga[0m           [01;32mSharingFilesPcToPhone[0m   [01;32myti[0m
+ [01;32malacritty-scratchpad[0m   [01;32mfm6000[0m             [01;32mmusic-status[0m    [01;32mshowMusic[0m
+ [01;32maudio[0m                  [01;32mhandle-wheel.sh[0m    [01;32mnvim_switcher[0m   [01;32msnap-sync-todo[0m
+[1m[7m%[27m[1m[0m                                                                                                          ]2;yossef@archlinux:~/dotfiles/scripts]1;..files/scripts]7;file://archlinux/home/yossef/dotfiles/scripts\[0m[27m[24m[J[01;32m➜  [36mscripts[00m [01;34mgit:([31mmain[34m) [33m✗[00m [K[?1h[?2004hcclear[?1l[?2004l
+]2;clear]1;clear[H[2J[1m[7m%[27m[1m[0m                                                                                                          ]2;yossef@archlinux:~/dotfiles/scripts]1;..files/scripts]7;file://archlinux/home/yossef/dotfiles/scripts\[0m[27m[24m[J[01;32m➜  [36mscripts[00m [01;34mgit:([31mmain[34m) [33m✗[00m [K[?1h[?2004h
+Script done on 2024-08-21 23:52:43+00:00 [COMMAND_EXIT_CODE="0"]
