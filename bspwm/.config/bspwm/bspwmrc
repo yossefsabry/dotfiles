@@ -28,3 +28,10 @@ bspc rule -a Postman desktop='^6'
 bspc rule -a Youtube Music desktop='^6'
 bspc rule -a MongoDB Compass desktop='^6'
 bspc rule -a Gimp desktop='^7'
+
+# kitty scratchpad
+bspc rule -a scpad sticky=on state=floating center=on rectangle=1500x800+400+300
+bspc rule -a scpadYazi sticky=on state=floating center=on rectangle=1500x900+400+300
+bspc rule -a scpadBtop sticky=on state=floating center=on rectangle=1500x1000+400+300
+bspc rule -a scpadMusic sticky=on state=floating center=on rectangle=1200x900+400+300
+

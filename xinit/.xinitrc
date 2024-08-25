@@ -11,7 +11,7 @@ exec feh --bg-center --bg-scale ~/dotfiles/background/image5.png &
 # exec picom &
 
 # bspwm {{{
-exec bspwm > ~/.bspwm.log 2>&1  
+# exec bspwm > ~/.bspwm.log 2>&1  
 #: }}}
 
 # dwm {{{
@@ -24,6 +24,6 @@ exec bspwm > ~/.bspwm.log 2>&1
 #:}}}
 
 # :i3 {{{
-# exec i3 > ~/.i3.log 2>&1 
+exec i3 > ~/.i3.log 2>&1 
 # :}}}
 

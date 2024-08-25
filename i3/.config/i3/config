@@ -174,7 +174,7 @@ for_window [class="kitty" instance ="scratchYazi"] floating enable
 for_window [class="kitty" instance ="scratchYazi"] scratchpad show
 for_window [class="kitty" instance ="scratchYazi"] move position center
 for_window [class="kitty" instance ="scratchYazi"] move scratchpad
-for_window [class="kitty" instance ="scratchYazi"] resize set 1200 800
+for_window [class="kitty" instance ="scratchYazi"] resize set 1500 1000
 for_window [class="kitty" instance="scratchYazi"] border pixel 1
 exec --no-startup-id kitty --name scratchYazi --override font_size=18 -e yazi
 bindsym $mod+y [class="kitty" instance ="scratchYazi"]  scratchpad show;  move position center
@@ -184,7 +184,7 @@ for_window [class="kitty" instance ="scratchTerm"] floating enable
 for_window [class="kitty" instance ="scratchTerm"] scratchpad show
 for_window [class="kitty" instance ="scratchTerm"] move position center
 for_window [class="kitty" instance ="scratchTerm"] move scratchpad
-for_window [class="kitty" instance ="scratchTerm"] resize set 900 600
+for_window [class="kitty" instance ="scratchTerm"] resize set 1200 800
 for_window [class="kitty" instance="scratchTerm"] border pixel 1
 exec --no-startup-id kitty --name scratchTerm --override font_size=18
 bindsym $mod+u [class="kitty" instance ="scratchTerm"]  scratchpad show;  move position center
@@ -194,7 +194,7 @@ for_window [class="kitty" instance ="scratchBtop"] floating enable
 for_window [class="kitty" instance ="scratchBtop"] scratchpad show
 for_window [class="kitty" instance ="scratchBtop"] move position center
 for_window [class="kitty" instance ="scratchBtop"] move scratchpad
-for_window [class="kitty" instance ="scratchBtop"] resize set 1200 800
+for_window [class="kitty" instance ="scratchBtop"] resize set 1500 1000
 for_window [class="kitty" instance="scratchBtop"] border pixel 1
 exec --no-startup-id kitty --name scratchBtop --override font_size=18 -e btop
 bindsym $mod+i [class="kitty" instance ="scratchBtop"]  scratchpad show;  move position center
@@ -204,7 +204,7 @@ for_window [class="kitty" instance ="scratchSong"] floating enable
 for_window [class="kitty" instance ="scratchSong"] scratchpad show
 for_window [class="kitty" instance ="scratchSong"] move position center
 for_window [class="kitty" instance ="scratchSong"] move scratchpad
-for_window [class="kitty" instance ="scratchSong"] resize set 1200 800
+for_window [class="kitty" instance ="scratchSong"] resize set 1500 1000
 for_window [class="kitty" instance="scratchSong"] border pixel 1
 exec --no-startup-id kitty --name scratchSong --override font_size=18 -e ncmpcpp
 bindsym $mod+o [class="kitty" instance ="scratchSong"]  scratchpad show;  move position center
