@@ -6,8 +6,9 @@ exec setxkbmap -layout us,ara -variant ,digits grp:win_space_toggle caps:none &
 # set the sxhkd
 exec sxhkd &
 exec unclutter -idle 0 & # for hide the mouse
-exec dunst &
 exec feh --bg-center --bg-scale ~/dotfiles/background/image5.png &
+exec flameshot &
+exec dunst &
 # exec picom &
 
 # bspwm {{{

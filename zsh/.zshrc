@@ -345,12 +345,6 @@ if [ -z "$DISPLAY" ]; then
     setfont /usr/share/kbd/consolefonts/ter-132b.psf.gz
 fi
 
-# for change the cursor shape to | in nvim and tmux
-# if command -v tmux >/dev/null 2>&1; then
-#     if [ "$(tmux ls 2>/dev/null | grep -c 'attached')" -gt 0 ]; then
-#         printf '\033[6 q'
-#     fi
-# fi
 
 #
 # setting some default apps

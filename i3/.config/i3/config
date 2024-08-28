@@ -149,6 +149,7 @@ bindsym $mod+Shift+0 move container to workspace number $ws10
 # assign software to specific workspace
 #workspace 1
 assign [class="firefox"] workspace 2
+assign [class="qutebrowser"] workspace 2
 # Workspace 3
 assign [class="discord"] workspace 3
 assign [class="Microsoft To-Do Unofficial"] workspace 3
@@ -184,7 +185,7 @@ for_window [class="kitty" instance ="scratchTerm"] floating enable
 for_window [class="kitty" instance ="scratchTerm"] scratchpad show
 for_window [class="kitty" instance ="scratchTerm"] move position center
 for_window [class="kitty" instance ="scratchTerm"] move scratchpad
-for_window [class="kitty" instance ="scratchTerm"] resize set 1200 800
+for_window [class="kitty" instance ="scratchTerm"] resize set 1200 00
 for_window [class="kitty" instance="scratchTerm"] border pixel 1
 exec --no-startup-id kitty --name scratchTerm --override font_size=18
 bindsym $mod+u [class="kitty" instance ="scratchTerm"]  scratchpad show;  move position center

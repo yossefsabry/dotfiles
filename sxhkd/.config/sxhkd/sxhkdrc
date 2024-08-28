@@ -15,19 +15,19 @@ alt + p
 super + {Up, Down}
    /home/$USER/dotfiles/scripts/bright {up, down}
 
-# takking screen shot
-End
-   scrot -s /home/$USER/Media/Images/scrot1_$(date +%s).png -e 'xclip -selection clipboard -t image/png -i $f && rm $f'
-
-# taking screenshot and save it
-Insert
-   scrot /home/$USER/Media/Images/scrot2_$(date +%s).png -e 'xclip -selection clipboard -t image/png -i $f'
+# # takking screen shot
+# End
+#    scrot -s /home/$USER/Media/Images/scrot1_$(date +%s).png -e 'xclip -selection clipboard -t image/png -i $f && rm $f'
+#
+# # taking screenshot and save it
+# Insert
+#    scrot /home/$USER/Media/Images/scrot2_$(date +%s).png -e 'xclip -selection clipboard -t image/png -i $f'
 
 # starting recording for obs
 super + F10
    obs-recording
 
-# togglj lang
+# toggle lang
 super + space
    lang
 
