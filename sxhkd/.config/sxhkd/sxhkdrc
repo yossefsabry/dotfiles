@@ -23,6 +23,10 @@ super + {Up, Down}
 # Insert
 #    scrot /home/$USER/Media/Images/scrot2_$(date +%s).png -e 'xclip -selection clipboard -t image/png -i $f'
 
+# flameshot screen shott 
+super + s
+    flameshot gui
+
 # starting recording for obs
 super + F10
    obs-recording
