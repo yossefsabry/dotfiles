@@ -19,6 +19,7 @@ config.load_autoconfig(False)
 # aliases, while the values are the commands they map to.
 # Type: Dict
 c.aliases = {'q': 'quit', 'w': 'session-save', 'wq': 'quit --save'}
+config.bind('jk', 'mode-leave', mode='insert')
 
 # Setting dark mode
 config.set("colors.webpage.darkmode.enabled", True)
@@ -221,6 +222,10 @@ c.url.searchengines = {
     'wiki': 'https://en.wikipedia.org/wiki/{}',
 }
 
+# Set the clipboard copy and paste commands
+# content.javascript.can_access_clipboard true
+# config.set('content.javascript.can_access_clipboard', True)
+
 # Text color of the completion widget. May be a single color to use for
 # all columns or a list of three colors, one for each column.
 # Type: List of QtColor, or QtColor
@@ -354,7 +359,7 @@ c.colors.tabs.pinned.selected.even.bg = '#282c34'
 # font setting, it's replaced with the fonts listed here. If set to an
 # empty value, a system-specific monospace default is used.
 # Type: List of Font, or Font
-c.fonts.default_family = '"Source Code Pro"'
+c.fonts.default_family = '"FiraMono Nerd Font Propo"'
 
 # Default font size to use. Whenever "default_size" is used in a font
 # setting, it's replaced with the size listed here. Valid values are
@@ -365,19 +370,19 @@ c.fonts.default_size = '11pt'
 
 # Font used in the completion widget.
 # Type: Font
-c.fonts.completion.entry = '11pt "Source Code Pro"'
+c.fonts.completion.entry = '11pt "FiraMono Nerd Font Propo"'
 
 # Font used for the debugging console.
 # Type: Font
-c.fonts.debug_console = '11pt "Source Code Pro"'
+c.fonts.debug_console = '11pt "FiraMono Nerd Font Propo"'
 
 # Font used for prompts.
 # Type: Font
-c.fonts.prompts = 'default_size sans-serif'
+c.fonts.prompts = '11pt "FiraMono Nerd Font Propo"'
 
 # Font used in the statusbar.
 # Type: Font
-c.fonts.statusbar = '11pt "Source Code Pro"'
+c.fonts.statusbar = '11pt "FiraMono Nerd Font Propo"'
 
 # Bindings for normal mode
 config.bind('M', 'hint links spawn mpv {hint-url}')

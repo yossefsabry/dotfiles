@@ -9,7 +9,7 @@ exec unclutter -idle 0 & # for hide the mouse
 exec feh --bg-center --bg-scale ~/dotfiles/background/image5.png &
 exec flameshot &
 exec dunst &
-# exec picom &
+exec picom &
 
 # bspwm {{{
 # exec bspwm > ~/.bspwm.log 2>&1  
@@ -28,3 +28,6 @@ exec dunst &
 exec i3 > ~/.i3.log 2>&1 
 # :}}}
 
+# :hyprland {{{
+# exec Hyprland > ~/.hyprland.log 2>&1 
+# :}}}

@@ -185,7 +185,7 @@ for_window [class="kitty" instance ="scratchTerm"] floating enable
 for_window [class="kitty" instance ="scratchTerm"] scratchpad show
 for_window [class="kitty" instance ="scratchTerm"] move position center
 for_window [class="kitty" instance ="scratchTerm"] move scratchpad
-for_window [class="kitty" instance ="scratchTerm"] resize set 1200 00
+for_window [class="kitty" instance ="scratchTerm"] resize set 1200 700
 for_window [class="kitty" instance="scratchTerm"] border pixel 1
 exec --no-startup-id kitty --name scratchTerm --override font_size=18
 bindsym $mod+u [class="kitty" instance ="scratchTerm"]  scratchpad show;  move position center
