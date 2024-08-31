@@ -255,6 +255,7 @@ status_command i3status -c ~/.config/i3/i3status.conf
         separator   #26233a 
     }
 }
+
 bindsym $mod+n bar mode toggle 
 
 # Start i3bar to display a workspace bar (plus the system information i3status

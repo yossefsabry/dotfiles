@@ -1,68 +1,96 @@
 * {
-  font-family: "Fira Code";
+    font-family: "FiraMono Nerd Font Propo";
+    font-weight: bold;
+    font-size: 14px;
 }
 
-#waybar {
-  background: #171717;
-  color: #fff;
+window#waybar {
+    border-radius: 35px;
+    padding: 0 10px;
+    color: #cdd6f4; /* Rose Pine Text */
+    background: rgba(31, 29, 46, 0.3);
+    border: 1px solid  rgba(245, 194, 231, 0.2);
 }
 
-#clock {
-  color: #fff;
+tooltip {
+    border-radius: 10px;
+    border-width: 2px;
+    border-style: solid;
+    border-color: #2e2c3b; /* Rose Pine Border */
 }
 
-#tray {
-  padding-left: 4px;
-}
-
-#workspaces button:hover {
-  background-color: transparent;
+tooltip label {
+    color: #cdd6f4; /* Rose Pine Text */
 }
 
 #workspaces button {
-  color: #737373;
-  padding-left: 4px;
-  padding-right: 4px;
-  border-radius: 0px;
-}
-
-#workspaces button:hover {
-  background-color: #262626;
+    padding: 5px;
+    color: #cdd6f4; /* Rose Pine Text */
+    margin-right: 5px;
 }
 
 #workspaces button.active {
-  color: #84cc16;
+    color: #f5c2e7; /* Rose Pine Pink */
 }
 
-#window {
-  color: #fff;
+#workspaces button.focused {
+    color: #f5c2e7; /* Rose Pine Pink */
 }
 
-#network {
-  color: #3b82f6;
-  margin-right: 8px;
+#workspaces button.urgent {
+    color: #f38ba8; /* Rose Pine Red */
 }
 
-#pulseaudio {
-  color: #14b8a6;
-  margin-right: 4px;
+#workspaces button:hover {
+    color: #cdd6f4; /* Rose Pine Text */
 }
 
-#cpu {
-  color: #0ea5e9;
-  margin-right: 4px;
+#custom-weather,
+#custom-myhyprv,
+#window,
+#clock,
+#battery,
+#network,
+#tray,
+#temperature,
+#cpu,
+#memory,
+#backlight {
+    padding: 0px 8px;
+    margin: 3px;
+    color: #cdd6f4; /* Rose Pine Text */
 }
 
-#temperature {
-  color: #eab308;
-  margin-right: 4px;
+#pulseaudio,
+#pulseaudio2,
+#cpu,
+#disk,
+#custom-updates,
+#memory,
+#custom-lock_screen,
+#custom-light_dark,
+#custom-power_btn,
+#custom-power_profile {
+    padding: 0px 8px;
+    margin: 3px;
+    border-radius: 15px;
+    opacity: 0.9;
+    color: #cdd6f4; /* Rose Pine Text */
 }
 
-#memory {
-  color: #d946ef;
-  margin-right: 4px;
+#workspaces {
+    padding: 0px;
+    margin: 3px;
+    opacity: 0.9;
 }
 
-#custom-powermenu {
-  color: #f43f5e;
+#cava {
+    font-family: "FiraMono Nerd Font Propo";
+    font-weight: 200;
+    padding: 8px 8px;
+    margin: 6px;
+    border-radius: 15px;
+    opacity: 0.9;
+    color: #cdd6f4; /* Rose Pine Text */
 }
+

@@ -1,5 +1,7 @@
 #!/bin/sh
 
+cd ~
+
 # set the keyboard layout adding arabic and englisht and disable caps and and 
 #toggle between them with win+space
 exec setxkbmap -layout us,ara -variant ,digits grp:win_space_toggle caps:none &
@@ -29,5 +31,5 @@ exec i3 > ~/.i3.log 2>&1
 # :}}}
 
 # :hyprland {{{
-# exec Hyprland > ~/.hyprland.log 2>&1 
+# exec /usr/bin/Hyprland > ~/.Hyprland.log 2>&1 
 # :}}}
