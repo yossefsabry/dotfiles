@@ -225,6 +225,9 @@ c.url.searchengines = {
 # Set the clipboard copy and paste commands
 # content.javascript.can_access_clipboard true
 # config.set('content.javascript.can_access_clipboard', True)
+# Use the system clipboard for copy and paste operations
+# c.content.paste_on_middle = True  # Enable pasting when middle-clicking
+c.content.javascript.clipboard = "access"     # access to "no-access" or "access-paste" as needed
 
 # Text color of the completion widget. May be a single color to use for
 # all columns or a list of three colors, one for each column.
