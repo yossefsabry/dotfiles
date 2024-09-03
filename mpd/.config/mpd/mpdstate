@@ -1,39 +1,50 @@
-sw_volume: 96
+sw_volume: 100
 audio_device_state:1:pulse audio
 audio_device_state:1:my_fifo
-state: stop
-current: 13
+state: play
+current: 34
+time: 125.079000
 random: 0
 repeat: 1
-single: 0
+single: 1
 consume: 0
 crossfade: 5
 mixrampdb: 0.000000
 mixrampdelay: -1.000000
 playlist_begin
-0:Starboy - The Weeknd, Daft Punk.m4a
-1:Party Monster - The Weeknd.m4a
-2:False Alarm - The Weeknd.m4a
-3:Reminder - The Weeknd.m4a
-4:Rockin’ - The Weeknd.m4a
-5:Secrets - The Weeknd.m4a
-6:True Colors - The Weeknd.m4a
-7:Stargirl Interlude - The Weeknd, Lana Del Rey.m4a
-8:Sidewalks - The Weeknd, Kendrick Lamar.m4a
-9:Six Feet Under - The Weeknd.m4a
-10:Love To Lay - The Weeknd.m4a
-11:A Lonely Night - The Weeknd.m4a
-12:Attention - The Weeknd.m4a
-13:Ordinary Life - The Weeknd.m4a
-14:Nothing Without You - The Weeknd.m4a
-15:All I Know - The Weeknd, Future.m4a
-16:Die For You - The Weeknd.m4a
-17:I Feel It Coming - The Weeknd, Daft Punk.m4a
-18:D.O.D - So Much In Love (Official Music Video).mp3
-19:METAMORPHOSIS 3 (Sped Up).mp3
-20:METAMORPHOSIS 3.mp3
-21:Fluxxwave (Sped Up) - Clovis Reyes.m4a
-22:Fluxxwave - Clovis Reyes.m4a
-23:Funk of the Damned - SXID.m4a
-24:Slow Low - Jason Derulo.m4a
+0:Party Monster - The Weeknd.m4a
+1:False Alarm - The Weeknd.m4a
+2:Reminder - The Weeknd.m4a
+3:Rockin’ - The Weeknd.m4a
+4:Secrets - The Weeknd.m4a
+5:True Colors - The Weeknd.m4a
+6:Stargirl Interlude - The Weeknd, Lana Del Rey.m4a
+7:Sidewalks - The Weeknd, Kendrick Lamar.m4a
+8:Six Feet Under - The Weeknd.m4a
+9:Love To Lay - The Weeknd.m4a
+10:A Lonely Night - The Weeknd.m4a
+11:Attention - The Weeknd.m4a
+12:Ordinary Life - The Weeknd.m4a
+13:Nothing Without You - The Weeknd.m4a
+14:All I Know - The Weeknd, Future.m4a
+15:Die For You - The Weeknd.m4a
+16:I Feel It Coming - The Weeknd, Daft Punk.m4a
+17:D.O.D - So Much In Love (Official Music Video).mp3
+18:METAMORPHOSIS 3 (Sped Up).mp3
+19:Fluxxwave (Sped Up) - Clovis Reyes.m4a
+20:Fluxxwave - Clovis Reyes.m4a
+21:Funk of the Damned - SXID.m4a
+22:Slow Low - Jason Derulo.m4a
+23:LVNDSCAPE & Mathieu Koss - Say It A Little Louder (Official Audio).mp3
+24:SOFI TUKKER - Larry Bird feat. Tuck's Dad (J. Worra Remix) (Visualizer) [Ultra Records].mp3
+25:Sigala, Gabry Ponte, Alex Gaudino - Rely On Me (Audio).mp3
+26:Shane Codd - It Ain't Right (Official Audio).mp3
+27:So Close.mp3
+28:Call Out My Name - The Weeknd.m4a
+29:Montagem Mysterious Game - LXNGVX.m4a
+30:MONTAGEM DIAMANTE ROSA - SLOWED - vtze archive.m4a
+31:Calm Down (with Selena Gomez) - Rema, Selena Gomez.m4a
+32:Good Vibe.mp3
+33:Gryffin & LOVA - Piece Of Me (Official Video).mp3
+34:Safe.mp3
 playlist_end
