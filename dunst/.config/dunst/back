@@ -23,7 +23,7 @@ horizontal_padding = 8
 # Width of frame around window
 frame_width = 1
 # Color of frame around window
-frame_color = "#c4a7e7"  # Rose Pine highlight color (revised to a new shade)
+frame_color = "#eb6f92"  # Rose Pine highlight color
 # Sort messages by urgency
 sort = yes
 # Idle seconds
@@ -116,28 +116,28 @@ close_all = ctrl+shift+space
 [urgency_normal]
 
 # Normal urgency notifications
-background = "#2a2a3e"  # Darker shade for base color
-foreground = "#d6cadd"  # Lighter shade for text color
+background = "#1f1d2e"  # Rose Pine base color
+foreground = "#e0def4"  # Rose Pine text color
 timeout = 5
 
 [urgency_critical]
 
 # High urgency notifications
-background = "#ff9a8b"  # New highlight color
-foreground = "#2a2a3e"  # Darker base color
+background = "#eb6f92"  # Rose Pine highlight color
+foreground = "#1f1d2e"  # Rose Pine base color
 timeout = 0
 
 [urgency_success]
 
 # Success notifications
-background = "#a0d8ef"  # New success color
-foreground = "#2a2a3e"  # Darker base color
+background = "#9ccfd8"  # Rose Pine Pine color (success)
+foreground = "#1f1d2e"  # Rose Pine base color
 timeout = 5
 
 [urgency_failure]
 
 # Failure notifications
-background = "#ff6f6f"  # New failure color
-foreground = "#2a2a3e"  # Darker base color
+background = "#eb6f92"  # Rose Pine Love color (failure)
+foreground = "#1f1d2e"  # Rose Pine base color
 timeout = 5
 
