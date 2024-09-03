@@ -82,9 +82,11 @@ keymap("v", "<", "<gv", term_opts)
 keymap("v", ">", ">gv", term_opts)
 
 -- Move text up and down in visual mode
-keymap("v", "<A-j>", ":m .+1<CR>==", term_opts)
-keymap("v", "<A-k>", ":m .-2<CR>==", term_opts)
+keymap("v", "<A-k>", ":m .-2<CR>", term_opts)
+keymap("v", "<A-j>", ":m .+1<CR>", term_opts)
 keymap("v", "p", '"_dP', term_opts)
+-- Move selected lines down
+
 
 -- Visual block mode mappings
 keymap("x", "J", ":move '>+1<CR>gv-gv", term_opts)
@@ -106,9 +108,7 @@ vim.keymap.set("n", "<c-l>", ":wincmd l<CR>", term_opts)
 
 -- insert mode
 keymap("i", "jk", "<Esc>", { noremap = true, silent = true })
-keymap("i", "kj", "<Esc>", { noremap = true, silent = true })
 keymap("i", "JK", "<Esc>", { noremap = true, silent = true })
-keymap("i", "KJ", "<Esc>", { noremap = true, silent = true })
 
 -- disabkeymapys in insert mode ---
 keymap("i", "<left>", "<nop>", term_opts)
