@@ -13,7 +13,7 @@ static const char dmenufont[]       = "FiraMono Nerd Font Propo:size=9";
 static const char col_gray1[]       = "#191724";
 static const char col_gray2[]       = "#d3ccd9";
 static const char col_gray3[]       = "#ffffff";
-static const char col_cyan[]        = "#ebbcba"; /* for color for the select number from bar menu 1, 3, 4, 5*/
+static const char col_cyan[]        = "#4b636a"; /* for color for the select number from bar menu 1, 3, 4, 5*/
 static const char col_gray4[]       = "#291c28";
 static const unsigned int baralpha = 0xaA834c2;
 static const unsigned int borderalpha = OPAQUE;
@@ -40,6 +40,7 @@ static const Rule rules[] = {
 	/* class                      instance                   title             tags mask    isfloating   monitor */
    {  NULL,                     NULL,                       NULL,             0,           0,           -1 },
    { "firefox",                 NULL,                       NULL,             1 << 1,      0,           -1 },
+   { "qutebrowser",             NULL,                       NULL,             1 << 1,      0,           -1 },
    { "discord",                 NULL,                       NULL,             1 << 2,      0,           -1 },
  { "Microsoft To-Do Unofficial",NULL,                       NULL,             1 << 2,      0,           -1 },
    { "obsidian",                NULL,                       NULL,             1 << 3,      0,           -1 },
@@ -86,7 +87,8 @@ static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont,
 static const char *termcmd[]  = { "/usr/bin/kitty", NULL };
 static const char scratchpadname[] = "scratchpad";
 static const char *scratchpadcmd[] = { "st", "-t", scratchpadname, "-g", "70x24", NULL };
-static const char *rofi[]  = { "rofi", "-show", "drun", "-theme", "~/.config/rofi/rose-pine.rasi", NULL };
+// using sxhkd
+/*static const char *rofi[]  = { "rofi", "-show", "drun", "-theme", "~/.config/rofi/rose-pine.rasi", NULL };*/
 
 static const Key keys[] = {
 	/* modifier                     key        function        argument */
