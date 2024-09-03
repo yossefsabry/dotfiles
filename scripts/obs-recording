@@ -1,5 +1,8 @@
 #!/bin/bash
 
+killall obs-cli &
+killall obs-recording &
+
 # Configuration
 OBS_HOST="localhost"
 OBS_PORT="4444"
@@ -23,7 +26,6 @@ IS_RECORDING=$(echo $RECORDING_STATUS | grep -o 'Recording: true')
 
 # Check if OBS is recording
 if [ -n "$IS_RECORDING" ]; then
-    echo "Recording"
     echo -e "\u25B6 Recording"  # This is a play icon
 else
     echo -e "\uf192 Stopped"  # This is a stop icon
