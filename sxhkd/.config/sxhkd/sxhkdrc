@@ -29,19 +29,19 @@ super + s
 
 # starting recording for obs
 super + F10
-   obs-recording
+   ~/dotfiles/scripts/obs-recording
 
 # toggle lang
 super + space
-   lang
+   ~/dotfiles/scripts/lang
 
 # toggle touchpad
 super + t
-    toggle_touchpad
+    ~/dotfiles/scripts/toggle_touchpad
 
 # change the redshift color for protect eye
 super + r
-    redshift-status
+    ~/dotfiles/scripts/redshift-status
 
 # make sxhkd reload its configuration files:
 super + Escape
