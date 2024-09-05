@@ -15,19 +15,19 @@ if [[ -f "$LOCK_FILE" ]]; then
     # Disable redshift
     rm -f "$LOCK_FILE"
     redshift -x
-    notify-send "disable: eye protect(redshift)"
+    #notify-send "disable: eye protect(redshift)"
     # Remove the lock file
   else
     # Lock file exists but redshift is not running with 3500K
     # This could mean redshift was stopped manually or not set to 3500K
     rm $LOCK_FILE
-    notify-send "disable: eye protect(redshift)"
+    #notify-send "disable: eye protect(redshift)"
     redshift -x
   fi
 else
   # If the lock file does not exist, redshift should be disabled
   # Enable redshift with a temperature of 3500K
-  notify-send "enable: eye protect(redshift)"
+  #notify-send "enable: eye protect(redshift)"
   redshift -O 3500K
   # Create the lock file
   touch "$LOCK_FILE"

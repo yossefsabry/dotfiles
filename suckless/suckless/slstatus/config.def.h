@@ -65,7 +65,7 @@ static const char unknown_str[] = "n/a";
  */
 static const struct arg args[] = {
     /* function format          argument */
-    {run_command, "[ %s ];", "~/dotfiles/scripts/obs-recording"},
+    {run_command, "[ %s ];", "echo fooo"},
     {run_command, "| lang: %s |", "~/dotfiles/scripts/lang"},
     {run_command, " %s |", "~/dotfiles/scripts/updateAudio"},
     {datetime, " %s |", " %a %b %r "},

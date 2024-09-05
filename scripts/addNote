@@ -17,14 +17,14 @@ add_note() {
   # Create the directory if it does not exist
   if ! mkdir -p "$notes_dir"; then
     echo "Error: Unable to create directory $notes_dir"
-    notify-send -u critical -h string:urgency:failure "Failure" "The operation failed"
+    #notify-send -u critical -h string:urgency:failure "Failure" "The operation failed"
     return 1
   fi
   
   # Check if the file already exists
   if [ -f "$file_path" ]; then
     echo "Error: File $file_path already exists"
-    notify-send -u critical -h string:urgency:failure "Failure" "The operation failed"
+    #notify-send -u critical -h string:urgency:failure "Failure" "The operation failed"
     return 1
   fi
   
@@ -44,14 +44,14 @@ EOL
   # Check if the file was created successfully
   if [ ! -f "$file_path" ]; then
     echo "Error: Unable to create file $file_path"
-    notify-send -u critical -h string:urgency:failure "Failure" "The operation failed"
+    #notify-send -u critical -h string:urgency:failure "Failure" "The operation failed"
     return 1
   fi
   
   # Open the file in Neovim
   nvim "$file_path"
-  notify-send "adding note: $file_path"
-  notify-send -u low -h string:urgency:success "Success" "adding note: $file_path":
+  #notify-send "adding note: $file_path"
+  #notify-send -u low -h string:urgency:success "Success" "adding note: $file_path":
 }
 
 # Function declaration check

@@ -22,10 +22,10 @@ downloadSong() {
 
     if [ $? -ne 0 ];then
         echo "=> error happend during downloading the song"
-        notify-send -u critical -h string:urgency:failure "Failure" "failded download"
+        #notify-send -u critical -h string:urgency:failure "Failure" "failded download"
         exit 1
     fi
-    notify-send -u low -h string:urgency:success "Success" "success download"
+    #notify-send -u low -h string:urgency:success "Success" "success download"
 }
 
 # Check arguments and call the function

@@ -17,10 +17,10 @@ toggle_touchpad() {
   DEVICE_ENABLED=$(xinput list-props "$DEVICE_ID" | grep "Device Enabled" | grep -o "[01]$")
   if [ "$DEVICE_ENABLED" -eq 1 ]; then
     xinput disable "$DEVICE_ID"
-    notify-send "Touchpad disabled"
+    #notify-send "Touchpad disabled"
   else
     xinput enable "$DEVICE_ID"
-    notify-send "Touchpad enabled"
+    #notify-send "Touchpad enabled"
   fi
   unclutter -idle 0  #for hide the mouse
 }

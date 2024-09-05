@@ -10,7 +10,7 @@ mpd_connection_timeout = "5"
 mpd_crossfade_time = "5"
 mpd_music_dir = ~/Music
 lyrics_directory  = ~/.config/ncmpcpp/lyrics
-execute_on_song_change  = "MediaControl nccover ; dunstify --replace=27072 -i /tmp/cover.png "Playing.." "$(mpc --format '%title% \n%artist%' current)""
+# execute_on_song_change  = "MediaControl nccover ; dunstify --replace=27072 -i /tmp/cover.png "Playing.." "$(mpc --format '%title% \n%artist%' current)""
 
 visualizer_data_source = /tmp/mpd.fifo
 visualizer_output_name = my_fifo
@@ -79,27 +79,3 @@ song_status_format = "$b$2󰣐 $7 {$b$6$8 %t $6} $7 $8"
 song_window_title_format = "Now Playing .."
 
 
-
-
-# Volume control
-def_key "+"
-  volume_up
-def_key "-"
-  volume_down
-
-# Quitting
-def_key "q"
-  quit
-
-def_key "k"
-  scroll_up
-def_key "j"
-  scroll_down
-def_key "l"
-  enter_directory
-def_key "h"
-  jump_to_parent_directory
-def_key "d"
-  delete_playlist_items
-def_key "d"
-  delete_stored_playlist

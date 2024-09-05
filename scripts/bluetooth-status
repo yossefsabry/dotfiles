@@ -15,7 +15,7 @@ connected_device=$(bluetoothctl devices Connected | awk '{$1=$2=""; print substr
 if [[ -n "$connected_device" ]]; then
     # If a device is connected, display "connect" and the first 5 characters of the device name
     echo "${connected_device:0:10}"
-    notify-send -u low -h string:urgency:success "Success" "connected: $connected_device"
+    #notify-send -u low -h string:urgency:success "Success" "connected: $connected_device"
 else
     # If Bluetooth is on but no device is connected
     echo "not connect"

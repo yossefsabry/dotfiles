@@ -22,27 +22,27 @@ vim_checker() {
     case "${option}" in
         1) 
             ln -svf "$dotfiles_path/nvim-1" "$config_path"
-            notify-send -u low -h string:urgency:string "Success" "switch: lazy default "
+            #notify-send -u low -h string:urgency:string "Success" "switch: lazy default "
             ;;
         2) 
             ln -svf "$dotfiles_path/nvim-2" "$config_path" 
-            notify-send -u low -h string:urgency:string "Success" "switch: lazy one file"
+            #notify-send -u low -h string:urgency:string "Success" "switch: lazy one file"
             ;;
         3) 
             ln -svf "$dotfiles_path/nvim-3" "$config_path" 
-            notify-send -u low -h string:urgency:string "Success" "switch: lazy custom"
+            #notify-send -u low -h string:urgency:string "Success" "switch: lazy custom"
             ;;
         4) 
             ln -svf "$dotfiles_path/nvim-4" "$config_path" 
-            notify-send -u low -h string:urgency:string "Success" "switch: astro nvim"
+            #notify-send -u low -h string:urgency:string "Success" "switch: astro nvim"
             ;;
         5) 
             ln -svf "$dotfiles_path/nvim-5" "$config_path" 
-            notify-send -u low -h string:urgency:string "Success" "switch: chad nvim"
+            #notify-send -u low -h string:urgency:string "Success" "switch: chad nvim"
             ;;
         *) 
             ln -svf "$dotfiles_path/nvim-1" "$config_path" 
-            notify-send -u low -h string:urgency:string "Success" "switch: lazy default"
+            #notify-send -u low -h string:urgency:string "Success" "switch: lazy default"
             ;;
     esac
 }
