@@ -10,6 +10,7 @@ exec sxhkd &
 exec unclutter -idle 0 & # for hide the mouse
 exec feh --bg-center --bg-scale ~/dotfiles/background/image4.jpg &
 exec flameshot &
+exec xset r rate 190 50 &
 exec picom &
 
 # bspwm {{{
