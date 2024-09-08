@@ -323,24 +323,38 @@ c.colors.statusbar.command.bg = '#282c34'
 c.colors.statusbar.url.warn.fg = 'yellow'
 
 # Background color of the tab bar.
-# Type: QssColor
-c.colors.tabs.bar.bg = '#1c1f34'
+# Background color of the tab bar
+c.colors.tabs.bar.bg = '#1f2335'
 
-# Background color of unselected odd tabs.
-# Type: QtColor
-c.colors.tabs.odd.bg = '#282c34'
+# Background color for odd tabs
+c.colors.tabs.odd.bg = '#2a2e38'
 
-# Background color of unselected even tabs.
-# Type: QtColor
-c.colors.tabs.even.bg = '#282c34'
+# Background color for even tabs
+c.colors.tabs.even.bg = '#2a2e38'
 
-# Background color of selected odd tabs.
-# Type: QtColor
-c.colors.tabs.selected.odd.bg = '#282c34'
+# Background color for the selected (active) odd tab
+c.colors.tabs.selected.odd.bg = '#3e4b5d'
 
-# Background color of selected even tabs.
-# Type: QtColor
-c.colors.tabs.selected.even.bg = '#282c34'
+# Background color for the selected (active) even tab
+c.colors.tabs.selected.even.bg = '#3e4b5d'
+
+# Text color for the selected (active) odd tab
+c.colors.tabs.selected.odd.fg = '#e0def4'
+
+# Text color for the selected (active) even tab
+c.colors.tabs.selected.even.fg = '#e0def4'
+
+# Text color for the inactive tabs
+c.colors.tabs.odd.fg = '#9ccfd8'
+c.colors.tabs.even.fg = '#9ccfd8'
+
+# Color for tabs with errors
+c.colors.tabs.indicator.error = '#ff5555'  # or any color you prefer
+
+# Color for the start and stop indicators
+c.colors.tabs.indicator.start = '#50fa7b'
+c.colors.tabs.indicator.stop = '#8be9fd'
+
 
 # Background color of pinned unselected odd tabs.
 # Type: QtColor
@@ -394,4 +408,8 @@ config.bind('t', 'cmd-set-text -s :open -t')
 config.bind('xb', 'config-cycle statusbar.show always never')
 config.bind('xt', 'config-cycle tabs.show always never')
 config.bind('xx', 'config-cycle statusbar.show always never;; config-cycle tabs.show always never')
+# Bind 'J' to move to the previous tab
+config.bind('J', 'tab-prev')
 
+# Bind 'K' to move to the next tab
+config.bind('K', 'tab-next')

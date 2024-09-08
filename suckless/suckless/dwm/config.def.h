@@ -47,6 +47,7 @@ static const Rule rules[] = {
    { "obsidian",                NULL,                       NULL,             1 << 3,      0,           -1 },
    { "Zathura",                 NULL,                       NULL,             1 << 3,      0,           -1 },
    { "Code",                    NULL,                       NULL,             1 << 3,      0,           -1 },
+   { "jetbrains-goland",        NULL,                       NULL,             1 << 3,      0,           -1 },
    { "Nemo",                    NULL,                       NULL,             1 << 4,      0,           -1 },
    { "QtSpim",                  NULL,                       NULL,             1 << 4,      0,           -1 },
    { "Zeal",                    NULL,                       NULL,             1 << 4,      0,           -1 },
