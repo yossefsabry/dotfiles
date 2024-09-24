@@ -14,7 +14,7 @@ M.ui = {
             end,
         }
     },
-    theme = "rosepine",
+    theme = "ayu_light",
 
     hl_override = {
         Comment = { italic = true },

@@ -14,7 +14,7 @@ if not vim.loop.fs_stat(lazypath) then
 end
 ---@diagnostic disable-next-line: undefined-global
 vim.opt.rtp:prepend(lazypath)
-require("vim-options")
+require("options")
 
 require("lazy").setup("plugins")
 
@@ -39,4 +39,7 @@ vim.api.nvim_create_autocmd({ "BufWinEnter" }, {
 
 -- adding color for the highlight line
 vim.cmd("highlight Visual guibg=#005b44 guifg=NONE")
+
+-- Set the color for the ColorColumn
+vim.cmd([[ highlight ColorColumn guibg=#3c3836 ]])
 

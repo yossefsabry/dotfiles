@@ -6,7 +6,8 @@ local lazypath = vim.fn.stdpath "data" .. "/lazy/lazy.nvim"
 
 if not vim.loop.fs_stat(lazypath) then
     local repo = "https://github.com/folke/lazy.nvim.git"
-    vim.fn.system { "git", "clone", "--filter=blob:none", repo, "--branch=stable", lazypath }
+    vim.fn.system { "git", "clone",
+        "--filter=blob:none", repo, "--branch=stable", lazypath }
 end
 
 vim.opt.rtp:prepend(lazypath)
@@ -51,3 +52,8 @@ vim.o.laststatus = 0
 vim.api.nvim_set_hl(0, "LineNrAbove", { fg = "#737373", bold = false })
 vim.api.nvim_set_hl(0, "LineNr", { fg = "#ffffff", bold = true })
 vim.api.nvim_set_hl(0, "LineNrBelow", { fg = "#737373", bold = false })
+
+-- Set the color for the ColorColumn
+vim.cmd([[ highlight ColorColumn guibg=#316860 ]])
+
+

@@ -5,6 +5,9 @@
 export ZSH="$HOME/.oh-my-zsh"
 export PATH="$HOME/.local/bin/:$PATH"
 alias edit="vim"
+export PGUSER=root
+export PGPASSWORD=yossef280
+export PGDATABASE=yossef280
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -163,6 +166,7 @@ alias .....='cd ../../../..'
 alias cdv="cd /home/$USER/.config/nvim"
 alias cd3d="cd /home/$USER/projects/c-projects/3d"
 alias cdg="cd /home/$USER/projects/go-projects/go-course"
+alias cdc="cd /home/$USER/projects/c-projects/c-course"
 alias notes="cd /home/$USER/notes"
 alias dotfiles="cd /home/$USER/dotfiles"
 alias scripts="cd /home/$USER/dotfiles/scripts"

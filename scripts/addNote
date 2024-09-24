@@ -31,10 +31,11 @@ add_note() {
   # Create the markdown file with the template
   cat <<EOL > "$file_path"
   ># path: $folder/$name.md
-  \`\`\`
-  - **fileName**: $name
-  - **Created on**: $timestamp
-  \`\`\`
+
+\`\`\`text
+- **fileName**: $name
+- **Created on**: $timestamp
+\`\`\`
 
   **continue**:[[]]
   **before**:[[]]

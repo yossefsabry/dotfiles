@@ -12,7 +12,6 @@ opt.shiftwidth = 4
 opt.expandtab = true
 opt.autoindent = true
 
-
 -- search settings
 opt.ignorecase = true
 opt.smartcase = true
@@ -48,4 +47,11 @@ opt.isfname:append("@-@")
 
 opt.updatetime = 50
 
+-- setting color in column 75
+vim.opt.colorcolumn = "75"
+
 opt.path:append('**')
+
+if vim.fn.has("nvim-0.10") == 1 then
+  vim.opt.smoothscroll = true
+end

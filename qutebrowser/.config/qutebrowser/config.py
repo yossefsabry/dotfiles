@@ -19,7 +19,7 @@ config.load_autoconfig(False)
 # aliases, while the values are the commands they map to.
 # Type: Dict
 c.aliases = {'q': 'quit', 'w': 'session-save', 'wq': 'quit --save'}
-config.bind('jk', 'mode-leave', mode='insert')
+config.bind('JK', 'mode-leave', mode='insert')
 
 # Setting dark mode
 config.set("colors.webpage.darkmode.enabled", True)

@@ -18,14 +18,14 @@ static const char col_gray4[]       = "#291c28";
 static const unsigned int baralpha = 0xb3;
 static const unsigned int borderalpha = OPAQUE;
 static const char *colors[][3]      = {
-	/*               fg         bg         border   */
-	[SchemeNorm] = { col_gray3, col_gray1, col_cyan },
-	[SchemeSel]  = { col_gray4, col_cyan,  col_gray2  },
+    /*               fg         bg         border   */
+    [SchemeNorm] = { col_gray3, col_gray1, col_cyan },
+    [SchemeSel]  = { col_gray4, col_cyan,  col_gray2  },
 };
 static const unsigned int alphas[][3]      = {
     /*               fg      bg        border*/
     [SchemeNorm] = { OPAQUE, baralpha, borderalpha },
-	[SchemeSel]  = { OPAQUE, baralpha, borderalpha },
+    [SchemeSel]  = { OPAQUE, baralpha, borderalpha },
 };
 
 /* tagging */
@@ -34,27 +34,28 @@ static const char *tags[] = { "I", "II", "III", "IV", "V", "VI", "VII", "VIII" }
 
 
 static const Rule rules[] = {
-	/* xprop(1):
-	 *	WM_CLASS(STRING) = instance, class
-	 *	WM_NAME(STRING) = title
-	 */
-	/* class                      instance                   title             tags mask    isfloating   monitor */
-   {  NULL,                     NULL,                       NULL,             0,           0,           -1 },
-   { "firefox",                 NULL,                       NULL,             1 << 1,      0,           -1 },
-   { "qutebrowser",             NULL,                       NULL,             1 << 1,      0,           -1 },
-   { "discord",                 NULL,                       NULL,             1 << 2,      0,           -1 },
- { "Microsoft To-Do Unofficial",NULL,                       NULL,             1 << 2,      0,           -1 },
-   { "obsidian",                NULL,                       NULL,             1 << 3,      0,           -1 },
-   { "Zathura",                 NULL,                       NULL,             1 << 3,      0,           -1 },
-   { "Code",                    NULL,                       NULL,             1 << 3,      0,           -1 },
-   { "jetbrains-goland",        NULL,                       NULL,             1 << 3,      0,           -1 },
-   { "Nemo",                    NULL,                       NULL,             1 << 4,      0,           -1 },
-   { "QtSpim",                  NULL,                       NULL,             1 << 4,      0,           -1 },
-   { "Zeal",                    NULL,                       NULL,             1 << 4,      0,           -1 },
-   { "Postman",                 NULL,                       NULL,             1 << 5,      0,           -1 },
-   { "YouTube Music",           NULL,                       NULL,             1 << 5,      0,           -1 },
-   { "MongoDB Compass",         NULL,                       NULL,             1 << 5,      0,           -1 },
-   { "Gimp",                    NULL,                       NULL,             1 << 6,      0,           -1 },
+    /* xprop(1):
+     *	WM_CLASS(STRING) = instance, class
+     *	WM_NAME(STRING) = title
+     */
+    /* class                      instance                   title             tags mask    isfloating   monitor */
+    {  NULL,                     NULL,                       NULL,             0,           0,           -1 },
+    { "firefox",                 NULL,                       NULL,             1 << 1,      0,           -1 },
+    { "qutebrowser",             NULL,                       NULL,             1 << 1,      0,           -1 },
+    { "discord",                 NULL,                       NULL,             1 << 2,      0,           -1 },
+    { "Microsoft To-Do Unofficial",NULL,                       NULL,             1 << 2,      0,           -1 },
+    { "mpv"                     ,NULL,                       NULL,             1 << 2,      0,           -1 },
+    { "obsidian",                NULL,                       NULL,             1 << 3,      0,           -1 },
+    { "Zathura",                 NULL,                       NULL,             1 << 3,      0,           -1 },
+    { "Code",                    NULL,                       NULL,             1 << 3,      0,           -1 },
+    { "jetbrains-goland",        NULL,                       NULL,             1 << 3,      0,           -1 },
+    { "Nemo",                    NULL,                       NULL,             1 << 4,      0,           -1 },
+    { "QtSpim",                  NULL,                       NULL,             1 << 4,      0,           -1 },
+    { "Zeal",                    NULL,                       NULL,             1 << 4,      0,           -1 },
+    { "Postman",                 NULL,                       NULL,             1 << 5,      0,           -1 },
+    { "YouTube Music",           NULL,                       NULL,             1 << 5,      0,           -1 },
+    { "MongoDB Compass",         NULL,                       NULL,             1 << 5,      0,           -1 },
+    { "Gimp",                    NULL,                       NULL,             1 << 6,      0,           -1 },
 };
 
 
@@ -66,19 +67,19 @@ static const int attachbelow = 1;    /* 1 means attach after the currently activ
 static const int lockfullscreen = 1; /* 1 will force focus on the fullscreen window */
 
 static const Layout layouts[] = {
-	/* symbol     arrange function */
-	{ "[]=",      tile },    /* first entry is default */
-	{ "><>",      NULL },    /* no layout function means floating behavior */
-	{ "[M]",      monocle },
+    /* symbol     arrange function */
+    { "[]=",      tile },    /* first entry is default */
+    { "><>",      NULL },    /* no layout function means floating behavior */
+    { "[M]",      monocle },
 };
 
 /* key definitions */
 #define MODKEY Mod1Mask
 #define TAGKEYS(KEY,TAG) \
-	{ MODKEY,                       KEY,      view,           {.ui = 1 << TAG} }, \
-	{ MODKEY|ControlMask,           KEY,      toggleview,     {.ui = 1 << TAG} }, \
-	{ MODKEY|ShiftMask,             KEY,      tag,            {.ui = 1 << TAG} }, \
-	{ MODKEY|ControlMask|ShiftMask, KEY,      toggletag,      {.ui = 1 << TAG} },
+{ MODKEY,                       KEY,      view,           {.ui = 1 << TAG} }, \
+    { MODKEY|ControlMask,           KEY,      toggleview,     {.ui = 1 << TAG} }, \
+    { MODKEY|ShiftMask,             KEY,      tag,            {.ui = 1 << TAG} }, \
+    { MODKEY|ControlMask|ShiftMask, KEY,      toggletag,      {.ui = 1 << TAG} },
 
 /* helper for spawning shell commands in the pre dwm-5.0 fashion */
 #define SHCMD(cmd) { .v = (const char*[]){ "/bin/sh", "-c", cmd, NULL } }
@@ -93,58 +94,58 @@ static const char *scratchpadcmd[] = { "st", "-t", scratchpadname, "-g", "70x24"
 /*static const char *rofi[]  = { "rofi", "-show", "drun", "-theme", "~/.config/rofi/rose-pine.rasi", NULL };*/
 
 static const Key keys[] = {
-	/* modifier                     key        function        argument */
-	/*{ MODKEY,                       XK_p,      spawn,          {.v = rofi } },*/
-	/*{ MODKEY,                       XK_Return, spawn,          {.v = termcmd } },*/
-	{ MODKEY,                       XK_y,  togglescratch,  {.v = scratchpadcmd } },
-	{ MODKEY,                       XK_b,      togglebar,      {0} },
-	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
-	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
-	{ MODKEY,                       XK_i,      incnmaster,     {.i = +1 } },
-	{ MODKEY,                       XK_d,      incnmaster,     {.i = -1 } },
-	{ MODKEY,                       XK_h,      setmfact,       {.f = -0.05} },
-	{ MODKEY,                       XK_l,      setmfact,       {.f = +0.05} },
-	{ MODKEY|ShiftMask,                       XK_Return, zoom,           {0} },
-	{ MODKEY,                       XK_Tab,    view,           {0} },
-	{ MODKEY,                       XK_w,      killclient,     {0} },
-	{ MODKEY,                       XK_t,      setlayout,      {.v = &layouts[0]} },
-	{ MODKEY,                       XK_f,      setlayout,      {.v = &layouts[1]} },
-	{ MODKEY,                       XK_m,      setlayout,      {.v = &layouts[2]} },
-	{ MODKEY,                       XK_space,  setlayout,      {0} },
-	{ MODKEY|ShiftMask,             XK_space,  togglefloating, {0} },
-	{ MODKEY,                       XK_0,      view,           {.ui = ~0 } },
-	{ MODKEY|ShiftMask,             XK_0,      tag,            {.ui = ~0 } },
-	{ MODKEY,                       XK_comma,  focusmon,       {.i = -1 } },
-	{ MODKEY,                       XK_period, focusmon,       {.i = +1 } },
-	{ MODKEY|ShiftMask,             XK_comma,  tagmon,         {.i = -1 } },
-	{ MODKEY|ShiftMask,             XK_period, tagmon,         {.i = +1 } },
-	TAGKEYS(                        XK_1,                      0)
-	TAGKEYS(                        XK_2,                      1)
-	TAGKEYS(                        XK_3,                      2)
-	TAGKEYS(                        XK_4,                      3)
-	TAGKEYS(                        XK_5,                      4)
-	TAGKEYS(                        XK_6,                      5)
-	TAGKEYS(                        XK_7,                      6)
-	TAGKEYS(                        XK_8,                      7)
-	TAGKEYS(                        XK_9,                      8)
-	{ MODKEY|ShiftMask,             XK_q,      quit,           {0} },
-	{ MODKEY|ControlMask|ShiftMask, XK_q,      quit,           {1} }, 
+    /* modifier                     key        function        argument */
+    /*{ MODKEY,                       XK_p,      spawn,          {.v = rofi } },*/
+    /*{ MODKEY,                       XK_Return, spawn,          {.v = termcmd } },*/
+    { MODKEY,                       XK_y,  togglescratch,  {.v = scratchpadcmd } },
+    { MODKEY,                       XK_b,      togglebar,      {0} },
+    { MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
+    { MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
+    { MODKEY,                       XK_i,      incnmaster,     {.i = +1 } },
+    { MODKEY,                       XK_d,      incnmaster,     {.i = -1 } },
+    { MODKEY,                       XK_h,      setmfact,       {.f = -0.05} },
+    { MODKEY,                       XK_l,      setmfact,       {.f = +0.05} },
+    { MODKEY|ShiftMask,                       XK_Return, zoom,           {0} },
+    { MODKEY,                       XK_Tab,    view,           {0} },
+    { MODKEY,                       XK_w,      killclient,     {0} },
+    { MODKEY,                       XK_t,      setlayout,      {.v = &layouts[0]} },
+    { MODKEY,                       XK_f,      setlayout,      {.v = &layouts[1]} },
+    { MODKEY,                       XK_m,      setlayout,      {.v = &layouts[2]} },
+    { MODKEY,                       XK_space,  setlayout,      {0} },
+    { MODKEY|ShiftMask,             XK_space,  togglefloating, {0} },
+    { MODKEY,                       XK_0,      view,           {.ui = ~0 } },
+    { MODKEY|ShiftMask,             XK_0,      tag,            {.ui = ~0 } },
+    { MODKEY,                       XK_comma,  focusmon,       {.i = -1 } },
+    { MODKEY,                       XK_period, focusmon,       {.i = +1 } },
+    { MODKEY|ShiftMask,             XK_comma,  tagmon,         {.i = -1 } },
+    { MODKEY|ShiftMask,             XK_period, tagmon,         {.i = +1 } },
+    TAGKEYS(                        XK_1,                      0)
+    TAGKEYS(                        XK_2,                      1)
+    TAGKEYS(                        XK_3,                      2)
+    TAGKEYS(                        XK_4,                      3)
+    TAGKEYS(                        XK_5,                      4)
+    TAGKEYS(                        XK_6,                      5)
+    TAGKEYS(                        XK_7,                      6)
+    TAGKEYS(                        XK_8,                      7)
+    TAGKEYS(                        XK_9,                      8)
+    { MODKEY|ShiftMask,             XK_q,      quit,           {0} },
+    { MODKEY|ControlMask|ShiftMask, XK_q,      quit,           {1} }, 
 };
 
 /* button definitions */
 /* click can be ClkTagBar, ClkLtSymbol, ClkStatusText, ClkWinTitle, ClkClientWin, or ClkRootWin */
 static const Button buttons[] = {
-	/* click                event mask      button          function        argument */
-	{ ClkLtSymbol,          0,              Button1,        setlayout,      {0} },
-	{ ClkLtSymbol,          0,              Button3,        setlayout,      {.v = &layouts[2]} },
-	{ ClkWinTitle,          0,              Button2,        zoom,           {0} },
-	{ ClkStatusText,        0,              Button2,        spawn,          {.v = termcmd } },
-	{ ClkClientWin,         MODKEY,         Button1,        movemouse,      {0} },
-	{ ClkClientWin,         MODKEY,         Button2,        togglefloating, {0} },
-	{ ClkClientWin,         MODKEY,         Button3,        resizemouse,    {0} },
-	{ ClkTagBar,            0,              Button1,        view,           {0} },
-	{ ClkTagBar,            0,              Button3,        toggleview,     {0} },
-	{ ClkTagBar,            MODKEY,         Button1,        tag,            {0} },
-	{ ClkTagBar,            MODKEY,         Button3,        toggletag,      {0} },
+    /* click                event mask      button          function        argument */
+    { ClkLtSymbol,          0,              Button1,        setlayout,      {0} },
+    { ClkLtSymbol,          0,              Button3,        setlayout,      {.v = &layouts[2]} },
+    { ClkWinTitle,          0,              Button2,        zoom,           {0} },
+    { ClkStatusText,        0,              Button2,        spawn,          {.v = termcmd } },
+    { ClkClientWin,         MODKEY,         Button1,        movemouse,      {0} },
+    { ClkClientWin,         MODKEY,         Button2,        togglefloating, {0} },
+    { ClkClientWin,         MODKEY,         Button3,        resizemouse,    {0} },
+    { ClkTagBar,            0,              Button1,        view,           {0} },
+    { ClkTagBar,            0,              Button3,        toggleview,     {0} },
+    { ClkTagBar,            MODKEY,         Button1,        tag,            {0} },
+    { ClkTagBar,            MODKEY,         Button3,        toggletag,      {0} },
 };
 

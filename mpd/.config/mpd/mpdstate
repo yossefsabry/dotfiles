@@ -1,9 +1,9 @@
-sw_volume: 98
+sw_volume: 100
 audio_device_state:1:pulse audio
 audio_device_state:1:my_fifo
 state: pause
-current: 43
-time: 122.585000
+current: 76
+time: 62.791000
 random: 0
 repeat: 1
 single: 1
@@ -144,4 +144,18 @@ playlist_begin
 129:Get Back (Alin Dimitriu Remix).mp3
 130:Gostan - Be Free.mp3
 131:Gryffin & LOVA - Piece Of Me (Official Video).mp3
+132:Dragonette, Sunnery James & Ryan Marciano feat. Bruno Martini (Cat Dealers Remix) - Summer Thing.mp3
+133:J. Worra - Check Out (feat. Leo Stannard) [Official Full Stream].mp3
+134:Lose It.mp3
+135:Lost Frequencies, Zonderling & Kelvin Jones - Love To Go.mp3
+136:The Heart Wants What It Wants - Selena Gomez.m4a
+137:Come and Get Your Love (Rerecorded Version) - Redbone.m4a
+138:Popular (with Playboi Carti & Madonna) - From The Idol Vol. 1 (Music from the HBO Original Series) - The Weeknd, Playboi Carti, Madonna.m4a
+139:Back To You - From 13 Reasons Why – Season 2 Soundtrack - Selena Gomez.m4a
+140:WANKELMUT & EMMA LOUISE - My Head Is A Jungle (Official Video).mp3
+141:SŸDE - Above The Clouds ft. Olivia Reid.mp3
+142:VASSY x Bingo Players x Disco Fries - Pieces (Official Music Video).mp3
+143:SONS OF MARIA - Where the rivers flow [Official].mp3
+144:Never Go Back (Robin Schulz Remix).mp3
+145:Mauve - So Good.mp3
 playlist_end

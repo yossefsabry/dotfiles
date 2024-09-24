@@ -5,21 +5,23 @@ end
 -- Define terminal key mapping options
 local term_opts = { noremap = true, silent = true, nowait = true }
 
-
 -- Set leader key
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
 -- netre custom
 vim.g.netrw_browse_split = 0
-vim.g.netrw_banner = 0
-vim.g.netrw_winsize = 0
+vim.g.netrw_banner = 1
+vim.g.netrw_winsize = 1
 vim.g.netrw_liststyle = 1
 
 -- Modes
 vim.opt.hlsearch = false -- disable search highlight
 vim.opt.incsearch = true
 vim.opt.guicursor = ""
+
+-- setting color in column 75
+vim.opt.colorcolumn = "75"
 
 vim.opt.nu = true
 vim.opt.relativenumber = true
@@ -46,10 +48,10 @@ vim.opt.scrolloff = 8
 vim.opt.isfname:append("@-@")
 -- for ignore some files
 vim.opt.wildignore:append("**/node_modules/**")
+vim.opt.path:append('**')
 
 vim.opt.updatetime = 50
 
-vim.opt.path:append('**')
 
 -- Center the screen after moving with search n/N
 keymap("n", "<C-d>", "<C-d>zz", term_opts)
@@ -81,26 +83,19 @@ keymap("n", "<S-l>", ":bnext<CR>", term_opts)
 keymap("v", "<", "<gv", term_opts)
 keymap("v", ">", ">gv", term_opts)
 
--- Move text up and down in visual mode
-keymap("v", "<A-k>", ":m .-2<CR>", term_opts)
-keymap("v", "<A-j>", ":m .+1<CR>", term_opts)
-keymap("v", "p", '"_dP', term_opts)
--- Move selected lines down
-
-
 -- Visual block mode mappings
-keymap("x", "J", ":move '>+1<CR>gv-gv", term_opts)
-keymap("x", "K", ":move '<-2<CR>gv-gv", term_opts)
-keymap("x", "<A-j>", ":move '>+1<CR>gv-gv", term_opts)
-keymap("x", "<A-k>", ":move '<-2<CR>gv-gv", term_opts)
+keymap("v", "J", ":m '>+1<CR>gv=gv", term_opts)
+keymap("v", "K", ":m '<-2<CR>gv=gv", term_opts)
+keymap("x", "<A-j>", ":m '>+1<CR>gv=gv", term_opts)
+keymap("x", "<A-k>", ":m '<-2<CR>gv=gv", term_opts)
 
 -- Terminal mode mappings
 keymap("t", "<C-h>", "<C-\\><C-N><C-w>h", term_opts)
 keymap("t", "<C-j>", "<C-\\><C-N><C-w>j", term_opts)
 keymap("t", "<C-k>", "<C-\\><C-N><C-w>k", term_opts)
 keymap("t", "<C-l>", "<C-\\><C-N><C-w>l", term_opts)
--- Navigate vim panes better
 
+-- Navigate vim panes better
 vim.keymap.set("n", "<c-k>", ":wincmd k<CR>", term_opts)
 vim.keymap.set("n", "<c-j>", ":wincmd j<CR>", term_opts)
 vim.keymap.set("n", "<c-h>", ":wincmd h<CR>", term_opts)
@@ -111,10 +106,10 @@ keymap("i", "jk", "<Esc>", { noremap = true, silent = true })
 keymap("i", "JK", "<Esc>", { noremap = true, silent = true })
 
 -- disabkeymapys in insert mode ---
-keymap("i", "<left>", "<nop>", term_opts)
-keymap("i", "<right>", "<nop>", term_opts)
-keymap("i", "<up>", "<nop>", term_opts)
-keymap("i", "<down>", "<nop>", term_opts)
+vim.keymap.set({ "n", "i", "v" }, "<left>", "<nop>", term_opts)
+vim.keymap.set({ "n", "i", "v" }, "<right>", "<nop>", term_opts)
+vim.keymap.set({ "n", "i", "v" }, "<up>", "<nop>", term_opts)
+vim.keymap.set({ "n", "i", "v" }, "<down>", "<nop>", term_opts)
 
 -- lsp Config rempap
 vim.keymap.set('n', 'K', '<cmd>lua vim.lsp.buf.hover()<cr>', term_opts)
@@ -140,6 +135,7 @@ keymap("n", "<A-r>cp", ":CRProjects<CR>", term_opts)
 -- next greatest remap ever : asbjornHaland
 vim.keymap.set({ "n", "v" }, "<leader>y", [["+y]])
 vim.keymap.set("n", "<leader>Y", [["+Y]])
+vim.keymap.set("x", "<leader>p", "\"_dp")
 
 vim.keymap.set({ "n", "v" }, "<leader>d", [["_d]])
 
@@ -162,14 +158,19 @@ vim.g.copilot_assume_mapped = true
 vim.api.nvim_set_keymap("i", "<M-l>", 'copilot#Accept("<CR>")', { silent = true, expr = true })
 -- Define the key mapping
 
-
 -- dap config
 vim.keymap.set("n", "<Leader>dt", ":DapToggleBreakpoint<CR>")
 vim.keymap.set("n", "<Leader>dc", ":DapContinue<CR>")
 vim.keymap.set("n", "<Leader>dx", ":DapTerminate<CR>")
 vim.keymap.set("n", "<Leader>do", ":DapStepOver<CR>")
 
--- for copy the filelj
-keymap("i", "<C-s>", "<C-o>:write<CR>a", { noremap = true })
-
+-- for quickfix list for to switch between them
+vim.api.nvim_create_autocmd('FileType', {
+    pattern = 'qf',
+    callback = function(event)
+        local opts = { buffer = event.buf, silent = true }
+        vim.keymap.set('n', '<C-n>', '<cmd>cn | wincmd p<CR>', opts)
+        vim.keymap.set('n', '<C-p>', '<cmd>cN | wincmd p<CR>', opts)
+    end,
+})
 

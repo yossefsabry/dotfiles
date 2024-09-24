@@ -50,7 +50,7 @@ return {
                     }),
                 }),
                 performance = {
-                    max_view_entries = 3,
+                    max_view_entries = 7,
                 },
                 snippet = {
                     expand = function(args)
