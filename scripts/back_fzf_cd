@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+
+function fzf_cd() {
+    # Use fzf to select a directory from the output of find
+    local folder
+    folder=$(find "$(pwd)" -type d -print 2>/dev/null | fzf --height 40%)
+
+    # Check if a folder was selected
+    if [[ -n "$folder" ]]; then
+        cd "$folder" || return
+    else
+        echo "No folder selected." >&2
+        return 1
+    fi
+}
+
+# Call the fzf_cd function
+fzf_cd
+

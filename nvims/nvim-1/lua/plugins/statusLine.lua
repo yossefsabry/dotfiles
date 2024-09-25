@@ -9,7 +9,7 @@ return {
         icons_enabled = true,
         theme = "auto",
         component_separators = { left = "男", right = "後" },
-        section_separators = { left = "▓", right = "▓" },
+        section_separators = { left = "▓ 팣", right = " 잽▓" }, -- ▓
         disabled_filetypes = {
           statusline = {},
           winbar = {},

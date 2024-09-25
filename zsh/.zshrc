@@ -118,7 +118,7 @@ bindkey -M vicmd v edit-command-line
 
 # set default editor
 export term=kitty
-alias BROWSER=firefox
+alias BROWSER=qutebrowser
 export EDITOR=nvim
 export VISUAL=nvim
 alias pico='edit'
@@ -171,10 +171,10 @@ alias notes="cd /home/$USER/notes"
 alias dotfiles="cd /home/$USER/dotfiles"
 alias scripts="cd /home/$USER/dotfiles/scripts"
 alias build="./build"
-alias fz="fzf --preview 'bat --style=numbers --color=always --line-range :500 {}'"
-alias gf="fzf -m --preview="bat {}" --height=40% --bind 'enter:become(nvim {}),ctrl-e:become(vim {})'"
+alias gf='fzf -m \
+  --height=100% \
+  --bind="enter:become(nvim {}),ctrl-e:become(vim {})"'
 alias fcd="fzf_cd"
-
 
 # Alias's for multiple directory listing commands
 alias la='ls -AFlh' # show hidden files
@@ -216,9 +216,6 @@ alias topcpu="/bin/ps -eo pcpu,pid,user,args | sort -k 1 -r | head -10"
 # Search files in the current folder
 alias f="find . | grep "
 
-# Count all files (recursively) in the current folder
-alias countfiles="for t in files links directories; do echo \`find . -type \${t:0:1} | wc -l\` \$t; done 2> /dev/null"
-
 # To see if a command is aliased, a file, or a built-in command
 alias checkcommand="type -t"
 
@@ -238,118 +235,28 @@ alias untar='tar -xvf'
 alias unbz2='tar -xvjf'
 alias ungz='tar -xvzf'
 
-# tmux config
-alias idv='tmux split-window -v -l 30% && tmux split-window -h -l 50% && tmux select-pane -t 0 '    # idw = i3 dev window
-alias idh='tmux split-window -h -l 25% && tmux split-window -v -l 50% && tmux select-pane -t 0 '    # idw = i3 dev window
-
 
 # Show all logs in /var/log
-alias logs="sudo find /var/log -type f -exec file {} \; | grep 'text' | cut -d' ' -f1 | sed -e's/:$//g' | grep -v '[0-9]$' | xargs tail -f"
-
-
-### auto jump command for zshrc
-#if [ -f "/usr/share/autojump/autojump.sh" ]; then
-#    . /usr/share/autojump/autojump.s 
-#elif [ -f "/usr/share/autojump/autojump.bash" ]; then
-#    . /usr/share/autojump/autojump.bash
-#elif [ -f "/usr/share/autojump/autojump.zsh" ]; then
-#    . /usr/share/autojump/autojump.basi
-#else
-#    echo "can't find the autojump script"
-#fi
-
-
+alias logs="sudo find /var/log -type f -exec file {} \; | grep 'text' 
+| cut -d' ' -f1 | sed -e's/:$//g' | grep -v '[0-9]$' | xargs tail -f"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-export FZF_DEFAULT_OPS="--extended"
+export FZF_DEFAULT_OPTS='--extended --layout=reverse --height=100% '
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
-
-
-#go lang setup
-export GOPATH="$HOME/go/bin"
-export GOPATH="$HOME/go"
-export GOBIN="$GOPATH/bin"
-export PATH="$PATH:$GOBIN"
-export PATH="$PATH:$HOME/go/bin/"
-export PATH=$PATH:/usr/local/go/bin
 
 # for scripts dotfiles
 export PATH="$HOME/dotfiles/scripts:$PATH"
 
-
-
-# ----- Function to search for a folder and create a new tmux session in that folder ------
-tmux_new_session() {
-  export FZF_DEFAULT_OPTS='--layout=reverse --height=100% '
-  selected_dir=$(find ~ -type d 2>/dev/null | fzf)
-  
-  if [ -n "$selected_dir" ]; then
-    session_name=$(basename "$selected_dir")
-    
-    if [ -n "$TMUX" ]; then
-      # If inside an existing tmux session, offer to create a nested session
-      printf "You are already in a tmux session. Do you want to create a nested session? (y/n) "
-      read choice
-      case "$choice" in 
-        y|Y ) 
-          tmux new-session -s "$session_name" -c "$selected_dir"
-          ;;
-        * ) 
-          echo "Aborting nested tmux session creation."
-          ;;
-      esac
-    else
-      tmux new-session -s "$session_name" -c "$selected_dir"
-      tmux attach-session -t "$session_name"
-    fi
-  fi
-}
-# Bind Alt+c to the tmux_new_session function
-bindkey -s '^F' 'tmux_new_session\n'
-# ***** Function to search for a folder and create a new tmux session in that folder ******
-
-
-
-# ----- Function to search for a folder and navigate to it using fzf -----
-function fzf_cd() {
-    # Find directories, use fzf to select one, and navigate to it
-    local folder
-    folder=$(find . -type d 2>/dev/null | fzf --height 100% --layout=reverse --border --preview 'tree -C {} | head -n 20')
-    # Check if a folder was selected
-    if [[ -n "$folder" ]]; then
-        cd "$folder" || return
-        # Display the structure of the selected folder
-        # tree -C
-    else
-        echo "No folder selected." >&2
-        return 1
-    fi
-}
-# ***** Function to search for a folder and navigate to it using fzf *****
-
-
-# -------- for search in history -----------
-fzf_history() {
-  # Use fzf to search through the command history
-  local cmd=$(fc -rl 1 | awk '{$1=""; print substr($0,2)}' | fzf --height=40%)
-  # If a command is selected, execute it
-  if [ -n "$cmd" ]; then
-    eval $cmd
-  fi
-}
-alias fh="fzf_history"
-# ********* for search in history********* 
-
+# Bind ctrl+f to the tmux_new_session function
+bindkey -s '^F' 'tm\n'
 
 # for adding some info about the pc
 pfetch
-
 
 # for the font for the tty 
 if [ -z "$DISPLAY" ]; then
     setfont /usr/share/kbd/consolefonts/ter-132b.psf.gz
 fi
-
 
 #
 # setting some default apps
@@ -360,3 +267,22 @@ fi
 
 # for install using cargo(asm-lsp)
 export PATH="$HOME/.cargo/bin:$PATH"
+
+
+##****** some functions ********##
+
+function fzf_cd() {
+    # Use fzf to select a directory from the output of find
+    local folder
+    folder=$(find "$(pwd)" -type d -print 2>/dev/null | fzf --height 40%)
+
+    # Check if a folder was selected
+    if [[ -n "$folder" ]]; then
+        cd "$folder" || return
+    else
+        echo "No folder selected." >&2
+        return 1
+    fi
+}
+
+

@@ -50,7 +50,7 @@ vim.opt.isfname:append("@-@")
 vim.opt.wildignore:append("**/node_modules/**")
 vim.opt.path:append('**')
 
-vim.opt.updatetime = 50
+vim.opt.updatetime = 10
 
 
 -- Center the screen after moving with search n/N

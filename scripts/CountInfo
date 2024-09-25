@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+dir="./"
+
+file_count=$(find "$dir" -type f | wc -l)
+word_count=$(find "$dir" -type f -exec wc -w {} + | awk '{s+=$1} END {print s}')
+line_count=$(find "$dir" -type f -exec wc -l {} + | awk '{s+=$1} END {print s}')
+
+echo "Number of files: $file_count"
+echo "Total words: $word_count"
+echo "Total lines: $line_count"
