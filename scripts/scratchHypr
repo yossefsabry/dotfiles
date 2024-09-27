@@ -1,0 +1,29 @@
+#!/bin/bash
+
+# Check if the kitty instance named scratchHypr exists
+window_id=$(hyprctl clients | grep -B5 "kitty --class scratchHypr" | grep -oP '(?<=ID )\d+')
+
+if [ -n "$window_id" ]; then
+  # Get the ID of the currently focused window
+  focused_window=$(hyprctl activewindow | grep -oP '(?<=ID )\d+')
+
+  if [ "$focused_window" == "$window_id" ]; then
+    # If it's focused, hide the window by moving it off-screen
+    hyprctl dispatch movewindowpixel exact 5000 5000
+  else
+    # If it's not focused, bring it to the center of the screen and float it
+    hyprctl dispatch focuswindow "scratchHypr"
+    hyprctl dispatch togglespecial "scratchHypr" # Make sure it's floating
+    hyprctl dispatch movewindowpixel exact center
+  fi
+else
+  # If no instance is found, create a new one and float it in the center
+  kitty --class scratchHypr &
+  sleep 0.5 # Give some time for kitty to start
+
+  # Focus and float the new kitty instance
+  hyprctl dispatch focuswindow "scratchHypr"
+  hyprctl dispatch togglespecial "scratchHypr" # Ensure it's floating
+  hyprctl dispatch movewindowpixel exact center
+fi
+

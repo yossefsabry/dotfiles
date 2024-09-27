@@ -1,23 +1,22 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # Get Bluetooth status
 bluetooth_status=$(rfkill list bluetooth | grep -i "Soft blocked" | awk '{print $3}')
 
 # Check if Bluetooth is off
 if [[ "$bluetooth_status" == "yes" ]]; then
-    echo "off"
+    echo " Bluetooth: Off"
     exit 0
 fi
 
-# Check for connected devices
-connected_device=$(bluetoothctl devices Connected | awk '{$1=$2=""; print substr($0, 3)}')
+# Get connected devices
+connected_devices=$(bluetoothctl devices | grep "Connected: yes" | awk '{print substr($0, index($0, $3))}')
 
-if [[ -n "$connected_device" ]]; then
-    # If a device is connected, display "connect" and the first 5 characters of the device name
-    echo "${connected_device:0:10}"
-    #notify-send -u low -h string:urgency:success "Success" "connected: $connected_device"
+if [[ -n "$connected_devices" ]]; then
+    # Display the Bluetooth icon and the first connected device's name
+    echo " ${connected_devices:0:10}: connected"
 else
     # If Bluetooth is on but no device is connected
-    echo "not connect"
+    echo " Bluetooth: On, no devices connected"
 fi
 

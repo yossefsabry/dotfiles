@@ -1,96 +1,178 @@
+/* Global Styles */
 * {
+    color: #ffffff;
     font-family: "FiraMono Nerd Font Propo";
-    font-weight: bold;
     font-size: 14px;
+    margin: 1px;
 }
 
-window#waybar {
-    border-radius: 35px;
-    padding: 0 10px;
-    color: #cdd6f4; /* Rose Pine Text */
-    background: rgba(31, 29, 46, 0.3);
-    border: 1px solid  rgba(245, 194, 231, 0.2);
-}
-
+/* Tooltip */
 tooltip {
-    border-radius: 10px;
-    border-width: 2px;
+    /*border-width: 1px;*/
     border-style: solid;
     border-color: #2e2c3b; /* Rose Pine Border */
+    background: rgba(31, 31, 46, 0.7);
 }
 
 tooltip label {
     color: #cdd6f4; /* Rose Pine Text */
 }
 
+/* Workspaces */
+#workspaces {
+    padding: 10px 0px;
+}
 #workspaces button {
-    padding: 5px;
+    margin: 1px 5px;
+    padding: 1px 5px;
     color: #cdd6f4; /* Rose Pine Text */
-    margin-right: 5px;
+    background: transparent;
+    border: 1px solid transparent;
+}
+
+#workspaces button.focused {
+    color: #dc5d5d;
+    border-left: 1px solid #f5c2e7;
+}
+
+#workspaces button.persistent,
+#workspaces button.urgent {
+    color: rgba(100, 114, 125, 0.5);
 }
 
 #workspaces button.active {
     color: #f5c2e7; /* Rose Pine Pink */
-}
-
-#workspaces button.focused {
-    color: #f5c2e7; /* Rose Pine Pink */
+    border-left: 1px solid #f5c2e7;
 }
 
 #workspaces button.urgent {
     color: #f38ba8; /* Rose Pine Red */
 }
 
-#workspaces button:hover {
-    color: #cdd6f4; /* Rose Pine Text */
-}
-
+/* Custom Modules */
 #custom-weather,
 #custom-myhyprv,
-#window,
-#clock,
-#battery,
-#network,
-#tray,
 #temperature,
 #cpu,
 #memory,
 #backlight {
-    padding: 0px 8px;
     margin: 3px;
-    color: #cdd6f4; /* Rose Pine Text */
+    color: #ffffff; /* Rose Pine Text */
 }
 
-#pulseaudio,
-#pulseaudio2,
-#cpu,
-#disk,
-#custom-updates,
-#memory,
+#pulseaudio, #cpu, #disk, #custom-updates, #memory, #backlight {
+    padding: 0px 8px;
+    margin: 3px;
+    color: #ffffff; /* Rose Pine Text */
+}
+
 #custom-lock_screen,
 #custom-light_dark,
 #custom-power_btn,
 #custom-power_profile {
-    padding: 0px 8px;
-    margin: 3px;
-    border-radius: 15px;
-    opacity: 0.9;
-    color: #cdd6f4; /* Rose Pine Text */
+    padding: 0px 8px 5px;
+    margin: 0px 0px 1px 7px;
+    font-size: 18px;
+    color: #ffffff; /* Rose Pine Text */
 }
 
-#workspaces {
-    padding: 0px;
-    margin: 3px;
-    opacity: 0.9;
+/* Network Module */
+#network {
+    background-color: transparent;
 }
 
-#cava {
-    font-family: "FiraMono Nerd Font Propo";
-    font-weight: 200;
-    padding: 8px 8px;
-    margin: 6px;
-    border-radius: 15px;
-    opacity: 0.9;
-    color: #cdd6f4; /* Rose Pine Text */
+/* Cava Visualization */
+#cava, #tray ,#wlr-taskbar {
+    opacity: 1;
 }
 
+/* Window Style */
+
+window#waybar {
+    /*border-radius: 35px;*/
+    background: rgba(31, 29, 46, 0.3);
+    border: 1px solid rgba(245, 194, 231, 0.2);
+    background: transparent;
+}
+
+/* Waybar States */
+window#waybar.hidden,
+window#waybar.empty {
+    background-color: transparent;
+}
+
+window#waybar.solo {
+    background-color: #1A1A21;
+}
+
+window#waybar.mpv,
+window#waybar.kitty {
+    background-color: rgba(255, 255, 255, 0.00);
+}
+
+window#waybar.telegramdesktop {
+    background-color: #212127;
+}
+
+/* Individual Module Styling */
+#clock, #cpu, #memory, #backlight, #pulseaudio, #temperature, #mode,
+#battery {
+    color: #ffffff;
+    font-size: 13px;
+}
+
+#battery, #pulseaudio, #temperature, #backlight {
+    border-left: 1px solid #f5c2e7;
+}
+#tray, #clock, #network, #bluetooth {
+    border-bottom: 1px solid #f5c2e7;
+    margin: 0px 5px;
+}
+#tray {
+    margin-right: 8px;
+}
+
+#cpu, #memory {
+    border-left: 1px solid #f5c2e7;
+}
+
+#battery.charging {
+    border-left: 1px solid #ff761a;
+}
+
+#battery.discharging {
+    border-left: 1px solid #99a4bc;
+}
+
+#battery.warning.discharging {
+    border-left: 1px solid #ffc552;
+}
+
+#battery.critical.discharging,
+#battery.critical.charging {
+    border-left: 1px solid #ff3600;
+}
+
+#battery.warning.charging {
+    border-left: 1px solid #ff761a;
+}
+
+/* Focused Labels */
+label:focus {
+    background-color: #000000;
+}
+
+#taskbar {
+    padding: 0px 0px;
+    margin: 0px 0px;
+}
+
+#taskbar button {
+    padding: 1px 0px;
+    margin: 0px 0px;
+}
+
+#taskbar button:hover {
+    background: none;
+    border: none;
+}

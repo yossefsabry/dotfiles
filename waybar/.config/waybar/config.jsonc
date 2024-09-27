@@ -1,194 +1,214 @@
-{
-    "name": "top",
-    "layer": "top",
-    "position": "top",
-    "margin-top": 18,
-    "margin-bottom": 0,
-    "margin-left": 50,
-    "margin-right": 50,
-    "mod": "overlay",
-    "exclusive": true,
-    "passthrough": false,
-    "gtk-layer-shell": true,
-    "height": 35,
-    "modules-right": [
-        "cava",
-        "tray",
-        "custom/power_btn",
-        "custom/lock_screen",
-        "wlr/taskbar"
-    ],
-    "modules-center": ["hyprland/workspaces"],
-    "modules-left": [
-        "network",
-        "cpu",
-        "memory",
-        "temperature",
-        "battery",
-        "pulseaudio",
-        "clock"
-    ],
-    "custom/power_btn": {
-        "format": " ",
-        "on-click": "nwg-bar",
-        "tooltip": false
-    },
-    "custom/lock_screen": {
-        "format": " ",
-        "on-click": "nwg-bar",
-        "tooltip": false
-    },
-    "hyprland/workspaces": {
-        "format": "{icon}",
-        "separate-outputs": false,
-        "active-only": false,
-        // turn on true to show same all workspaces on each monitor
-        "all-outputs": false,
-        "format-icons": {
-            // 1-10
-            //"1": "1",
-            //"2": "2",
-            //"3": "3",
-            //"4": "4",
-            //"5": "5",
-            //"6": "6",
-            //"7": "7",
-
-            // 1-10
-            "1": " 九",
-            "2": " 八",
-            "3": " 三",
-            "4": " 四",
-            "5": " 五",
-            "6": " 六",
-            "7": " 七",
+[
+    {
+        "name": "left",
+        "layer": "left",
+        "position": "left",
+        "margin-top": 0,
+        "margin-bottom": 0,
+        "margin-left": 0,       // Changed to 5
+        "margin-right": 0,      // Changed to 5
+        "spacing": 8,           // Set spacing to 0 for top and bottom
+        "mod": "overlay",
+        "exclusive": true,
+        "passthrough": false,
+        "gtk-layer-shell": true,
+        "height": "100%",       // Set height to 100%
+        "width": 20,            // Set width to 30 pixels
+        "text": "Horizontal Preview",  // Updated text
+        "text-align": "center", // Center the text
+        "text-ellipsize": "end", // Ensure text is on one line
+        "modules-right": [
+            "hyprland/workspaces"
+        ],
+        "modules-center": [
+            "custom/power_btn",
+        ],
+        "modules-left": [
+            "cpu",
+            "memory",
+            "temperature",
+            "battery",
+            "pulseaudio",
+            "backlight",
+        ],
+        "custom/power_btn": {
+            "format": " ",
+            "on-click": "nwg-bar",
+            "tooltip": false
+        },
+        "hyprland/workspaces": {
+            "format": "{icon}",
+            "separate-outputs": false,
+            "active-only": false,
+            // turn on true to show same all workspaces on each monitor
+            "all-outputs": false,
+            "format-icons": {
+                // 1-7
+                "1": " 九",
+                "2": " 八",
+                "3": " 三",
+                "4": " 四",
+                "5": " 五",
+                "6": " 六",
+                "7": " 七",
+            }
+        },
+        "temperature": {
+            "format": "{icon} {temperatureC}°C ",
+            "hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
+            "critical-threshold": 80,
+            "format-icons": [
+                "",
+                "",
+                ""
+            ],
+            "on-click": "kitty --hold -e btop",
+            "rotate": 270
+        },
+        "battery": {
+            "format": "{capacity}% {icon}",
+            "format-icons": [
+                "",
+                "",
+                "",
+                "",
+                ""
+            ],
+            "rotate": 270
+        },
+        "memory": {
+            "format": "󰫗 {}% ",
+            "tooltip": "false",
+            "on-click": "kitty --hold -e btop",
+            "rotate": 270
+        },
+        "cpu": {
+            "format": " {usage}% ",
+            "tooltip": "false",
+            "on-click": "kitty --hold -e btop",
+            "rotate": 270
+        },
+        "pulseaudio": {
+            "format": " {volume}%",
+            "format-muted": "",
+            "scroll-step": 1,
+            "on-click": "pavucontrol",
+            "rotate": 270
+        },
+        "clock": {
+            "interval": 5,
+            "format": "{:%H:%M}",
+            "tooltip": true,
+            "tooltip-format": "{:%d/%m/%Y}",
+            "on-click": "clockInfo",
+            "rotate": 270
+        },
+        "backlight": {
+            "device": "intel_backlight",
+            "format": "{percent}% {icon}",
+            "format-icons": ["", ""],
+            "rotate": 270
         }
     },
 
-    "wlr/taskbar": {
-        "format": "{icon} ",
-        "icon-size": 16,
-        "all-outputs": true,
-        "tooltip-format": "{title}",
-        "on-click": "activate",
-        "on-click-middle": "close",
-        "ignore-list": [
-            "wofi",
-            "kitty"
-        ]
-    },
-    "tray": {
-        "icon-size": 16,
-        "spacing": 10
-    },
-
-    "network": {
-        "format": " 󰖩 ",
-        "tooltip": "{ifname}",
-        "tooltip-format": "{essid}",
-        "interval": 2
-    },
-    "temperature": {
-        "format": "{icon} {temperatureC}°C ",
-        "hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
-        "critical-threshold": 80,
-        "format-icons": [
-            "",
-            "",
-            ""
-        ]
-    },
-    "memory": {
-        "format": "󰫗 {}% ",
-        "tooltip": "false"
-    },
-    "cpu": {
-        "format": " {usage}% ",
-        "tooltip": "false"
-    },
-    "pulseaudio": {
-        "format": " {volume}%",
-        //    "format-muted": "",
-        "scroll-step": 1,
-        "on-click": "pavucontrol"
-    },
-    //"pulseaudio": {
-    //    "format": "{icon}",
-    //    "format-muted": "",
-    //    "on-click": "~/.config/HyprV/waybar/scripts/volume --toggle",
-    //    "on-click-right": "pavucontrol",
-    //    "on-scroll-up": "~/.config/HyprV/waybar/scripts/volume --inc",
-    //    "on-scroll-down": "~/.config/HyprV/waybar/scripts/volume --dec",
-    //    "scroll-step": 5,
-    //    "format-icons": {
-    //        "headphone": "",
-    //        "hands-free": "",
-    //        "headset": "",
-    //        "phone": "",
-    //        "portable": "",
-    //        "car": "",
-    //        "default": [
-    //            "",
-    //            "",
-    //            ""
-    //        ]
-    //    },
-    //    "tooltip": true,
-    //    "tooltip-format": "{icon} at {volume}%"
-    //},
-    "pulseaudio#microphone": {
-        "format": "{format_source}",
-        "format-source": "",
-        "format-source-muted": "",
-        "on-click": "~/.config/HyprV/waybar/scripts/volume --toggle-mic",
-        "on-click-right": "pavucontrol",
-        "on-scroll-up": "~/.config/HyprV/waybar/scripts/volume --mic-inc",
-        "on-scroll-down": "~/.config/HyprV/waybar/scripts/volume --mic-dec",
-        "scroll-step": 5,
-        "tooltip": true,
-        "tooltip-format": " at {volume}%"
-    },
-    "battery": {
-        "format": "{capacity}% {icon}",
-        "format-icons": [
-            "",
-            "",
-            "",
-            "",
-            ""
-        ]
-    },
-    "clock": {
-        "interval": 5,
-        "format": "{:%H:%M}",
-        "tooltip": true,
-        "tooltip-format": "{:%d/%m/%Y}"
-    },
-    "cava": {
-        "framerate": 30,
-        "autosens": 0,
-        "sensitivity": 30,
-        "bars": 24,
-        "method": "pipewire",
-        "source": "auto",
-        "reverse": false,
-        "bar_delimiter": 0,
-        "monstercat": false,
-        "waves": false,
-        "noise_reduction": 0.5,
-        "input_delay": 2,
-        "sleep_timer": 15,
-        "icon": "audio-volume-high",
-        "format-icons": [
-            "▁",
-            "▂",
-            "▃",
-            "▄",
-            "▅",
-            "▆",
-            "▇",
-            "█"
-        ]
+    // SECOND BAR
+    {
+        "name": "top",
+        "layer": "top",
+        "position": "top",
+        "margin-top": 0,
+        "margin-bottom": 0,
+        "margin-left": 0,
+        "margin-right": 0,
+        "width": "100%",
+        "height": "10",
+        "modules-left": ["cava", "mpd"],
+        "modules-center": [],
+        "modules-right": [ "network", "clock", "bluetooth", "tray", "wlr/taskbar"],
+        "network": {
+            "format": " 󰖩 ",
+            "format-wifi": "{signalStrength}:network",
+            "format-alt": "{essid}({ipaddr})",
+            "tooltip": "{ifname}",
+            "tooltip-format": "{essid}",
+            "interval": 2,
+            "format-disconnected": ""
+        },
+        "bluetooth": {
+            "format": " {status}",
+            "format-connected": " {device_alias}",
+            "format-connected-battery": " {device_alias} {device_battery_percentage}%",
+            // "format-device-preference": [ "device1", "device2" ], // preference list deciding the displayed device
+            "tooltip-format": "{controller_alias}\t{controller_address}\n\n{num_connections} connected",
+            "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{num_connections} connected\n\n{device_enumerate}",
+            "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
+            "tooltip-format-enumerate-connected-battery": "{device_alias}\t{device_address}\t{device_battery_percentage}%"
+        },
+        "battery": {
+            "interval": 60,
+            "states": {
+                "warning": 20,
+                "critical": 10
+            },
+            "format": "{capacity}: size",
+            "format-alt": "size",
+            "max-length": 25,
+        },
+        "memory": {
+            "interval": 10,
+            "format": "{percentage}battery",
+            "states": {
+                "ok": 80,
+                "heavy": 100
+            },
+            "format-alt": "battery",
+            "max-length": 10,
+        },
+        "cpu": {
+            "interval": 5,
+            "tooltip": false,
+            "states": {
+                "ok": 80,
+                "heavy": 100
+            },
+            "format": "{usage}cpu",
+            "format-alt": "cpu",
+        },
+        "clock": {
+            "tooltip": true,
+            "format": "{:%H:%M:%S} ",
+            "tooltip-format": "<tt><small>{calendar}</small></tt>",
+            "format-alt": "{:%A, %B %d, %Y (%R)}  ",
+            "hover": "show_date_command"
+        }, 
+        "tray": {
+            //"tooltip": false,
+            //"icon-size": 15,
+            "spacing": 10
+        },
+        // PROBLEM IN MPD
+        "mpd": {
+            "type": "internal/mpd",
+            "host": "127.0.0.1",
+            "port": 6601,
+            "format-online": "{title} {songPosition} - {totalTime}",
+            "format-offline": " mpd offline",
+            "label-song-maxlen": 75,
+            "label-song-ellipsis": true,
+        },
+        "wlr/taskbar": {
+            "format": "{icon} ",
+            "icon-size": 22,
+            "all-outputs": true,
+            "tooltip-format": "{title}",
+            "on-click": "activate",
+            "on-click-middle": "close",
+            "ignore-list": [
+                "rofi",
+                "kitty",
+                "kitty:scratchHypr"
+            ],
+            "spacing": 0
+        },
     }
-}
-
+]
