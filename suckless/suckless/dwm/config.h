@@ -10,12 +10,12 @@ static const int splitstatus        = 2;        /* 1 for split status items */
 static const char *splitdelim        = ";";       /* Character used for separating status */
 static const char *fonts[]          = { "FiraMono Nerd Font Propo:size=9" };
 static const char dmenufont[]       = "FiraMono Nerd Font Propo:size=9";
-static const char col_gray1[]       = "#1c1917";
+static const char col_gray1[]       = "#191724";
 static const char col_gray2[]       = "#d3ccd9";
 static const char col_gray3[]       = "#ffffff";
-static const char col_cyan[]        = "#4b636a"; /* for color for the select number from bar menu 1, 3, 4, 5*/
-static const char col_gray4[]       = "#291c28";
-static const unsigned int baralpha = 0x899;
+static const char col_cyan[]        = "#ebbcba"; /* for color for the select number from bar menu 1, 3, 4, 5*/
+static const char col_gray4[]       = "#191724";
+static const unsigned int baralpha = 0xd0;
 static const unsigned int borderalpha = OPAQUE;
 static const char *colors[][3]      = {
     /*               fg         bg         border   */
@@ -90,6 +90,8 @@ static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont,
 static const char *termcmd[]  = { "/usr/bin/kitty", NULL };
 static const char scratchpadname[] = "scratchpad";
 static const char *scratchpadcmd[] = { "st", "-t", scratchpadname, "-g", "70x24", NULL };
+/*static const char *scratchpadcmd[] = { "kitty", "--title", scratchpadname, "--class", "scratchpad", "--geometry", "70x24", NULL };*/
+
 // using sxhkd
 /*static const char *rofi[]  = { "rofi", "-show", "drun", "-theme", "~/.config/rofi/rose-pine.rasi", NULL };*/
 
