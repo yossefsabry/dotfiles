@@ -1,5 +1,4 @@
 ---@diagnostic disable: undefined-global
---@diagnostic disable: undefined-global
 -- setup for the lazyvim
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
@@ -18,8 +17,6 @@ require("options")
 
 require("lazy").setup("plugins")
 
--- Set termguicolors to enable true color support
--- vim.o.termguicolors = true
 vim.g.netrw_bufsettings = "noma nomod nu rnu nobl nowrap ro"
 
 -- diable auto comment nextline
@@ -42,4 +39,3 @@ vim.cmd("highlight Visual guibg=#005b44 guifg=NONE")
 
 -- Set the color for the ColorColumn
 vim.cmd([[ highlight ColorColumn guibg=#3c3836 ]])
-

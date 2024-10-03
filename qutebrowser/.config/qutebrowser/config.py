@@ -227,7 +227,8 @@ c.url.searchengines = {
 # config.set('content.javascript.can_access_clipboard', True)
 # Use the system clipboard for copy and paste operations
 # c.content.paste_on_middle = True  # Enable pasting when middle-clicking
-c.content.javascript.clipboard = "access"     # access to "no-access" or "access-paste" as needed
+# c.content.javascript.clipboard = "access"     # access to "no-access" or "access-paste" as needed
+config.set('content.javascript.enabled', True)
 
 # Text color of the completion widget. May be a single color to use for
 # all columns or a list of three colors, one for each column.
@@ -333,16 +334,16 @@ c.colors.tabs.odd.bg = '#2a2e38'
 c.colors.tabs.even.bg = '#2a2e38'
 
 # Background color for the selected (active) odd tab
-c.colors.tabs.selected.odd.bg = '#3e4b5d'
+c.colors.tabs.selected.odd.bg = '#f8c5c4'
 
 # Background color for the selected (active) even tab
-c.colors.tabs.selected.even.bg = '#3e4b5d'
+c.colors.tabs.selected.even.bg = '#f8c5c4'
 
 # Text color for the selected (active) odd tab
-c.colors.tabs.selected.odd.fg = '#e0def4'
+c.colors.tabs.selected.odd.fg = '#211f30'
 
 # Text color for the selected (active) even tab
-c.colors.tabs.selected.even.fg = '#e0def4'
+c.colors.tabs.selected.even.fg = '#211f30'
 
 # Text color for the inactive tabs
 c.colors.tabs.odd.fg = '#9ccfd8'

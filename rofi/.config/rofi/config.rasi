@@ -1,81 +1,181 @@
-@theme "/dev/null"
+configuration {
+  ssh-command: "{terminal} start -- {ssh-client} {host}"; // wezterm
+  sidebar-mode: true;
+  /* keys have to be unbound before they can be reused */
+  kb-accept-entry: "Ctrl+m,Return,KP_Enter";
+  kb-remove-to-eol: "";
+  kb-remove-char-back: "BackSpace,Shift+BackSpace";
+  kb-mode-complete: "";
+  /* better vim controls */
+  kb-mode-previous: "H,Ctrl+h,Alt+h";
+  kb-row-down: "J,Ctrl+j,Alt+j,Down";
+  kb-row-up: "K,Ctrl+k,Alt+k,Up";
+  kb-mode-next: "L,Ctrl+l,Alt+l";
+}
 
 * {
-	bg: #191724;  /* Rose Pine base */
-	background-color: @bg;
+    base: #191724;       // Base color
+    foreground: #e0def4; // Foreground color
+    background: #26233a; // Background color
+    highlight: #ebbcba;  // Highlight color
+    cursor: #a6accd;     // Cursor color
+    attention: #ff9e64;  // Attention color
+
+  background-color: @background;
+
+  normal-foreground: @foreground;
+  normal-background: @background;
+
+  active-foreground: @attention;
+  active-background: @background;
+
+  urgent-foreground: @attention;
+  urgent-background: @background;
+
+  alternate-normal-foreground: @foreground;
+  alternate-normal-background: @background;
+
+  alternate-active-foreground: @foreground;
+  alternate-active-background: @background;
+
+  alternate-urgent-foreground: @attention;
+  alternate-urgent-background: @background;
+
+  selected-normal-foreground: @foreground;
+  selected-normal-background: @cursor;
+
+  selected-active-foreground: @attention;
+  selected-active-background: @cursor;
+
+  selected-urgent-foreground: @attention;
+  selected-urgent-background: @cursor;
+
+  spacing: 2;
+  sidebar-mode: true;
+}
+#window {
+  background-color: @background;
+  border: 0;
+}
+#mainbox {
+  border:  0;
+  padding: 0;
+  margin: 0;
+  spacing: 0;
+}
+#inputbar {
+  children:   [ prompt,textbox-prompt-colon,entry,case-indicator ];
+  spacing:    0;
+  text-color: @normal-foreground;
+  padding:    6px 1px 6px 10px;
+}
+#prompt {
+  spacing:    0;
+  text-color: @foreground;
+}
+#entry {
+  spacing:    0;
+  text-color: @normal-foreground;
+  placeholder: "type to filter";
+  placeholder-color: @cursor;
+}
+#case-indicator {
+  spacing:    0;
+  text-color: @normal-foreground;
+}
+#textbox-prompt-colon {
+  expand:     false;
+  str:        ":";
+  margin:     0px 0.3em 0em 0em;
+  text-color: @foreground;
+}
+#message {
+  border:       1px 0px 0px 0px;
+  border-color: @cursor;
+  padding:      6px 0px 6px 26px;
+}
+#textbox {
+  text-color: @foreground;
+}
+#listview {
+  border:       1px 0px 0px 0px;
+  border-color: @cursor;
+  scrollbar:    true;
+  fixed-height: 0;
+  spacing:      1px;
+  padding:      0;
 }
 
-configuration {
-	show-icons: true;
-	icon-theme: "Papirus";
-	location: 0;
-	font: "JetBrainsMono Nerd Font 12";
-	display-drun: "Launch:";
+#element {
+  border:  0;
+  padding: 6px 3px 6px 15px; /* Increase padding to make rows larger */
+  icon-size: 34px; /* Custom property for icon size (if supported) */
+  spacing: 5px; /* Increase spacing between rows */
 }
 
-window { 
-	width: 55%;
-	transparency: "real";
-	orientation: vertical;
-	border-color: #ebbcba;  /* Rose Pine highlight */
+#element.normal.normal {
+  background-color: @normal-background;
+  text-color:       @normal-foreground;
+}
+#element.normal.urgent {
+  background-color: @urgent-background;
+  text-color:       @urgent-foreground;
+}
+#element.normal.active {
+  background-color: @active-background;
+  text-color:       @active-foreground;
+}
+#element.selected.normal {
+  background-color: @selected-normal-background;
+  text-color:       @selected-normal-foreground;
+}
+#element.selected.urgent {
+  background-color: @selected-urgent-background;
+  text-color:       @selected-urgent-foreground;
+}
+#element.selected.active {
+  background-color: @selected-active-background;
+  text-color:       @selected-active-foreground;
+}
+#element.alternate.normal {
+  background-color: @alternate-normal-background;
+  text-color:       @alternate-normal-foreground;
+}
+#element.alternate.urgent {
+  background-color: @alternate-urgent-background;
+  text-color:       @alternate-urgent-foreground;
 }
 
-mainbox {
-	children: [inputbar, listview];
+#element.alternate.active {
+  background-color: @alternate-active-background;
+  text-color:       @alternate-active-foreground;
 }
 
-// ELEMENT
-// -----------------------------------
-
-element {
-	padding: 6 12;
-	text-color: #e0def4;  /* Rose Pine text */
+#scrollbar {
+  handle-color: @background;
+  background-color: @cursor;
+  handle-width: 30px;
 }
 
-element selected {
-	background-color: #ebbcba;  /* Rose Pine highlight */
-    text-color: #191724;
+#mode-switcher {
+  border: 1px 0px 0px 0px;
+  border-color: @foreground;
+  margin: 0;
 }
 
-element-text {
-	background-color: inherit;
-	text-color: inherit;
+#button {
+  background-color: @background;
+  text-color: @normal-foreground;
+  padding: 10px 15px;  /* Adjust padding */
+  margin: 0;
+  font-size: 1.5em;  /* Increase text and icon size */
+  height: 40px;      /* Adjust button height */
+  /* If icons are included as background images, specify sizes */
+  icon-size: 24px;   /* This is an illustrative property; check if supported */
 }
 
-element-icon {
-	size: 16 px;
-	background-color: inherit;
-	padding: 0 6 0 0;
-	alignment: vertical;
-}
-
-listview {
-	columns: 2;
-	lines: 9;
-	padding: 8 0;
-	fixed-height: true;
-	fixed-columns: true;
-	fixed-lines: true;
-	border: 0 10 6 10;
-}
-
-// INPUT BAR 
-//------------------------------------------------
-
-entry {
-	text-color: #e0def4;  /* Rose Pine text */
-	padding: 10 10 0 0;
-	margin: 0 -2 0 0;
-}
-
-inputbar {
-	padding: 0 0 0;
-	margin: 0 0 0 0;
-} 
-
-prompt {
-	text-color: #9ccfd8;  /* Rose Pine accent */
-	padding: 10 6 0 10;
-	margin: 0 -2 0 0;
+#button.selected {
+  background-color: @foreground;
+  text-color:       @base;
 }
 

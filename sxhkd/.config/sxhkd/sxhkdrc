@@ -5,7 +5,7 @@
 
 # startig rofi
 alt + p
-    rofi -show drun
+    rofi -show drun -show-icons
 
 # change the valoum
 { XF86AudioRaiseVolume, XF86AudioLowerVolume, XF86AudioMute }

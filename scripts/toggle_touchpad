@@ -22,7 +22,6 @@ toggle_touchpad() {
     xinput enable "$DEVICE_ID"
     #notify-send "Touchpad enabled"
   fi
-  unclutter -idle 0  #for hide the mouse
 }
 toggle_touchpad
 # Optionally, you can bind this function to a keyboard shortcut or call it directly

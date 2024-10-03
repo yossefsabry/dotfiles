@@ -18,7 +18,7 @@ vim.g.netrw_liststyle = 1
 -- Modes
 vim.opt.hlsearch = false -- disable search highlight
 vim.opt.incsearch = true
-vim.opt.guicursor = ""
+-- vim.opt.guicursor = "" -- for change the cursor to block in insert mode
 
 -- setting color in column 75
 vim.opt.colorcolumn = "75"
@@ -65,7 +65,7 @@ vim.api.nvim_set_keymap("x", "J", ":m '>+1<CR>gv=gv", term_opts)
 vim.api.nvim_set_keymap("x", "K", ":m '<-2<CR>gv=gv", term_opts)
 
 -- for default noe tree
-vim.keymap.set("n", "<leader>e", ":vertical Ex<CR>", term_opts)
+keymap("n", "<leader>e", ":vertical Ex<CR>", term_opts)
 -- keymap("n", "<leader>vp", ":Neotree/home/yossef/Documents float<cr>", term_opts)
 -- keymap("n", "<leader>e", ":Dirbuf <CR>", term_opts)
 
@@ -96,34 +96,32 @@ keymap("t", "<C-k>", "<C-\\><C-N><C-w>k", term_opts)
 keymap("t", "<C-l>", "<C-\\><C-N><C-w>l", term_opts)
 
 -- Navigate vim panes better
-vim.keymap.set("n", "<c-k>", ":wincmd k<CR>", term_opts)
-vim.keymap.set("n", "<c-j>", ":wincmd j<CR>", term_opts)
-vim.keymap.set("n", "<c-h>", ":wincmd h<CR>", term_opts)
-vim.keymap.set("n", "<c-l>", ":wincmd l<CR>", term_opts)
+keymap("n", "<c-k>", ":wincmd k<CR>", term_opts)
+keymap("n", "<c-j>", ":wincmd j<CR>", term_opts)
+keymap("n", "<c-h>", ":wincmd h<CR>", term_opts)
+keymap("n", "<c-l>", ":wincmd l<CR>", term_opts)
 
 -- insert mode
 keymap("i", "jk", "<Esc>", { noremap = true, silent = true })
 keymap("i", "JK", "<Esc>", { noremap = true, silent = true })
 
 -- disabkeymapys in insert mode ---
-vim.keymap.set({ "n", "i", "v" }, "<left>", "<nop>", term_opts)
-vim.keymap.set({ "n", "i", "v" }, "<right>", "<nop>", term_opts)
-vim.keymap.set({ "n", "i", "v" }, "<up>", "<nop>", term_opts)
-vim.keymap.set({ "n", "i", "v" }, "<down>", "<nop>", term_opts)
+vim.keymap.set({ "n", "i" }, "<left>", "<nop>", term_opts)
+vim.keymap.set({ "n", "i" }, "<right>", "<nop>", term_opts)
+vim.keymap.set({ "n", "i" }, "<up>", "<nop>", term_opts)
+vim.keymap.set({ "n", "i" }, "<down>", "<nop>", term_opts)
 
 -- lsp Config rempap
-vim.keymap.set('n', 'K', '<cmd>lua vim.lsp.buf.hover()<cr>', term_opts)
-vim.keymap.set('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<cr>', term_opts)
-vim.keymap.set('n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<cr>', term_opts)
-vim.keymap.set('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<cr>', term_opts)
-vim.keymap.set('n', 'go', '<cmd>lua vim.lsp.buf.type_definition()<cr>', term_opts)
-vim.keymap.set('n', 'gr', '<cmd>lua vim.lsp.buf.references()<cr>', term_opts)
-vim.keymap.set('n', 'gs', '<cmd>lua vim.lsp.buf.signature_help()<cr>', term_opts)
-vim.keymap.set({'n', 'x'}, '<F3>', '<cmd>lua vim.lsp.buf.format({async = true})<cr>', term_opts)
-vim.keymap.set('n', '<leader>ca', '<cmd>lua vim.lsp.buf.code_action()<cr>', term_opts)
-vim.keymap.set('n', 'gl', '<cmd>lua vim.diagnostic.open_float()<cr>', term_opts)
-vim.keymap.set('n', '[d', '<cmd>lua vim.diagnostic.goto_prev()<cr>', term_opts)
-vim.keymap.set('n', ']d', '<cmd>lua vim.diagnostic.goto_next()<cr>', term_opts)
+keymap('n', 'K', '<cmd>lua vim.lsp.buf.hover()<cr>', term_opts)
+keymap('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<cr>', term_opts)
+keymap('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<cr>', term_opts)
+keymap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<cr>', term_opts)
+keymap('n', 'gs', '<cmd>lua vim.lsp.buf.signature_help()<cr>', term_opts)
+-- vim.keymap.set({'n', 'x'}, '<F3>', '<cmd>lua vim.lsp.buf.format({async = true})<cr>', term_opts)
+keymap('n', '<leader>ca', '<cmd>lua vim.lsp.buf.code_action()<cr>', term_opts)
+keymap('n', 'gl', '<cmd>lua vim.diagnostic.open_float()<cr>', term_opts)
+keymap('n', '[d', '<cmd>lua vim.diagnostic.goto_prev()<cr>', term_opts)
+keymap('n', ']d', '<cmd>lua vim.diagnostic.goto_next()<cr>', term_opts)
 
 -- Key mkeymape_runner.nvim
 keymap("n", "<A-r>", ":RunCode<CR>", term_opts)
@@ -134,15 +132,15 @@ keymap("n", "<A-r>cp", ":CRProjects<CR>", term_opts)
 
 -- next greatest remap ever : asbjornHaland
 vim.keymap.set({ "n", "v" }, "<leader>y", [["+y]])
-vim.keymap.set("n", "<leader>Y", [["+Y]])
-vim.keymap.set("x", "<leader>p", "\"_dp")
+keymap("n", "<leader>Y", [["+Y]])
+keymap("x", "<leader>p", "\"_dp")
 
 vim.keymap.set({ "n", "v" }, "<leader>d", [["_d]])
 
-vim.keymap.set("n", "Q", "<nop>")
+keymap("n", "Q", "<nop>")
 
-vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
-vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
+keymap("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
+keymap("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
 
 -- create folds
 keymap("n", "<leader>z", "zfaB", term_opts)
@@ -159,10 +157,10 @@ vim.api.nvim_set_keymap("i", "<M-l>", 'copilot#Accept("<CR>")', { silent = true,
 -- Define the key mapping
 
 -- dap config
-vim.keymap.set("n", "<Leader>dt", ":DapToggleBreakpoint<CR>")
-vim.keymap.set("n", "<Leader>dc", ":DapContinue<CR>")
-vim.keymap.set("n", "<Leader>dx", ":DapTerminate<CR>")
-vim.keymap.set("n", "<Leader>do", ":DapStepOver<CR>")
+keymap("n", "<Leader>dt", ":DapToggleBreakpoint<CR>")
+keymap("n", "<Leader>dc", ":DapContinue<CR>")
+keymap("n", "<Leader>dx", ":DapTerminate<CR>")
+keymap("n", "<Leader>do", ":DapStepOver<CR>")
 
 -- for quickfix list for to switch between them
 vim.api.nvim_create_autocmd('FileType', {

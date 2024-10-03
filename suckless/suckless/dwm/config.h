@@ -11,11 +11,11 @@ static const char *splitdelim        = ";";       /* Character used for separati
 static const char *fonts[]          = { "FiraMono Nerd Font Propo:size=9" };
 static const char dmenufont[]       = "FiraMono Nerd Font Propo:size=9";
 static const char col_gray1[]       = "#191724";
-static const char col_gray2[]       = "#d3ccd9";
-static const char col_gray3[]       = "#ffffff";
+static const char col_gray2[]       = "#191724";
+static const char col_gray3[]       = "#f6c177";
 static const char col_cyan[]        = "#ebbcba"; /* for color for the select number from bar menu 1, 3, 4, 5*/
 static const char col_gray4[]       = "#191724";
-static const unsigned int baralpha = 0xd0;
+static const unsigned int baralpha = 0xdf;
 static const unsigned int borderalpha = OPAQUE;
 static const char *colors[][3]      = {
     /*               fg         bg         border   */

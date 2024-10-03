@@ -57,4 +57,3 @@ EOL
 
 # Function declaration check
 add_note "$@"
-

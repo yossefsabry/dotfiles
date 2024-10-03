@@ -12,3 +12,33 @@ return {
         "nvim-tree/nvim-web-devicons"
     }
 }
+
+-- return{
+--     "iamcco/markdown-preview.nvim",
+--     ft = "markdown",
+--     run = "cd app && npm install",  -- Installs dependencies
+--     setup = function()
+--         vim.g.mkdp_auto_start = 1     -- Automatically start preview
+--         vim.g.mkdp_auto_close = 1     -- Automatically close preview when buffer is closed
+--         vim.g.mkdp_refresh_slow = 1   -- Slow refresh for large files
+--         vim.g.mkdp_markdown_css = ""  -- Customize CSS (optional)
+--         vim.g.mkdp_theme = "dark"     -- Theme for preview window
+--         vim.g.mkdp_preview_options = {
+--             disable_sync_scroll = 0, 
+--             hide_yaml_meta = 1,
+--             sequence_diagrams = 1,
+--             flowchart_diagrams = 1,
+--             mermaid = 1,
+--             mathjax = {
+--                 enable = 1,
+--                 inline = "$",
+--                 block = "$$"
+--             }
+--         }
+--     end,
+--     dependencies = {
+--         "nvim-treesitter/nvim-treesitter",
+--         "nvim-tree/nvim-web-devicons"
+--     }
+-- }
+--

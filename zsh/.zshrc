@@ -4,7 +4,9 @@
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
 export PATH="$HOME/.local/bin/:$PATH"
+export PATH="$HOME/bin/:$PATH"
 alias edit="vim"
+alias gpt="tgpt"
 export PGUSER=root
 export PGPASSWORD=yossef280
 export PGDATABASE=yossef280
@@ -251,12 +253,12 @@ export PATH="$HOME/dotfiles/scripts:$PATH"
 bindkey -s '^F' 'tm\n'
 
 # for adding some info about the pc
-pfetch
+pfetch 
 
-# for the font for the tty 
-if [ -z "$DISPLAY" ]; then
-    setfont /usr/share/kbd/consolefonts/ter-132b.psf.gz
-fi
+# for the font for the tty  (for archlinux)
+#if [ -z "$DISPLAY" ]; then
+#    setfont /usr/share/kbd/consolefonts/ter-132b.psf.gz
+#fi
 
 #
 # setting some default apps
@@ -268,9 +270,12 @@ fi
 # for install using cargo(asm-lsp)
 export PATH="$HOME/.cargo/bin:$PATH"
 
+# adding path go
+export GOROOT=/usr/local/go
+export PATH=$PATH:$GOROOT/bin
+export PATH=$PATH:/usr/local/go/bin
 
 ##****** some functions ********##
-
 function fzf_cd() {
     # Use fzf to select a directory from the output of find
     local folder
@@ -285,4 +290,12 @@ function fzf_cd() {
     fi
 }
 
+
+#go lang setup
+export GOPATH="$HOME/go/bin"
+export GOPATH="$HOME/go"
+export GOBIN="$GOPATH/bin"
+export PATH="$PATH:$GOBIN"
+export PATH="$PATH:$HOME/go/bin/"
+export PATH=$PATH:/usr/local/go/bin
 
