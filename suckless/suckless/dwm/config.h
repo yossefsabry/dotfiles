@@ -15,12 +15,13 @@ static const char col_gray2[]       = "#191724";
 static const char col_gray3[]       = "#f6c177";
 static const char col_cyan[]        = "#ebbcba"; /* for color for the select number from bar menu 1, 3, 4, 5*/
 static const char col_gray4[]       = "#191724";
-static const unsigned int baralpha = 0xdf;
+/*static const unsigned int baralpha = 0xdf;*/
+static const unsigned int baralpha = 0x00; // fully tarnsparent
 static const unsigned int borderalpha = OPAQUE;
 static const char *colors[][3]      = {
     /*               fg         bg         border   */
-    [SchemeNorm] = { col_gray3, col_gray1, col_cyan },
-    [SchemeSel]  = { col_gray4, col_cyan,  col_gray2  },
+    [SchemeNorm] = { col_gray3, col_gray1, col_gray2 },
+    [SchemeSel]  = { col_gray4, col_cyan,  col_cyan  },
 };
 static const unsigned int alphas[][3]      = {
     /*               fg      bg        border*/
@@ -97,8 +98,8 @@ static const char *scratchpadcmd[] = { "st", "-t", scratchpadname, "-g", "70x24"
 
 static const Key keys[] = {
     /* modifier                     key        function        argument */
-    /*{ MODKEY,                       XK_p,      spawn,          {.v = rofi } },*/
-    /*{ MODKEY,                       XK_Return, spawn,          {.v = termcmd } },*/
+    { MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
+    { MODKEY,                       XK_Return, spawn,          {.v = termcmd } },
     { MODKEY,                       XK_y,  togglescratch,  {.v = scratchpadcmd } },
     { MODKEY,                       XK_b,      togglebar,      {0} },
     { MODKEY,                       XK_j,      focusstack,     {.i = +1 } },

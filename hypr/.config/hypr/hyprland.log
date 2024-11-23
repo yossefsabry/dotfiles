@@ -1,0 +1,28 @@
+MESA-LOADER: failed to open nvidia-drm: /usr/lib/gbm/nvidia-drm_gbm.so: cannot open shared object file: No such file or directory (search paths /usr/lib/gbm, suffix _gbm)
+unable to lock lockfile /run/user/1000/wayland-1.lock, maybe another compositor is running
+/bin/sh: line 1: hyprpaper: command not found
+/bin/sh: line 1: copyq: command not found
+/bin/sh: line 1: wl-clipboard-history: command not found
+/bin/sh: line 1: /usr/lib/polkit-kde-authentication-agent-1: No such file or directory
+/bin/sh: line 1: /usr/lib/kdeconnectd: No such file or directory
+MESA-LOADER: failed to open nvidia-drm: /usr/lib/gbm/nvidia-drm_gbm.so: cannot open shared object file: No such file or directory (search paths /usr/lib/gbm, suffix _gbm)
+Failed to spawn cliphist: No such file or directory[2024-11-21 16:19:50.056] [info] Using configuration file /home/yossef/.config/waybar/config.jsonc
+[2024-11-21 16:19:50.061] [info] Unable to receive desktop appearance: GDBus.Error:org.freedesktop.DBus.Error.UnknownMethod: No such interface “org.freedesktop.portal.Settings” on object at path /org/freedesktop/portal/desktop
+[2024-11-21 16:19:50.063] [info] Using CSS file /home/yossef/.config/waybar/style.css
+[2024-11-21 16:19:50.137] [info] Hyprland IPC starting
+[2024-11-21 16:19:50.140] [info] Loading persistent workspaces from Hyprland workspace rules
+The XKEYBOARD keymap compiler (xkbcomp) reports:
+> Warning:          Unsupported maximum keycode 708, clipping.
+>                   X11 cannot support keycodes above 255.
+> Warning:          Could not resolve keysym XF86KbdInputAssistPrevgrou
+> Warning:          Could not resolve keysym XF86KbdInputAssistNextgrou
+Errors from xkbcomp are not fatal to the X server
+[2024-11-21 16:19:50.212] [warning] module cava: Unknown module: cava
+[2024-11-21 16:19:50.216] [warning] no bluetooth controller found
+[0.583] [glfw error 65544]: process_desktop_settings: failed with error: [org.freedesktop.DBus.Error.UnknownMethod] No such interface “org.freedesktop.portal.Settings” on object at path /org/freedesktop/portal/desktop
+[0.583] [glfw error 65544]: Notify: Failed to get server capabilities error: [org.freedesktop.DBus.Error.ServiceUnknown] The name is not activatable
+[2024-11-21 16:19:50.433] [warning] Requested width: 20 is less than the minimum width: 54 required by the modules
+[2024-11-21 16:19:50.433] [info] Bar configured (width: 54, height: 469) for output: WAYLAND-1
+[2024-11-21 16:19:50.433] [info] Bar configured (width: 408, height: 34) for output: WAYLAND-1
+[2024-11-21 16:19:50.450] [info] Bar configured (width: 398, height: 34) for output: WAYLAND-1
+Hyprland has crashed :( Consult the crash report at /home/yossef/.cache/hyprland/hyprlandCrashReport19691.txt for more information.

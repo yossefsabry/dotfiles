@@ -256,9 +256,9 @@ bindkey -s '^F' 'tm\n'
 pfetch 
 
 # for the font for the tty  (for archlinux)
-#if [ -z "$DISPLAY" ]; then
-#    setfont /usr/share/kbd/consolefonts/ter-132b.psf.gz
-#fi
+if [ -z "$DISPLAY" ]; then
+    setfont /usr/share/kbd/consolefonts/latarcyrheb-sun32.psfu.gz
+fi
 
 #
 # setting some default apps

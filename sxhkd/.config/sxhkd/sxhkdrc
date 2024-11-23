@@ -4,8 +4,8 @@
 #
 
 # startig rofi
-alt + p
-    rofi -show drun -show-icons
+# alt + p
+#     rofi -show drun -show-icons
 
 # change the valoum
 { XF86AudioRaiseVolume, XF86AudioLowerVolume, XF86AudioMute }
@@ -39,7 +39,7 @@ super + space
 super + t
     ~/dotfiles/scripts/toggle_touchpad
 
-# change the redshift color for protect eye
+# change tre redshift color for protect eye
 super + r
     ~/dotfiles/scripts/redshift-status
 
@@ -49,8 +49,8 @@ super + Escape
 
 
 # kitty termianl
-alt + Return
-    kitty
+# alt + Return
+#     kitty
 
 
 

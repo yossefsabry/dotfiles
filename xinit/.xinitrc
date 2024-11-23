@@ -11,9 +11,8 @@ exec setxkbmap -layout us,ara -variant ,digits grp:win_space_toggle caps:none &
 # set the sxhkd
 exec sxhkd &
 exec feh --bg-center --bg-scale ~/Pictures/1.jpg &
-exec flameshot &
 exec xset r rate 250 50 &
-# exec picom &
+exec picom &
 
 # bspwm {{{
 # exec bspwm > /var/log/.bspwm.log 2>&1  

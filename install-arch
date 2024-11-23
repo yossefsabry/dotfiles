@@ -8,6 +8,7 @@ GREEN='\e[32m'
 echo -e "${GREEN}----- starting install script (; -----${RC}"
 echo -e "${GREEN}----- enter the username for the user: ${RC}"
 read username
+echo ""
 
 ## main package for install ##
 array_packages=(
@@ -225,14 +226,14 @@ install_zsh_bash() {
 
 # Execute all functions in order
 main() {
-  updateSys
-  install_packages
+  # updateSys
+  # install_packages
   install_yay
-  install_tmp
-  checkInternet
-  install_zsh_bash
-  dotfile
-  stowFiles
+  # install_tmp
+  # checkInternet
+  # install_zsh_bash
+  # dotfile
+  # stowFiles
 }
 # Run the main function
 main
