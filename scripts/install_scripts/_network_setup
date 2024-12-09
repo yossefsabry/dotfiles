@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+RC='\e[0m'
+RED='\e[31m'
+YELLOW='\e[33m'
+GREEN='\e[32m'
+
+# setting some settting for network
+checkInternet() {
+    echo -e "${GREEN}--- starting setting for network ---- ${RC}"
+    sudo -v
+    sudo dhcpcd enp0s3 
+    sudo systemctl enable NetworkManager
+    sudo systemctl start NetworkManager
+    echo -e "${GREEN}--- finish setting for network ---- ${RC}"
+}
+

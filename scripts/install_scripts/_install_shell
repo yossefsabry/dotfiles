@@ -1,0 +1,37 @@
+#!/usr/bin/env bash
+
+RC='\e[0m'
+RED='\e[31m'
+YELLOW='\e[33m'
+GREEN='\e[32m'
+
+
+install_zsh_bash() {
+    echo -e "${GREEN}-- starting choose config for zsh or bash${RC}"
+        echo -e "${GREEN}1- zsh -> dafault${RC}"
+        echo -e "${GREEN}2- bash${RC}"
+        read -rp "enter the option: " option
+
+    case "${option}" in
+        1)
+            sh -c "$(curl -fsSL \
+                https://raw.githubusercontent.com\
+                /ohmyzsh/ohmyzsh/master/tools/install.sh)"
+            chsh -s /bin/zsh "$USER"
+            echo -e "${GREEN}Shell changed to zsh for user $USER.${RC}"
+            ;;
+        2)
+            sudo /home/$USER/dotfiles/mybash-config/setup-arch.sh
+            chsh -s /bin/bash "$USER"
+            echo -e "${GREEN}Shell changed to bash for user $USER.${RC}"
+            ;;
+        *)
+            sh -c "$(curl -fsSL \
+                https://raw.githubusercontent.com\
+                /ohmyzsh/ohmyzsh/master/tools/install.sh)"
+            chsh -s /bin/zsh "$USER"
+            echo -e "${GREEN}Shell changed to zsh for user $USER.${RC}"
+            ;;
+        esac
+}
+install_zsh_bash

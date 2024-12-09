@@ -1,0 +1,40 @@
+#!/usr/bin/env bash
+
+RC='\e[0m'
+RED='\e[31m'
+YELLOW='\e[33m'
+GREEN='\e[32m'
+
+## main package for install ##
+array_packages=(
+    "zsh" "git" "neovim" "tmux" "alacritty" "picom" "vim" "nemo" "feh" "unclutter" "xrandr" "zip" "ripgrep" "xclip" "fastfetch"  "fzf" "unzip" "stow"
+    "nodejs" "go" "gcc" # lang
+    "cargo" #rust
+    "xorg" "xorg-xev" "xorg-xinit" "xbindkeys" "xorg-setxkbmap" "sxhkd" # keybind
+    "iwd" "NetworkManager" "dhcpcd" "nmcli" # network
+    "pavucontrol" "brightnessctl" # audio and screen
+    "wget" "firefox" "syncthing" # apps and some packages
+)
+
+# creating .config for save the config for packages
+mkdir -p ~/.config
+
+# Function to install packages
+install_packages() {
+    for element in "${array_packages[@]}"; do
+        if _commend_exists "$element"; then
+            echo -e "${GREEN}-- $element is already installed --${RC}"
+            continue
+        else
+            echo -e "${GREEN}-- installing $element --${RC}"
+            sudo pacman -S --noconfirm "${element}"
+            if [ $? -eq 0 ]; then
+                echo -e "${GREEN}-- $element installed successfully --${RC}"
+            else
+                echo -e "${RED}** Error occurred while installing $element **${RC}"
+            fi
+        fi
+    done
+}
+
+

@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+commend_exists() {
+    command -v "$1" >/dev/null 2>&1
+}
+if [ $# -eq 0 ]; then
+    echo "Please provide a command to check."
+    exit 1
+fi
+commend_exists "$1"

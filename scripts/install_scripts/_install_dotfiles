@@ -1,0 +1,27 @@
+#!/usr/bin/env bash
+RC='\e[0m'
+RED='\e[31m'
+YELLOW='\e[33m'
+GREEN='\e[32m'
+
+
+# for get the dotfiles config from git
+dotfile() {
+    dir=$HOME/dotfiles
+    if [ -d "$dir" ]; then
+        echo -e "${GREEN}-- the dotfile is cloned -- ${RC}"
+    else 
+        dotfileUrl="https://github.com/yossefsabry/dotfiles.git"
+        echo -e "${GREEN}-- cloning the config from ${dotfileUrl} -- ${RC}"
+        cd ~
+        git clone $dotfileUrl
+        if [ $? -qe 0 ]; then
+            echo -e "${GREEN}-- cloning successfly -> ${dotfileUrl} ----${RC}"
+        else 
+            echo -e "${RED}** error happend in cloning -> ${dotfileUrl} **${RC}"
+        fi
+        cd - 
+    fi
+}
+dotfile
+
