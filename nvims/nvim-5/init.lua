@@ -34,6 +34,8 @@ dofile(vim.g.base46_cache .. "defaults")
 dofile(vim.g.base46_cache .. "statusline")
 
 require "nvchad.autocmds"
+-- require "lua.custom.init" -- for disable 
+-- require "lua.chadrc"
 
 vim.schedule(function()
     require "mappings"
@@ -55,5 +57,4 @@ vim.api.nvim_set_hl(0, "LineNrBelow", { fg = "#737373", bold = false })
 
 -- Set the color for the ColorColumn
 vim.cmd([[ highlight ColorColumn guibg=#316860 ]])
-
 

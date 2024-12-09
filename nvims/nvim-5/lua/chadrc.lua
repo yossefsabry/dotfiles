@@ -1,6 +1,4 @@
 -- This file needs to have same structure as nvconfig.lua 
-
-
 ---@type ChadrcConfig
 local M = {}
 M.ui = {

@@ -108,3 +108,5 @@ vim.api.nvim_create_autocmd('FileType', {
     end,
 })
 
+vim.keymap.del("n", "<C-n>")
+
