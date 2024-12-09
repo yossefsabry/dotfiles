@@ -20,7 +20,7 @@ static const unsigned int baralpha = 0x00; // fully tarnsparent
 static const unsigned int borderalpha = OPAQUE;
 static const char *colors[][3]      = {
     /*               fg         bg         border   */
-    [SchemeNorm] = { col_gray3, col_gray1, col_gray2 },
+    [SchemeNorm] = { col_gray3, col_gray1, col_cyan },
     [SchemeSel]  = { col_gray4, col_cyan,  col_cyan  },
 };
 static const unsigned int alphas[][3]      = {
@@ -56,7 +56,9 @@ static const Rule rules[] = {
     { "Postman",                 NULL,                       NULL,             1 << 5,      0,           -1 },
     { "YouTube Music",           NULL,                       NULL,             1 << 5,      0,           -1 },
     { "MongoDB Compass",         NULL,                       NULL,             1 << 5,      0,           -1 },
+    { "burp-StartBurp",          NULL,                       NULL,             1 << 5,      0,           -1 },
     { "Gimp",                    NULL,                       NULL,             1 << 6,      0,           -1 },
+    { "VirtualBox Manager",      NULL,                       NULL,             1 << 6,      0,           -1 },
 };
 
 
