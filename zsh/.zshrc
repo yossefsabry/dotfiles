@@ -5,11 +5,11 @@
 export ZSH="$HOME/.oh-my-zsh"
 export PATH="$HOME/.local/bin/:$PATH"
 export PATH="$HOME/bin/:$PATH"
-alias edit="vim"
+# for scripts dotfiles
+export PATH="$HOME/dotfiles/scripts:$PATH"
+export PATH="$HOME/dotfiles/scripts/install_scripts:$PATH"
+
 alias gpt="tgpt"
-export PGUSER=root
-export PGPASSWORD=yossef280
-export PGDATABASE=yossef280
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -20,6 +20,9 @@ export PGDATABASE=yossef280
  ZSH_THEME="robbyrussell"  #linuxonly
 # starship theme
 # eval "$(starship init zsh)"
+
+# zoxide 
+eval "$(zoxide init zsh)"
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -121,12 +124,6 @@ bindkey -M vicmd v edit-command-line
 # set default editor
 export term=kitty
 alias BROWSER=qutebrowser
-export EDITOR=nvim
-export VISUAL=nvim
-alias pico='edit'
-alias spico='sedit'
-alias nano='edit'
-alias snano='sedit'
 alias vim='nvim'
 
 # Add an "alert" alias for long running commands.  Use like so:
@@ -136,8 +133,6 @@ alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo
 # Edit this .bashrc file
 alias ebrc='edit ~/.bashrc'
 alias etmux='nvim ~/.tmux.conf'
-
-alias o="xdg-open"
 
 # alias to show the date
 alias da='date "+%Y-%m-%d %A %T %Z"'
@@ -151,11 +146,9 @@ alias pp='xsel --output --clipboard'
 alias ebrc='nvim ~/.bashrc'
 alias ezsh='nvim ~/.zshrc'
 alias etmux='nvim ~/.tmux.conf'
-alias ps='ps auxf'
 alias ping='ping -c 10'
 alias less='less -R'
 alias cls='clear'
-alias removeNvimCache="rm -rf ~/.local/share/nvim/"
 # for search in history
 bindkey '\er' history-incremental-search-backward
 
@@ -172,6 +165,7 @@ alias cdc="cd /home/$USER/projects/c-projects/c-course"
 alias notes="cd /home/$USER/notes"
 alias dotfiles="cd /home/$USER/dotfiles"
 alias scripts="cd /home/$USER/dotfiles/scripts"
+alias script="cd /home/$USER/dotfiles/scripts"
 alias build="./build"
 alias gf='fzf -m \
   --height=100% \
@@ -213,7 +207,6 @@ alias google="ping google.com"
 
 # Search running processes
 alias p="ps aux | grep "
-alias topcpu="/bin/ps -eo pcpu,pid,user,args | sort -k 1 -r | head -10"
 
 # Search files in the current folder
 alias f="find . | grep "
@@ -239,15 +232,12 @@ alias ungz='tar -xvzf'
 
 
 # Show all logs in /var/log
-alias logs="sudo find /var/log -type f -exec file {} \; | grep 'text' 
+alias logs="sudo find /var/log -type f -exec file {} \; | grep 'text' \
 | cut -d' ' -f1 | sed -e's/:$//g' | grep -v '[0-9]$' | xargs tail -f"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 export FZF_DEFAULT_OPTS='--extended --layout=reverse --height=100% '
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
-
-# for scripts dotfiles
-export PATH="$HOME/dotfiles/scripts:$PATH"
 
 # Bind ctrl+f to the tmux_new_session function
 bindkey -s '^F' 'tm\n'
@@ -270,13 +260,9 @@ fi
 # for install using cargo(asm-lsp)
 export PATH="$HOME/.cargo/bin:$PATH"
 
-# adding path go
-export GOROOT=/usr/local/go
-export PATH=$PATH:$GOROOT/bin
-export PATH=$PATH:/usr/local/go/bin
 
 ##****** some functions ********##
-function fzf_cd() {
+fzf_cd() {
     # Use fzf to select a directory from the output of find
     local folder
     folder=$(find "$(pwd)" -type d -print 2>/dev/null | fzf --height 40%)
@@ -290,12 +276,14 @@ function fzf_cd() {
     fi
 }
 
-
 #go lang setup
+# adding path go
+export GOROOT=/usr/local/go
+export PATH=$PATH:$GOROOT/bin
+export PATH=$PATH:/usr/local/go/bin
 export GOPATH="$HOME/go/bin"
 export GOPATH="$HOME/go"
 export GOBIN="$GOPATH/bin"
 export PATH="$PATH:$GOBIN"
 export PATH="$PATH:$HOME/go/bin/"
 export PATH=$PATH:/usr/local/go/bin
-
