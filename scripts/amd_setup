@@ -1,0 +1,39 @@
+#!/usr/bin/env bash
+
+# Function to install necessary drivers
+install_drivers() {
+    echo "Installing Intel and AMD drivers..."
+    sudo pacman -S --noconfirm xf86-video-intel xf86-video-amdgpu mesa lib32-mesa vulkan-intel vulkan-radeon
+
+    echo "Configuring AMD GPU to use amdgpu driver..."
+    sudo mkdir -p /etc/modprobe.d
+
+    # Configure amdgpu driver
+    echo -e "options amdgpu si_support=1\noptions amdgpu cik_support=1" | sudo tee /etc/modprobe.d/amdgpu.conf
+
+    # Blacklist radeon driver
+    echo "blacklist radeon" | sudo tee /etc/modprobe.d/radeon.conf
+
+    echo "Updating initramfs..."
+    sudo mkinitcpio -P
+}
+
+# Function to verify driver installation
+verify_installation() {
+    echo "Verifying driver installation..."
+    echo "Loaded Kernel Modules:"
+    lsmod | grep -E 'i915|amdgpu|radeon'
+    echo "Available Vulkan Devices:"
+    vulkaninfo | grep "GPU id" || echo "vulkaninfo is not installed."
+}
+
+# Main function
+main() {
+    echo "Starting GPU driver setup..."
+    install_drivers
+    verify_installation
+    echo "Setup complete. Please reboot your system."
+}
+
+main
+

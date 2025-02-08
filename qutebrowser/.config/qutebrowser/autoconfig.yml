@@ -6,7 +6,5 @@
 
 config_version: 2
 settings:
-  statusbar.show:
-    global: always
-  tabs.show:
-    global: always
+  content.javascript.clipboard:
+    https://chatgpt.com: access-paste

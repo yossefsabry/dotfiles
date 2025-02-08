@@ -1,0 +1,31 @@
+#!/bin/bash
+
+# Function to check if a package is installed
+check_install() {
+    PACKAGE=$1
+    if ! pacman -Q "$PACKAGE" &>/dev/null; then
+        echo "$PACKAGE is not installed. Installing..."
+        yay -S --noconfirm "$PACKAGE"
+    else
+        echo "$PACKAGE is already installed."
+    fi
+}
+
+# Check and install bluez-utils
+check_install bluez-utils
+
+# Check and install bluez
+check_install bluez
+
+# Check and install blueman
+check_install blueman
+
+# Ensure the Bluetooth service is running
+echo "Ensuring the Bluetooth service is active..."
+sudo systemctl start bluetooth
+sudo systemctl enable bluetooth
+
+# Start the Blueman Manager
+echo "Starting Blueman Manager..."
+blueman-manager
+

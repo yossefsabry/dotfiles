@@ -1603,18 +1603,25 @@ setfullscreen(Client *c, int fullscreen)
 	}
 }
 
-void
-setlayout(const Arg *arg)
+void setlayout(const Arg *arg)
 {
+    // disable pciom in monocle mode
+    if (selmon->lt[selmon->sellt]->arrange == monocle) {
+        // Disable picom when switching to monocle layout
+        system("pkill -USR1 picom"); // Stops picom (adjust the command to suit your setup)
+    } else {
+        // Enable picom when leaving monocle layout
+        system("picom --experimental-backends &");
+    }
 	if (!arg || !arg->v || arg->v != selmon->lt[selmon->sellt])
 		selmon->sellt = selmon->pertag->sellts[selmon->pertag->curtag] ^= 1;
 	if (arg && arg->v)
 		selmon->lt[selmon->sellt] = selmon->pertag->ltidxs[selmon->pertag->curtag][selmon->sellt] = (Layout *)arg->v;
 	strncpy(selmon->ltsymbol, selmon->lt[selmon->sellt]->symbol, sizeof selmon->ltsymbol);
-	if (selmon->sel)
-		arrange(selmon);
-	else
-		drawbar(selmon);
+    if (selmon->sel)
+        arrange(selmon);
+    else
+        drawbar(selmon);
 }
 
 /* arg > 1.0 will set mfact absolutely */

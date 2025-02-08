@@ -1,0 +1,16 @@
+
+
+#!/bin/bash
+
+# Update system
+sudo pacman -Syu --noconfirm
+
+# Install AMDGPU driver, Mesa, and Vulkan support
+sudo pacman -S --noconfirm xf86-video-amdgpu mesa vulkan-radeon
+
+# Optionally, check if the driver is installed correctly
+lspci -k | grep amdgpu
+
+# Reboot the system (uncomment the next line if you want to reboot automatically)
+# sudo reboot
+

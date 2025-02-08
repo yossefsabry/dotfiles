@@ -1,181 +1,150 @@
-configuration {
-  ssh-command: "{terminal} start -- {ssh-client} {host}"; // wezterm
-  sidebar-mode: true;
-  /* keys have to be unbound before they can be reused */
-  kb-accept-entry: "Ctrl+m,Return,KP_Enter";
-  kb-remove-to-eol: "";
-  kb-remove-char-back: "BackSpace,Shift+BackSpace";
-  kb-mode-complete: "";
-  /* better vim controls */
-  kb-mode-previous: "H,Ctrl+h,Alt+h";
-  kb-row-down: "J,Ctrl+j,Alt+j,Down";
-  kb-row-up: "K,Ctrl+k,Alt+k,Up";
-  kb-mode-next: "L,Ctrl+l,Alt+l";
-}
+/************************************************
+ * ROFI Color theme
+ * User: leofa
+ * Copyright: 2017 leofa
+ ***********************************************/
 
 * {
-    base: #191724;       // Base color
-    foreground: #e0def4; // Foreground color
-    background: #26233a; // Background color
-    highlight: #ebbcba;  // Highlight color
-    cursor: #a6accd;     // Cursor color
-    attention: #ff9e64;  // Attention color
-
-  background-color: @background;
-
-  normal-foreground: @foreground;
-  normal-background: @background;
-
-  active-foreground: @attention;
-  active-background: @background;
-
-  urgent-foreground: @attention;
-  urgent-background: @background;
-
-  alternate-normal-foreground: @foreground;
-  alternate-normal-background: @background;
-
-  alternate-active-foreground: @foreground;
-  alternate-active-background: @background;
-
-  alternate-urgent-foreground: @attention;
-  alternate-urgent-background: @background;
-
-  selected-normal-foreground: @foreground;
-  selected-normal-background: @cursor;
-
-  selected-active-foreground: @attention;
-  selected-active-background: @cursor;
-
-  selected-urgent-foreground: @attention;
-  selected-urgent-background: @cursor;
-
-  spacing: 2;
-  sidebar-mode: true;
+    selected-normal-foreground:  rgba ( 249, 249, 249, 100 % );
+    foreground:                  rgba ( 196, 203, 212, 100 % );
+    normal-foreground:           @foreground;
+    alternate-normal-background: rgba ( 64, 69, 82, 59 % );
+    red:                         rgba ( 220, 50, 47, 100 % );
+    selected-urgent-foreground:  rgba ( 249, 249, 249, 100 % );
+    blue:                        rgba ( 38, 139, 210, 100 % );
+    urgent-foreground:           rgba ( 204, 102, 102, 100 % );
+    alternate-urgent-background: rgba ( 75, 81, 96, 90 % );
+    active-foreground:           rgba ( 101, 172, 255, 100 % );
+    lightbg:                     rgba ( 238, 232, 213, 100 % );
+    selected-active-foreground:  rgba ( 249, 249, 249, 100 % );
+    alternate-active-background: rgba ( 75, 81, 96, 89 % );
+    background:                  rgba ( 45, 48, 59, 95 % );
+    alternate-normal-foreground: @foreground;
+    normal-background:           @background;
+    lightfg:                     rgba ( 88, 104, 117, 100 % );
+    selected-normal-background:  rgba ( 64, 132, 214, 100 % );
+    border-color:                rgba ( 124, 131, 137, 100 % );
+    spacing:                     2;
+    separatorcolor:              rgba ( 29, 31, 33, 100 % );
+    urgent-background:           rgba ( 29, 31, 33, 17 % );
+    selected-urgent-background:  rgba ( 165, 66, 66, 100 % );
+    alternate-urgent-foreground: @urgent-foreground;
+    background-color:            rgba ( 0, 0, 0, 0 % );
+    alternate-active-foreground: @active-foreground;
+    active-background:           rgba ( 29, 31, 33, 17 % );
+    selected-active-background:  rgba ( 68, 145, 237, 100 % );
 }
-#window {
-  background-color: @background;
-  border: 0;
+window {
+    background-color: @background;
+    border:           1;
+    padding:          5;
 }
-#mainbox {
-  border:  0;
-  padding: 0;
-  margin: 0;
-  spacing: 0;
+mainbox {
+    border:  0;
+    padding: 0;
 }
-#inputbar {
-  children:   [ prompt,textbox-prompt-colon,entry,case-indicator ];
-  spacing:    0;
-  text-color: @normal-foreground;
-  padding:    6px 1px 6px 10px;
+message {
+    border:       2px 0px 0px ;
+    border-color: @separatorcolor;
+    padding:      1px ;
 }
-#prompt {
-  spacing:    0;
-  text-color: @foreground;
+textbox {
+    text-color: @foreground;
 }
-#entry {
-  spacing:    0;
-  text-color: @normal-foreground;
-  placeholder: "type to filter";
-  placeholder-color: @cursor;
+listview {
+    fixed-height: 0;
+    border:       2px 0px 0px ;
+    border-color: @separatorcolor;
+    spacing:      2px ;
+    scrollbar:    true;
+    padding:      2px 0px 0px ;
 }
-#case-indicator {
-  spacing:    0;
-  text-color: @normal-foreground;
+element {
+    border:  0;
+    padding: 1px ;
 }
-#textbox-prompt-colon {
-  expand:     false;
-  str:        ":";
-  margin:     0px 0.3em 0em 0em;
-  text-color: @foreground;
+element-text {
+    background-color: inherit;
+    text-color:       inherit;
 }
-#message {
-  border:       1px 0px 0px 0px;
-  border-color: @cursor;
-  padding:      6px 0px 6px 26px;
+element.normal.normal {
+    background-color: @normal-background;
+    text-color:       @normal-foreground;
 }
-#textbox {
-  text-color: @foreground;
+element.normal.urgent {
+    background-color: @urgent-background;
+    text-color:       @urgent-foreground;
 }
-#listview {
-  border:       1px 0px 0px 0px;
-  border-color: @cursor;
-  scrollbar:    true;
-  fixed-height: 0;
-  spacing:      1px;
-  padding:      0;
+element.normal.active {
+    background-color: @active-background;
+    text-color:       @active-foreground;
 }
-
-#element {
-  border:  0;
-  padding: 6px 3px 6px 15px; /* Increase padding to make rows larger */
-  icon-size: 34px; /* Custom property for icon size (if supported) */
-  spacing: 5px; /* Increase spacing between rows */
+element.selected.normal {
+    background-color: @selected-normal-background;
+    text-color:       @selected-normal-foreground;
 }
-
-#element.normal.normal {
-  background-color: @normal-background;
-  text-color:       @normal-foreground;
+element.selected.urgent {
+    background-color: @selected-urgent-background;
+    text-color:       @selected-urgent-foreground;
 }
-#element.normal.urgent {
-  background-color: @urgent-background;
-  text-color:       @urgent-foreground;
+element.selected.active {
+    background-color: @selected-active-background;
+    text-color:       @selected-active-foreground;
 }
-#element.normal.active {
-  background-color: @active-background;
-  text-color:       @active-foreground;
+element.alternate.normal {
+    background-color: @alternate-normal-background;
+    text-color:       @alternate-normal-foreground;
 }
-#element.selected.normal {
-  background-color: @selected-normal-background;
-  text-color:       @selected-normal-foreground;
+element.alternate.urgent {
+    background-color: @alternate-urgent-background;
+    text-color:       @alternate-urgent-foreground;
 }
-#element.selected.urgent {
-  background-color: @selected-urgent-background;
-  text-color:       @selected-urgent-foreground;
+element.alternate.active {
+    background-color: @alternate-active-background;
+    text-color:       @alternate-active-foreground;
 }
-#element.selected.active {
-  background-color: @selected-active-background;
-  text-color:       @selected-active-foreground;
+scrollbar {
+    width:        4px ;
+    border:       0;
+    handle-color: @normal-foreground;
+    handle-width: 8px ;
+    padding:      0;
 }
-#element.alternate.normal {
-  background-color: @alternate-normal-background;
-  text-color:       @alternate-normal-foreground;
+mode-switcher {
+    border:       2px 0px 0px ;
+    border-color: @separatorcolor;
 }
-#element.alternate.urgent {
-  background-color: @alternate-urgent-background;
-  text-color:       @alternate-urgent-foreground;
+button {
+    spacing:    0;
+    text-color: @normal-foreground;
 }
-
-#element.alternate.active {
-  background-color: @alternate-active-background;
-  text-color:       @alternate-active-foreground;
+button.selected {
+    background-color: @selected-normal-background;
+    text-color:       @selected-normal-foreground;
 }
-
-#scrollbar {
-  handle-color: @background;
-  background-color: @cursor;
-  handle-width: 30px;
+inputbar {
+    spacing:    0;
+    text-color: @normal-foreground;
+    padding:    1px ;
 }
-
-#mode-switcher {
-  border: 1px 0px 0px 0px;
-  border-color: @foreground;
-  margin: 0;
+case-indicator {
+    spacing:    0;
+    text-color: @normal-foreground;
 }
-
-#button {
-  background-color: @background;
-  text-color: @normal-foreground;
-  padding: 10px 15px;  /* Adjust padding */
-  margin: 0;
-  font-size: 1.5em;  /* Increase text and icon size */
-  height: 40px;      /* Adjust button height */
-  /* If icons are included as background images, specify sizes */
-  icon-size: 24px;   /* This is an illustrative property; check if supported */
+entry {
+    spacing:    0;
+    text-color: @normal-foreground;
 }
-
-#button.selected {
-  background-color: @foreground;
-  text-color:       @base;
+prompt {
+    spacing:    0;
+    text-color: @normal-foreground;
 }
-
+inputbar {
+    children:   [ prompt,textbox-prompt-colon,entry,case-indicator ];
+}
+textbox-prompt-colon {
+    expand:     false;
+    str:        ":";
+    margin:     0px 0.3em 0em 0em ;
+    text-color: @normal-foreground;
+}

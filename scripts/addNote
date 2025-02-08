@@ -5,7 +5,7 @@
 add_note() {
   # Ensure correct number of arguments
   if [ "$#" -ne 2 ]; then
-    echo "Usage: add_note <folder> <name>"
+    echo "Usage: add_note ~/notes/<folder> <name>"
     return 1
   fi
   local folder="$1"
@@ -30,7 +30,14 @@ add_note() {
   
   # Create the markdown file with the template
   cat <<EOL > "$file_path"
-  ># path: $folder/$name.md
+---
+dg-publish: true
+dg-home: false
+---
+---
+
+"$file_path"
+># path: $folder/$name.md
 
 \`\`\`text
 - **fileName**: $name

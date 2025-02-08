@@ -10,12 +10,11 @@ install_yay() {
     echo -e "${GREEN}--- command already exits ----${RC}"
   else
     echo -e "${GREEN}-- install some dependences git base-devel --${RC}"
-    pacman -Sy --needed git base-devel
-    if [ $? -qe 0 ]; then
+    if [[ $? == 0 ]]; then
       echo -e "${GREEN}-- install yay --${RC}"
       cd
       git clone https://aur.archlinux.org/yay.git
-      if [ $? -qe 0 ]; then
+      if [[ $? == 0 ]]; then
         cd yay
         makepkg -si  
         echo -e "${GREEN}-- install yay sucessfuly ---${RC}"

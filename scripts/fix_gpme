@@ -1,0 +1,52 @@
+
+#!/usr/bin/env bash
+
+echo "::file: /usr/local/bin/fix-gpme-arch.sh"
+    echo "Thanks to folks at https://stackoverflow.com/questions/48117783/arch-linux-system-update-error-gpgme-error-no-data and other forums"
+    echo "#######"
+    echo ""
+    echo ""
+    echo ":: Script to fix GPME error"
+    echo ""
+    sleep 1
+    
+    echo "Remove files: /etc/pacman.d/gnupg and /var/lib/pacman/sync"
+    echo ""
+    sudo rm -rfv /etc/pacman.d/gnupg /var/lib/pacman/sync
+    sleep 1
+    
+    echo ""
+    echo "Reinitialize pacman keys"
+    echo ""
+    echo ":: pacman-key --init"
+    echo ""
+    sudo pacman-key --init 
+    echo ""
+    echo ":: pacman-key --populate archlinux"
+    echo ""
+    sudo pacman-key --populate archlinux
+    echo ""
+    sleep 1
+    
+    echo "Update pacman database"
+    echo ""
+    echo ":: pacman -Fyy"
+    echo ""
+    sudo pacman -Fyy
+    echo ""
+    echo "::sudo -E pacman -Syu"
+    sudo -E pacman -Syu
+    echo ""
+    echo ":: pacman -Syyu"
+    echo ""
+    sudo pacman -Syyu
+    echo ""
+    sleep 1
+    
+    echo "GPME fix error done"
+    echo ""
+    echo "If you see further errors, suggest running: pacman -S archlinux-keyring"
+    echo ""
+    
+    exit 0
+

@@ -1,0 +1,26 @@
+game:
+  name: Minecraft (TLauncher)
+  runner: java
+  prefix: $GAMEDIR
+  executable: java
+  args:
+    - -jar
+    - ~/TLauncher.jar
+  description: |
+    Play Minecraft using TLauncher with Java.
+  release: latest
+  working_directory: $GAMEDIR
+
+  # Unique identifier for Lutris
+  game_slug: minecraft_tlauncher
+
+  environment:
+    - PATH=$PATH:/usr/lib/jvm/java-21-openjdk/bin
+
+  system:
+    file:
+      - /usr/share/applications/java.desktop  # Optional, needed if you want a desktop shortcut
+    # Include extra info like settings or libraries
+    libraries:
+      - lib32stdc++
+    disable_esync: false

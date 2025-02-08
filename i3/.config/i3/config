@@ -161,10 +161,16 @@ assign [class="code"] workspace 4
 assign [class="Nemo"] workspace 5
 assign [class="Zeal"] workspace 5
 assign [class="QtSpim"] workspace 5
+assign [class="install4j-burp-StartBurp"] workspace 5
 # Workspace 6
 assign [class="Postman"] workspace 6
+assign [class="steam"] workspace 6
+assign [class="steamwebhelper"] workspace 6
+assign [class="Lutris"] workspace 6
+assign [class="net.lutris.Lutris"] workspace 6
 assign [class="Youtube Music"] workspace 6
 # Workspace 7
+assign [class="Gimp"] workspace 7
 assign [class="Gimp"] workspace 7
 
 
@@ -217,7 +223,7 @@ bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
-bindsym $mod+Shift+q exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
+bindsym $mod+Shift+q exec i3 exit
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
@@ -227,10 +233,10 @@ mode "resize" {
         # Pressing right will grow the window’s width.
         # Pressing up will shrink the window’s height.
         # Pressing down will grow the window’s height.
-        bindsym j resize shrink width 10 px or 10 ppt
-        bindsym k resize grow height 10 px or 10 ppt
-        bindsym l resize shrink height 10 px or 10 ppt
-        bindsym semicolon resize grow width 10 px or 10 ppt
+        bindsym $mod+j resize shrink height 10 px or 10 ppt
+        bindsym $mod+k resize grow height 10 px or 10 ppt
+        bindsym $mod+l resize shrink width 10 px or 10 ppt
+        bindsym $mod+h resize grow width 10 px or 10 ppt
 
         # same bindings, but for the arrow keys
         bindsym Left resize shrink width 10 px or 10 ppt
@@ -254,6 +260,7 @@ status_command i3status -c ~/.config/i3/i3status.conf
         statusline  #1f1d2e 
         separator   #26233a 
     }
+separator_symbol "::"
 }
 
 bindsym $mod+n bar mode toggle 

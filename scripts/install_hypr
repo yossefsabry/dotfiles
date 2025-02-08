@@ -1,0 +1,45 @@
+#!/usr/bin/env bash
+
+# change the user name if not found
+dotfiles="/home/yossef/dotfiles"
+# Function to check if a package is installed
+check_and_install() {
+    local package="$1"
+    
+    # Check if the package is installed
+    if pacman -Qi "$package" &>/dev/null; then
+        echo "$package is already installed."
+    else
+        echo "Installing $package..."
+        sudo pacman -S "$package"
+    fi
+}
+
+install_hyprland_packages() {
+    # Check and install Hyprland
+    check_and_install hyprland
+    
+    # Check and install Hyprpaper
+    check_and_install hyprpaper
+    
+    # Check and install Hyprlock
+    check_and_install hyprlock
+    check_and_install hyprprop
+    check_and_install waybar
+    check_and_install wl-clipboard xclip
+    check_and_install wlroots wayland-utils
+    check_and_install wofi
+    check_and_install kitty
+    check_and_install sddm
+}
+install_hyprland_packages
+
+echo "Installation complete!"
+echo "starting seting the config files"
+
+stow_files() {
+    cd $dotfiles
+    stow hypr
+}
+stow_files
+echo "finish install"

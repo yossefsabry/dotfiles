@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+
+oathtool -b --totp=sha1 $1
+

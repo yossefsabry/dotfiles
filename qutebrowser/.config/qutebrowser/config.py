@@ -409,8 +409,8 @@ config.bind('t', 'cmd-set-text -s :open -t')
 config.bind('xb', 'config-cycle statusbar.show always never')
 config.bind('xt', 'config-cycle tabs.show always never')
 config.bind('xx', 'config-cycle statusbar.show always never;; config-cycle tabs.show always never')
-# Bind 'J' to move to the previous tab
-config.bind('J', 'tab-prev')
 
 # Bind 'K' to move to the next tab
 config.bind('K', 'tab-next')
+# Bind 'J' to move to the previous tab
+config.bind('J', 'tab-prev')

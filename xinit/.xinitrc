@@ -10,25 +10,32 @@ exec xinput set-prop "AlpsPS/2 ALPS DualPoint TouchPad" "libinput Tapping Enable
 exec setxkbmap -layout us,ara -variant ,digits grp:win_space_toggle caps:none &
 # set the sxhkd
 exec sxhkd &
-exec feh --bg-center --bg-scale ~/Pictures/1.jpg &
 exec xset r rate 250 50 &
-exec picom &
 
 # bspwm {{{
+#exec flameshot &
+#exec feh --bg-center --bg-scale ~/Pictures/1.jpg &
 # exec bspwm > /var/log/.bspwm.log 2>&1  
 #: }}}
 
 # dwm {{{
-exec slstatus &
-exec dwm > ~/.dwm.log 2>&1 
-: }}}
+#exec feh --bg-center --bg-scale ~/Pictures/1.jpg &
+#exec flameshot &
+#exec run_picom &
+#exec slstatus &
+#exec dwm > ~/.dwm.log 2>&1 
+#: }}}
 
 #:qtile {{{
+#exec feh --bg-center --bg-scale ~/Pictures/1.jpg &
 # exec qtile start > /var/log/qtile.log 2>&1 
 #:}}}
 
 # :i3 {{{
-# exec i3 > /var/log/.i3.log 2>&1 
+exec run_picom &
+exec feh --bg-center --bg-scale ~/Pictures/4.jpg &
+exec flameshot &
+exec i3 > ~/.i3.log 2>&1 
 # :}}}
 
 # :hyprland {{{

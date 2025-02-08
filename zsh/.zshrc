@@ -9,7 +9,9 @@ export PATH="$HOME/bin/:$PATH"
 export PATH="$HOME/dotfiles/scripts:$PATH"
 export PATH="$HOME/dotfiles/scripts/install_scripts:$PATH"
 
-alias gpt="tgpt"
+alias gpt="tgpt "
+alias wine64="wine "
+alias wine32="wine "
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -213,7 +215,8 @@ alias f="find . | grep "
 
 # To see if a command is aliased, a file, or a built-in command
 alias checkcommand="type -t"
-
+# to slove problem in  mind ipconfig
+alias ipconfig="ifconfig "
 
 # Alias's to show disk space and space used in a folder
 alias diskspace="du -S | sort -n -r |more"
@@ -247,7 +250,7 @@ pfetch
 
 # for the font for the tty  (for archlinux)
 if [ -z "$DISPLAY" ]; then
-    setfont /usr/share/kbd/consolefonts/latarcyrheb-sun32.psfu.gz
+	setfont /usr/share/kbd/consolefonts/ter-232b.psf.gz
 fi
 
 #

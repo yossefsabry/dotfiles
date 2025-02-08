@@ -12,8 +12,9 @@ array_packages=(
     "cargo" #rust
     "xorg" "xorg-xev" "xorg-xinit" "xbindkeys" "xorg-setxkbmap" "sxhkd" # keybind
     "iwd" "NetworkManager" "dhcpcd" "nmcli" # network
-    "pavucontrol" "brightnessctl" # audio and screen
+    "pavucontrol" "brightnessctl" "alsa-tools"  # audio and screen bright
     "wget" "firefox" "syncthing" # apps and some packages
+    "terminus-font" # tty main font
 )
 
 # creating .config for save the config for packages
@@ -37,4 +38,5 @@ install_packages() {
     done
 }
 
+install_packages
 
