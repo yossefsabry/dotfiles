@@ -92,6 +92,7 @@ return {
             lsp_zero.extend_lspconfig()
 
             local lspconfig = require("lspconfig")
+            -- lspconfig.pyright.setup{} -- for python
             local util = lspconfig.util
 
             -- Set a global root_dir for all servers

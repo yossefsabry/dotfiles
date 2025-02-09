@@ -35,6 +35,7 @@ return {
                 "lua_ls", -- lua
                 "gopls", -- go
                 "bashls", -- bash
+                "pyright", -- python
             },
             -- auto-install configured servers (with lspconfig)
             automatic_installation = true, -- not the same as ensure_installed

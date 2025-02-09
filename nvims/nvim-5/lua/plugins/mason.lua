@@ -28,7 +28,7 @@ return {
             -- list of servers for mason to install
             -- ensure these language parsers are installed
             ensure_installed = {
-                "tsserver", -- typescript and javascript
+                -- "tsserver", -- typescript and javascript (not valid)
                 "emmet_ls", -- for all css and html files
                 "tailwindcss", -- tailwindcss
                 "clangd", -- for c and c++
