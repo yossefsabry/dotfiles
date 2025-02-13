@@ -1,0 +1,6 @@
+
+
+#!/usr/bin/env bas
+
+# install the wordlist for hacking wifi and else
+yay -S dirbuster-wordlists 3wifi-wpa-wordlist docopt-wordlist 

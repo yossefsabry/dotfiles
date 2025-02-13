@@ -5,7 +5,7 @@ LOCK_FILE="/tmp/redshift.lock"
 
 # Function to check if redshift is running with the specific temperature
 is_redshift_running() {
-  pgrep -af "redshift -O 3500K" > /dev/null
+  pgrep -af "redshift -O 2000K" > /dev/null
 }
 
 # Check if the lock file exists
@@ -28,7 +28,7 @@ else
   # If the lock file does not exist, redshift should be disabled
   # Enable redshift with a temperature of 3500K
   #notify-send "enable: eye protect(redshift)"
-  redshift -O 3500K
+  redshift -O 2000K
   # Create the lock file
   touch "$LOCK_FILE"
 fi
