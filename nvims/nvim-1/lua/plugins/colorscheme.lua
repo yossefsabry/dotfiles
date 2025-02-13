@@ -47,6 +47,6 @@ return {
 	},
 	{
 		-- transparnet background color for nvim
-		-- "tribela/vim-transparent",
+		"tribela/vim-transparent",
 	},
 }
