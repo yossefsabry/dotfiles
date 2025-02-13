@@ -72,6 +72,6 @@ static const struct arg args[] = {
     {cpu_perc, " CPU:%s%% |", NULL},
     {ram_perc, " RAM:%s%% |", NULL},
     {battery_perc, " BAT:%s%% |", "BAT0"},
-    {netspeed_rx, " netspeed:%sB/s |", "wlan0"},
-    {ipv4, " ip:%s |", "wlan0"},
+    {netspeed_rx, " netspeed:%sB/s |", "wlan0 wlan1"},
+    {ipv4, "ip:%s |", "wlan0 wlan1 |"},
 };
