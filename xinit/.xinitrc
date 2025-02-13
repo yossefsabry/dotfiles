@@ -11,6 +11,7 @@ exec setxkbmap -layout us,ara -variant ,digits grp:win_space_toggle caps:none &
 # set the sxhkd
 exec sxhkd &
 exec xset r rate 250 50 &
+exec redshift -O 2000K &
 
 # bspwm {{{
 #exec flameshot &
@@ -19,11 +20,11 @@ exec xset r rate 250 50 &
 #: }}}
 
 # dwm {{{
-#exec feh --bg-center --bg-scale ~/Pictures/1.jpg &
-#exec flameshot &
-#exec run_picom &
-#exec slstatus &
-#exec dwm > ~/.dwm.log 2>&1 
+# exec feh --bg-center --bg-scale ~/Pictures/1.jpg &
+# exec flameshot &
+# exec run_picom &
+# exec slstatus &
+# exec dwm > ~/.dwm.log 2>&1 
 #: }}}
 
 #:qtile {{{
