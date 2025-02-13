@@ -172,9 +172,11 @@ assign [class="steamwebhelper"] workspace 6
 assign [class="Lutris"] workspace 6
 assign [class="net.lutris.Lutris"] workspace 6
 assign [class="Youtube Music"] workspace 6
+
 # Workspace 7
 assign [class="Gimp"] workspace 7
 assign [class="Gimp"] workspace 7
+assign [class="VirtualBox Manager"] workspace 7
 
 
 #------------------------ scratchpad ------------------------
