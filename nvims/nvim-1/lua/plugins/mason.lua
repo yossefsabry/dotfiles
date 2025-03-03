@@ -36,6 +36,8 @@ return {
                 "gopls", -- go
                 "bashls", -- bash
                 "pyright", -- python
+                "phpactor", -- php
+                -- "intelephense", -- php
             },
             -- auto-install configured servers (with lspconfig)
             automatic_installation = true, -- not the same as ensure_installed

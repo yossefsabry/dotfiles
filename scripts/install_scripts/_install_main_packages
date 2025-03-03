@@ -15,6 +15,8 @@ array_packages=(
     "pavucontrol" "brightnessctl" "alsa-tools"  # audio and screen bright
     "wget" "firefox" "syncthing" # apps and some packages
     "terminus-font" # tty main font
+    "xdg-desktop-portal" # for download from qutebrowser
+    "yt-dlp" # for download too and watch 
 )
 
 # creating .config for save the config for packages

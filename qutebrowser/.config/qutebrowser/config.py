@@ -24,6 +24,9 @@ config.bind('JK', 'mode-leave', mode='insert')
 # Setting dark mode
 config.set("colors.webpage.darkmode.enabled", True)
 
+# zoom default size
+c.zoom.default = "170%"
+
 
 # Which cookies to accept. With QtWebEngine, this setting also controls
 # other features with tracking capabilities similar to those of cookies;
@@ -403,8 +406,12 @@ c.fonts.prompts = '11pt "FiraMono Nerd Font Propo"'
 c.fonts.statusbar = '11pt "FiraMono Nerd Font Propo"'
 
 # Bindings for normal mode
-config.bind('M', 'hint links spawn mpv {hint-url}')
-config.bind('Z', 'hint links spawn kitty -e youtube-dl {hint-url}')
+config.bind('M', 'hint links spawn mpv {hint-url}') # watch video
+# download video
+#config.bind('Z', 'hint links spawn kitty -e youtube-dl {hint-url}') 
+# download video
+config.bind('Z', 'hint links spawn kitty -e yt-dlp -o "~/Videos/%(title)s.%(ext)s" \
+{hint-url}') 
 config.bind('t', 'cmd-set-text -s :open -t')
 config.bind('xb', 'config-cycle statusbar.show always never')
 config.bind('xt', 'config-cycle tabs.show always never')

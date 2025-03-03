@@ -34,7 +34,7 @@ exec redshift -O 2000K &
 
 # :i3 {{{
 exec run_picom &
-exec feh --bg-center --bg-scale ~/Pictures/4.jpg &
+exec feh --bg-center --bg-scale ~/Pictures/1.jpeg &
 exec flameshot &
 exec i3 > ~/.i3.log 2>&1 
 # :}}}

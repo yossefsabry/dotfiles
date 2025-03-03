@@ -125,7 +125,7 @@ bindkey -M vicmd v edit-command-line
 
 # set default editor
 export term=kitty
-alias BROWSER=qutebrowser
+alias browser=qutebrowser
 alias vim='nvim'
 
 # Add an "alert" alias for long running commands.  Use like so:
@@ -290,3 +290,6 @@ export GOBIN="$GOPATH/bin"
 export PATH="$PATH:$GOBIN"
 export PATH="$PATH:$HOME/go/bin/"
 export PATH=$PATH:/usr/local/go/bin
+
+# nvm
+source /usr/share/nvm/init-nvm.sh
