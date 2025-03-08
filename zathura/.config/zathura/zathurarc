@@ -18,6 +18,13 @@ map J zoom out
 map K zoom in
 map R rotate
 
+# page up and page down 
+unmap <C-k>
+unmap <C-j>
+map <C-k> navigate previous-page
+map <C-j> navigate next-page
+
+
 # # DONT WORK HINT
 # # Explicitly map f and F to follow links
 # map f follow
