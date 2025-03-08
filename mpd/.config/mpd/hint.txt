@@ -1,0 +1,13 @@
+
+
+
+when run systemctl start don't start with sudo because it's gone load config
+from default place which is /var/lib/mpd 
+and now one want this 
+using :
+systemctl --user enable mpd
+systemctl --user start mpd
+
+## without sudo
+
+to load config from .config/mpd (port 4004)
