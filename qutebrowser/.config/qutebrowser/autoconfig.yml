@@ -7,4 +7,8 @@
 config_version: 2
 settings:
   content.javascript.clipboard:
-    https://github.com: access-paste
+    https://chatgpt.com: access-paste
+  statusbar.show:
+    global: always
+  tabs.show:
+    global: always
