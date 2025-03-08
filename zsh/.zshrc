@@ -293,3 +293,4 @@ export PATH=$PATH:/usr/local/go/bin
 
 # nvm
 source /usr/share/nvm/init-nvm.sh
+export PATH="$HOME/tools/phpactor/vendor/bin:$PATH"
