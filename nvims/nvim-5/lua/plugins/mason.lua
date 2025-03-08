@@ -8,8 +8,7 @@ return {
 		-- import mason
 		local mason = require("mason")
 
-		-- import mason-lspconfig
-		local mason_lspconfig = require("mason-lspconfig")
+		-- import mason-lspconfig local mason_lspconfig = require("mason-lspconfig")
 
 		local mason_tool_installer = require("mason-tool-installer")
 
@@ -28,7 +27,7 @@ return {
             -- list of servers for mason to install
             -- ensure these language parsers are installed
             ensure_installed = {
-                -- "tsserver", -- typescript and javascript (not valid)
+                -- "tsserver", -- typescript and javascript (not valild)
                 "emmet_ls", -- for all css and html files
                 "tailwindcss", -- tailwindcss
                 "clangd", -- for c and c++
@@ -36,6 +35,7 @@ return {
                 "lua_ls", -- lua
                 "gopls", -- go
                 "bashls", -- bash
+                "phpactor", -- php
             },
         })
 

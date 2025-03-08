@@ -1,6 +1,7 @@
 {
     "diagnostics.globals": [
-        "vim"
+        "vim",
+        "mason_lspconfig"
     ],
     "diagnostics.disable": [
         "different-requires",
