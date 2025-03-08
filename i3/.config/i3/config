@@ -163,8 +163,11 @@ assign [class="code"] workspace 4
 # Workspace 5
 assign [class="Nemo"] workspace 5
 assign [class="Zeal"] workspace 5
+assign [class="Zeal"] workspace 5
+assign [class="com.github.th_ch.youtube_music"] workspace 5
 assign [class="QtSpim"] workspace 5
 assign [class="install4j-burp-StartBurp"] workspace 5
+
 # Workspace 6
 assign [class="Postman"] workspace 6
 assign [class="steam"] workspace 6
