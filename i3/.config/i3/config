@@ -1,5 +1,5 @@
 ## starting the configuration file for i3
-# for_window [class="^.*"] border pixel 1
+for_window [class="^.*"] border pixel 2
 
 set $mod Mod1
 # set $mod Mod1
@@ -156,15 +156,20 @@ assign [class="qutebrowser"] workspace 2
 # Workspace 3
 assign [class="discord"] workspace 3
 assign [class="Microsoft To-Do Unofficial"] workspace 3
+assign [class="mpv"] workspace 3
+assign [class="lg"] workspace 3
 # Workspace 4
 assign [class="obsidian"] workspace 4
 assign [class="Zathura"] workspace 4
 assign [class="code"] workspace 4
+assign [class="whatsie"] workspace 4
+assign [class="WhatSie"] workspace 4
 # Workspace 5
 assign [class="Nemo"] workspace 5
 assign [class="Zeal"] workspace 5
 assign [class="Zeal"] workspace 5
 assign [class="com.github.th_ch.youtube_music"] workspace 5
+assign [class="fooyin"] workspace 5
 assign [class="QtSpim"] workspace 5
 assign [class="install4j-burp-StartBurp"] workspace 5
 

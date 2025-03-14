@@ -1,160 +1,38 @@
-sw_volume: 100
+sw_volume: 98
 audio_device_state:1:pulse audio
 audio_device_state:1:my_fifo
-state: stop
-current: 76
+state: pause
+current: 21
+time: 18.254000
 random: 0
-repeat: 1
-single: 1
-consume: 0
-crossfade: 5
+repeat: 0
+single: 0
+consume: 1
+crossfade: 0
 mixrampdb: 0.000000
 mixrampdelay: -1.000000
 playlist_begin
-0:Party Monster - The Weeknd.m4a
-1:False Alarm - The Weeknd.m4a
-2:Reminder - The Weeknd.m4a
-3:Rockin’ - The Weeknd.m4a
-4:Secrets - The Weeknd.m4a
-5:True Colors - The Weeknd.m4a
-6:Stargirl Interlude - The Weeknd, Lana Del Rey.m4a
-7:Sidewalks - The Weeknd, Kendrick Lamar.m4a
-8:Six Feet Under - The Weeknd.m4a
-9:Love To Lay - The Weeknd.m4a
-10:A Lonely Night - The Weeknd.m4a
-11:Attention - The Weeknd.m4a
-12:Ordinary Life - The Weeknd.m4a
-13:Nothing Without You - The Weeknd.m4a
-14:All I Know - The Weeknd, Future.m4a
-15:Die For You - The Weeknd.m4a
-16:I Feel It Coming - The Weeknd, Daft Punk.m4a
-17:D.O.D - So Much In Love (Official Music Video).mp3
-18:METAMORPHOSIS 3 (Sped Up).mp3
-19:Fluxxwave (Sped Up) - Clovis Reyes.m4a
-20:Fluxxwave - Clovis Reyes.m4a
-21:Funk of the Damned - SXID.m4a
-22:Slow Low - Jason Derulo.m4a
-23:LVNDSCAPE & Mathieu Koss - Say It A Little Louder (Official Audio).mp3
-24:SOFI TUKKER - Larry Bird feat. Tuck's Dad (J. Worra Remix) (Visualizer) [Ultra Records].mp3
-25:Sigala, Gabry Ponte, Alex Gaudino - Rely On Me (Audio).mp3
-26:Shane Codd - It Ain't Right (Official Audio).mp3
-27:So Close.mp3
-28:Call Out My Name - The Weeknd.m4a
-29:Montagem Mysterious Game - LXNGVX.m4a
-30:MONTAGEM DIAMANTE ROSA - SLOWED - vtze archive.m4a
-31:Calm Down (with Selena Gomez) - Rema, Selena Gomez.m4a
-32:Good Vibe.mp3
-33:Gryffin & LOVA - Piece Of Me (Official Video).mp3
-34:Safe.mp3
-35:METAMORPHOSIS 3.mp3
-36:Sleepwalker - akiaura, LONOWN, STM.m4a
-37:krushed!.mp3
-38:krushed! (sped up).mp3
-39:GLORY (Slowed).mp3
-40:Cold Lie (Sped Up).mp3
-41:Drake - Massive.mp3
-42:Summer on You.mp3
-43:Tokyo Rain.mp3
-44:Tokyo Drift - ZODIVK, dnvn, BELCAST, NIGHTMORSS.m4a
-45:Uptown Funk (feat. Bruno Mars) - Mark Ronson, Bruno Mars.m4a
-46:Attention - Charlie Puth.m4a
-47:Love You Like A Love Song - Selena Gomez & The Scene.m4a
-48:Wolves - Selena Gomez, Marshmello.m4a
-49:Everyday Normal Guy 2 - Jon Lajoie.m4a
-50:YUM YUM - LXNGVX, Mc Gw.m4a
-51:YUM YUM (Slowed) - LXNGVX.m4a
-52:حبيبي مش حبيبي - Carmen Soliman.m4a
-53:كلام عينيه - Sherine.m4a
-54:$werve x Grioten x DAY$OKEE - MUDD [AMV].mp3
-55:$werve, Grioten, DAY$OKEE - MUDD (sped Up).mp3
-56:ACRAZE - Do It To It (ft. Cherish) - (Official Lyric Video).mp3
-57:Addicted.mp3
-58:Afraid To Feel.mp3
-59:All On You.mp3
-60:Alle Farben & ILIRA - Fading [Official Video].mp3
-61:Anna Lunoe & Totally Enormous Extinct Dinosaurs - Right Here [Official Visualizer].mp3
-62:Another You (Sonny Alven Remix).mp3
-63:Ant Saunders - MISCOMMUNICATIONS (Goldroom Remix).mp3
-64:ARTY - Couldn't Be Better (Official Lyric Video).mp3
-65:At Last.mp3
-66:Bakermat, Toby Gad - Can't Bring Me Down (feat. Nicole Bus) (Official Lyric Video).mp3
-67:Believe in Love.mp3
-68:Besnine - How To Love (De Hofnar Remix).mp3
-69:Black Coffee & David Guetta - Drive feat. Delilah Montagu (Official Video) [Ultra Music].mp3
-70:Bliss.mp3
-71:Blue Eyed Girl.mp3
-72:Bob Sinclar - Adore (Official Video).mp3
-73:Bob Sinclar & Sofiya Nzau - Digane (Official Video).mp3
-74:BRODYAGA FUNK.mp3
-75:Erik Hassle - No (Words Kasbo Remix) [Audio].mp3
-76:SLAY_ (Slowed   Reverb)(MP3_160K).mp3
-77:Hold On (Remix).mp3
-78:Luminary - Joel Sunny.m4a
-79:Black Dog - Remaster - Led Zeppelin.m4a
-80:Mau Kilauea - Still Easy (feat. Love, Alexa).mp3
-81:cardigan - Taylor Swift.m4a
-82:Dusk Till Dawn (feat. Sia) - Radio Edit - ZAYN, Sia.m4a
-83:Rock and Roll - Remaster - Led Zeppelin.m4a
-84:I Don’t Wanna Live Forever (Fifty Shades Darker) - ZAYN, Taylor Swift.m4a
-85:TOMA TOMA TOMA - $werve, TOKYOSLEEP, Mc Gw.m4a
-86:I Like Me Better - Lauv.m4a
-87:Heartbeat.mp3
-88:I Will Find.mp3
-89:BUNT. - Sure Don't Miss You (Official Video) feat. The Dip.mp3
-90:Cat Dealers, LOthief, Santti - Sunshine (Lyric Video).mp3
-91:Catch 22.mp3
-92:Claptone - Stronger (Official Video).mp3
-93:Crooked Colours - Love Language (Official Music Video).mp3
-94:Cut Snake - Above Ground Pool [BIG BAM BOO].mp3
-95:Deida.mp3
-96:Forester - Thinking About You (Live Performance).mp3
-97:Freedom.mp3
-98:Frank Walker, Harry Hudson - Can't Let Go (Official Video).mp3
-99:Grow.mp3
-100:John Summit - La Danza.mp3
-101:Klangkarussell - Sonnentanz ft. Will Heard.mp3
-102:Kygo feat. Will Heard - Nothing Left (Cover Art).mp3
-103:Kygo, Valerie Broussard - The Truth (Audio).mp3
-104:LUM!X, Tarik Asadi, Will Matta - The Night Is Young (feat. Will Matta) [Official Audio].mp3
-105:Lost Frequencies - Sun Is Shining (Official Music Video).mp3
-106:Lost Frequencies vs. Love Harder feat. Flynn - You (Official Music Video).mp3
-107:Lost Soul.mp3
-108:MEDUZA, OneRepublic, Leony - Fire (Official UEFA EURO 2024 Song).mp3
-109:Miss Nine & ReDub - Summer Official Music Video.mp3
-110:Mr. Probz - Praying To A God (LUKE Remix).mp3
-111:Nicky Romero x EDX - Out Of Control (Official Audio).mp3
-112:Night Tales - ＂Want＂ Ft. Kimono (Official Lyric Video).mp3
-113:No Rest for the Wicked (Joris Voorn Remix).mp3
-114:Noizu - Summer 91 (Looking Back).mp3
-115:Nora En Pure - Saltwater 2015 Rework.mp3
-116:Nora En Pure - Sphinx.mp3
-117:Nora Van Elken - Revolution (feat. Mark Wilkinson).mp3
-118:Oliver Heldens X Anabel Englund - DEJA VU (Official Lyric Video).mp3
-119:On My Side.mp3
-120:Petit Biscuit - Sunset Lover (Official Video).mp3
-121:Phantoms - Just A Feeling ft. Vérité (Official Music Video).mp3
-122:Purple Disco Machine, Sophie And The Giants - Hypnotized (Visualiser).mp3
-123:Pyramids.mp3
-124:Raindrops (Hotel Garuda Remix).mp3
-125:RÜFÜS DU SOL ●● No Place [Official Video].mp3
-126:RÜFÜS DU SOL ●● Underwater [Official Audio].mp3
-127:100 WAHDA - Yonyo.m4a
-128:Good Vibe.mp3
-129:Get Back (Alin Dimitriu Remix).mp3
-130:Gostan - Be Free.mp3
-131:Gryffin & LOVA - Piece Of Me (Official Video).mp3
-132:Dragonette, Sunnery James & Ryan Marciano feat. Bruno Martini (Cat Dealers Remix) - Summer Thing.mp3
-133:J. Worra - Check Out (feat. Leo Stannard) [Official Full Stream].mp3
-134:Lose It.mp3
-135:Lost Frequencies, Zonderling & Kelvin Jones - Love To Go.mp3
-136:The Heart Wants What It Wants - Selena Gomez.m4a
-137:Come and Get Your Love (Rerecorded Version) - Redbone.m4a
-138:Popular (with Playboi Carti & Madonna) - From The Idol Vol. 1 (Music from the HBO Original Series) - The Weeknd, Playboi Carti, Madonna.m4a
-139:Back To You - From 13 Reasons Why – Season 2 Soundtrack - Selena Gomez.m4a
-140:WANKELMUT & EMMA LOUISE - My Head Is A Jungle (Official Video).mp3
-141:SŸDE - Above The Clouds ft. Olivia Reid.mp3
-142:VASSY x Bingo Players x Disco Fries - Pieces (Official Music Video).mp3
-143:SONS OF MARIA - Where the rivers flow [Official].mp3
-144:Never Go Back (Robin Schulz Remix).mp3
-145:Mauve - So Good.mp3
+0:good vibe/AVANGARD (Slowed).mp3
+1:good vibe/I Took A Pill In Ibiza (Seeb Remix).mp3
+2:good vibe/Caught Up.mp3
+3:good vibe/Fast Car.mp3
+4:good vibe/Move.mp3
+5:good vibe/Shameless.mp3
+6:good vibe/Tattoo.mp3
+7:good vibe/We Don't Talk Anymore (feat. Selena Gomez).mp3
+8:good vibe/Never Go Back (Robin Schulz Remix).mp3
+9:good vibe/21 Reasons (feat. Ella Henderson).mp3
+10:good vibe/Call on Me (Ryan Riback Remix).mp3
+11:good vibe/Hurts So Good.mp3
+12:good vibe/Melody.mp3
+13:good vibe/Do It Better.mp3
+14:good vibe/we can't be friends (wait for your love).mp3
+15:good vibe/Mistakes.mp3
+16:good vibe/Without Me.mp3
+17:good vibe/I Wish (feat. Mabel).mp3
+18:good vibe/There's Nothing Holdin' Me Back.mp3
+19:good vibe/Love Is Killing Me.mp3
+20:good vibe/All Day And Night.mp3
+21:good vibe/So Am I (Steve Void Dance Remix).mp3
+22:good vibe/So Close.mp3
 playlist_end

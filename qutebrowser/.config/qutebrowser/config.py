@@ -22,7 +22,14 @@ c.aliases = {'q': 'quit', 'w': 'session-save', 'wq': 'quit --save'}
 config.bind('JK', 'mode-leave', mode='insert')
 
 # Setting dark mode
+# Enable dark mode globally
 config.set("colors.webpage.darkmode.enabled", True)
+config.set("colors.webpage.darkmode.policy.images", "smart")
+config.set("colors.webpage.preferred_color_scheme", "dark")
+
+# Disable dark mode for chess.com by setting a custom stylesheet
+config.set("content.user_stylesheets", "~/.config/qutebrowser/override.css")
+
 
 # zoom default size
 c.zoom.default = "170%"
@@ -406,7 +413,8 @@ c.fonts.prompts = '11pt "FiraMono Nerd Font Propo"'
 c.fonts.statusbar = '11pt "FiraMono Nerd Font Propo"'
 
 # Bindings for normal mode
-config.bind('M', 'hint links spawn mpv {hint-url}') # watch video
+config.bind('M', 'hint links spawn --detach mpv {hint-url}')
+
 # download video
 #config.bind('Z', 'hint links spawn kitty -e youtube-dl {hint-url}') 
 # download video

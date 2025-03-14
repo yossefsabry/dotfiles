@@ -139,16 +139,11 @@ vim.keymap.set({ "n", "v" }, "<leader>d", [["_d]])
 
 keymap("n", "Q", "<nop>")
 
-keymap("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
+-- king
 keymap("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
 
 -- create folds
 keymap("n", "<leader>z", "zfaB", term_opts)
-
--- cause and error
--- vim.keymap.set("n", "<leader><leader>", function()
---   vim.cmd("Ex")
--- end)
 
 -- keymap for copilot
 vim.g.copilot_no_tab_map = true

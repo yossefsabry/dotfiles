@@ -1,0 +1,8 @@
+@-moz-document domain("chess.com") {
+    body {
+        filter: none !important;
+        background-color: white !important;
+        color: black !important;
+    }
+}
+

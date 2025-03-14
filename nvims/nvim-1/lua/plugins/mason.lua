@@ -31,7 +31,8 @@ return {
                 -- "tsserver", -- typescript and javascript
                 -- "tailwindcss", -- tailwindcss
                 "clangd", -- for c and c++
-                "denols", -- for js, typescript
+                "ast_grep", -- for js, typescript
+                "biome", -- for js, typescript
                 "lua_ls", -- lua
                 "gopls", -- go
                 "bashls", -- bash

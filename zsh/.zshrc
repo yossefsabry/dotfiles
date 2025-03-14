@@ -13,6 +13,9 @@ alias gpt="tgpt "
 alias wine64="wine "
 alias wine32="wine "
 
+# alias for ncmpcppp for config for the new bindings file
+alias ncmpcpp="ncmpcpp -b ~/.config/ncmpcpp/bindings"
+
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
@@ -127,6 +130,7 @@ bindkey -M vicmd v edit-command-line
 export term=kitty
 alias browser=qutebrowser
 alias vim='nvim'
+alias vi='/usr/bin/vim'
 
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
@@ -294,3 +298,4 @@ export PATH=$PATH:/usr/local/go/bin
 # nvm
 source /usr/share/nvm/init-nvm.sh
 export PATH="$HOME/tools/phpactor/vendor/bin:$PATH"
+export PATH="$PATH:$HOME/.config/composer/vendor/bin"
