@@ -18,7 +18,8 @@ return {
                     "lib64",
                     ".git",
                     "include/site",
-                    "vendor"
+                    "vendor",
+                    "venv"
                 }
             }
         }

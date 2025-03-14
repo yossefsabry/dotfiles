@@ -27,16 +27,15 @@ return {
             -- list of servers for mason to install
             -- ensure these language parsers are installed
             ensure_installed = {
-                -- "tsserver", -- typescript and javascript (not valild)
-                "emmet_ls", -- for all css and html files
+                "tsserver", -- typescript and javascript (not valild)
                 "tailwindcss", -- tailwindcss
                 "clangd", -- for c and c++
-                "svelte", -- lsp from vscode
                 "lua_ls", -- lua
                 "gopls", -- go
                 "bashls", -- bash
                 "phpactor", -- php
             },
+
         })
 
 		mason_tool_installer.setup({

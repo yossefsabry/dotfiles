@@ -23,6 +23,7 @@ return {
             "rafamadriz/friendly-snippets",
             "saadparwaiz1/cmp_luasnip",
             "mlaursen/vim-react-snippets",
+            "hrsh7th/cmp-path", -- Add this line
         },
         config = function()
             local lsp_zero = require("lsp-zero")
@@ -57,7 +58,7 @@ return {
                 sources = cmp.config.sources({
                     { name = "nvim_lsp" },
                     { name = "luasnip" },
-                    { name = "path", group_index = 2 },
+                    { name = "path" },
                 }, {
                     { name = "buffer" },
                 }),
@@ -118,7 +119,7 @@ return {
 
             vim.diagnostic.config({
                 virtual_text = {
-                    prefix = "--", -- Could be '■', '▎', 'x'
+                    prefix = "◆", -- Could be '■', '--' ,'▎', 'x'
                 },
             })
 

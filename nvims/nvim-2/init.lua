@@ -25,10 +25,3 @@ vim.api.nvim_create_autocmd({"BufWinEnter"}, {
 -- adding color for the highlight line
 vim.cmd('highlight Visual guibg=#005b44 guifg=NONE')
 
-local function configure_virtual_text_prefix()
-    vim.diagnostic.config({
-        virtual_text = {
-            prefix = "◆◆", -- Change this to your desired prefix
-        },
-    })
-end
