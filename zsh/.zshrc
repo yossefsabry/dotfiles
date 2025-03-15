@@ -142,6 +142,9 @@ alias etmux='nvim ~/.tmux.conf'
 
 # alias to show the date
 alias da='date "+%Y-%m-%d %A %T %Z"'
+alias tty-clock="tty-clock -s -c -C 4"
+alias clock="tty-clock -s -c -C 4"
+
 
 # adding shourtcuts for bash
 alias mkdir='mkdir -p'
