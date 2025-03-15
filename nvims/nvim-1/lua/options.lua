@@ -26,6 +26,9 @@ vim.opt.colorcolumn = "75"
 vim.opt.nu = true
 vim.opt.relativenumber = true
 
+-- views can only be fully collapsed with the global statusline
+vim.opt.laststatus = 3
+
 -- set highlight in cursor line
 vim.opt.cursorline = true
 vim.opt.tabstop = 4
