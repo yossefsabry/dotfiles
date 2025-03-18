@@ -151,7 +151,8 @@ bindsym $mod+Shift+0 move container to workspace number $ws10
 
 # assign software to specific workspace
 #workspace 1
-assign [class="firefox"] workspace 2
+assign [class="brave-browser"] workspace 2
+assign [class="Brave-browser"] workspace 2
 assign [class="qutebrowser"] workspace 2
 # Workspace 3
 assign [class="discord"] workspace 3
@@ -237,6 +238,10 @@ bindsym $mod+Shift+c reload
 bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
 bindsym $mod+Shift+q exec i3 exit
+bindsym $mod+b workspace prev
+
+
+
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
@@ -267,13 +272,14 @@ bindsym $mod+z mode "resize"
 
 # for the bar
 bar {
-status_command i3status -c ~/.config/i3/i3status.conf
+#status_command i3status -c ~/.config/i3/i3status.conf
+status_command i3blocks -c ~/.config/i3/i3block.conf
     colors {
+        background #00000000
         background  #191724 
         statusline  #1f1d2e 
-        separator   #26233a 
     }
-separator_symbol "::"
+separator_symbol " : "
 }
 
 bindsym $mod+n bar mode toggle 
