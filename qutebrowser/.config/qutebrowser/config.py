@@ -32,7 +32,7 @@ config.set("content.user_stylesheets", "~/.config/qutebrowser/override.css")
 
 
 # zoom default size
-c.zoom.default = "170%"
+c.zoom.default = "130%"
 
 
 # Which cookies to accept. With QtWebEngine, this setting also controls

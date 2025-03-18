@@ -128,9 +128,11 @@ bindkey -M vicmd v edit-command-line
 
 # set default editor
 export term=kitty
-alias browser=qutebrowser
+alias browser=brave-browser
 alias vim='nvim'
 alias vi='/usr/bin/vim'
+alias lutris='GTK_THEME=Adwaita:dark lutris'
+
 
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
@@ -256,9 +258,9 @@ bindkey -s '^F' 'tm\n'
 pfetch 
 
 # for the font for the tty  (for archlinux)
-if [ -z "$DISPLAY" ]; then
-	setfont /usr/share/kbd/consolefonts/ter-232b.psf.gz
-fi
+# if [ -z "$DISPLAY" ]; then
+# 	setfont /usr/share/kbd/consolefonts/ter-232b.psf.gz
+# fi
 
 #
 # setting some default apps
@@ -299,6 +301,10 @@ export PATH="$PATH:$HOME/go/bin/"
 export PATH=$PATH:/usr/local/go/bin
 
 # nvm
-source /usr/share/nvm/init-nvm.sh
-export PATH="$HOME/tools/phpactor/vendor/bin:$PATH"
-export PATH="$PATH:$HOME/.config/composer/vendor/bin"
+# source /usr/share/nvm/init-nvm.sh
+# export PATH="$HOME/tools/phpactor/vendor/bin:$PATH"
+# export PATH="$PATH:$HOME/.config/composer/vendor/bin"
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
