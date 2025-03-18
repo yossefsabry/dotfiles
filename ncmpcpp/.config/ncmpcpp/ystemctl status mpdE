@@ -1,6 +1,0 @@
-○ mpd.socket
-     Loaded: loaded (]8;;file://archlinux/usr/lib/systemd/system/mpd.socket\/usr/lib/systemd/system/mpd.socket]8;;\; [0;1;32menabled[0m; preset: [0;1;38:5:185mdisabled[0m)
-     Active: inactive (dead)
-   Triggers: ● mpd.service
-     Listen: /run/mpd/socket (Stream)
-             [::]:6600 (Stream)
