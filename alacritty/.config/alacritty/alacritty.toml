@@ -53,9 +53,9 @@ glyph_offset          = { x = 1, y = 1 }
 # catpuccin-mocha, ported from .yml
 [colors.primary]
 background            = "#191724"
-foreground            = "#CDD6F4"
-dim_foreground        = "#CDD6F4"
-bright_foreground     = "#CDD6F4"
+foreground            = "e0def4"
+dim_foreground        = "#908caa"
+bright_foreground     = "#908caa"
 
 [colors.cursor]
 text                  = "#191724"

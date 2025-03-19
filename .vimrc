@@ -26,6 +26,19 @@ set noswapfile
 set updatetime=10
 
 
+" Enable keyword completion with Ctrl+N and Ctrl+P
+set completeopt=menuone,noinsert,noselect
+set wildmenu
+
+" Autocomplete from files and buffers
+set omnifunc=syntaxcomplete#Complete
+set complete+=k
+set complete+=.
+
+" Key mappings for easier completion
+inoremap <C-Space> <C-x><C-o>
+
+
 " Netrw settings
 let g:netrw_browse_split = 0
 let g:netrw_banner = 1
