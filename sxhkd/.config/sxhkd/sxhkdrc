@@ -15,6 +15,10 @@
 super + {Up, Down}
    /home/$USER/dotfiles/scripts/bright {up, down}
 
+# using slock
+super + l
+    slock
+
 # # takking screen shot
 # End
 #    scrot -s /home/$USER/Media/Images/scrot1_$(date +%s).png -e 'xclip -selection clipboard -t image/png -i $f && rm $f'

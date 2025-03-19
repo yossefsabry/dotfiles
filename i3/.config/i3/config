@@ -1,5 +1,5 @@
 ## starting the configuration file for i3
-for_window [class="^.*"] border pixel 2
+for_window [class="^.*"] border none
 # no border for scratchpad
 for_window [title="^scratch$"] border none
 
@@ -22,9 +22,6 @@ exec_always --no-startup-id setxkbmap -option ctrl:nocaps
 bindsym Print exec maim "/home/$USER/Pictures/$(date).jpg"
 bindsym $mod+Print exec maim --window $(xdotool getactivewindow) "/home/$USER/Pictures/$(date).jpg"
 bindsym Shift+Print exec maim --select "/home/$USER/Pictures/$(date).jpg"
-
-# for slock
-bindsym Mod4+l exec slock
 
 ## Clipboard Screenshots
 # bindsym Ctrl+Print exec maim | xclip -selection clipboard -t image/png
@@ -134,6 +131,7 @@ set $ws4 "4"
 set $ws5 "5"
 set $ws6 "6"
 set $ws7 "7"
+set $ws8 "8"
 
 # switch to workspace
 bindsym $mod+1 workspace number $ws1
@@ -144,8 +142,7 @@ bindsym $mod+5 workspace number $ws5
 bindsym $mod+6 workspace number $ws6
 bindsym $mod+7 workspace number $ws7
 bindsym $mod+8 workspace number $ws8
-bindsym $mod+9 workspace number $ws9
-bindsym $mod+0 workspace number $ws10
+# bindsym $mod+9 workspace number $ws9
 
 # move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace number $ws1

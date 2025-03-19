@@ -298,8 +298,7 @@ gradient_color_3 = '#514f79' # Color 2
 gradient_color_4 = '#6e6a7b' # Color 3
 gradient_color_5 = '#b9b9f3' # Color 4
 gradient_color_6 = '#e0def4' # Color 5
-gradient_color_7 = '#ebbcba' # New color in the gradient
+gradient_color_7 = '#eb6f92' # Updated color from the image
 gradient_color_8 = '#f6f5f7' # Color 7
 gradient_count = 8
-
 

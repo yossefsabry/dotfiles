@@ -17,7 +17,7 @@ visualizer_output_name = my_fifo
 
 visualizer_in_stereo = yes
 visualizer_fps = 60
-visualizer_type = ellipse
+visualizer_type = spectrum
 visualizer_look = ●●
 visualizer_color = magenta,cyan,blue,red,white,green,yellow,black,magenta
 visualizer_spectrum_smooth_look = yes
