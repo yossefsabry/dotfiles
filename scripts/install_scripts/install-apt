@@ -11,11 +11,9 @@ read username
 
 ## main package for install ##
 array_packages=(
-  "zsh" "git" "neovim" "tmux" "alacritty" "picom" "vim" "zip" "ripgrep" "xclip" "neofetch"  "fzf" "unzip" "stow"
+  "zsh" "git" "tmux" "alacritty" "picom" "vim" "zip" "ripgrep" "xclip" "neofetch"  "fzf" "unzip" "stow"
   "nodejs" "go" "gcc" # lang
-  "wget" "firefox" "rclone" # apps and some packages
-)
-
+  "wget" "rclone" # apps and some packages)
 # creating .config for save the config for packages
 mkdir -p ~/.config
 
@@ -39,7 +37,7 @@ install_packages() {
     else
       echo -e "${GREEN}------- installing $element -------${RC}"
       sudo apt install -y "${element}"
-      if [ $? -eq 0 ]; then
+      if [[ $? == 0 ]]; then
         echo -e "${GREEN}------- $element installed successfully -------${RC}"
       else
         echo -e "${RED}****** Error occurred while installing $element ******${RC}"

@@ -7,17 +7,17 @@ GREEN='\e[32m'
 
 
 install_tmp() {
-  dir="$HOME/.tmux/plugins/tpm"
-  if [ -d "$dir" ]; then
-    echo -e "${GREEN}-- tmp already cloned $dir --${RC}"
-  else
-    git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
-    if [ $? -eq 0 ]; then
-      echo -e "${GREEN}-- cloning tmp sucessfuly -- ${RC}"
+    dir="$HOME/.tmux/plugins/tpm"
+    if [ -d "$dir" ]; then
+        echo -e "${GREEN}-- tmp already cloned $dir --${RC}"
     else
-      echo -e "${RED}** error happend in clone tmp **{RC}"
+        git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+        if [[ $? == 0 ]]; then
+            echo -e "${GREEN}-- cloning tmp sucessfuly -- ${RC}"
+        else
+            echo -e "${RED}** error happend in clone tmp **{RC}"
+        fi
     fi
-  fi
 }
 
 install_tmp

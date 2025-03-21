@@ -5,18 +5,21 @@ RED='\e[31m'
 YELLOW='\e[33m'
 GREEN='\e[32m'
 
-## main package for install ##
+: << 'END'
+    - some useful tips for you
+    - first remove nvim if package manager apt downlaod nvim 0.6 ;(
+END
+
+## main package arch for install ##
 array_packages=(
-    "zsh" "git" "neovim" "tmux" "alacritty" "picom" "vim" "nemo" "feh" "unclutter" "xrandr" "zip" "ripgrep" "xclip" "fastfetch"  "fzf" "unzip" "stow"
+    "zsh" "git" "neovim" "tmux" "alacritty" "picom" "vim" "nemo" "feh" "unclutter" \
+    "xrandr" "zip" "ripgrep" "xclip" "fastfetch"  "fzf" "unzip" "stow"
     "nodejs" "go" "gcc" # lang
     "cargo" #rust
     "xorg" "xorg-xev" "xorg-xinit" "xbindkeys" "xorg-setxkbmap" "sxhkd" # keybind
     "iwd" "NetworkManager" "dhcpcd" "nmcli" # network
     "pavucontrol" "brightnessctl" "alsa-tools"  # audio and screen bright
-    "wget" "firefox" "syncthing" # apps and some packages
-    "terminus-font" # tty main font
-    "xdg-desktop-portal" # for download from qutebrowser
-    "yt-dlp" # for download too and watch 
+    "wget" "syncthing" # apps and some packages "terminus-font" # tty main font "xdg-desktop-portal" # for download from qutebrowser "yt-dlp" # for download too and watch 
 )
 
 # creating .config for save the config for packages
@@ -30,8 +33,9 @@ install_packages() {
             continue
         else
             echo -e "${GREEN}-- installing $element --${RC}"
-            sudo pacman -S --noconfirm "${element}"
-            if [ $? -eq 0 ]; then
+            #sudo pacman -S --noconfirm "${element}"
+            cpkm ${element}
+            if [[ $? == 0 ]]; then
                 echo -e "${GREEN}-- $element installed successfully --${RC}"
             else
                 echo -e "${RED}** Error occurred while installing $element **${RC}"

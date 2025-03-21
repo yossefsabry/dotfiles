@@ -223,9 +223,10 @@ c.url.start_pages = 'https://start.duckduckgo.com/'
 # qutebrowser`.
 # Type: Dict
 c.url.searchengines = {
-    'DEFAULT': 'https://duckduckgo.com/?q={}',
+    'DEFAULT': 'https://www.google.com/search?q={}',
+    'duck': 'https://duckduckgo.com/?q={}',
     'aw': 'https://wiki.archlinux.org/?search={}',
-    'goog': 'https://www.google.com/search?q={}',
+    'go': 'https://www.google.com/search?q={}',
     're': 'https://www.reddit.com/r/{}',
     'ub': 'https://www.urbandictionary.com/define.php?term={}',
     'yt': 'https://www.youtube.com/results?search_query={}',

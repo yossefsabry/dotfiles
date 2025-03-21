@@ -1,0 +1,25 @@
+#!/usr/bin/env bash
+
+_install() {
+    if _commend_exists nvm; then
+        printf 'comment nvm is found'
+        exit 1
+    fi
+    if _commend_exists node; then
+        printf 'comment node is found'
+        exit 1
+    fi
+    printf 'starting install nvm'
+    curl -fsSL https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
+    source ~/.zshrc
+    nvm install --lts
+
+    if [[ $? == 0 ]]; then
+        printf "sucess install for node and nvm"
+    else
+        printf "error happend in install"
+    fi
+}
+
+_install
+

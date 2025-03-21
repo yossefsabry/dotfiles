@@ -1,0 +1,35 @@
+#!/usr/bin/env bash
+
+RED='\e[31m'
+GREEN='\e[32m'
+RESET='\e[0m'  # Reset color
+
+:>> 'END'
+cpkm => check package manger and install
+END
+
+_install(){
+    if _commend_exists php; then
+        cecho "php found" green
+    else
+        cpkm php
+        if [[ $? == 0 ]]; then
+            cecho  "sucessfuly install php" green
+        else
+            cecho "error happend in install php" red
+            exit 1
+        fi
+    fi
+
+    cecho "install some server for php" green
+    cpkm php-apache php-cgi php-fpm php-gd  \
+        php-embed php-intl php-redis php-snmp
+    if [[ $? == 0 ]]; then
+        cecho "install servcie like apache adn redis and fpm successufly" green
+    else
+        cecho "error happend in install some server" red
+        exit 1
+    fi
+    cecho "fisnish install php and service" green
+}
+_install

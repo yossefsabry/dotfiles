@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+
+_install() {
+    if _commend_exists uv; then
+        cecho "the pacakge found(uv)" green
+        exit 0
+    fi
+
+    cecho "install uv now" green
+    # On macOS and Linux.
+    curl -LsSf https://astral.sh/uv/install.sh | sh
+
+    if [[ $? == 0 ]]; then
+        cecho "installation compelete" green
+    else
+        cecho "error happend install" green
+    fi
+}
+
+_install

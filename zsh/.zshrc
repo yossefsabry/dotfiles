@@ -12,6 +12,7 @@ export PATH="$HOME/dotfiles/scripts/install_scripts:$PATH"
 alias gpt="tgpt "
 alias wine64="wine "
 alias wine32="wine "
+alias python="python3 "
 
 # alias for ncmpcppp for config for the new bindings file
 alias ncmpcpp="ncmpcpp -b ~/.config/ncmpcpp/bindings"
@@ -308,3 +309,5 @@ export PATH=$PATH:/usr/local/go/bin
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+. "$HOME/.local/bin/env"

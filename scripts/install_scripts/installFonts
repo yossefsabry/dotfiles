@@ -53,7 +53,7 @@ checkFont() {
     *) wget "${defaultFont}" ;;
   esac
 
-  if [ $? -ne 0 ]; then
+  if [[ $? != 0 ]]; then
     echo -e "${RED}----- failed to download the font file -----${RC}"
     exit 1
   else
@@ -62,7 +62,7 @@ checkFont() {
     mv "${ChoosenFont}.zip" ${FontsDir}
   fi
 
-  if [ $? -ne 0 ]; then
+  if [[ $? != 0 ]]; then
     echo -e "${RED}----- failed to move the font file -----${RC}"
     exit 1
   else

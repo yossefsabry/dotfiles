@@ -1,6 +1,19 @@
 #!/usr/bin/env bash
 
-curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
-source "$HOME/.cargo/env"
+_install() {
+    if _commend_exists cargo; then
+        printf 'commend found cargo'
+        exit 1
+    fi
+    printf "starting install cargo and rust"
+    curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+    source "$HOME/.cargo/env"
+    if [[ $? == 0 ]]; then
+        printf "install successfuly rust and cargo"
+    else
+        printf "error happend in install cargo and rust" 
+    fi
+}
+_install
 
 

@@ -1,46 +1,53 @@
 sw_volume: 98
 audio_device_state:1:My Output
 audio_device_state:1:my_fifo
-state: play
-current: 18
-time: 120.258000
-random: 1
+state: pause
+current: 37
+time: 64.342000
+random: 0
 repeat: 1
 single: 1
-consume: 1
+consume: 0
 crossfade: 0
 mixrampdb: 0.000000
 mixrampdelay: -1.000000
 playlist_begin
-0:good_vibe/All Day And Night.mp3
-1:good_vibe/Call on Me (Ryan Riback Remix).mp3
-2:good_vibe/Caught Up.mp3
-3:good_vibe/Do It Better.mp3
-4:good_vibe/Fast Car.mp3
-5:good_vibe/HISTORY.mp3
-6:good_vibe/How Deep Is Your Love.mp3
-7:good_vibe/Hurts So Good.mp3
-8:good_vibe/I Took A Pill In Ibiza (Seeb Remix).mp3
-9:good_vibe/I Wish (feat. Mabel).mp3
-10:good_vibe/Last Day (Dualities Remix).mp3
-11:good_vibe/Love Is Killing Me.mp3
-12:good_vibe/Melody.mp3
-13:good_vibe/Mistakes.mp3
-14:good_vibe/Moth To A Flame.mp3
-15:good_vibe/Move.mp3
-16:good_vibe/Never Go Back (Robin Schulz Remix).mp3
-17:good_vibe/Paradise.mp3
-18:good_vibe/Piece Of Me.mp3
-19:good_vibe/SCIENTIST (R3HAB Remix).mp3
-20:good_vibe/Shameless.mp3
-21:good_vibe/So Am I (Steve Void Dance Remix).mp3
-22:good_vibe/So Close.mp3
-23:good_vibe/Superhero.mp3
-24:good_vibe/Tattoo.mp3
-25:good_vibe/Water (feat. ZOHARA).mp3
-26:good_vibe/we can't be friends (wait for your love).mp3
-27:good_vibe/We Don't Talk Anymore (feat. Selena Gomez).mp3
-28:good_vibe/Without Me.mp3
-29:good_vibe/You & Me (Rivo Remix).mp3
-30:good_vibe/You Got Me.mp3
+0:good_vibe/Call on Me (Ryan Riback Remix).mp3
+1:good_vibe/Caught Up.mp3
+2:good_vibe/Do It Better.mp3
+3:good_vibe/How Deep Is Your Love.mp3
+4:good_vibe/I Wish (feat. Mabel).mp3
+5:good_vibe/Love Is Killing Me.mp3
+6:good_vibe/Melody.mp3
+7:good_vibe/Moth To A Flame.mp3
+8:good_vibe/Move.mp3
+9:good_vibe/SCIENTIST (R3HAB Remix).mp3
+10:good_vibe/So Am I (Steve Void Dance Remix).mp3
+11:good_vibe/So Close.mp3
+12:good_vibe/Superhero.mp3
+13:good_vibe/Water (feat. ZOHARA).mp3
+14:good_vibe/We Don't Talk Anymore (feat. Selena Gomez).mp3
+15:good_vibe/Without Me.mp3
+16:good_vibe/You & Me (Rivo Remix).mp3
+17:other/After Dark(M4A_128K).m4a
+18:good_vibe/21 Reasons (feat. Ella Henderson).mp3
+19:other/ROYALTY(MP3_160K).mp3
+20:good_vibe/All Day And Night.mp3
+21:good_vibe/Fast Car.mp3
+22:good_vibe/Last Day (Dualities Remix).mp3
+23:good_vibe/Tattoo.mp3
+24:new/Mavis & Johnny Zing Song ｜ Hotel Transylvania ｜ CLIP.mp3
+25:the_weeking/I Feel It Coming.mp3
+26:other/6LACK - Ex Calling [Official Music Video](MP3_160K).mp3
+27:other/FERG - New Level (Official Video) ft. Future(MP3_160K).mp3
+28:other/Carly Rae Jepsen - Call Me Maybe(M4A_128K).m4a
+29:other/The Chainsmokers _ Coldplay - Something Just Like This (Lyric)(M4A_128K).m4a
+30:other/The Chainsmokers - Closer (Lyric) ft. Halsey(M4A_128K).m4a
+31:other/Charlie Puth - Marvin Gaye ft. Meghan Trainor [Official Video](M4A_128K).m4a
+32:other/Rob _tone - Chill Bill ft. J.Davis _ Spooks (Dir. Alex Vibe)(MP3_160K).mp3
+33:other/GUMMO(MP3_160K).mp3
+34:other/Emshy(MP3_160K)_1.mp3
+35:other/BTS (방탄소년단) _Permission to Dance_ Official MV(M4A_128K).m4a
+36:other/METAMORPHOSIS 3 (Sped Up)(MP3_160K).mp3
+37:new/It's Party Time (From ＂Hotel Transylvania 3＂).mp3
 playlist_end

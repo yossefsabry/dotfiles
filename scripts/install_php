@@ -1,8 +1,0 @@
-#!/usr/bin/env bash
-
-sudo pacman -S php
-
-sudo pacman -S php-apache php-cgi php-fpm php-gd  \
-    php-embed php-intl php-redis php-snmp
-
-

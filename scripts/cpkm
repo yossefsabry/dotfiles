@@ -1,0 +1,24 @@
+#!/usr/bin/env bash
+
+check() {
+
+    # detect the system's package manager
+    if grep -qi "arch" /etc/os-release; then
+        PKG_MANAGER="pacman -Sy --noconfirm "
+        echo "Detected Arch Linux. Using pacman."
+
+    elif grep -qi "fedora" /etc/os-release; then
+        PKG_MANAGER="dnf install -y"
+        echo "Detected Fedora. Using dnf."
+
+    else
+        PKG_MANAGER="apt-get install -y"
+        echo "Detected Debian/Ubuntu-based system. Using apt."
+    fi
+
+    # Example usage
+    echo "Installing package: $1"
+    sudo $PKG_MANAGER $1
+}
+
+check $1

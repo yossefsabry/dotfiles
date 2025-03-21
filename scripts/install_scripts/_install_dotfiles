@@ -15,7 +15,7 @@ dotfile() {
         echo -e "${GREEN}-- cloning the config from ${dotfileUrl} -- ${RC}"
         cd ~
         git clone $dotfileUrl
-        if [ $? -qe 0 ]; then
+        if [[ $? == 0 ]]; then
             echo -e "${GREEN}-- cloning successfly -> ${dotfileUrl} ----${RC}"
         else 
             echo -e "${RED}** error happend in cloning -> ${dotfileUrl} **${RC}"
