@@ -14,15 +14,15 @@ set scroll-step 200
 map r reload
 map p print
 map i recolor
-map J zoom out
-map K zoom in
 map R rotate
-
-# page up and page down 
 unmap <C-k>
 unmap <C-j>
-map <C-k> navigate previous-page
-map <C-j> navigate next-page
+map <C-j> zoom out
+map <C-k> zoom in
+
+# page up and page down 
+map <S-k> navigate previous
+map <S-j> navigate next
 
 
 # # DONT WORK HINT

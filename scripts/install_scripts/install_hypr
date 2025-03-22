@@ -1,17 +1,40 @@
 #!/usr/bin/env bash
 
 # change the user name if not found
-dotfiles="/home/yossef/dotfiles"
+dotfiles="/home/$USER/dotfiles"
+
 # Function to check if a package is installed
 check_and_install() {
     local package="$1"
     
-    # Check if the package is installed
-    if pacman -Qi "$package" &>/dev/null; then
-        echo "$package is already installed."
+    # Detect the distribution based on presence of key files
+    if [ -f /etc/arch-release ]; then
+        # Arch Linux
+        if pacman -Qi "$package" &>/dev/null; then
+            cecho "$package is already installed." green
+        else
+            cecho "Installing $package with pacman..." blue
+            sudo pacman -S --noconfirm "$package"
+        fi
+    elif [ -f /etc/fedora-release ]; then
+        # Fedora
+        if rpm -q "$package" &>/dev/null; then
+            cecho "$package is already installed." green
+        else
+            cecho "Installing $package with dnf..." blue
+            sudo dnf install -y "$package"
+        fi
+    elif [ -f /etc/debian_version ]; then
+        # Debian/Ubuntu
+        if dpkg -s "$package" &>/dev/null; then
+            cecho "$package is already installed." green
+        else
+            cecho "Installing $package with apt-get..." blue
+            sudo apt-get update && sudo apt-get install -y "$package"
+        fi
     else
-        echo "Installing $package..."
-        sudo pacman -S "$package"
+        cecho "Unsupported Linux distribution." red
+        return 1
     fi
 }
 
@@ -34,12 +57,12 @@ install_hyprland_packages() {
 }
 install_hyprland_packages
 
-echo "Installation complete!"
-echo "starting seting the config files"
+cecho "Installation complete!" green
+cecho "starting seting the config files" blue
 
 stow_files() {
     cd $dotfiles
     stow hypr
 }
 stow_files
-echo "finish install"
+cecho "finish install" green

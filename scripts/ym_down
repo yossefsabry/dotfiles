@@ -5,7 +5,7 @@ command -v yt-dlp >/dev/null 2>&1 || { echo "yt-dlp is not installed. Install it
 
 # Ensure an argument is passed
 if [ -z "$1" ]; then
-    echo "Usage: ym_down <YouTube Music URL>"
+    cecho "Usage: ym_down <YouTube Music URL>" blue
     exit 1
 fi
 
@@ -17,5 +17,5 @@ yt-dlp --extract-audio --audio-format mp3 --audio-quality 0 \
     --embed-thumbnail --add-metadata --download-archive "$MUSIC_DIR/downloaded.txt" \
     -o "$MUSIC_DIR/%(playlist_title|artist)s/%(title)s.%(ext)s" "$1"
 
-echo "Download complete!"
+cecho "Download complete!" green
 

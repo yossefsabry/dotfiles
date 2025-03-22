@@ -10,7 +10,7 @@ IMAGES=($(find "$WALLPAPER_DIR" -type f \( -iname "*.jpg" -o \
 
 # If no images found, exit
 if [ ${#IMAGES[@]} -eq 0 ]; then
-    echo "No images found in $WALLPAPER_DIR"
+    cecho "No images found in $WALLPAPER_DIR" red
     exit 1
 fi
 
@@ -36,6 +36,6 @@ NEXT_IMAGE=${IMAGES[$NEXT_INDEX]}
 feh --bg-center --bg-scale "$NEXT_IMAGE"
 
 # Save the current image to last_view.txt
-echo "$NEXT_IMAGE" > "$LAST_VIEW_FILE"
+cecho "$NEXT_IMAGE" > "$LAST_VIEW_FILE" green
 
 exit 0

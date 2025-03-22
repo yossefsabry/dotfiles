@@ -1,53 +1,185 @@
-sw_volume: 98
+sw_volume: 34
 audio_device_state:1:My Output
 audio_device_state:1:my_fifo
 state: pause
-current: 37
-time: 64.342000
+current: 0
+time: 71.184000
 random: 0
 repeat: 1
 single: 1
-consume: 0
+consume: 1
 crossfade: 0
 mixrampdb: 0.000000
 mixrampdelay: -1.000000
 playlist_begin
-0:good_vibe/Call on Me (Ryan Riback Remix).mp3
-1:good_vibe/Caught Up.mp3
-2:good_vibe/Do It Better.mp3
-3:good_vibe/How Deep Is Your Love.mp3
-4:good_vibe/I Wish (feat. Mabel).mp3
-5:good_vibe/Love Is Killing Me.mp3
-6:good_vibe/Melody.mp3
-7:good_vibe/Moth To A Flame.mp3
-8:good_vibe/Move.mp3
-9:good_vibe/SCIENTIST (R3HAB Remix).mp3
-10:good_vibe/So Am I (Steve Void Dance Remix).mp3
-11:good_vibe/So Close.mp3
-12:good_vibe/Superhero.mp3
-13:good_vibe/Water (feat. ZOHARA).mp3
-14:good_vibe/We Don't Talk Anymore (feat. Selena Gomez).mp3
-15:good_vibe/Without Me.mp3
-16:good_vibe/You & Me (Rivo Remix).mp3
-17:other/After Dark(M4A_128K).m4a
-18:good_vibe/21 Reasons (feat. Ella Henderson).mp3
-19:other/ROYALTY(MP3_160K).mp3
-20:good_vibe/All Day And Night.mp3
-21:good_vibe/Fast Car.mp3
-22:good_vibe/Last Day (Dualities Remix).mp3
-23:good_vibe/Tattoo.mp3
-24:new/Mavis & Johnny Zing Song ｜ Hotel Transylvania ｜ CLIP.mp3
-25:the_weeking/I Feel It Coming.mp3
-26:other/6LACK - Ex Calling [Official Music Video](MP3_160K).mp3
-27:other/FERG - New Level (Official Video) ft. Future(MP3_160K).mp3
-28:other/Carly Rae Jepsen - Call Me Maybe(M4A_128K).m4a
-29:other/The Chainsmokers _ Coldplay - Something Just Like This (Lyric)(M4A_128K).m4a
-30:other/The Chainsmokers - Closer (Lyric) ft. Halsey(M4A_128K).m4a
-31:other/Charlie Puth - Marvin Gaye ft. Meghan Trainor [Official Video](M4A_128K).m4a
-32:other/Rob _tone - Chill Bill ft. J.Davis _ Spooks (Dir. Alex Vibe)(MP3_160K).mp3
-33:other/GUMMO(MP3_160K).mp3
-34:other/Emshy(MP3_160K)_1.mp3
-35:other/BTS (방탄소년단) _Permission to Dance_ Official MV(M4A_128K).m4a
-36:other/METAMORPHOSIS 3 (Sped Up)(MP3_160K).mp3
-37:new/It's Party Time (From ＂Hotel Transylvania 3＂).mp3
+0:study_songs/Deep Focus Zone - Chill LOFI for Studying(M4A_128K).m4a
+1:study_songs/Exam Prep Vibes - Study Focus LOFI(M4A_128K).m4a
+2:study_songs/Focused Learning - LOFI for Deep Study(M4A_128K).m4a
+3:study_songs/Late Night Study Session - Chill LOFI Tune(M4A_128K).m4a
+4:study_songs/LOFI Study Break - Deep Focus(M4A_128K).m4a
+5:study_songs/Productivity Boost - LOFI Study(M4A_128K).m4a
+6:study_songs/Quiet Study Room - LOFI for Productivity(M4A_128K).m4a
+7:study_songs/Study _ Concentrate - LOFI Mind Focus(M4A_128K).m4a
+8:study_songs/Study Beat - LOFI Focus Vibes(M4A_128K).m4a
+9:the_weeking/Escape From LA.mp3
+10:the_weeking/Earned It (Fifty Shades Of Grey).mp3
+11:the_weeking/I Feel It Coming.mp3
+12:artist/MOONLGHT - Free Bird.mp3
+13:artist/Play Hard (feat. Ne-Yo & Akon) (New Edit).mp3
+14:other/hope to see you again(M4A_128K).m4a
+15:the_weeking/After Hours.mp3
+16:the_weeking/Cry For Me.mp3
+17:the_weeking/Die For You.mp3
+18:the_weeking/Hardest To Love.mp3
+19:the_weeking/Heartless.mp3
+20:the_weeking/Hurt You.mp3
+21:the_weeking/In The Night.mp3
+22:the_weeking/In Your Eyes.mp3
+23:the_weeking/Love In The Sky.mp3
+24:the_weeking/Nothing Without You.mp3
+25:the_weeking/One Of The Girls.mp3
+26:the_weeking/Open Hearts.mp3
+27:the_weeking/Ordinary Life.mp3
+28:the_weeking/Pretty.mp3
+29:the_weeking/Privilege.mp3
+30:new/Around the World (La La La La La) (Radio Version).mp3
+31:new/It's Party Time (From ＂Hotel Transylvania 3＂).mp3
+32:new/Mavis & Johnny Zing Song ｜ Hotel Transylvania ｜ CLIP.mp3
+33:good_vibe/21 Reasons (feat. Ella Henderson).mp3
+34:good_vibe/After Hours.mp3
+35:good_vibe/Do It Better.mp3
+36:good_vibe/Fast Car.mp3
+37:good_vibe/HISTORY.mp3
+38:good_vibe/How Deep Is Your Love.mp3
+39:good_vibe/Hurts So Good.mp3
+40:good_vibe/I Took A Pill In Ibiza (Seeb Remix).mp3
+41:good_vibe/Last Day (Dualities Remix).mp3
+42:good_vibe/Melody.mp3
+43:good_vibe/Mistakes.mp3
+44:good_vibe/Moth To A Flame.mp3
+45:good_vibe/Move.mp3
+46:good_vibe/Never Go Back (Robin Schulz Remix).mp3
+47:good_vibe/Paradise.mp3
+48:good_vibe/Piece Of Me.mp3
+49:good_vibe/SCIENTIST (R3HAB Remix).mp3
+50:good_vibe/Shameless.mp3
+51:good_vibe/So Am I (Steve Void Dance Remix).mp3
+52:good_vibe/So Close.mp3
+53:good_vibe/Superhero.mp3
+54:good_vibe/Tattoo.mp3
+55:good_vibe/There's Nothing Holdin' Me Back.mp3
+56:good_vibe/Water (feat. ZOHARA).mp3
+57:good_vibe/we can't be friends (wait for your love).mp3
+58:good_vibe/We Don't Talk Anymore (feat. Selena Gomez).mp3
+59:good_vibe/Without Me.mp3
+60:good_vibe/You & Me (Rivo Remix).mp3
+61:good_vibe/You Got Me.mp3
+62:other/ROYALTY(MP3_160K).mp3
+63:other/horizons(M4A_128K).m4a
+64:other/MUDD(MP3_160K).mp3
+65:other/Eminem_ Dr. Dre - Forgot About Dre (Explicit) (Official Music Video) ft. Hittman(MP3_160K).mp3
+66:other/6LACK - Ex Calling [Official Music Video](MP3_160K).mp3
+67:other/T.I. - About The Money ft. Young Thug (Official Music Video)(MP3_160K).mp3
+68:other/3 Daqat(M4A_128K).m4a
+69:other/Jungle(M4A_128K).m4a
+70:other/Back To Back(MP3_160K).mp3
+71:other/The Lazy Song(M4A_128K).m4a
+72:other/Charlie Puth - Marvin Gaye ft. Meghan Trainor [Official Video](M4A_128K).m4a
+73:other/Lose Yourself to Dance (feat. Pharrell Williams)(M4A_128K).m4a
+74:other/Let Me Love You(M4A_128K).m4a
+75:other/Lemon Pepper Freestyle(M4A_128K).m4a
+76:other/Meek Mill Feat. Rick Ross - Ima Boss (Official Video)(MP3_160K).mp3
+77:other/Ocean Drive(M4A_128K).m4a
+78:other/Emshy(MP3_160K)_1.mp3
+79:other/Taree2 Egbari(MP3_160K).mp3
+80:other/Eternxlkz - DRESS_ (Official Audio)(M4A_128K).m4a
+81:other/DRESS_ (Over Slowed   Reverb)(MP3_160K).mp3
+82:other/DRESS_ (Slowed   Reverb)(MP3_160K).mp3
+83:other/DRESS_ (Sped Up)(MP3_160K).mp3
+84:other/DRESS_(MP3_160K).mp3
+85:other/SLAY_ (Over Slowed   Reverb)(MP3_160K).mp3
+86:other/SLAY_ (Slowed   Reverb)(MP3_160K).mp3
+87:other/SLAY_ (Sped Up)(MP3_160K).mp3
+88:other/SLAY_(MP3_160K).mp3
+89:other/Tyler Durden - Shadow(M4A_128K).m4a
+90:other/Sleepwalker(M4A_128K).m4a
+91:other/Travis Scott - SICKO MODE ft. Drake(MP3_160K).mp3
+92:other/A_AP Rocky - Lord Pretty Flacko Jodye 2 (LPFJ2) (Official Video)(MP3_160K).mp3
+93:other/Regard_ Troye Sivan_ Tate McRae - You (Lyric Video) [One](M4A_128K).m4a
+94:other/KRUSH BANDICOOT 2(M4A_128K).m4a
+95:other/Guatemala (From Swaecation)(M4A_128K).m4a
+96:other/KRUSH BANDICOOT 2 (SLOWED)(MP3_160K).mp3
+97:other/KRUSH BANDICOOT 2 (SPED UP)(M4A_128K).m4a
+98:other/apogee(M4A_128K).m4a
+99:other/Migos - Straightenin (Official Video)(MP3_160K).mp3
+100:other/Ludacris - Stand Up (Official Music Video) ft. Shawnna(MP3_160K).mp3
+101:other/Migos - Straightenin (Official Video)(MP3_160K).mp3
+102:other/Kadabeen(M4A_128K).m4a
+103:other/Hobbo Ganna(M4A_128K).m4a
+104:other/Sophie Ellis-Bextor - Murder On The Dancefloor(M4A_128K).m4a
+105:other/Selena Gomez - Love On (Official Music Video)(M4A_128K).m4a
+106:other/Dancing With A Stranger (with Normani) (Bonus Track)(M4A_128K).m4a
+107:other/Adda El Kalam(M4A_128K).m4a
+108:other/Weathering with You - 天気の子 [AMV] Tokyo Rain (Slowed   Reverb)(M4A_128K).m4a
+109:other/XXXTENTACION - Look At Me_ (Audio)(MP3_160K).mp3
+110:other/Reneé Rapp_ Megan Thee Stallion - Not My Fault (Official Music Video)(M4A_128K).m4a
+111:other/Regard_ Troye Sivan_ Tate McRae - You (Lyric Video) [One](M4A_128K).m4a
+112:other/Regard_ Troye Sivan_ Tate McRae - You (Lyric Video) [One](M4A_128K).m4a
+113:other/Ride It(M4A_128K).m4a
+114:other/Jinx and Silco _ Him and I - Arcane AMV(M4A_128K).m4a
+115:other/Eminem - Not Afraid(MP3_160K).mp3
+116:other/Kevin Gates - Really Really [Official Music Video](MP3_160K).mp3
+117:other/D12 - Fight Music (BET Version)(MP3_160K).mp3
+118:other/Ja Rule - Clap Back(MP3_160K).mp3
+119:other/O.T. Genasis - Push It [Official Music Video](MP3_160K).mp3
+120:other/Mode(MP3_160K).mp3
+121:other/Big Sean - Precision(MP3_160K).mp3
+122:other/Sunflower (Spider-Man_ Into the Spider-Verse)(M4A_128K).m4a
+123:other/rockstar(M4A_128K).m4a
+124:other/Motley Crew(M4A_128K).m4a
+125:other/Congratulations(M4A_128K).m4a
+126:other/Playboi Carti - wokeuplikethis_ ft. Lil Uzi Vert (Official Video)(MP3_160K).mp3
+127:other/Revival(MP3_160K).mp3
+128:other/pick up the phone(MP3_160K).mp3
+129:other/Freeway - What We Do (Official Music Video) ft. JAY-Z_ Beanie Sigel(MP3_160K).mp3
+130:other/Paul Russell - Lil Boo Thang (Official Video)(M4A_128K).m4a
+131:other/Desiigner - Panda (Official Music Video)(MP3_160K).mp3
+132:other/Kodak Black - Tunnel Vision [Official Music Video](MP3_160K).mp3
+133:other/NLE Choppa ft. (41) Kyle richh_ jenn carter_ TATA - Or What (Official Music Video)(MP3_160K).mp3
+134:other/timelapse(M4A_128K).m4a
+135:other/One Direction - What Makes You Beautiful (Official Video)(M4A_128K).m4a
+136:other/GLORY(M4A_128K).m4a
+137:other/A Moment Apart(M4A_128K).m4a
+138:other/NUNCA MUDA_ (Slowed)(MP3_160K).mp3
+139:other/NUNCA MUDA_ (PHONK)(MP3_160K).mp3
+140:other/NUNCA MUDA_ (PHONK)(MP3_160K).mp3
+141:other/CJ - WHOOPTY [Official Music Video](MP3_160K).mp3
+142:other/N.O.R.E. - Nothin_ (Official Music Video)(MP3_160K).mp3
+143:other/French Montana - No Shopping (Official Video) ft. Drake(MP3_160K).mp3
+144:other/Waka Flocka Flame - _No Hands_ (feat. Wale _ Roscoe Dash) (Official Music Video)(MP3_160K).mp3
+145:other/Nicki Minaj ft. Lil Baby - Do We Have A Problem_ (Official Music Video)(MP3_160K).mp3
+146:other/Niall Horan - Heaven (Official Video)(M4A_128K).m4a
+147:other/The Lost Soul Down (Slowed _ Reverb)(M4A_128K).m4a
+148:other/Lost Soul(MP3_160K).mp3
+149:other/Fainted (Sped Up)(M4A_128K).m4a
+150:other/Sheck Wes - Mo Bamba (Official Music Video)(MP3_160K).mp3
+151:other/After Dark(M4A_128K).m4a
+152:other/KMT(MP3_160K).mp3
+153:other/Fi 3esh2 El Banat(M4A_128K).m4a
+154:other/Fi 3esh2 El Banat(M4A_128K).m4a
+155:other/I Took A Pill In Ibiza (Seeb Remix)(M4A_128K).m4a
+156:other/Belly - Might Not ft. The Weeknd (Official Music Video)(MP3_160K).mp3
+157:other/Rock With You(M4A_128K).m4a
+158:other/MIC Drop (Steve Aoki Remix) Feat. Desiigner(MP3_160K).mp3
+159:other/Creepin_(M4A_128K).m4a
+160:other/Living Proof(MP3_160K).mp3
+161:good_vibe/All Day And Night.mp3
+162:good_vibe/Call on Me (Ryan Riback Remix).mp3
+163:good_vibe/Caught Up.mp3
+164:other/DaBaby - BALL IF I WANT TO (Official Music Video)(MP3_160K).mp3
+165:other/benny blanco_ BTS _ Snoop Dogg - Bad Decisions (Official Music Video)(M4A_128K).m4a
+166:other/정국 (Jung Kook) _3D (feat. Jack Harlow)_ Official MV(M4A_128K).m4a
+167:other/Bel Bont El3areedh(M4A_128K).m4a
+168:other/Sunnet El Hayah(M4A_128K).m4a
+169:other/The Game - How We Do (Official Music Video)(MP3_160K).mp3
 playlist_end

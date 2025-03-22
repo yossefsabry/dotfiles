@@ -5,7 +5,8 @@ REDIS_VERSION="6.2.6"  # Version of Redis to install (you can change this if nee
 
 # Check if the script is run as root (required for installation)
 if [ "$(id -u)" -ne 0 ]; then
-  echo "This script requires root privileges. Please run as root or use sudo."
+  cecho "This script requires root privileges. Please run as root \
+      or use sudo." red
   exit 1
 fi
 

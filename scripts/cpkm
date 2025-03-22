@@ -5,19 +5,19 @@ check() {
     # detect the system's package manager
     if grep -qi "arch" /etc/os-release; then
         PKG_MANAGER="pacman -Sy --noconfirm "
-        echo "Detected Arch Linux. Using pacman."
+        cecho "Detected Arch Linux. Using pacman." green
 
     elif grep -qi "fedora" /etc/os-release; then
         PKG_MANAGER="dnf install -y"
-        echo "Detected Fedora. Using dnf."
+        cecho "Detected Fedora. Using dnf." green
 
     else
         PKG_MANAGER="apt-get install -y"
-        echo "Detected Debian/Ubuntu-based system. Using apt."
+        cecho "Detected Debian/Ubuntu-based system. Using apt." green
     fi
 
     # Example usage
-    echo "Installing package: $1"
+    cecho "Installing package: $1" blue
     sudo $PKG_MANAGER $1
 }
 

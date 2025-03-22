@@ -1,0 +1,69 @@
+#!/usr/bin/env bash
+
+## FOR UBUNTU BASED DISTRO
+
+# Ensure the script runs with root privileges
+if [ "$EUID" -ne 0 ]; then
+    echo "Please run as root (sudo)"
+    exit 1
+fi
+
+# Clean up broken PPAs
+add-apt-repository --remove ppa:ken-vandine/hyprland
+add-apt-repository --remove ppa:hyprwm/ppa
+
+# Add Debian Sid source for Hyprland
+echo "deb [arch=amd64] http://deb.debian.org/debian sid main" | tee -a /etc/apt/sources.list.d/hyprland.list
+
+# Pin the source to prevent other packages from updating to Sid
+cat << EOF > /etc/apt/preferences.d/hyprland
+Package: *
+Pin: release a=sid
+Pin-Priority: -10
+
+Package: hyprland*
+Pin: release a=sid
+Pin-Priority: 500
+EOF
+
+# Update and upgrade
+apt update && apt upgrade -y
+
+# Function to check and install packages
+check_and_install() {
+    if ! dpkg -l | grep -q "^ii  $1"; then
+        echo "Installing $1..."
+        apt install -y "$1"
+    else
+        echo "$1 is already installed. Skipping."
+    fi
+}
+
+# Install core Hyprland and utilities
+check_and_install hyprland
+check_and_install hyprpaper
+check_and_install hyprlock
+check_and_install hyprprop
+check_and_install waybar
+check_and_install wl-clipboard
+check_and_install xclip
+check_and_install wlroots
+check_and_install wayland-utils
+check_and_install wofi
+check_and_install kitty
+check_and_install sddm
+
+# # Create .desktop file
+# cat << EOF > /usr/share/wayland-sessions/hyprland.desktop
+# [Desktop Entry]
+# Name=Hyprland
+# Comment=Hyprland Window Manager
+# Exec=Hyprland
+# Type=Application
+# DesktopNames=Hyprland
+# EOF
+#
+
+# Notify user
+echo "Hyprland installation complete! Select 'Hyprland' from your login screen."
+

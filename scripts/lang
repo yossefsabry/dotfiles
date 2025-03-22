@@ -6,7 +6,7 @@ lang() {
    which xkb-switch > /dev/null 2>&1
 
    if [ $? -ne 0 ]; then
-      echo "xkb-switch is not installed"
+      cecho "xkb-switch is not installed" yellow
       #notify-send "install xkb-switch"
       yay -S xkb-switch
       #notify-send -u critical -h string:urgency:failure "Failure" "The operation failed"

@@ -8,27 +8,36 @@ BLUE='\e[34m'
 RESET='\e[0m'
 
 # cecho function:
-# It takes a message (which can have spaces) and a color (as the last argument).
+# It takes a message (which can have spaces) and a color (optional, defaults to blue).
 cecho() {
-    # The last argument is the color.
-    local color="${!#}"
-    # All arguments except the last form the full message.
-    local message="${@:1:$#-1}"
+    local message
+    local color
     local color_code
 
-    # Map the given color to its corresponding code.
+    # Check if the last argument is a recognized color
+    case "${!#}" in
+        red|green|yellow|blue)
+            color="${!#}"
+            message="${@:1:$#-1}"
+            ;;
+        *)
+            color="reset"  # Default color if none provided
+            message="$*"   # Take all arguments as message
+            ;;
+    esac
+
+    # Map the color to its corresponding code
     case "$color" in
         red) color_code="$RED" ;;
         green) color_code="$GREEN" ;;
         yellow) color_code="$YELLOW" ;;
         blue) color_code="$BLUE" ;;
-        *) color_code="$RESET" ;;  # Default to no color if not recognized.
+        *) color_code="$RESET" ;;  # Default to no color if unrecognized
     esac
 
-    # Print the message prefixed with "==>" in the selected color, then reset.
-    printf "==> ${color_code}%s${RESET}\n" "$message"
+    # Print the message prefixed with "==>" in the selected color, then reset
+    printf "${color_code}==> %s${RESET}\n" "$message <=="
 }
 
-# Testing the cecho function with a sentence containing spaces:
 cecho $1 $2
 

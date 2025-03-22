@@ -20,18 +20,19 @@ setBrightness() {
                 if [[ "$action" =~ ^[0-9]+%$ ]]; then
                     brightnessctl set "$action"
                 else
-                    echo "Invalid argument. Use 'up', 'down', or a percentage (e.g., 50%)."
+                    cecho "Invalid argument. Use 'up', 'down', or a \
+                        percentage (e.g., 50%)." red
                     exit 1
                 fi
                 ;;
         esac
     else
-        echo "brightnessctl not found."
-        echo "Installing brightnessctl..."
+        cecho "brightnessctl not found." red
+        cecho "Installing brightnessctl..." blue
         if sudo pacman -S --noconfirm brightnessctl; then
             setBrightness "$action"
         else
-            echo "Failed to install brightnessctl."
+            cecho "Failed to install brightnessctl." red
             exit 1
         fi
     fi
