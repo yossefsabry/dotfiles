@@ -15,7 +15,8 @@ vim.g.netrw_liststyle = 1
 -- Modes
 vim.opt.hlsearch = false -- disable search highlight
 vim.opt.incsearch = true
-vim.opt.guicursor = ""
+vim.opt.guicursor = "n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50"
+
 
 vim.opt.nu = true
 vim.opt.relativenumber = true

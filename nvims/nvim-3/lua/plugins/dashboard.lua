@@ -1,7 +1,5 @@
 return {
-  "nvimdev/dashboard-nvim",
-  lazy = false,
-  Cmd = {},
+  "nvimdev/dashboard-nvim", lazy = false, Cmd = {},
   opts = function()
     local logo = [[
 

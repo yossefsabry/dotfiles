@@ -33,8 +33,7 @@ local function neovim_alpha_config(opts)
   }
 
   local color_maps = {
-    [[  kkkka       gggg  ]],
-    [[  kkkkaa      ggggg ]],
+    [[  kkkka       gggg  ]], [[  kkkkaa      ggggg ]],
     [[ b kkkaaa     ggggg ]],
     [[ bb kkaaaa    ggggg ]],
     [[ bbb kaaaaa   ggggg ]],

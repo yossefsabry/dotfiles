@@ -30,6 +30,7 @@ exec redshift -O 2000K &
 
 #:qtile {{{
 # exec auto_bg &
+exec flameshot &
 exec feh --bg-center --bg-scale ~/Pictures/wallpaper/lave_.png &
 exec qtile start > ~/qtile.log 2>&1 
 #:}}}

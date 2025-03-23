@@ -2,5 +2,8 @@
     "diagnostics.globals": [
         "vim",
         "mason_lspconfig"
+    ],
+    "diagnostics.disable": [
+        "missing-fields"
     ]
 }
