@@ -1,0 +1,26 @@
+#!/usr/bin/env bash
+
+oathtool -b --totp=sha1 $1
+
+# Check if a username is provided
+# if [ -z "$1" ]; then
+#     echo "Usage: $0 <username>"
+#     exit 1
+# fi
+#
+# USERNAME=$1
+#
+# # Generate a random Base32-encoded secret manually (oathtool does not support --totp-secret)
+# SECRET=$(head -c 20 /dev/urandom | base32 | tr -d '=')
+#
+# # Format the otpauth URL
+# OTP_AUTH_URL="otpauth://totp/GitHub:$USERNAME?secret=$SECRET&issuer=GitHub"
+#
+# # Generate a TOTP code using oathtool
+# TOTP_CODE=$(oathtool --totp -b "$SECRET")
+#
+# # Output the generated secret, otpauth URL, and TOTP code
+# echo "Generated Secret: $SECRET"
+# echo "OTP Auth URL: $OTP_AUTH_URL"
+# echo "Current Authentication Code: $TOTP_CODE"
+#

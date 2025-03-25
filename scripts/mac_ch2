@@ -1,6 +1,0 @@
-#!/bin/bash
-
-MAC=`dd if=/dev/urandom bs=3 count=1 status=noxfer 2>/dev/null | od -t x1 | sed -e "s/^0* //;s/ /:/g;q"`
-
-ifconfig wlan0 down hw ether 00:13:$MAC
-ifconfig wlan0 up

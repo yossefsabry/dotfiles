@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+
+current=$(setxkbmap -query | grep layout | awk '{print $2}')
+
+if [[ "$current" == "us" ]]; then
+    setxkbmap -layout ara
+else
+    setxkbmap -layout us
+fi
+
+# for qtile update the lang
+# qtile cmd-obj -o widget keyboardlayout -f next_keyboard
+

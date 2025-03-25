@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+
+
+translate_to_ar() {
+    local rtl_marker=$'\u202B'  # RTL marker
+    local reset_marker=$'\e[0m'   # Reset formatting (optional)
+
+    # Take sentence as a parameter
+    local input_text="$*"
+
+    # Check if input is empty
+    if [[ -z "$input_text" ]]; then
+        echo "Usage: translate_to_ar 'your text here'"
+        return 1
+    fi
+
+    # Translate and apply RTL formatting
+    local translated_text=$(argos-translate --from en --to ar "$input_text")
+    echo -e "${rtl_marker}${translated_text}${reset_marker}"
+}
+
+translate_to_ar $*

@@ -1,0 +1,13 @@
+# #!/bin/bash
+#
+# current_tty=$(tty)
+# # Assuming that the script is supposed to toggle between tty1 and tty2
+# if [[ $current_tty =~ "/dev/pts/1" ]]; then
+#     # Switch to tty2
+#     sudo chvt 2
+# elif [[ $current_tty =~ "/dev/tty2" ]]; then
+#     # Switch to tty1
+#     sudo chvt 1
+# else
+#     echo "You are not on TTY1 or TTY2"
+# fi

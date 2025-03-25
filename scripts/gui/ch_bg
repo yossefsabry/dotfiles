@@ -1,0 +1,44 @@
+#!/usr/bin/env bash
+
+# Directory containing wallpapers
+WALLPAPER_DIR="$HOME/Pictures/"
+
+# Function to set wallpaper
+set_wallpaper() {
+    local image_path="$1"
+    if [ -f "$image_path" ]; then
+        feh --bg-scale "$image_path"
+        echo "Wallpaper set to: $image_path"
+    else
+        echo "Error: File not found - $image_path"
+        exit 1
+    fi
+}
+
+# Function to list and select images using fzf
+select_image() {
+    if [ -d "$WALLPAPER_DIR" ]; then
+        # Find images and pass them to fzf
+        find "$WALLPAPER_DIR" -type f \( -iname "*.jpg" -o -iname "*.png" -o -iname "*.jpeg" \) \
+            | fzf --prompt="Select a wallpaper: "
+    else
+        echo "Error: Directory not found - $WALLPAPER_DIR"
+        exit 1
+    fi
+}
+
+# Main script
+main() {
+    selected_image=$(select_image)
+
+    # Check if an image was selected
+    if [ -n "$selected_image" ]; then
+        set_wallpaper "$selected_image"
+    else
+        echo "No image selected. Exiting."
+        exit 0
+    fi
+}
+
+main
+

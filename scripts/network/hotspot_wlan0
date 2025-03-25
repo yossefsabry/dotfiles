@@ -1,0 +1,30 @@
+#!/bin/bash
+
+# Define hotspot settings
+HOTSPOT_SSID="MyHotspot"
+HOTSPOT_PASSWORD="password123"
+HOTSPOT_INTERFACE="wlan0"
+INTERNET_INTERFACE="eth0"  # Change to your internet-connected interface
+
+# Ensure NetworkManager is running
+sudo systemctl start NetworkManager
+
+# Create the hotspot
+echo "Creating WiFi Hotspot: $HOTSPOT_SSID"
+nmcli device wifi hotspot ifname "$HOTSPOT_INTERFACE" ssid "$HOTSPOT_SSID" password "$HOTSPOT_PASSWORD"
+
+# Set IP forwarding for internet sharing
+echo "Enabling IP forwarding..."
+sudo sysctl -w net.ipv4.ip_forward=1
+
+# Configure NAT for internet sharing
+echo "Setting up NAT (iptables)..."
+sudo iptables -t nat -A POSTROUTING -o "$INTERNET_INTERFACE" -j MASQUERADE
+sudo iptables -A FORWARD -i "$INTERNET_INTERFACE" -o "$HOTSPOT_INTERFACE" -m state --state RELATED,ESTABLISHED -j ACCEPT
+sudo iptables -A FORWARD -i "$HOTSPOT_INTERFACE" -o "$INTERNET_INTERFACE" -j ACCEPT
+
+echo "Hotspot is active. Connect to SSID: $HOTSPOT_SSID"
+
+# Add stop functionality
+echo "To stop the hotspot, run: nmcli connection down Hotspot"
+

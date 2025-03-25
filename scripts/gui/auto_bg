@@ -1,0 +1,41 @@
+#!/bin/bash
+
+WALLPAPER_DIR="$HOME/Pictures/wallpaper"
+LAST_VIEW_FILE="$HOME/Pictures/wallpaper/last_view.txt"
+
+# Get all image files sorted by size (biggest first)
+IMAGES=($(find "$WALLPAPER_DIR" -type f \( -iname "*.jpg" -o \
+    -iname "*.png" -o -iname "*.jpeg" -o -iname "*.svg" \) \
+    -exec ls -lS {} + | awk '{print $NF}'))
+
+# If no images found, exit
+if [ ${#IMAGES[@]} -eq 0 ]; then
+    cecho "No images found in $WALLPAPER_DIR" red
+    exit 1
+fi
+
+# Get the last viewed image
+if [ -f "$LAST_VIEW_FILE" ]; then
+    LAST_VIEW=$(cat "$LAST_VIEW_FILE")
+    INDEX=$(printf "%s\n" "${IMAGES[@]}" | \
+        grep -nFx "$LAST_VIEW" | cut -d: -f1)
+    if [ -z "$INDEX" ]; then
+        INDEX=0
+    else
+        INDEX=$((INDEX))
+    fi
+else
+    INDEX=0
+fi
+
+# Select the next image
+NEXT_INDEX=$(( (INDEX + 1) % ${#IMAGES[@]} ))
+NEXT_IMAGE=${IMAGES[$NEXT_INDEX]}
+
+# Set the new wallpaper
+feh --bg-center --bg-scale "$NEXT_IMAGE"
+
+# Save the current image to last_view.txt
+cecho "$NEXT_IMAGE" > "$LAST_VIEW_FILE" green
+
+exit 0

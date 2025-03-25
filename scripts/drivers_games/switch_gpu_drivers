@@ -1,0 +1,28 @@
+#!/usr/bin/env bash
+
+# Check for user input
+if [ -z "$1" ]; then
+    echo "Usage: $0 [intel|amd]"
+    exit 1
+fi
+
+# Switch GPU
+case "$1" in
+    intel)
+        export DRI_PRIME=0
+        echo "Switched to Intel GPU."
+        ;;
+    amd)
+        export DRI_PRIME=1
+        echo "Switched to AMD GPU."
+        ;;
+    *)
+        echo "Invalid option. Use 'intel' or 'amd'."
+        exit 1
+        ;;
+esac
+
+# Verify the active GPU
+echo "Current GPU:"
+glxinfo | grep "OpenGL renderer" || echo "glxinfo is not installed."
+

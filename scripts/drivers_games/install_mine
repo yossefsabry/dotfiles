@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+
+
+_install(){
+    if _commend_exists prismlauncer; then
+        cecho "prismlauncer found (installed)" yellow
+        exit 1
+    fi
+    cecho "starting install AppImage for prismlauncer" blue
+    curl -LO https://github.com/PrismLauncher/PrismLauncher/releases/download/9.2/PrismLauncher-Linux-x86_64.AppImage
+    if [[ $? != 0 ]];then
+        cecho "error happend in install AppImage" red
+        exit 1
+    fi
+    chmod +x ./PrismLauncher-Linux-x86_64.AppImage
+    cp ./PrismLauncher*.AppImage /usr/bin/prismlauncer
+    ./PrismLauncher*.AppImage
+
+    cecho "finish install" green
+}
+_install

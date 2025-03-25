@@ -1,0 +1,34 @@
+#!/bin/bash
+
+killall obs-cli &
+killall obs-recording &
+
+# Configuration
+OBS_HOST="localhost"
+OBS_PORT="4444"
+
+# Check if obs-cli is installed
+if ! command -v obs-cli &> /dev/null; then
+    echo "obs-cli could not be found. Please install it first."
+    exit 1
+fi
+
+# Get the recording status from OBS
+RECORDING_STATUS=$(obs-cli --host $OBS_HOST --port $OBS_PORT recording status 2>&1) # main command
+
+if [ $? -ne 0 ]; then
+    echo -e "\uf03d"  # FontAwesome: Video Camera and Dot Circle (Recording)
+    exit 1
+fi
+
+# Parse the recording status
+IS_RECORDING=$(echo $RECORDING_STATUS | grep -o 'Recording: true')
+
+# Check if OBS is recording
+if [ -n "$IS_RECORDING" ]; then
+    echo -e "\u25B6 Recording"  # This is a play icon
+else
+    echo -e "\uf192 Stopped"  # This is a stop icon
+fi
+
+pkill -10 dwmblocks

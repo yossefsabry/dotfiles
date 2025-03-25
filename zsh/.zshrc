@@ -6,8 +6,11 @@ export ZSH="$HOME/.oh-my-zsh"
 export PATH="$HOME/.local/bin/:$PATH"
 export PATH="$HOME/bin/:$PATH"
 # for scripts dotfiles
-export PATH="$HOME/dotfiles/scripts:$PATH"
-export PATH="$HOME/dotfiles/scripts/install_scripts:$PATH"
+# ====== adding all folders inside scripts folder =======
+export PATH="$(find "$HOME/dotfiles/scripts" -type d | tr '\n' ':')$PATH"
+# export PATH="$HOME/dotfiles/scripts:$PATH"
+# export PATH="$HOME/dotfiles/scripts/install_scripts:$PATH"
+
 
 alias gpt="tgpt "
 alias wine64="wine "
@@ -130,6 +133,7 @@ bindkey -M vicmd v edit-command-line
 # set default editor
 export term=kitty
 alias browser=brave-browser
+alias brave="brave-browser"
 alias vim='nvim'
 alias vi='/usr/bin/vim'
 alias lutris='GTK_THEME=Adwaita:dark lutris'
@@ -243,6 +247,9 @@ alias untar='tar -xvf'
 alias unbz2='tar -xvjf'
 alias ungz='tar -xvzf'
 
+# adding the arabic translate from right to left
+#alias tran_ara="argos-translate --from en --to ar "
+
 
 # Show all logs in /var/log
 alias logs="sudo find /var/log -type f -exec file {} \; | grep 'text' \
@@ -308,6 +315,7 @@ export PATH=$PATH:/usr/local/go/bin
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  
+# This loads nvm bash_completion
 
 . "$HOME/.local/bin/env"

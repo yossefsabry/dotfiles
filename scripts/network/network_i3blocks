@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+
+interface=$(ip route | awk '/default/ {print $5}')
+download=$(cat /sys/class/net/"$interface"/statistics/rx_bytes)
+upload=$(cat /sys/class/net/"$interface"/statistics/tx_bytes)
+sleep 1
+download_new=$(cat /sys/class/net/"$interface"/statistics/rx_bytes)
+upload_new=$(cat /sys/class/net/"$interface"/statistics/tx_bytes)
+
+download_speed=$(( ($download_new - $download) / 1024 ))
+upload_speed=$(( ($upload_new - $upload) / 1024 ))
+
+ssid=$(iwgetid -r)
+
+if [ -z "$ssid" ]; then
+    echo "󰤭 No Network"
+else
+    echo " $ssid  D: ${download_speed} KB/s  U: ${upload_speed} KB/s"
+fi
+

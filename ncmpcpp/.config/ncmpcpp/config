@@ -11,13 +11,16 @@ mpd_connection_timeout = 5
 mpd_crossfade_time = 0
 mpd_music_dir = /home/yossef/Music/*
 lyrics_directory = ~/.config/ncmpcpp/lyrics
+# when the song don't load correct udpate the ncmpcp mannely
+# slove the problem by using a higher version of ncmpcpp
+# lyrics_fetchers = genius, justsomelyrics, jahlyrics, tekstowo, internet
 
 visualizer_data_source = /tmp/mpd.fifo
 visualizer_output_name = my_fifo
 
 visualizer_in_stereo = yes
 visualizer_fps = 60
-visualizer_type = spectrum
+visualizer_type = wave
 visualizer_look = ●●
 visualizer_color = magenta,cyan,blue,red,white,green,yellow,black,magenta
 visualizer_spectrum_smooth_look = yes

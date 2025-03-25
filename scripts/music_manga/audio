@@ -1,0 +1,22 @@
+#!/usr/bin/bash
+
+currentSound=$(amixer get Master | grep -oP 'Left:.*?\[\d+%\]' | grep -oP '\[\d+%\]')
+
+audio() {
+    case $1 in
+        "up")
+            amixer sset Master 5%+ > /dev/null
+            ;;
+        "down")
+            amixer sset Master 5%- > /dev/null
+            ;;
+        "mute")
+            amixer sset Master toggle  > /dev/null
+            ;;
+        *)
+            echo "$currentSound"
+            exit 1
+            ;;
+    esac
+}
+audio "$1"

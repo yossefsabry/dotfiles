@@ -4,7 +4,7 @@ RED='\e[31m'
 GREEN='\e[32m'
 RESET='\e[0m'  # Reset color
 
-:>> 'END'
+:<< 'END'
 cpkm => check package manger and install
 END
 

@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+
+_insatll() {
+    if _commend_exists java; then
+        cecho "java found and install" blue
+        exit 1
+    fi
+    cecho "starting install java" green
+    sudo apt install default-jre
+    if [[ $? != 0 ]]; then
+        cecho "error happend in install java" red
+        exit 1
+    fi
+
+    cecho "starting installing javac" green
+    sudo apt install default-jdk
+    if [[ $? != 0 ]]; then
+        cecho "error happend in install javac" red
+        exit 1
+    fi
+    cecho "finsih isntalling java and javac"
+}
+_insatll

@@ -1,0 +1,59 @@
+#!/usr/bin/env bash
+
+:<< 'END'
+# some importent dependences
+sudo apt install build-essential \
+    libncursesw5-dev \
+    libreadline-dev \
+    libtag1-dev \
+    libfftw3-dev \
+    libboost-dev \
+    libmpdclient-dev
+
+sudo apt install autoconf automake
+END
+
+_install() {
+    local FILENAME="0.10.1.tar.gz"
+    if _commend_exists ncmpcpp; then
+        cecho "the ncmpcpp is already install" yellow
+        exit 1
+    fi
+
+    cecho "change dir to Download" blue
+    cd /home/$USER/Download
+
+    cecho "starting install" blue
+    wget https://github.com/ncmpcpp/ncmpcpp/archive/refs/tags/$FILENAME
+    if [[ $? != 0 ]];then
+        cecho " error happend in install ncmpcpp using wget" red
+        exit 1
+    fi
+    cecho "finsih get the package using wget" blue
+
+    cecho "starting to build" blue
+
+    tar xvf $FILENAME
+    FOLDER_NAME=$(tar tzf "$FILENAME" | head -1 | cut -f1 -d"/")
+    cd $FOLDER_NAME || exit
+
+    autoreconf -i
+
+    if [[ $? != 0 ]];then
+        cecho "error happend in initlization install check dependences " red
+        exit 1
+    fi
+
+    make clean
+    ./configure
+    make
+    sudo make install
+
+    if [[ $? != 0 ]];then
+        cecho "error happend in bulld the package check dependences" red
+        exit 1
+    fi
+
+    cecho "install complete and successfly" green
+}
+_install

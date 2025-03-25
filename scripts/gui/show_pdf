@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+
+# Check if pymupdf (fitz) is installed
+if ! python3 -c "import fitz" &> /dev/null; then
+    echo "pymupdf not found. Installing..."
+    pip install pymupdf
+fi
+
+# Check if a file is passed as an argument
+if [ -z "$1" ]; then
+    echo "Usage: $0 <pdf_file>"
+    exit 1
+fi
+
+# Extract text from the PDF and display with less
+python3 -c "import fitz; doc = fitz.open('$1'); [print(doc[i].get_text()) for i in range(len(doc))]" | less
+

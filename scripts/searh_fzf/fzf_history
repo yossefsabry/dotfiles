@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+
+fzf_history() {
+  # Search through the command history using fzf
+  local cmd
+  cmd=$(history | awk '{$1=""; print substr($0, 2)}' | fzf --height=40%)
+
+  # If a command is selected, execute it safely
+  if [ -n "$cmd" ]; then
+    printf "%s\n" "$cmd" | bash
+  fi
+}
+
+fzf_history

@@ -1,0 +1,26 @@
+#!/usr/bin/bash
+
+
+lang() {
+   
+   which xkb-switch > /dev/null 2>&1
+
+   if [ $? -ne 0 ]; then
+      cecho "xkb-switch is not installed" yellow
+      #notify-send "install xkb-switch"
+      cpkm xkb-switch
+      #notify-send -u critical -h string:urgency:failure "Failure" "The operation failed"
+      return 1
+   fi
+   current_layout=$(xkb-switch -p)
+   echo "$current_layout"
+   if [ "$current_layout" == "us" ]; then
+       echo "en"
+       #notify-send -u low -h string:urgency:success "Success" "lang: en"
+   else
+       echo "ara"
+       #notify-send -u low -h string:urgency:success "Success" "lang: ara"
+   fi
+}
+
+lang

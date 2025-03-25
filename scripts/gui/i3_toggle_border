@@ -1,0 +1,13 @@
+#!/bin/bash
+
+# Count non-scratchpad windows
+non_scratchpad_windows=$(i3-msg -t get_tree | jq \
+    '[recurse(.nodes[]?, .floating_nodes[]?) | select(.window_properties.class and .scratchpad_state != "both")] | length')
+
+# Set borders based on window count
+if [[ "$non_scratchpad_windows" -gt 1 ]]; then
+    i3-msg 'border pixel 2'
+else
+    i3-msg 'border none'
+fi
+

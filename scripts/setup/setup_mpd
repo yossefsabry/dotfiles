@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+
+# Check if MPD service is active
+if systemctl --user is-active --quiet mpd.service; then
+    cecho "MPD is already running! ✅" green
+else
+    cecho "MPD is not running. Starting it now..." green
+    systemctl --user enable mpd.service
+    systemctl --user start mpd.service
+    cecho "MPD started and enabled! 🚀" green
+fi
+
+# Optional: Force an MPD database update
+mpc update && cecho "MPD database updated! 🔄" green
+
+# Show current MPD status
+mpc status
+

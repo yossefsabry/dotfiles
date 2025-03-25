@@ -1,0 +1,41 @@
+#!/usr/bin/bash
+
+check() {
+    which "$1" > /dev/null 2>&1
+}
+
+downloadSong() {
+    check yt-dlp
+    if [ $? -ne 0 ];then
+        cecho " yt-dlp not found , try to install now" red
+        yay -S yt-dlp
+        if [ $? -ne 0 ];then
+            cecho "error happend in download" red
+            exit 1
+        fi
+    fi
+
+    downloadDir="~/Music/%(title)s.%(ext)s"
+    mkdir -p "~/Music/"
+
+    yt-dlp -x --audio-format mp3 -o "$downloadDir" "$1"
+
+    if [ $? -ne 0 ];then
+        cecho " error happend during downloading the song" red
+        #notify-send -u critical -h string:urgency:failure "Failure" "failded download"
+        exit 1
+    fi
+    #notify-send -u low -h string:urgency:success "Success" "success download"
+}
+
+# Check arguments and call the function
+if [ "$#" -ne 1 ]; then
+    cecho "Usage: $0 <URL>" blue
+    exit 1
+fi
+
+downloadSong "$1"
+
+
+
+

@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+
+# 1. Install Japanese Input Method (IBus + Mozc)
+sudo apt install ibus ibus-mozc
+
+# Alternatively, you can install fcitx if you prefer:
+# sudo apt install fcitx fcitx-mozc
+
+# 2. Generate and set Japanese locale
+sudo locale-gen ja_JP.UTF-8
+
+
+# If using Zsh:
+echo "export LANG=ja_JP.UTF-8" >> ~/.zshrc
+source ~/.zshrc
+

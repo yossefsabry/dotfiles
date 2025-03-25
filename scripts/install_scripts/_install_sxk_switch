@@ -1,0 +1,34 @@
+#!/usr/bin/env bash
+
+_install() {
+
+    if _commend_exists xkb-switch; then
+        cecho "xkb-switch already installed" green
+        exit 1
+    fi
+
+    sudo apt update
+    sudo apt install git build-essential cmake libx11-dev libxkbfile-dev
+    if [[ $? != 0 ]];then
+        cecho "error while installing dependencies" red
+    fi
+
+    cecho "starting install" green
+
+    git clone https://github.com/grwlf/xkb-switch.git
+    if [[ $? != 0 ]];then
+        cecho "error while cloning" red
+    fi
+    cd xkb-switch
+    mkdir build && cd build
+    cmake ..
+    make
+    sudo make install
+
+    if [[ $? != 0 ]];then
+        cecho "error while installing" red
+    fi
+    cecho "install complete" green
+}
+
+_install

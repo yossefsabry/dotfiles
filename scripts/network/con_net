@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+# Check if password is provided as an argument
+if [ -z "$1" ]; then
+    echo "Usage: $0 <password>"
+    exit 1
+fi
+
+
+# Run the Python script with the password argument
+python3 login.py $1
+

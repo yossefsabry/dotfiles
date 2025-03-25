@@ -9,11 +9,12 @@
 
 # change the valoum
 { XF86AudioRaiseVolume, XF86AudioLowerVolume, XF86AudioMute }
-   /home/$USER/dotfiles/scripts/audio {up, down, mute }
+   
+   /home/yossef/dotfiles/scripts/music_manga/audio {up, down, mute }
 
 # change the light
 super + {Up, Down}
-   /home/$USER/dotfiles/scripts/bright {up, down}
+   /home/yossef/dotfiles/scripts/gui/bright {up, down}
 
 # using slock
 super + l
@@ -32,20 +33,20 @@ super + s
     flameshot gui
 
 # starting recording for obs
-super + F10
-   ~/dotfiles/scripts/obs-recording
+# super + F10
+#    obs-recording
 
 # toggle lang
 super + space
-   ~/dotfiles/scripts/lang
+   /home/yossef/dotfiles/scripts/others/toggle_lang
 
 # toggle touchpad
 super + t
-    ~/dotfiles/scripts/toggle_touchpad
+   /home/yossef/dotfiles/scripts/others/toggle_touchpad
 
 # change tre redshift color for protect eye
 super + r
-    ~/dotfiles/scripts/redshift-status
+    /home/yossef/dotfiles/scripts/gui/redshift-status
 
 # make sxhkd reload its configuration files:
 super + Escape
