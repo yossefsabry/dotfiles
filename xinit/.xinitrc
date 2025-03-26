@@ -21,8 +21,8 @@ exec redshift -O 2000K &
 
 # dwm {{{
 # exec run_picom &
-# exec auto_bg &
 # exec feh --bg-center --bg-scale ~/Pictures/wallpaper/image-1.png &
+# exec auto_bg &
 # exec flameshot &
 # exec slstatus &
 # exec dwm > ~/.dwm.log 2>&1 
@@ -30,17 +30,17 @@ exec redshift -O 2000K &
 
 #:qtile {{{
 # exec auto_bg &
-exec flameshot &
-exec feh --bg-center --bg-scale ~/Pictures/wallpaper/lave_.png &
-exec qtile start > ~/qtile.log 2>&1 
+# exec flameshot &
+# exec feh --bg-center --bg-scale ~/Pictures/wallpaper/lave_.png &
+# exec qtile start > ~/qtile.log 2>&1 
 #:}}}
 
 # :i3 {{{
 # exec run_picom &
 # exec feh --bg-center --bg-scale ~/Pictures/wallpaper/wallpepar.jpeg &
-# exec auto_bg &
-# exec flameshot &
-# exec i3 > ~/.i3.log 2>&1 
+exec auto_bg &
+exec flameshot &
+exec i3 > ~/.i3.log 2>&1 
 # :}}}
 
 # :hyprland {{{
