@@ -2,8 +2,8 @@ sw_volume: 100
 audio_device_state:1:My Output
 audio_device_state:1:my_fifo
 state: pause
-current: 16
-time: 66.699000
+current: 127
+time: 35.377000
 random: 0
 repeat: 1
 single: 1
@@ -137,4 +137,7 @@ playlist_begin
 122:other/Playboi Carti - ALL RED (Official Visualizer)(MP3_160K).mp3
 123:other/hope to see you again(M4A_128K).m4a
 124:other/Travis Scott - SICKO MODE ft. Drake(MP3_160K).mp3
+125:the_weeking/Nothing Without You.mp3
+126:artist/ESSE CARA!.mp3
+127:artist/ESSE CARA! (Slowed).mp3
 playlist_end
