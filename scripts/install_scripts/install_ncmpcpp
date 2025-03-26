@@ -45,7 +45,8 @@ _install() {
     fi
 
     make clean
-    ./configure
+    #./configure
+    ./configure --enable-visualizer. ## for just enable visualizer
     make
     sudo make install
 
@@ -53,7 +54,6 @@ _install() {
         cecho "error happend in bulld the package check dependences" red
         exit 1
     fi
-
     cecho "install complete and successfly" green
 }
 _install

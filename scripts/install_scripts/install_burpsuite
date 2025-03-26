@@ -1,4 +1,4 @@
-/usr/bin/zsh
+#!/usr/bin/zsh
 
 exit # for quitting if you want back to the old shell session
 
@@ -8,9 +8,9 @@ cd burpsuite-pro-installation
 
 chmod +x installer.sh
 
-download burp latest version zip https://t.me/burpsuite/181
+#download burp latest version zip https://t.me/burpsuite/181
 
 unzip,then copy [burploader-old.jar, BurpSuiteLoader_v2020.12.1.jar, burpsuite_pro_v2020.12.1.jar] 
-  into your current folder{burpsuite-pro-installation}
+  #into your current folder{burpsuite-pro-installation}
 
 sudo bash ./installer.sh

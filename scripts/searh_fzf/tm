@@ -1,21 +1,21 @@
 #!/bin/sh
 
 tm() {
-  if [ -z "$1" ]; then
-    tmux switch-client -l
-  else
-    dir_path="$1"
-    dir_name=$(basename "$dir_path")
-
-    if [ -z "$TMUX" ]; then
-      tmux new-session -As "$dir_name" -c "$dir_path"
+    if [ -z "$1" ]; then
+        tmux switch-client -l
     else
-      if ! tmux has-session -t "$dir_name" 2>/dev/null; then
-        tmux new-session -ds "$dir_name" -c "$dir_path"
-      fi
-      tmux switch-client -t "$dir_name"
+        dir_path="$1"
+        dir_name=$(basename "$dir_path")
+
+        if [ -z "$TMUX" ]; then
+            tmux new-session -As "$dir_name" -c "$dir_path"
+        else
+            if ! tmux has-session -t "$dir_name" 2>/dev/null; then
+                tmux new-session -ds "$dir_name" -c "$dir_path"
+            fi
+            tmux switch-client -t "$dir_name"
+        fi
     fi
-  fi
 }
 
 # Use fzf to select a directory with error handling
@@ -23,8 +23,8 @@ selected_dir=$(find ~ -type d 2>/dev/null | fzf)
 
 # Check if a directory was selected
 if [ -n "$selected_dir" ]; then
-  tm "$selected_dir"
+    tm "$selected_dir"
 else
-  echo "No directory selected."
+    echo "No directory selected."
 fi
 

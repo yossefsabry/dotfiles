@@ -639,6 +639,8 @@ def_key "ctrl-g"
 
 def_key "ctrl-f"
  seek_forward
+def_key "n"
+ move_sort_order_down
 
 def_key "ctrl-b"
  seek_backward

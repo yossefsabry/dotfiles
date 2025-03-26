@@ -1,13 +1,13 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # Function to check if a package is installed
 check_install() {
     PACKAGE=$1
     if ! pacman -Q "$PACKAGE" &>/dev/null; then
-        echo "$PACKAGE is not installed. Installing..."
+        cecho "$PACKAGE is not installed. Installing..." yellow
         yay -S --noconfirm "$PACKAGE"
     else
-        echo "$PACKAGE is already installed."
+        cecho "$PACKAGE is already installed." green
     fi
 }
 
@@ -21,11 +21,11 @@ check_install bluez
 check_install blueman
 
 # Ensure the Bluetooth service is running
-echo "Ensuring the Bluetooth service is active..."
+cecho "Ensuring the Bluetooth service is active..." blue
 sudo systemctl start bluetooth
 sudo systemctl enable bluetooth
 
 # Start the Blueman Manager
-echo "Starting Blueman Manager..."
+cecho "Starting Blueman Manager..." green
 blueman-manager
 
