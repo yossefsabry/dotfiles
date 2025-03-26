@@ -6,25 +6,25 @@ GREEN='\e[32m'
 
 # insatll yay
 install_yay() {
-  if _commend_exists yay; then
-    echo -e "${GREEN}--- command already exits ----${RC}"
-  else
-    echo -e "${GREEN}-- install some dependences git base-devel --${RC}"
-    if [[ $? == 0 ]]; then
-      echo -e "${GREEN}-- install yay --${RC}"
-      cd
-      git clone https://aur.archlinux.org/yay.git
-      if [[ $? == 0 ]]; then
-        cd yay
-        makepkg -si  
-        echo -e "${GREEN}-- install yay sucessfuly ---${RC}"
-      else
-        echo -e "${RED}******** error happend in clone yay *********${RC}"
-      fi
+    if _commend_exists yay; then
+        echo -e "${GREEN}--- command already exits ----${RC}"
     else
-      echo -e "${RED}********* error happend in install base-devel ********${RC}"
+        echo -e "${GREEN}-- install some dependences git base-devel --${RC}"
+        if [[ $? == 0 ]]; then
+            echo -e "${GREEN}-- install yay --${RC}"
+            cd
+            git clone https://aur.archlinux.org/yay.git
+            if [[ $? == 0 ]]; then
+                cd yay
+                makepkg -si  
+                echo -e "${GREEN}-- install yay sucessfuly ---${RC}"
+            else
+                echo -e "${RED}******** error happend in clone yay *********${RC}"
+            fi
+        else
+            echo -e "${RED}********* error happend in install base-devel ********${RC}"
+        fi
     fi
-  fi
 } 
 
 install_yay

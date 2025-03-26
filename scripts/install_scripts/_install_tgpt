@@ -54,7 +54,7 @@ $SUDO mv /tmp/tgpt $path
 
 if [ -d "$path" ]; then
     $SUDO chmod +x $path/tgpt
-    elif [ -f "$path" ]; then
+elif [ -f "$path" ]; then
     $SUDO chmod +x $path
 fi
 
