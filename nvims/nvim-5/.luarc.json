@@ -1,11 +1,13 @@
 {
     "diagnostics.globals": [
         "vim",
-        "mason_lspconfig"
+        "mason_lspconfig",
+        "MarkdownMode"
     ],
     "diagnostics.disable": [
         "different-requires",
         "inject-field",
-        "undefined-doc-name"
+        "undefined-doc-name",
+        "undefined-global"
     ]
 }

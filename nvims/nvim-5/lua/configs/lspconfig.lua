@@ -5,7 +5,7 @@ local capabilities = require("nvchad.configs.lspconfig").capabilities
 
 local lspconfig = require "lspconfig"
 local servers = { "clangd", "gopls","lua_ls","emmet_ls",
-    "svelte", "pyright"  }
+    "svelte", "pyright", "phpactor" }
 
 -- lsps with default config
 for _, lsp in ipairs(servers) do

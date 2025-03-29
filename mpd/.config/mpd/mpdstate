@@ -2,8 +2,8 @@ sw_volume: 100
 audio_device_state:1:My Output
 audio_device_state:1:my_fifo
 state: pause
-current: 127
-time: 32.871000
+current: 148
+time: 177.121000
 random: 0
 repeat: 1
 single: 1
@@ -140,4 +140,31 @@ playlist_begin
 125:the_weeking/Nothing Without You.mp3
 126:artist/ESSE CARA!.mp3
 127:artist/ESSE CARA! (Slowed).mp3
+128:other/3 Daqat(M4A_128K).m4a
+129:other/Sleepwalker(MP3_160K).mp3
+130:other/Jungle(M4A_128K).m4a
+131:other/FERG - Nasty (Who Dat) (Audio) ft. Migos(MP3_160K).mp3
+132:the_weeking/Save Your Tears.mp3
+133:the_weeking/In The Night.mp3
+134:the_weeking/In Your Eyes.mp3
+135:the_weeking/Love In The Sky.mp3
+136:the_weeking/Niagara Falls.mp3
+137:the_weeking/Often.mp3
+138:the_weeking/One Of The Girls.mp3
+139:the_weeking/Open Hearts.mp3
+140:the_weeking/Ordinary Life.mp3
+141:the_weeking/Pretty.mp3
+142:the_weeking/Prisoner.mp3
+143:the_weeking/Privilege.mp3
+144:the_weeking/Shameless.mp3
+145:ramadan_songs/Arabic Love Songs.mp3
+146:ramadan_songs/Best Arabic Songs.mp3
+147:ramadan_songs/Classic Arabic Songs.mp3
+148:ramadan_songs/Fajr Arabic Song.mp3
+149:ramadan_songs/Ghareeb Arabic Song.mp3
+150:ramadan_songs/Popular Arabic Songs.mp3
+151:ramadan_songs/Rimal.mp3
+152:ramadan_songs/Sands of Time Arabic Song.mp3
+153:ramadan_songs/Latest Arabic Songs.mp3
+154:ramadan_songs/Transform Arabic Song.mp3
 playlist_end

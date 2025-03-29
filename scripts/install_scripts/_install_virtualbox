@@ -1,0 +1,36 @@
+#!/usr/bin/bash
+
+# Function to check if VirtualBox is installed
+check_virtualbox() {
+    if command -v virtualbox &> /dev/null; then
+        cecho "✅ VirtualBox is already installed." green
+        return 0
+    else
+        cecho "❌ VirtualBox is not installed. Installing now..." red
+        return 1
+    fi
+}
+
+# Function to install VirtualBox
+install_virtualbox() {
+    sudo apt update
+    sudo apt install -y virtualbox
+}
+
+# Function to enable VirtualBox services
+enable_virtualbox_services() {
+    cecho "🔄 Enabling VirtualBox kernel modules..." blue
+    sudo modprobe vboxdrv
+
+    cecho "🔄 Enabling VirtualBox services..." green
+    sudo systemctl enable vboxweb-service
+    sudo systemctl start vboxweb-service
+}
+
+# Main Execution
+if ! check_virtualbox; then
+    install_virtualbox
+fi
+
+enable_virtualbox_services
+cecho "✅ VirtualBox setup is complete!" green

@@ -40,5 +40,10 @@ yt-dlp --extract-audio --audio-format mp3 --audio-quality 0 \
     --embed-thumbnail --add-metadata --download-archive "$MUSIC_DIR/downloaded.txt" \
     -o "$MUSIC_DIR/$folder_name/%(title)s.%(ext)s" "$1"
 
+if [[ $? -ne 0 ]]; then
+    echo "Failed to download: $folder_name/$song_title"
+    exit 1
+fi
+
 echo "Download complete: $folder_name/$song_title"
 
