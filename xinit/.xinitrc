@@ -29,9 +29,9 @@ exec redshift -O 2000K &
 #: }}}
 
 #:qtile {{{
-# exec auto_bg &
+# exec feh --bg-center --bg-scale ~/Pictures/wallpaper/nearmoss.png &
 exec flameshot &
-exec feh --bg-center --bg-scale ~/Pictures/wallpaper/nearmoss.png &
+exec auto_bg &
 exec qtile start > ~/qtile.log 2>&1 
 #:}}}
 
