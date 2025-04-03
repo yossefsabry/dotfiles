@@ -27,6 +27,7 @@ _install() {
 
     if _commend_exists yazi; then
         cecho "yazi is already installed" green
+        exit 1
     fi
     cecho "starting to install yazi using cargo" blue
 
