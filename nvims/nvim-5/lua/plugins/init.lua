@@ -7,4 +7,8 @@ return {
             require "configs.lspconfig"
         end,
     },
+    {
+        "nvim-lua/plenary.nvim", -- Ensure Plenary is installed
+        lazy = true,
+    },
 }

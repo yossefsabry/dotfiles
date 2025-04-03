@@ -1,0 +1,27 @@
+#!/usr/bin/env bash
+
+ch_hostname() {
+    HOSTNAME=$(uname -n)
+    cecho "your current hostname is ${HOSTNAME}" blue
+    cecho "starting to change hostname to: $1" yellow
+    sudo hostnamectl set-hostname $1
+    if [[ $? != 0 ]]; then
+        cecho "error happend in changing hostname" 
+        exit 0
+    fi
+    cecho "hostname changed to $1" green
+    cecho "starting change /etc/hosts file" yellow
+
+    sudo sed -i "s/$HOSTNAME/$1/g" /etc/hosts
+    if [[ $? != 0 ]]; then
+        cecho "error happend in changing /etc/hosts file" 
+        exit 0
+    fi
+
+    cecho "/etc/hosts file changed" green
+    cecho "hostname changed successfully" green
+    cecho "please restart your system to apply changes" green
+}
+
+ch_hostname $1
+

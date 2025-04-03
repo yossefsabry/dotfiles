@@ -15,7 +15,7 @@ export PATH="$(find "$HOME/dotfiles/scripts" -type d | tr '\n' ':')$PATH"
 alias gpt="tgpt "
 alias wine64="wine "
 alias wine32="wine "
-alias python="python3 "
+#alias python="python3 "
 
 # alias for ncmpcppp for config for the new bindings file
 alias ncmpcpp="ncmpcpp -b ~/.config/ncmpcpp/bindings"
@@ -319,3 +319,10 @@ export NVM_DIR="$HOME/.nvm"
 # This loads nvm bash_completion
 
 . "$HOME/.local/bin/env"
+
+
+# for python pyenv
+# export PATH="$HOME/.pyenv/bin:$PATH"
+# eval "$(pyenv init --path)"
+# eval "$(pyenv init -)"
+# eval "$(pyenv virtualenv-init -)"
