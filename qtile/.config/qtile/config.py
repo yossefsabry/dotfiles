@@ -4,17 +4,8 @@ from libqtile.config import Match, Rule
 from libqtile.lazy import lazy
 from libqtile.utils import guess_terminal
 from libqtile.config import ScratchPad, DropDown
-
-
-
-# function for toggle tree tab with column
-def toggle_treetab(qtile):
-    """Toggles between TreeTab and the previous layout."""
-    current_layout = qtile.current_group.layout.name
-    if current_layout == "treetab":
-        qtile.current_group.setlayout("columns")  # Change this to your default layout
-    else:
-        qtile.current_group.setlayout("treetab")
+from function.switch_window import latest_group
+from function.toggle_treetab import toggle_treetab
 
 
 # Rose Pine color scheme
@@ -44,6 +35,8 @@ search_manager = "rofi -show drun"
 keys = [
     # A list of available commands that can be bound to keys can be found
     # at https://docs.qtile.org/en/latest/manual/config/lazy.html
+    # switch between the last two window
+    Key([mod], "b", lazy.function(latest_group)),
     # Switch between windows
     Key([mod], "h", lazy.layout.left(), desc="Move focus to left"),
     Key([mod], "l", lazy.layout.right(), desc="Move focus to right"),
@@ -102,7 +95,6 @@ keys = [
     # creating a scratchpad
     Key([mod], "u", lazy.group["scratchpad"].dropdown_toggle("term"),
         desc="Toggle scratchpad terminal"),
-
 ]
 
 # Add key bindings to switch VTs in Wayland.
