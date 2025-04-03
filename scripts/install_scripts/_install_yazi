@@ -1,0 +1,43 @@
+#!/usr/bin/env bash
+
+: << 'END'
+for more information about the installation
+_install_url: https://yazi-rs.github.io/docs/installation/
+END
+
+_install() {
+    if _commend_exists rustc; then
+        cecho  "rustc is instelled" green
+    elif _commend_exists cargo; then
+        cecho  "cargo is instelled" green
+    else
+        cecho "starting install rustc and cargo" blue
+
+        curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+        if [[ $? != 0 ]]; then
+            cecho "error happend in setup rust" red
+            exit 1
+        fi
+        rustup update
+        if [[ $? != 0 ]]; then
+            cecho "error happend in update rustup" red
+            exit 1
+        fi
+    fi 
+
+    if _commend_exists yazi; then
+        cecho "yazi is already installed" green
+    fi
+    cecho "starting to install yazi using cargo" blue
+
+    cargo install --locked yazi-fm yazi-cli
+    if [[ $? != 0 ]]; then
+        cecho "error happend in install yazi" red
+        exit 1
+    fi
+
+    cecho "install yazi successfully" green
+    cecho "finish installing" green
+}
+_install
+
