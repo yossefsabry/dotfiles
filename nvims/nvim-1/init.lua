@@ -42,3 +42,14 @@ vim.cmd.colorscheme("rose-pine")
 
 -- Set the color for the ColorColumn
 vim.cmd([[ highlight ColorColumn guibg=#3c3836 ]])
+
+-- for check the spelling in markdown and text files
+local function check_spell()
+    vim.api.nvim_create_autocmd("FileType", {
+        pattern = { "markdown", "text" },
+        callback = function()
+            vim.opt_local.spell = true
+            vim.opt_local.spelllang = "en_us" -- Or your desired language
+        end,
+    })
+end; check_spell()
