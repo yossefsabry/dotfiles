@@ -1,4 +1,2 @@
 # vim-lazy-configuration
 
-
-

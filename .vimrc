@@ -123,3 +123,10 @@ colorscheme desert
 highlight Normal ctermbg=NONE guibg=NONE
 highlight NonText ctermbg=NONE guibg=NONE
 
+
+augroup spell_checker
+    " Clear existing autocmds in the group
+    autocmd! spell_checker
+    autocmd FileType markdown,txt setlocal spell spelllang=en_us
+augroup END
+
