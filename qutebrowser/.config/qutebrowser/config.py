@@ -414,12 +414,15 @@ c.fonts.prompts = '11pt "FiraMono Nerd Font Propo"'
 c.fonts.statusbar = '11pt "FiraMono Nerd Font Propo"'
 
 # Bindings for normal mode
-config.bind('M', 'hint links spawn --detach mpv {hint-url}')
+config.bind(',m', 'hint links spawn --detach mpv {hint-url}')
+# config.bind(",M", "spawn umpv {url}")
+# config.bind(",m", "hint links spawn umpv {hint-url}")
+# config.bind(";M", "hint --rapid links spawn umpv {hint-url}")
 
 # download video
 #config.bind('Z', 'hint links spawn kitty -e youtube-dl {hint-url}') 
 # download video
-config.bind('Z', 'hint links spawn kitty -e yt-dlp -o "~/Videos/%(title)s.%(ext)s" \
+config.bind(',z', 'hint links spawn kitty -e yt-dlp -o "~/Videos/%(title)s.%(ext)s" \
 {hint-url}') 
 config.bind('t', 'cmd-set-text -s :open -t')
 config.bind('xb', 'config-cycle statusbar.show always never')
@@ -430,3 +433,5 @@ config.bind('xx', 'config-cycle statusbar.show always never;; config-cycle tabs.
 config.bind('K', 'tab-next')
 # Bind 'J' to move to the previous tab
 config.bind('J', 'tab-prev')
+
+config.set('content.blocking.enabled', True)
