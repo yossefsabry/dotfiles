@@ -17,6 +17,10 @@ alias wine64="wine "
 alias wine32="wine "
 #alias python="python3 "
 
+# for slove loss colorscheme for nvim in tmux
+alias tmux="TERM=screen-256color-bce tmux"
+
+
 # alias for ncmpcppp for config for the new bindings file
 alias ncmpcpp="ncmpcpp -b ~/.config/ncmpcpp/bindings"
 
