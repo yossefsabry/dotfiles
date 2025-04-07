@@ -1,0 +1,35 @@
+#!/usr/bin/env python3
+
+
+import sounddevice as sd
+import numpy as np
+import time
+
+def audio_callback(indata, frames, time, status):
+    """Callback function for audio input."""
+    global audio_data
+    audio_data = indata.flatten()
+
+def visualize_audio(data):
+    """Visualizes the audio data as a bar graph."""
+    if data is None or len(data) == 0:
+        return "-" * 20  # Display a default bar if no audio
+    
+    # Normalize and scale the audio data
+    scaled_data = np.abs(data) * 10 
+    scaled_data = np.clip(scaled_data, 0, 20)  # Limit the bar size
+    
+    bar = "".join(["#" if x > i else " " for i, x in enumerate(scaled_data)])
+    return bar
+
+audio_data = None
+stream = sd.InputStream(callback=audio_callback)
+
+try:
+    with stream:
+        while True:
+            bar = visualize_audio(audio_data)
+            print(bar)
+            time.sleep(0.1)  # Adjust refresh rate as needed
+except KeyboardInterrupt:
+    pass 
