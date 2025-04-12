@@ -1,0 +1,105 @@
+#!/bin/bash
+
+# Script to install, configure PHP 8.3 and integrate with Apache2
+
+set -e # Exit immediately if a command exits with a non-zero status.
+
+PHP_MAJOR_MINOR="8.3"
+PHP_VERSION_FULL="8.3.20"
+PHP_FILENAME="php-${PHP_VERSION_FULL}.tar.gz"
+PHP_URL_BASE="https://www.php.net/distributions/"
+PHP_URL="${PHP_URL_BASE}${PHP_FILENAME}"
+INSTALL_PREFIX="/usr/local/php${PHP_MAJOR_MINOR}" # Installation directory
+APACHE_MODS_AVAILABLE="/etc/apache2/mods-available"
+APACHE_MODS_ENABLED="/etc/apache2/mods-enabled"
+
+echo "Starting PHP ${PHP_MAJOR_MINOR} installation script..."
+
+# --- Step 0: Install Apache Development Tools ---
+echo "Installing Apache development tools (apxs2)..."
+sudo apt update
+sudo apt install apache2-dev
+
+# --- Step 1: Check if PHP archive exists, otherwise download ---
+if [ -f "${PHP_FILENAME}" ]; then
+  echo "PHP archive ${PHP_FILENAME} found in current directory. Skipping download."
+else
+  echo "Downloading PHP ${PHP_MAJOR_MINOR} from ${PHP_URL}..."
+  wget -O "${PHP_FILENAME}" "${PHP_URL}"
+
+  if [ ! -f "${PHP_FILENAME}" ]; then
+    echo "Error: Failed to download PHP ${PHP_FILENAME}."
+    exit 1
+  fi
+fi
+
+# --- Step 2: Extract PHP ---
+echo "Extracting PHP ${PHP_FILENAME}..."
+tar -xf "${PHP_FILENAME}"
+PHP_DIR="php-${PHP_VERSION_FULL}"
+cd "${PHP_DIR}"
+
+# --- Step 3: Configure PHP ---
+echo "Configuring PHP ${PHP_MAJOR_MINOR}..."
+./configure --prefix="${INSTALL_PREFIX}" \
+            --with-apxs2=/usr/bin/apxs2 \
+            --with-mysqli \
+            --with-pdo-mysql \
+            --enable-fpm \
+            --with-config-file-path="${INSTALL_PREFIX}/etc" \
+            --with-config-file-scan-dir="${INSTALL_PREFIX}/etc/php.d" \
+            --enable-mbstring \
+            --enable-xml \
+            --enable-zip \
+            --enable-bcmath \
+            --enable-opcache
+
+# --- Step 4: Build PHP ---
+echo "Building PHP ${PHP_MAJOR_MINOR}..."
+make -j$(nproc) # Use all available CPU cores for faster building
+
+# --- Step 5: Install PHP ---
+echo "Installing PHP ${PHP_MAJOR_MINOR} to ${INSTALL_PREFIX}..."
+sudo make install
+
+# --- Step 6: Configure PHP INI ---
+echo "Setting up PHP INI configuration..."
+sudo mkdir -p "${INSTALL_PREFIX}/etc/php.d"
+sudo cp php.ini-development "${INSTALL_PREFIX}/etc/php.ini"
+
+# --- Step 7: Configure Apache ---
+echo "Configuring Apache to use PHP ${PHP_MAJOR_MINOR}..."
+
+# Disable any existing PHP Apache modules
+sudo a2dismod php* 2>/dev/null
+
+# Enable the new PHP module
+sudo a2enmod php${PHP_MAJOR_MINOR}
+
+# Configure Apache to handle PHP files (if not already done)
+APACHE_DEFAULT_CONFIG="/etc/apache2/sites-available/000-default.conf"
+APACHE_DEFAULT_SSL_CONFIG="/etc/apache2/sites-available/default-ssl.conf"
+
+if ! grep -q "<FilesMatch \.php\$>" "${APACHE_DEFAULT_CONFIG}"; then
+  sudo sed -i '/<Directory \/var\/www\/html>/a \
+    <FilesMatch \.php$>\n        SetHandler application/x-httpd-php\n    </FilesMatch>' "${APACHE_DEFAULT_CONFIG}"
+fi
+
+if [ -f "${APACHE_DEFAULT_SSL_CONFIG}" ] && ! grep -q "<FilesMatch \.php\$>" "${APACHE_DEFAULT_SSL_CONFIG}"; then
+  sudo sed -i '/<Directory \/var\/www\/html>/a \
+    <FilesMatch \.php$>\n        SetHandler application/x-httpd-php\n    </FilesMatch>' "${APACHE_DEFAULT_CONFIG}"
+fi
+
+# --- Step 8: Restart Apache ---
+echo "Restarting Apache2 service..."
+sudo systemctl restart apache2
+
+echo "PHP ${PHP_MAJOR_MINOR} installation and Apache configuration complete."
+echo "PHP installation directory: ${INSTALL_PREFIX}"
+echo "PHP configuration file: ${INSTALL_PREFIX}/etc/php.ini"
+echo "Remember to adjust PHP settings in ${INSTALL_PREFIX}/etc/php.ini as needed."
+
+cd ../.. # Go back to the initial directory
+rm -rf "${PHP_DIR}" # Clean up extracted files (keep the tar.gz)
+
+exit 0

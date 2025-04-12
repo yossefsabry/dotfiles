@@ -1,0 +1,15 @@
+
+#!/usr/bin/env bash
+
+_install() {
+    php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
+
+    php -r "if (hash_file('sha384', 'composer-setup.php') === file_get_contents('https://getcomposer.org/installer.sig')) { echo 'Installer verified'; } else { echo 'Installer corrupt'; unlink('composer-setup.php'); } echo PHP_EOL;"
+
+# Install Composer globally
+    sudo php composer-setup.php --install-dir=/usr/local/bin --filename=composer
+
+# Clean up
+    php -r "unlink('composer-setup.php');"
+}
+_install

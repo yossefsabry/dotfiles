@@ -1,6 +1,3 @@
-#" If you come from bash you might have to change your $PATH.
-# export PATH=$HOME/bin:/usr/local/bin:$PATH
-
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
 export PATH="$HOME/.local/bin/:$PATH"
@@ -143,17 +140,8 @@ alias vi='/usr/bin/vim'
 alias lutris='GTK_THEME=Adwaita:dark lutris'
 
 
-# Add an "alert" alias for long running commands.  Use like so:
-#   sleep 10; alert
-alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
-
-# Edit this .bashrc file
-alias ebrc='edit ~/.bashrc'
-alias etmux='nvim ~/.tmux.conf'
-
 # alias to show the date
 alias da='date "+%Y-%m-%d %A %T %Z"'
-alias tty-clock="tty-clock -s -c -C 4"
 alias clock="tty-clock -s -c -C 4"
 
 
@@ -163,9 +151,6 @@ alias rm='rm -rf'
 alias cp='yes | cp -Ri'
 alias pc='xsel --input --clipboard' 
 alias pp='xsel --output --clipboard'
-alias ebrc='nvim ~/.bashrc'
-alias ezsh='nvim ~/.zshrc'
-alias etmux='nvim ~/.tmux.conf'
 alias ping='ping -c 10'
 alias less='less -R'
 alias cls='clear'
@@ -179,13 +164,9 @@ alias ...='cd ../..'
 alias ....='cd ../../..'
 alias .....='cd ../../../..'
 alias cdv="cd /home/$USER/.config/nvim"
-alias cd3d="cd /home/$USER/projects/c-projects/3d"
-alias cdg="cd /home/$USER/projects/go-projects/go-course"
-alias cdc="cd /home/$USER/projects/c-projects/c-course"
 alias notes="cd /home/$USER/notes"
 alias dotfiles="cd /home/$USER/dotfiles"
 alias scripts="cd /home/$USER/dotfiles/scripts"
-alias script="cd /home/$USER/dotfiles/scripts"
 alias build="./build"
 alias gf='fzf -m \
   --height=100% \
@@ -231,8 +212,6 @@ alias p="ps aux | grep "
 # Search files in the current folder
 alias f="find . | grep "
 
-# To see if a command is aliased, a file, or a built-in command
-alias checkcommand="type -t"
 # to slove problem in  mind ipconfig
 alias ipconfig="ifconfig "
 
@@ -267,22 +246,14 @@ export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 bindkey -s '^F' 'tm\n'
 
 # for adding some info about the pc
-pfetch 
+# pfetch 
 
 # for the font for the tty  (for archlinux)
 # if [ -z "$DISPLAY" ]; then
 # 	setfont /usr/share/kbd/consolefonts/ter-232b.psf.gz
 # fi
 
-#
-# setting some default apps
-# ------------- some info ---------
-# alsamixer -> for change the sound level arch
-#stow --adopt --ignore=background --ignore=dwm-config --ignore=nvim --ignore=mybash-config -> stow the dotfiles
-# ------------- some info ---------
 
-# for install using cargo(asm-lsp)
-export PATH="$HOME/.cargo/bin:$PATH"
 
 
 ##****** some functions ********##
@@ -300,6 +271,7 @@ fzf_cd() {
     fi
 }
 
+
 #go lang setup
 # adding path go
 export GOROOT=/usr/local/go
@@ -313,20 +285,9 @@ export PATH="$PATH:$HOME/go/bin/"
 export PATH=$PATH:/usr/local/go/bin
 
 # nvm
-# source /usr/share/nvm/init-nvm.sh
-# export PATH="$HOME/tools/phpactor/vendor/bin:$PATH"
-# export PATH="$PATH:$HOME/.config/composer/vendor/bin"
+source /usr/share/nvm/init-nvm.sh
+export PATH="$HOME/tools/phpactor/vendor/bin:$PATH"
+export PATH="$PATH:$HOME/.config/composer/vendor/bin"
 
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  
-# This loads nvm bash_completion
-
-. "$HOME/.local/bin/env"
-
-
-# for python pyenv
-# export PATH="$HOME/.pyenv/bin:$PATH"
-# eval "$(pyenv init --path)"
-# eval "$(pyenv init -)"
-# eval "$(pyenv virtualenv-init -)"
+# for install using cargo(asm-lsp)
+export PATH="$HOME/.cargo/bin:$PATH"
