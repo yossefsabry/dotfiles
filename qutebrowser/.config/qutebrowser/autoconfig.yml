@@ -6,10 +6,7 @@
 
 config_version: 2
 settings:
-  content.javascript.clipboard:
-    https://gemini.google.com: access-paste
-    https://github.com: access-paste
-  statusbar.show:
-    global: always
-  tabs.show:
-    global: always
+  content.media.audio_capture:
+    https://meet.google.com: true
+  content.media.video_capture:
+    https://meet.google.com: true

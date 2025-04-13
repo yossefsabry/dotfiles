@@ -284,10 +284,11 @@ export PATH="$PATH:$GOBIN"
 export PATH="$PATH:$HOME/go/bin/"
 export PATH=$PATH:/usr/local/go/bin
 
-# nvm
-source /usr/share/nvm/init-nvm.sh
-export PATH="$HOME/tools/phpactor/vendor/bin:$PATH"
-export PATH="$PATH:$HOME/.config/composer/vendor/bin"
 
 # for install using cargo(asm-lsp)
 export PATH="$HOME/.cargo/bin:$PATH"
+
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion

@@ -200,6 +200,7 @@ assign [class="Youtube Music"] workspace 6
 assign [class="Gimp"] workspace 7
 assign [class="Gimp"] workspace 7
 assign [class="VirtualBox Manager"] workspace 7
+assign [class="obs"] workspace 7
 
 
 #------------------------ scratchpad ------------------------
