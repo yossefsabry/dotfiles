@@ -1,0 +1,34 @@
+
+
+#!/usr/bin/env bash
+
+: << 'END'
+this for check and download latest version of yt-dlp
+for download and music download from youtube and youtube music
+applications and provideo more feature like watching video from youtube
+and more 
+check this for more information
+url: https://github.com/yt-dlp/yt-dlp
+END
+
+set -e
+
+_install() {
+    if _commend_exists yt-dlp; then
+        cecho "commend is found yt-dlp" green
+        exit 1
+    fi
+
+    if _commend_exists pip; then
+        pip install "yt-dlp[default,curl-cffi]"        
+        if [[ $? != 0  ]];then
+            cecho "error happend in install this package" red
+            exit 1
+        fi
+        cecho "successfuly installed yt-dlp package" green 
+    else 
+        ceche "check if python and pip is installed" red
+    fi
+}
+
+_install

@@ -2,8 +2,8 @@ sw_volume: 100
 audio_device_state:1:My Output
 audio_device_state:1:my_fifo
 state: pause
-current: 1
-time: 100.400000
+current: 9
+time: 18.852000
 random: 1
 repeat: 1
 single: 1
@@ -359,4 +359,5 @@ playlist_begin
 344:good_vibe/Last Day (Dualities Remix).mp3
 345:good_vibe/So Am I (Steve Void Dance Remix).mp3
 346:good_vibe/You Got Me.mp3
+347:artist/VOLKSWAGEN FUNK.mp3
 playlist_end
