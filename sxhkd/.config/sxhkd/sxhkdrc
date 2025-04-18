@@ -9,24 +9,24 @@
 
 # change the valoum
 { XF86AudioRaiseVolume, XF86AudioLowerVolume, XF86AudioMute }
-   
-   /home/yossef/dotfiles/scripts/music_manga/audio {up, down, mute }
+   ~/dotfiles/scripts/music_manga/audio {up, down, mute }
 
 # change the light
 super + {Up, Down}
-   /home/yossef/dotfiles/scripts/gui/bright {up, down}
+   ~/dotfiles/scripts/gui/bright {up, down}
 
 # using slock
 super + l
     slock
 
 # # takking screen shot
-# End
-#    scrot -s /home/$USER/Media/Images/scrot1_$(date +%s).png -e 'xclip -selection clipboard -t image/png -i $f && rm $f'
+ctrl + S
+   flameshot screen -c
 #
-# # taking screenshot and save it
-# Insert
-#    scrot /home/$USER/Media/Images/scrot2_$(date +%s).png -e 'xclip -selection clipboard -t image/png -i $f'
+
+# taking screenshot and save it
+super + a
+   flameshot gui --region "all"
 
 # flameshot screen shott 
 super + s
@@ -38,27 +38,30 @@ super + s
 
 # toggle lang
 super + space
-   /home/yossef/dotfiles/scripts/others/toggle_lang
+   ~/dotfiles/scripts/others/toggle_lang
 
 # toggle touchpad
 super + t
-   /home/yossef/dotfiles/scripts/others/toggle_touchpad
+   ~/dotfiles/scripts/others/toggle_touchpad
 
 # change tre redshift color for protect eye
 super + r
-    /home/yossef/dotfiles/scripts/gui/redshift-status
+   ~/dotfiles/scripts/gui/redshift-status
 
 # make sxhkd reload its configuration files:
 super + Escape
 	pkill -USR1 -x sxhkd
 
 
-# kitty termianl
-# alt + Return
-#     kitty
+#kitty termianl
+alt + Return
+    kitty
 
 
 
+# ======================================
+# =============== BSPWM ================
+# ======================================
 # -------- Keybinding for bspwm ------- 
 # quit bspwm
 # alt + shift + {q, Q}

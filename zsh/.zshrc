@@ -154,7 +154,7 @@ alias pp='xsel --output --clipboard'
 alias ping='ping -c 10'
 alias less='less -R'
 alias cls='clear'
-# for search in history
+# for search in history alt + 3
 bindkey '\er' history-incremental-search-backward
 
 # Change directory aliases
@@ -168,27 +168,21 @@ alias notes="cd /home/$USER/notes"
 alias dotfiles="cd /home/$USER/dotfiles"
 alias scripts="cd /home/$USER/dotfiles/scripts"
 alias build="./build"
-alias gf='fzf -m \
-  --height=100% \
-  --bind="enter:become(nvim {}),ctrl-e:become(vim {})"'
 alias fcd="fzf_cd"
 
 # Alias's for multiple directory listing commands
 alias la='ls -AFlh' # show hidden files
 alias ls='ls -ah --color=always' # add colors and file type extensions
 alias lsg='ls | grep ' # add colors and file type extensions
-alias lx='ls -lXBh' # sort by extension
 alias lsz='ls -lSrh' # sort by size
 alias lc='ls -lcrh' # sort by change time
 alias lu='ls -lurh' # sort by access time
-alias lr='ls -lRh' # recursive ls
 alias lt='ls -ltrh' # sort by date
 alias lm='ls -alh |more' # pipe through 'more'
 alias lw='ls -xAh' # wide listing format
 alias ll='ls -Fls' # long listing format
 alias labc='ls -lap' #alphabetical sort
 alias lf="ls -l | egrep -v '^d'" # files only
-alias lfa="ls -aFhl | egrep -v '^d'" # files only
 alias ldir="ls -l | egrep '^d'" # directories only
 
 
@@ -238,15 +232,11 @@ alias ungz='tar -xvzf'
 alias logs="sudo find /var/log -type f -exec file {} \; | grep 'text' \
 | cut -d' ' -f1 | sed -e's/:$//g' | grep -v '[0-9]$' | xargs tail -f"
 
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-export FZF_DEFAULT_OPTS='--extended --layout=reverse --height=100% '
-export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
-
 # Bind ctrl+f to the tmux_new_session function
 bindkey -s '^F' 'tm\n'
 
 # for adding some info about the pc
-# pfetch 
+pfetch 
 
 # for the font for the tty  (for archlinux)
 # if [ -z "$DISPLAY" ]; then
@@ -291,4 +281,9 @@ export PATH="$HOME/.cargo/bin:$PATH"
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+export FZF_DEFAULT_OPTS='--extended --layout=reverse --height=100% '
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+
