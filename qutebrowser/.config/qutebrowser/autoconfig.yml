@@ -7,4 +7,5 @@
 config_version: 2
 settings:
   content.javascript.clipboard:
-    https://gemini.google.com: access-paste
+    https://chatgpt.com: access-paste
+    https://go.dev: access-paste

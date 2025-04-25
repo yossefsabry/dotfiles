@@ -2,3 +2,5 @@
 background
 backgroud/
 ./backgroud/
+*.un*
+*.un

@@ -274,7 +274,6 @@ export PATH="$PATH:$GOBIN"
 export PATH="$PATH:$HOME/go/bin/"
 export PATH=$PATH:/usr/local/go/bin
 
-
 # for install using cargo(asm-lsp)
 export PATH="$HOME/.cargo/bin:$PATH"
 
@@ -287,3 +286,5 @@ export NVM_DIR="$HOME/.nvm"
 export FZF_DEFAULT_OPTS='--extended --layout=reverse --height=100% '
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 
+
+. "$HOME/.local/bin/env"
