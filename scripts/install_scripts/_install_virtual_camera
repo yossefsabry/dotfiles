@@ -1,0 +1,42 @@
+#!/usr/bin/env bash
+
+
+_install() {
+    cd ~/testing
+    # git clone https://aur.archlinux.org/v4l2loopback-dkms.git
+    
+    if [[ $? != 0 ]]; then
+        cecho "error happend in clone virtual camera repo" red
+        exit 1
+    fi
+    cecho "clone repo succesfuly" blue
+
+    cd v4l2loopback-dkms
+
+    makepkg -scCi
+    if [[ $? != 0 ]]; then
+        cecho "build successfuly" red
+        exit 1
+    fi
+    cecho "successfuly build and adding to kernal setup" green
+
+    sudo modprobe v4l2loopback devices=1 video_nr=10 \
+        card_label="OBS Cam" exclusive_caps=1
+
+    if [[ $? != 0 ]]; then
+        cecho "error happend in modprobe device" red
+        exit 1
+    fi
+
+    sudo modprobe snd-aloop index=10 id="OBS Mic"
+
+    if [[ $? != 0 ]]; then
+        cecho "error happend in setup virutal audio" red
+        exit 1
+    fi
+    cecho "successfuly adding virtual audio" green
+
+    cecho "finish installed virtual camera and virtual audio" green
+
+}
+_install

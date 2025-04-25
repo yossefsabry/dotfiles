@@ -295,11 +295,13 @@ dgroups_app_rules = [
 
     # Workspace 7
     Rule(Match(wm_class="Gimp"), group="7"),  # type: ignore
-    Rule(Match(wm_class="gimp-2.10"), group="7"),  # type: ignore
+    Rule(Match(wm_class="gimp-3.0"), group="7"),  # type: ignore
     Rule(Match(wm_class="Gimp-2.10"), group="7"),  # type: ignore
     Rule(Match(wm_class="VirtualBox Manager"), group="7"),  # type: ignore
 
     Rule(Match(wm_class="obs"), group="7"),  # type: ignore
+    Rule(Match(wm_class="obs"), group="7"),  # type: ignore
+    
 ]
 
 
