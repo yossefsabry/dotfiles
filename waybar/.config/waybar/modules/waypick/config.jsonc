@@ -1,0 +1,16 @@
+// WayPick module configuration
+// Add this to your waybar config.jsonc
+
+/*
+"custom/waypick": {
+    "format": "{}",
+    "return-type": "json",
+    "interval": "once",
+    "exec": "$HOME/.config/waybar/modules/waypick/waypick.sh",
+    "on-click": "$HOME/.config/waybar/modules/waypick/waypick.sh pick && pkill -RTMIN+9 waybar",
+    "on-click-right": "$HOME/.config/waybar/modules/waypick/waypick.sh copy",
+    "signal": 9,
+    "tooltip": true,
+    "escape": false
+}
+*/ 

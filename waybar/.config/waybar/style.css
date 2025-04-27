@@ -176,3 +176,9 @@ label:focus {
     background: none;
     border: none;
 }
+
+#custom-waypick {
+    padding: 1px 5px;
+    border-bottom: 1px solid #f5c2e7;
+    margin: 0px 5px;
+}

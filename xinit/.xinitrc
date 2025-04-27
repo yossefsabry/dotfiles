@@ -5,6 +5,10 @@ cd ~
 # for touchbad on click
 exec xinput set-prop "AlpsPS/2 ALPS DualPoint TouchPad" "libinput Tapping Enabled" 1 &
 
+# for pipewire
+exec pactl set-default-source alsa_input.pci-0000_00_1b.0.analog-stereo &
+# exec pw-cli set-param 62 Props '{ params: { "port.name" = "analog-input-headset-mic" } }' &
+
 # for obs
 # exec sudo modprobe v4l2loopback &
 

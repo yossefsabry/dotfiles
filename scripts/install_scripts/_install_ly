@@ -1,0 +1,31 @@
+#!/usr/bin/env bash
+
+_install() {
+    cecho "starting install ly window manager" blue
+    sudo pacman -S base-devel pam libxcb
+    if [[ $? != 0 ]];then
+        cecho "error happend in install some dependesces"  red
+        exit 1
+    fi
+
+    cecho "successfuly install dependencess" blue
+
+    cd ~/testing/
+    git clone https://github.com/fairyglade/ly.git
+    if [[ $? != 0 ]];then
+        cecho "error happend in clone repo"  red
+        exit 1
+    fi
+    cd ly
+    make
+    sudo make install
+    if [[ $? != 0 ]];then
+        cecho "error happend in build"  red
+        cecho "check if using zig"  red
+        exit 1
+    fi
+
+    cecho "successfuly install ly for run (ly)" green
+
+}
+_install

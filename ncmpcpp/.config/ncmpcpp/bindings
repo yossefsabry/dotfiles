@@ -621,11 +621,27 @@ def_key "s"
 def_key "s"
   show_search_engine
 
-def_key "f"
-  show_browser
-def_key "f"
-  change_browse_mode
+# >>> for file change 
+# def_key "f"
+#   show_browser
+# def_key "f"
+#   change_browse_mode
+# >>> -----
 
+# >>> moving song position
+def_key "b"
+ seek_backward
+
+def_key "ctrl-b"
+ seek_backward
+
+def_key "f"
+ seek_forward
+
+def_key "ctrl-f"
+ seek_forward
+
+# >>> main playlist
 def_key "x"
   delete_playlist_items
 def_key "P"
@@ -637,10 +653,6 @@ def_key "ctrl-i"
 def_key "ctrl-g"
    jump_to_position_in_song
 
-def_key "ctrl-f"
- seek_forward
 def_key "n"
  move_sort_order_down
 
-def_key "ctrl-b"
- seek_backward
