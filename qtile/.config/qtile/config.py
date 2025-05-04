@@ -184,6 +184,8 @@ screens = [
                 widget.GroupBox(),
                 widget.Prompt(),
                 widget.WindowName(),
+                widget.TextBox("Press &lt;M-p&gt; to spawn", 
+                               foreground="#d75f5f"),
                 widget.Chord(
                     chords_colors={
                         "launch": ("#ff0000", "#ffffff"),
@@ -200,15 +202,6 @@ screens = [
                     foreground=colors["gold"],
                     padding=5,
                 ),
-                widget.TextBox("Press &lt;M-r&gt; to spawn", foreground="#d75f5f"),
-                # NB Systray is incompatible with Wayland, consider using StatusNotifier instead
-                # widget.StatusNotifier(),
-                # widget.KeyboardLayout(
-                #     configured_keyboards=["us", "ara"],
-                #     fmt="Lang: {}",
-                #     foreground=colors["iris"],
-                #     padding=5,
-                # ),
                 widget.KeyboardLayout(
                     configured_keyboards=["us", "ara"],
                     fmt="Lang: {}",

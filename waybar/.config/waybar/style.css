@@ -4,6 +4,7 @@
     font-family: "FiraMono Nerd Font Propo";
     font-size: 14px;
     margin: 1px;
+    font-weight: bold;
 }
 
 /* Tooltip */
@@ -90,9 +91,9 @@ tooltip label {
 
 window#waybar {
     /*border-radius: 35px;*/
-    background: rgba(31, 29, 46, 0.3);
-    border: 1px solid rgba(245, 194, 231, 0.2);
-    background: transparent;
+    background: rgba(31, 29, 46, .2);
+    border: 1px solid rgba(245, 194, 231, 0.1);
+    /* background: transparent; */
 }
 
 /* Waybar States */
@@ -119,6 +120,7 @@ window#waybar.telegramdesktop {
 #battery {
     color: #ffffff;
     font-size: 13px;
+    margin: 5px 0px;
 }
 
 #battery, #pulseaudio, #temperature, #backlight {
@@ -126,7 +128,7 @@ window#waybar.telegramdesktop {
 }
 #tray, #clock, #network, #bluetooth {
     border-bottom: 1px solid #f5c2e7;
-    margin: 0px 5px;
+    margin: 0px 10px;
 }
 #tray {
     margin-right: 8px;
@@ -177,7 +179,8 @@ label:focus {
     border: none;
 }
 
-#custom-waypick {
+#custom-waypick ,
+#disk.ssd {
     padding: 1px 5px;
     border-bottom: 1px solid #f5c2e7;
     margin: 0px 5px;

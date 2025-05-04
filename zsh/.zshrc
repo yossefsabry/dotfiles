@@ -133,8 +133,8 @@ bindkey -M vicmd v edit-command-line
 
 # set default editor
 export term=kitty
-alias browser=brave-browser
-alias brave="brave-browser"
+#alias browser=brave-browser
+#alias brave="brave-browser"
 alias vim='nvim'
 alias vi='/usr/bin/vim'
 alias lutris='GTK_THEME=Adwaita:dark lutris'

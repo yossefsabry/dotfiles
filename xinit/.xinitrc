@@ -5,13 +5,6 @@ cd ~
 # for touchbad on click
 exec xinput set-prop "AlpsPS/2 ALPS DualPoint TouchPad" "libinput Tapping Enabled" 1 &
 
-# for pipewire
-exec pactl set-default-source alsa_input.pci-0000_00_1b.0.analog-stereo &
-# exec pw-cli set-param 62 Props '{ params: { "port.name" = "analog-input-headset-mic" } }' &
-
-# for obs
-# exec sudo modprobe v4l2loopback &
-
 # set the keyboard layout adding arabic and englisht and disable caps and and 
 #toggle between them with win+space
 exec setxkbmap -layout us,ara -variant ,digits grp:win_space_toggle caps:none &
@@ -54,3 +47,17 @@ exec qtile start > ~/qtile.log 2>&1
 # exec /usr/bin/Hyprland > /var/log/Hyprland.log 2>&1 
 # :}}}
 
+
+# for pulsaudion 
+# -- this next commend for first time only --
+exec pactl load-module module-echo-cancel use_master_format=1 aec_method=webrtc source_name=noise_cancel_source 
+exec pactl set-default-source alsa_output.pci-0000_00_1b.0.analog-stereo.echo-cancel.monitor 
+
+
+
+# for pipewire
+#exec pactl set-default-source alsa_input.pci-0000_00_1b.0.analog-stereo &
+#exec pw-cli set-param 62 Props '{ params: { "port.name" = "analog-input-headset-mic" } }' &
+
+# for obs
+# exec sudo modprobe v4l2loopback &

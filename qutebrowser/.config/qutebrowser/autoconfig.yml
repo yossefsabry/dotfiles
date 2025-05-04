@@ -6,6 +6,5 @@
 
 config_version: 2
 settings:
-  content.javascript.clipboard:
-    https://chatgpt.com: access-paste
-    https://go.dev: access-paste
+  content.media.audio_video_capture:
+    https://10.3.50.140:4430: true

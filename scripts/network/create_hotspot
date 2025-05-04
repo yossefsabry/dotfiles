@@ -1,0 +1,77 @@
+#!/bin/bash
+
+# Configuration
+WIFI_INTERFACE="wlan1"       # Your connected WiFi interface
+HOTSPOT_SSID="ArchHotspot"   # Hotspot name
+HOTSPOT_PASS="securefoo123" # Hotspot password
+HOTSPOT_IP="192.168.42.1"    # Hotspot IP (must differ from 10.3.50.x)
+SUBNET="192.168.42.0/24"     # Subnet for clients
+
+# Check root
+if [ "$(id -u)" -ne 0 ]; then
+    echo "ERROR: Run this script as root!" >&2
+    exit 1
+fi
+
+# Install dependencies
+echo "[+] Installing hostapd and dnsmasq..."
+pacman -Sy --noconfirm hostapd dnsmasq iptables || {
+    echo "ERROR: Failed to install packages." >&2
+    exit 1
+}
+
+# Configure hostapd
+echo "[+] Creating /etc/hostapd/hostapd.conf..."
+cat > /etc/hostapd/hostapd.conf <<EOF
+interface=${WIFI_INTERFACE}
+driver=nl80211
+ssid=${HOTSPOT_SSID}
+hw_mode=g
+channel=6
+wpa=2
+wpa_passphrase=${HOTSPOT_PASS}
+wpa_key_mgmt=WPA-PSK
+rsn_pairwise=CCMP
+EOF
+
+# Configure dnsmasq
+echo "[+] Creating /etc/dnsmasq.conf..."
+cat > /etc/dnsmasq.conf <<EOF
+interface=${WIFI_INTERFACE}
+dhcp-range=192.168.42.2,192.168.42.254,255.255.255.0,24h
+dhcp-option=3,${HOTSPOT_IP}  # Gateway
+dhcp-option=6,${HOTSPOT_IP}  # DNS server
+EOF
+
+# Enable IP forwarding
+echo "[+] Enabling IP forwarding..."
+echo "net.ipv4.ip_forward=1" > /etc/sysctl.d/30-ipforward.conf
+sysctl --system >/dev/null
+
+# Configure NAT (critical for internet sharing)
+echo "[+] Setting up iptables rules..."
+iptables -t nat -F
+iptables -t nat -A POSTROUTING -s ${SUBNET} -o ${WIFI_INTERFACE} -j MASQUERADE
+iptables -A FORWARD -i ${WIFI_INTERFACE} -o ${WIFI_INTERFACE} -m state --state RELATED,ESTABLISHED -j ACCEPT
+iptables -A FORWARD -i ${WIFI_INTERFACE} -o ${WIFI_INTERFACE} -j ACCEPT
+
+# Assign hotspot IP
+echo "[+] Configuring ${WIFI_INTERFACE}..."
+ip link set dev ${WIFI_INTERFACE} down
+ip addr flush dev ${WIFI_INTERFACE}
+ip addr add ${HOTSPOT_IP}/24 dev ${WIFI_INTERFACE}
+ip link set dev ${WIFI_INTERFACE} up
+
+# Start services
+echo "[+] Starting services..."
+systemctl unmask hostapd
+systemctl enable --now hostapd dnsmasq
+
+echo ""
+echo "============================================"
+echo "HOTSPOT CREATED SUCCESSFULLY!"
+echo "SSID:     ${HOTSPOT_SSID}"
+echo "Password: ${HOTSPOT_PASS}"
+echo "IP Range: ${SUBNET}"
+echo "============================================"
+echo "Note: Clients will share your 10.3.50.140 connection via NAT."

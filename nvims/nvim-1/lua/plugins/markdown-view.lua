@@ -1,15 +1,26 @@
 return {
-    "OXY2DEV/markview.nvim",
-    lazy = true,      -- Recommended
-    ft = "markdown", -- If you decide to lazy-load anyway
+    {
+        "OXY2DEV/markview.nvim",
+        lazy = true,      -- Recommended
+        ft = "markdown", -- If you decide to lazy-load anyway
 
-    dependencies = {
-        -- You will not need this if you installed the
-        -- parsers manually
-        -- Or if the parsers are in your $RUNTIMEPATH
-        "nvim-treesitter/nvim-treesitter",
+        dependencies = {
+            -- You will not need this if you installed the
+            -- parsers manually
+            -- Or if the parsers are in your $RUNTIMEPATH
+            "nvim-treesitter/nvim-treesitter",
 
-        "nvim-tree/nvim-web-devicons"
+            "nvim-tree/nvim-web-devicons"
+        }
+    },
+    {
+        "lervag/vimtex",
+        lazy = false,     -- we don't want to lazy load VimTeX
+        -- tag = "v2.15", -- uncomment to pin to a specific release
+        init = function()
+            -- VimTeX configuration goes here, e.g.
+            vim.g.vimtex_view_method = "zathura"
+        end
     }
 }
 
