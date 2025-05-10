@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+# Take a screenshot of selected region and open it in swappy for annotation
+grim -g "$(slurp)" - | swappy -f - -o /tmp/screenshot.png
+
+# Copy to clipboard after annotation (optional, in case swappy saves to file)
+wl-copy < /tmp/screenshot.png
+

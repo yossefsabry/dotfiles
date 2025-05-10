@@ -1,0 +1,5 @@
+
+#!/usr/bin/env bash
+
+sudo pacman -S grim slurp swappy wl-clipboard
+

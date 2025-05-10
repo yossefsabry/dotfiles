@@ -21,7 +21,7 @@ tooltip label {
 
 /* Workspaces */
 #workspaces {
-    padding: 10px 0px;
+    padding: 2px 0px;
 }
 #workspaces button {
     margin: 1px 5px;
@@ -62,8 +62,8 @@ tooltip label {
 }
 
 #pulseaudio, #cpu, #disk, #custom-updates, #memory, #backlight {
-    padding: 0px 8px;
-    margin: 3px;
+    padding: 0px 6px;
+    margin: 0px;
     color: #ffffff; /* Rose Pine Text */
 }
 
@@ -128,7 +128,7 @@ window#waybar.telegramdesktop {
 }
 #tray, #clock, #network, #bluetooth {
     border-bottom: 1px solid #f5c2e7;
-    margin: 0px 10px;
+    margin: 0px 8px;
 }
 #tray {
     margin-right: 8px;
