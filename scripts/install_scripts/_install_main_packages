@@ -13,7 +13,7 @@ END
 ## main package arch for install ##
 array_packages=(
     "zsh" "git" "neovim" "tmux" "alacritty" "picom" "vim" "nemo" "feh" "unclutter" \
-    "xrandr" "zip" "ripgrep" "xclip" "fastfetch"  "fzf" "unzip" "stow"
+    "xrandr" "zip" "ripgrep" "xclip" "fastfetch"  "fzf" "unzip" "stow" "usbutils"
     "nodejs" "go" "gcc" # lang
     "cargo" #rust
     "xorg" "xorg-xev" "xorg-xinit" "xbindkeys" "xorg-setxkbmap" "sxhkd" # keybind
