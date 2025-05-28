@@ -122,10 +122,11 @@
         "margin-right": 0,
         "width": "100%",
         "height": "10",
-        "modules-left": ["cava", "mpd"],
-        "modules-center": [],
-        "modules-right": [ "disk#ssd", "custom/waypick", "network", "clock", "bluetooth", "tray", 
-            "wlr/taskbar"],
+        "modules-left": ["mpd"],
+        "modules-center": ["custom/brave-media"],
+        "modules-right": [ "disk#ssd", "custom/waypick", "network", "clock",
+            "bluetooth", "tray", "wlr/taskbar"],
+
         "network": {
             "format": " 󰖩 ",
             "format-wifi": "{signalStrength}:WIFI",
@@ -157,6 +158,41 @@
             },
             "format-alt": "storage left: {free}, used: {used}",
         },
+
+
+
+
+        "custom/brave-media": {
+            "exec": "playerctl -p chromium,brave metadata --format '{\"text\":\"{{artist}} - {{title}}\",\"alt\":\"{{status}}\"}' || echo '{\"text\":\"No media\",\"alt\":\"stopped\"}'",
+            "return-type": "json",
+            "interval": 2,
+            "max-length": 40,
+            "format": "{icon} {text}",
+            "format-icons": {
+                "Playing": "▶",
+                "Paused": "⏸",
+                "stopped": "⏹"
+            },
+            "on-click": "playerctl -p chromium,brave play-pause",
+            "on-click-right": "playerctl -p chromium,brave stop",
+            "on-scroll-up": "playerctl -p chromium,brave next",
+            "on-scroll-down": "playerctl -p chromium,brave previous"
+        },
+
+        "mpd": {
+            "format": "{stateIcon} {artist:.20} - {title:.25} ({elapsedTime:%M:%S}/{totalTime:%M:%S})",
+            "format-disconnected": "Disconnected ",
+            "format-stopped": "⏹ Stopped ",
+            "max-length": 70,  // Maximum width in characters
+            "interval": 2,
+            "tooltip-format": "MPD (connected)",
+            "tooltip-format-disconnected": "MPD (disconnected)",
+            // Click bindings
+            "on-click": "mpc toggle",            // Click the module to play/pause
+            "on-scroll-up": "mpc volume +5",     // Optional: volume control
+            "on-scroll-down": "mpc volume -5",   // Optional: volume control
+        },
+
         "battery": {
             "interval": 60,
             "states": {
@@ -210,16 +246,7 @@
             //"icon-size": 15,
             "spacing": 10
         },
-        // PROBLEM IN MPD
-        "mpd": {
-            "type": "internal/mpd",
-            "host": "127.0.0.1",
-            "port": 6601,
-            "format-online": "{title} {songPosition} - {totalTime}",
-            "format-offline": " mpd offline",
-            "label-song-maxlen": 75,
-            "label-song-ellipsis": true,
-        },
+
         "wlr/taskbar": {
             "format": "{icon} ",
             "icon-size": 22,

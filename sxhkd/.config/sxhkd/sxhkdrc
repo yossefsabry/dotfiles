@@ -5,7 +5,8 @@
 
 # startig rofi
 # alt + p
-#     rofi -show drun -show-icons
+#    rofi -show drun -show-icons -icon-theme 'Papirus' -theme  ~/.config/rofi/config.rasi
+
 
 # change the valoum
 { XF86AudioRaiseVolume, XF86AudioLowerVolume, XF86AudioMute }

@@ -8,6 +8,13 @@ from function.switch_window import latest_group
 from function.toggle_treetab import toggle_treetab
 
 
+
+# setup cursor theme
+import subprocess
+subprocess.run(["xsetroot", "-cursor_name", "left_ptr"])
+
+
+
 # Rose Pine color scheme
 colors = {
     "base": "#191724",
@@ -30,7 +37,8 @@ colors = {
 mod = "mod1"
 #terminal = guess_terminal()
 terminal = "kitty"
-search_manager = "rofi -show drun"
+search_manager = "rofi -show drun -show-icons -icon-theme 'Papirus' -theme \
+    ~/.config/rofi/config.rasi"
 
 keys = [
     # A list of available commands that can be bound to keys can be found
@@ -230,10 +238,7 @@ screens = [
             # border_color=["ff00ff", "000000", "ff00ff", "000000"]  # Borders are magenta
         ),
         # You can uncomment this variable if you see that on X11 floating 
-        #resize/moving is laggy
-        # By default we handle these events delayed to already improve performance,
-        # however your system might still be struggling
-        # This variable is set to None (no cap) by default, but you can 
+        #resize/moving is laggy # By default we handle these events delayed to already improve performance, however your system might still be struggling This variable is set to None (no cap) by default, but you can 
         # set it to 60 to indicate that you limit it to 60 events per second
         # x11_drag_polling_rate = 60,
     ),

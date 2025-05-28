@@ -2,8 +2,12 @@
 
 cd ~
 
+[ -f ~/.xprofile ] && . ~/.xprofile
+
 # for touchbad on click
 exec xinput set-prop "AlpsPS/2 ALPS DualPoint TouchPad" "libinput Tapping Enabled" 1 &
+
+xrandr --dpi 90
 
 # set the keyboard layout adding arabic and englisht and disable caps and and 
 #toggle between them with win+space
@@ -29,18 +33,18 @@ exec redshift -O 2000K &
 #: }}}
 
 #:qtile {{{
-# exec feh --bg-center --bg-scale ~/Pictures/wallpaper/nearmoss.png &
-# exec flameshot &
 # exec auto_bg &
-# exec qtile start > ~/qtile.log 2>&1 
+# exec feh --bg-center --bg-scale ~/Pictures/wallpaper/nearmoss.png &
+exec flameshot &
+exec qtile start > ~/qtile.log 2>&1 
 #:}}}
 
 # :i3 {{{
 # exec run_picom &
 # exec feh --bg-center --bg-scale ~/Pictures/wallpaper/wallpepar.jpeg &
-exec flameshot &
-exec auto_bg &
-exec i3 > ~/.i3.log 2>&1 
+# exec flameshot &
+# exec auto_bg &
+# exec i3 > ~/.i3.log 2>&1 
 # :}}}
 
 # :hyprland {{{

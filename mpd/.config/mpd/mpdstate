@@ -2,8 +2,8 @@ sw_volume: 100
 audio_device_state:1:PulseAudio Output
 audio_device_state:1:Visualizer Output
 state: pause
-current: 7
-time: 22
+current: 18
+time: 2.997
 random: 1
 repeat: 1
 single: 1
@@ -221,4 +221,10 @@ playlist_begin
 205:other/Crystal Dreams(M4A_128K).m4a
 206:new/Mavis & Johnny Zing Song ｜ Hotel Transylvania ｜ CLIP.mp3
 207:new/Ogryzek - AURA 2 (Official Visualiser)(MP3_160K).mp3
+208:other/lovely(M4A_128K).m4a
+209:other/Camila Cabello - I LUV IT Feat. Playboi Carti (Official Music Video)(M4A_128K).m4a
+210:other/Yelawolf - Till It_s Gone (Official Music Video)(MP3_160K).mp3
+211:other/Maroon 5 - What Lovers Do ft. SZA (Official Music Video)(M4A_128K).m4a
+212:other/Selena Gomez - Love On (Official Music Video)(M4A_128K).m4a
+213:other/Lizzo - About Damn Time [Official Video](M4A_128K).m4a
 playlist_end
