@@ -77,9 +77,12 @@ bindsym $mod+w kill
 # dropmenu 
 
 # start rofi (a program launcher)
-bindsym $mod+p exec --no-startup-id rofi -show drun
+# search_manager = "rofi -show drun -show-icons -icon-theme 'Papirus' -theme \
+#     ~/.config/rofi/config.rasi"
+
+bindsym $mod+p exec --no-startup-id rofi -show drun -show-icons -icon-theme 'Papirus'
 bindsym $mod+space exec --no-startup-id rofi -show combi
-bindsym $mod+Tab exec --no-startup-id rofi -show window
+bindsym $mod+Tab exec --no-startup-id rofi -show window 
 
 # change focus
 bindsym $mod+h focus left

@@ -1,236 +1,67 @@
 sw_volume: 100
 audio_device_state:1:PulseAudio Output
 audio_device_state:1:Visualizer Output
-state: pause
-current: 165
-time: 199.01
+state: play
+current: 50
+time: 120.058
 random: 1
 repeat: 1
 single: 1
-consume: 1
+consume: 0
 crossfade: 0
 mixrampdb: 0
 mixrampdelay: -1
 lastloadedplaylist: 
 playlist_begin
-0:other/Ariana Grande - the boy is mine (Official Music Video)(M4A_128K).m4a
-1:other/Carly Rae Jepsen - Call Me Maybe(M4A_128K).m4a
-2:good_vibe/21 Reasons (feat. Ella Henderson).mp3
-3:new/Around the World (La La La La La) (Radio Version).mp3
-4:new/It's Party Time (From ＂Hotel Transylvania 3＂).mp3
-5:other/horizons(M4A_128K).m4a
-6:other/ROYALTY(MP3_160K).mp3
-7:artist/VOLKSWAGEN FUNK.mp3
-8:artist/ESSE CARA! (Slowed).mp3
-9:artist/ESSE CARA!.mp3
-10:artist/Play Hard (feat. Ne-Yo & Akon) (New Edit).mp3
-11:artist/MOONLGHT - Free Bird.mp3
-12:good_vibe/After Hours.mp3
-13:good_vibe/All Day And Night.mp3
-14:good_vibe/Call on Me (Ryan Riback Remix).mp3
-15:good_vibe/Caught Up.mp3
-16:good_vibe/Do It Better.mp3
-17:good_vibe/Fast Car.mp3
-18:good_vibe/HISTORY.mp3
-19:good_vibe/How Deep Is Your Love.mp3
-20:good_vibe/Hurts So Good.mp3
-21:good_vibe/I Took A Pill In Ibiza (Seeb Remix).mp3
-22:good_vibe/I Wish (feat. Mabel).mp3
-23:good_vibe/Last Day (Dualities Remix).mp3
-24:good_vibe/Love Is Killing Me.mp3
-25:good_vibe/Melody.mp3
-26:good_vibe/Mistakes.mp3
-27:good_vibe/Moth To A Flame.mp3
-28:good_vibe/Move.mp3
-29:good_vibe/Never Go Back (Robin Schulz Remix).mp3
-30:good_vibe/Paradise.mp3
-31:good_vibe/Piece Of Me.mp3
-32:good_vibe/SCIENTIST (R3HAB Remix).mp3
-33:good_vibe/Shameless.mp3
-34:good_vibe/So Am I (Steve Void Dance Remix).mp3
-35:good_vibe/So Close.mp3
-36:good_vibe/Superhero.mp3
-37:good_vibe/Tattoo.mp3
-38:good_vibe/There's Nothing Holdin' Me Back.mp3
-39:good_vibe/Water (feat. ZOHARA).mp3
-40:good_vibe/You & Me (Rivo Remix).mp3
-41:good_vibe/we can't be friends (wait for your love).mp3
-42:good_vibe/You Got Me.mp3
-43:good_vibe/Without Me.mp3
-44:good_vibe/We Don't Talk Anymore (feat. Selena Gomez).mp3
-45:other/Sleepwalker(MP3_160K).mp3
-46:ramadan_songs/Arabic Love Songs.mp3
-47:study_songs/Brainstorm & Elevate.mp3
-48:study2/Brenk Sinatra x Shuko - Started Ballin' (Official Audio).mp3
-49:study2/Aftermath.mp3
-50:study2/i'm closing my eyes.mp3
-51:the_weeking/Die For You.mp3
-52:the_weeking/Try Me.mp3
-53:the_weeking/Timeless.mp3
-54:the_weeking/The Hills.mp3
-55:the_weeking/The Abyss.mp3
-56:the_weeking/Privilege.mp3
-57:the_weeking/Love In The Sky.mp3
-58:the_weeking/Niagara Falls.mp3
-59:the_weeking/Nothing Without You.mp3
-60:the_weeking/Often.mp3
-61:the_weeking/One Of The Girls.mp3
-62:the_weeking/Open Hearts.mp3
-63:the_weeking/Ordinary Life.mp3
-64:the_weeking/Pretty.mp3
-65:the_weeking/Prisoner.mp3
-66:the_weeking/Save Your Tears.mp3
-67:the_weeking/Shameless.mp3
-68:the_weeking/Tell Your Friends.mp3
-69:the_weeking/In Your Eyes.mp3
-70:the_weeking/In The Night.mp3
-71:the_weeking/I Feel It Coming.mp3
-72:other/Outside(M4A_128K).m4a
-73:other/MUDD(MP3_160K).mp3
-74:other/Alicia Creti - Going Down [Official Lyric Video](M4A_128K).m4a
-75:other/Playboi Carti - ALL RED (Official Visualizer)(MP3_160K).mp3
-76:other/Jungle(M4A_128K).m4a
-77:other/FERG - New Level (Official Video) ft. Future(MP3_160K).mp3
-78:other/hope to see you again(M4A_128K).m4a
-79:other/Ariana Grande - yes_ and_ (official music video)(M4A_128K).m4a
-80:other/FERG - Nasty (Who Dat) (Audio) ft. Migos(MP3_160K).mp3
-81:other/Travis Scott - SICKO MODE ft. Drake(MP3_160K).mp3
-82:other/Back To Back(MP3_160K).mp3
-83:other/DaBaby - BALL IF I WANT TO (Official Music Video)(MP3_160K).mp3
-84:other/P. Diddy [feat. Black Rob _ Mark Curry] - Bad Boy 4 Life (Official Music Video)(MP3_160K).mp3
-85:other/Bebe Rexha - Meant to Be (feat. Florida Georgia Line) [Official Music Video](M4A_128K).m4a
-86:other/Becky G - Shower(M4A_128K).m4a
-87:other/Young Thug _Best Friend_(MP3_160K).mp3
-88:other/Dirt Off Your Shoulder _ Lying From You (Official Audio) - Linkin Park _ JAY-Z(MP3_160K).mp3
-89:other/Eminem - Shake That (Official Music Video) ft. Nate Dogg(MP3_160K).mp3
-90:other/O.T. Genasis - Cut It (feat. Young Dolph) [Official Music Video](MP3_160K).mp3
-91:other/Kendrick Lamar - HUMBLE(MP3_160K).mp3
-92:other/Lose Yourself to Dance (feat. Pharrell Williams)(M4A_128K).m4a
-93:other/Big Sean - Harder Than My Demons (Official Music Video)(MP3_160K).mp3
-94:other/Let Me Love You(M4A_128K).m4a
-95:other/DJ Drama_ Wiz Khalifa_ T.I. - No Weakness (Official Lyric Video) ft. Symba(MP3_160K).mp3
-96:other/DNCE - Cake By The Ocean(M4A_128K).m4a
-97:other/Say So(M4A_128K).m4a
-98:other/Doja Cat - Kiss Me More (Official Video) ft. SZA(M4A_128K).m4a
-99:other/You Right(M4A_128K).m4a
-100:other/Fair Trade(M4A_128K).m4a
-101:other/Lemon Pepper Freestyle(M4A_128K).m4a
-102:other/Mtg - Coração(MP3_160K).mp3
-103:other/Fluxxwave (Super Slowed)(M4A_128K).m4a
-104:other/Rob _tone - Chill Bill ft. J.Davis _ Spooks (Dir. Alex Vibe)(MP3_160K).mp3
-105:other/Hymn for the Weekend(M4A_128K).m4a
-106:other/Cole World(MP3_160K).mp3
-107:other/Bubba Sparxxx - Ugly(MP3_160K).mp3
-108:other/Meek Mill Feat. Rick Ross - Ima Boss (Official Video)(MP3_160K).mp3
-109:other/Meek Mill -Dreams And Nightmares (Intro)(MP3_160K).mp3
-110:other/R.I.C.O. (feat. Drake)(MP3_160K).mp3
-111:other/karamel kel - aglow (intro) (slowed) (1 hour loop)(M4A_128K).m4a
-112:other/Future - Fuck Up Some Commas (Official Music Video)(MP3_160K).mp3
-113:other/Dua Lipa - Break My Heart (Official Video)(M4A_128K).m4a
-114:other/Dua Lipa - Dance The Night (From Barbie The Album) [Official Music Video](M4A_128K).m4a
-115:other/Dua Lipa - Don_t Start Now (Official Music Video)(M4A_128K).m4a
-116:other/Dua Lipa - Houdini (Official Music Video)(M4A_128K).m4a
-117:other/Ocean Drive(M4A_128K).m4a
-118:other/Dream Space (Sped Up)(M4A_128K).m4a
-119:other/Endless Love(MP3_160K).mp3
-120:other/Ed Sheeran _ Justin Bieber - I Don_t Care [Official Music Video](M4A_128K).m4a
-121:other/Ed Sheeran - Shape of You (Official Music Video)(M4A_128K).m4a
-122:other/Emshy(MP3_160K).mp3
-123:other/Elton John_ Dua Lipa - Cold Heart (PNAU Remix) (Official Video)(M4A_128K).m4a
-124:other/SLAY_ (Over Slowed   Reverb)(MP3_160K).mp3
-125:other/YFN Lucci - Everyday We Lit feat. PnB Rock [Official Music Video](MP3_160K).mp3
-126:other/Fifth Harmony - Work from Home (Official Video) ft. Ty Dolla _ign(M4A_128K).m4a
-127:other/Love Sosa(MP3_160K).mp3
-128:other/ADHD(MP3_160K).mp3
-129:other/Limbo(MP3_160K).mp3
-130:other/Unforgettable(M4A_128K).m4a
-131:other/𝙉𝙞𝙜𝙝𝙩𝙚𝙭𝙥𝙧𝙚𝙨𝙨 (Slowed   Reverb) (Batman) (Music Video) (A dark knight...) (TikTok Version)(M4A_128K).m4a
-132:other/Portwave - Shadow Lady (Bruce Wayne) (Music Video) (TikTok Version) (The famous Bruce Wayne..)(M4A_128K).m4a
-133:other/Lost in the Fire(M4A_128K).m4a
-134:other/DMX - Get It On The Floor (Official Music Video) ft. Swizz Beatz(MP3_160K).mp3
-135:other/Gryffin _ LOVA - Piece Of Me (Official Video)(MP3_160K).mp3
-136:other/Harry Styles - Watermelon Sugar (Official Video)(M4A_128K).m4a
-137:other/How Deep Is Your Love.mp3
-138:other/Bobby Shmurda - Hot N_gga (Official Music Video)(MP3_160K).mp3
-139:other/TAY-K - THE RACE (Lyrics)(MP3_160K).mp3
-140:other/Playboi Carti - Magnolia (Official Video)(MP3_160K).mp3
-141:other/My Nigga ft. Lil Wayne_ Rich Homie Quan_ Meek Mill_ Nicki Minaj (Remix) (Official Video)(MP3_160K).mp3
-142:other/Nas - Hate Me Now (Official HD Video) ft. Puff Daddy(MP3_160K).mp3
-143:other/Dr. Dre - I Need A Doctor (Explicit) ft. Eminem_ Skylar Grey(MP3_160K).mp3
-144:other/Yo Gotti - Rake It Up ft. Nicki Minaj(MP3_160K).mp3
-145:other/METAMORPHOSIS 3 (Sped Up)(M4A_128K).m4a
-146:other/METAMORPHOSIS 3 (Sped Up)(MP3_160K).mp3
-147:other/Crystals(M4A_128K).m4a
-148:other/First Class(M4A_128K).m4a
-149:other/Where Are Ü Now (with Justin Bieber)(M4A_128K).m4a
-150:other/Jason Derulo - _Want To Want Me_ (Official Video)(M4A_128K).m4a
-151:other/JAY-Z - 99 Problems(MP3_160K).mp3
-152:other/Young Thug - Guwop feat. Quavo_ Offset_ and Young Scooter [Official Video](MP3_160K).mp3
-153:other/Jenna Raine - It Is What It Is (Official Music Video)(M4A_128K).m4a
-154:other/Jessie J - Price Tag ft. B.o.B(M4A_128K).m4a
-155:other/Harry Styles - Late Night Talking (Official Video)(M4A_128K).m4a
-156:other/Eminem_ Dr. Dre - Forgot About Dre (Explicit) (Official Music Video) ft. Hittman(MP3_160K).mp3
-157:other/6LACK - Ex Calling [Official Music Video](MP3_160K).mp3
-158:other/T.I. - About The Money ft. Young Thug (Official Music Video)(MP3_160K).mp3
-159:other/Adele - Send My Love (To Your New Lover)(M4A_128K).m4a
-160:other/Sleepwalker(M4A_128K).m4a
-161:other/A_AP Rocky - Lord Pretty Flacko Jodye 2 (LPFJ2) (Official Video)(MP3_160K).mp3
-162:other/ocean eyes(M4A_128K).m4a
-163:other/Gucci Mane - Both (feat. Drake) [Official Audio](MP3_160K).mp3
-164:other/DRAM - Broccoli feat. Lil Yachty (Official Music Video)(MP3_160K).mp3
-165:other/Bruno Mars - That_s What I Like [Official Music Video](M4A_128K).m4a
-166:other/Leave The Door Open(M4A_128K).m4a
-167:other/Locked out of Heaven(M4A_128K).m4a
-168:other/The Lazy Song(M4A_128K).m4a
-169:other/Winter Memories(M4A_128K).m4a
-170:other/MONTAGEM DIAMANTE ROSA (SLOWED)(M4A_128K).m4a
-171:other/Distant Echoes (Sped Up)(M4A_128K).m4a
-172:other/Distant Echoes(M4A_128K).m4a
-173:other/Gucci Mane - Enormous feat. Ty Dolla _ign [Official Music Video](MP3_160K).mp3
-174:other/WALK THE MOON - Shut Up and Dance (Official Video)(M4A_128K).m4a
-175:other/M.O.P. - Ante Up Remix ft. Busta Rhymes_ Teflon_ Remy Martin(MP3_160K).mp3
-176:other/Dae Dae - _Wat U Mean (Aye_ Aye_ Aye)_ [Official Video](MP3_160K).mp3
-177:other/Wiz Khalifa - We Dem Boyz [Official Video](MP3_160K).mp3
-178:other/Jumpman(MP3_160K).mp3
-179:other/Future - Wicked (Official Music Video)(MP3_160K).mp3
-180:other/Ric Flair Drip(MP3_160K).mp3
-181:other/Lost and Found(M4A_128K).m4a
-182:other/Tokyo Rain(MP3_160K).mp3
-183:other/YBN Nahmir _Rubbin Off The Paint_ (Prod. by Izak) (WSHH Exclusive - Official Music Video)(MP3_160K).mp3
-184:other/Zara Larsson - Lush Life(M4A_128K).m4a
-185:other/Zedd_ Maren Morris_ Grey - The Middle (Official Music Video)(M4A_128K).m4a
-186:other/BAD KARMA(MP3_160K).mp3
-187:other/Batida Mortal(MP3_160K).mp3
-188:other/Black Heart(MP3_160K).mp3
-189:other/BRUTAL MAGICISMO(MP3_160K).mp3
-190:other/Devil Eyes(M4A_128K).m4a
-191:other/Fly in Hell(MP3_160K).mp3
-192:other/Lost Memory(M4A_128K).m4a
-193:other/Memory Reboot (Sped Up)(M4A_128K).m4a
-194:other/TONES AND I - DANCE MONKEY (OFFICIAL VIDEO)(M4A_128K).m4a
-195:other/Is There Someone Else_(M4A_128K).m4a
-196:other/Maroon 5 - Payphone ft. Wiz Khalifa (Explicit) (Official Music Video)(M4A_128K).m4a
-197:other/With You(M4A_128K).m4a
-198:other/Lil Uzi Vert - XO Tour Llif3 (Official Music Video)(MP3_160K).mp3
-199:other/Kevin Gates - I Don_t Get Tired (feat. August Alsina) (_IDGT) [Official Music Video](MP3_160K).mp3
-200:other/Sea Of Feelings(M4A_128K).m4a
-201:other/Dance on the Moon(M4A_128K).m4a
-202:other/Crystal Dreams(M4A_128K).m4a
-203:new/Mavis & Johnny Zing Song ｜ Hotel Transylvania ｜ CLIP.mp3
-204:new/Ogryzek - AURA 2 (Official Visualiser)(MP3_160K).mp3
-205:other/lovely(M4A_128K).m4a
-206:other/Camila Cabello - I LUV IT Feat. Playboi Carti (Official Music Video)(M4A_128K).m4a
-207:other/Yelawolf - Till It_s Gone (Official Music Video)(MP3_160K).mp3
-208:other/Selena Gomez - Love On (Official Music Video)(M4A_128K).m4a
-209:other/Lizzo - About Damn Time [Official Video](M4A_128K).m4a
-210:other/JR - Assumptions (Instrumental).mp3
-211:new/1940's Retro Jazz ｜ Vintage Jazz 1 [7Yb7QDEc4rw].mp3
-212:the_weeking/Acquainted.mp3
-213:new/Luminary(MP3_160K).mp3
-214:other/ناس مني ومن دمي _ غناء _ رضا البحراوي _  توزيع_تيفا ريمكس(M4A_128K).m4a
-215:other/WITCHER(MP3_160K).mp3
-216:other/ORACLE(MP3_160K).mp3
-217:other/Ohayo(MP3_160K).mp3
-218:other/My Divk(MP3_160K).mp3
-219:study_songs/Caffeine & LoFi.mp3
+0:study_songs/Brainstorm & Elevate.mp3
+1:study_songs/Caffeine & LoFi.mp3
+2:study_songs/Clarity in Every Note.mp3
+3:study_songs/Concentration Flow.mp3
+4:study_songs/Exam Week Focus.mp3
+5:study_songs/Finals Week Serenity.mp3
+6:study_songs/Laser-Sharp Mindset.mp3
+7:study_songs/Late Night Learning.mp3
+8:study_songs/Locked In Zone.mp3
+9:study_songs/LoFi for Productivity.mp3
+10:study_songs/Mindful Study Sessions.mp3
+11:study_songs/No Distractions, Just Flow.mp3
+12:study_songs/Smooth Sounds for Deep Work.mp3
+13:study_songs/Steady Rhythms for Success.mp3
+14:study_songs/Study Grind Essentials.mp3
+15:study_songs/Brainwave Boost - Focused LOFI(M4A_128K).m4a
+16:study_songs/Concentration Flow - LOFI Beat to Study To(M4A_128K).m4a
+17:study_songs/Concentration Mode - Study LOFI Grooves(M4A_128K).m4a
+18:study_songs/Deep Focus Zone - Chill LOFI for Studying(M4A_128K).m4a
+19:study_songs/Exam Prep Vibes - Study Focus LOFI(M4A_128K).m4a
+20:study_songs/Focused Learning - LOFI for Deep Study(M4A_128K).m4a
+21:study_songs/Late Night Study Session - Chill LOFI Tune(M4A_128K).m4a
+22:study_songs/LOFI Study Break - Deep Focus(M4A_128K).m4a
+23:study_songs/Productivity Boost - LOFI Study(M4A_128K).m4a
+24:study_songs/Quiet Study Room - LOFI for Productivity(M4A_128K).m4a
+25:study_songs/Study _ Concentrate - LOFI Mind Focus(M4A_128K).m4a
+26:study_songs/Study Beat - LOFI Focus Vibes(M4A_128K).m4a
+27:ramadan_songs/Arabic Love Songs.mp3
+28:ramadan_songs/Best Arabic Songs.mp3
+29:ramadan_songs/Classic Arabic Songs.mp3
+30:ramadan_songs/Fajr Arabic Song.mp3
+31:ramadan_songs/Ghareeb Arabic Song.mp3
+32:ramadan_songs/Latest Arabic Songs.mp3
+33:ramadan_songs/Popular Arabic Songs.mp3
+34:ramadan_songs/Rimal.mp3
+35:ramadan_songs/Sands of Time Arabic Song.mp3
+36:ramadan_songs/Transform Arabic Song.mp3
+37:the_weeking/Acquainted.mp3
+38:the_weeking/After Hours.mp3
+39:the_weeking/As You Are.mp3
+40:the_weeking/Call Out My Name.mp3
+41:the_weeking/Cry For Me.mp3
+42:the_weeking/Die For You.mp3
+43:the_weeking/Earned It (Fifty Shades Of Grey).mp3
+44:the_weeking/Hardest To Love.mp3
+45:the_weeking/Hurt You.mp3
+46:the_weeking/I Feel It Coming.mp3
+47:new/1940's Retro Jazz ｜ Vintage Jazz 1 [7Yb7QDEc4rw].mp3
+48:new/Around the World (La La La La La) (Radio Version).mp3
+49:new/atmosphere - d4vd - feel it (slowed + reverb).mp3
+50:new/d4vd - Feel It.mp3
 playlist_end

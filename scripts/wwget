@@ -1,0 +1,137 @@
+#!/bin/bash
+
+# Check if wget is installed
+if ! command -v wget &> /dev/null; then
+    echo "Error: wget is not installed. Please install it first."
+    exit 1
+fi
+
+# Function to display download information
+show_download_info() {
+    local url=$1
+    local filename=$2
+    
+    echo -e "\n\033[1;34mDownload Information:\033[0m"
+    echo "URL: $url"
+    echo "Filename: $filename"
+    echo "Resume Supported: $(wget --spider --continue "$url" 2>&1 | grep -q 'Accept-Ranges: bytes' && echo "Yes" || echo "No")"
+    echo -e "\n\033[1;32mStarting download...\033[0m\n"
+}
+
+# Function to format bytes
+format_bytes() {
+    local bytes=$1
+    if [ "$bytes" -ge 1073741824 ]; then
+        echo "$(awk "BEGIN {printf \"%.2f\", $bytes/1073741824}") GB"
+    elif [ "$bytes" -ge 1048576 ]; then
+        echo "$(awk "BEGIN {printf \"%.2f\", $bytes/1048576}") MB"
+    elif [ "$bytes" -ge 1024 ]; then
+        echo "$(awk "BEGIN {printf \"%.2f\", $bytes/1024}") KB"
+    else
+        echo "$bytes bytes"
+    fi
+}
+
+# Function to calculate download speed
+calculate_speed() {
+    local downloaded=$1
+    local elapsed=$2
+    
+    if [ "$elapsed" -eq 0 ]; then
+        echo "0 B/s"
+    else
+        local speed=$((downloaded / elapsed))
+        echo "$(format_bytes $speed)/s"
+    fi
+}
+
+# Main download function
+download_file() {
+    local url=$1
+    local start_time=$(date +%s)
+    local temp_file=".wget_download_stats"
+    
+    # Get filename from URL if not provided
+    local filename=$(basename "$url")
+    if [[ "$filename" == *"?"* ]]; then
+        filename=$(echo "$url" | grep -oP '[^/&=?]+\.\w{3,4}(?=[?&]|$)') || filename="downloaded_file_$(date +%s)"
+    fi
+    
+    show_download_info "$url" "$filename"
+    
+    # Start download in background
+    wget --continue --progress=dot:giga --output-document="$filename" "$url" 2>&1 | \
+        tee "$temp_file" &
+    local wget_pid=$!
+    
+    # Progress monitoring
+    while ps -p $wget_pid > /dev/null; do
+        if [ -f "$filename" ]; then
+            local current_size=$(stat -c%s "$filename" 2>/dev/null || echo 0)
+            local total_size=$(grep -Po '(?<=Length: )[0-9]+' "$temp_file" | tail -1)
+            
+            # Calculate progress
+            local progress=0
+            if [ -n "$total_size" ] && [ "$total_size" -gt 0 ]; then
+                progress=$((current_size * 100 / total_size))
+            fi
+            
+            # Calculate elapsed time and estimated time remaining
+            local current_time=$(date +%s)
+            local elapsed=$((current_time - start_time))
+            
+            local remaining="--:--"
+            if [ "$progress" -gt 0 ] && [ "$elapsed" -gt 0 ]; then
+                local total_time_estimate=$((elapsed * 100 / progress))
+                local remaining_seconds=$((total_time_estimate - elapsed))
+                remaining=$(printf "%02d:%02d" $((remaining_seconds/60)) $((remaining_seconds%60)))
+            fi
+            
+            # Calculate download speed
+            local speed=$(calculate_speed $current_size $elapsed)
+            
+            # Display progress
+            printf "\rProgress: %3d%% | %s / %s | Speed: %8s | Time: %02d:%02d | ETA: %s" \
+                "$progress" \
+                "$(format_bytes $current_size)" \
+                "$([ -n "$total_size" ] && format_bytes $total_size || echo "?")" \
+                "$speed" \
+                "$((elapsed/60))" "$((elapsed%60))" \
+                "$remaining"
+        fi
+        sleep 1
+    done
+    
+    # Cleanup and final status
+    wait $wget_pid
+    local status=$?
+    rm -f "$temp_file"
+    
+    echo -e "\n"
+    if [ $status -eq 0 ]; then
+        echo -e "\033[1;32mDownload completed successfully!\033[0m"
+    else
+        echo -e "\033[1;31mDownload failed or was interrupted.\033[0m"
+        echo "You can resume later by running the script with the same URL."
+    fi
+    
+    local end_time=$(date +%s)
+    local total_time=$((end_time - start_time))
+    local final_size=$(stat -c%s "$filename" 2>/dev/null || echo 0)
+    local avg_speed=$(calculate_speed $final_size $total_time)
+    
+    echo -e "\n\033[1;34mDownload Summary:\033[0m"
+    echo "File: $filename"
+    echo "Size: $(format_bytes $final_size)"
+    echo "Time: $((total_time/60))m $((total_time%60))s"
+    echo "Average Speed: $avg_speed"
+}
+
+# Main script execution
+if [ -z "$1" ]; then
+    echo "Usage: $0 <URL>"
+    echo "Example: $0 https://example.com/largefile.zip"
+    exit 1
+fi
+
+download_file "$1"

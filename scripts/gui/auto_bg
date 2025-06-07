@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+pkill feh
+
 WALLPAPER_DIR="$HOME/Pictures/wallpaper"
 LAST_VIEW_FILE="$HOME/Pictures/wallpaper/last_view.txt"
 
