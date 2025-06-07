@@ -1,9 +1,9 @@
 sw_volume: 100
 audio_device_state:1:PulseAudio Output
 audio_device_state:1:Visualizer Output
-state: play
-current: 50
-time: 120.058
+state: pause
+current: 55
+time: 5.041
 random: 1
 repeat: 1
 single: 1
@@ -64,4 +64,12 @@ playlist_begin
 48:new/Around the World (La La La La La) (Radio Version).mp3
 49:new/atmosphere - d4vd - feel it (slowed + reverb).mp3
 50:new/d4vd - Feel It.mp3
+51:new/LONOWN - AVANGARD (Sped Up).mp3
+52:new/Mavis & Johnny Zing Song ｜ Hotel Transylvania ｜ CLIP.mp3
+53:new/DYGO & Mxng0 - FUNK INFERNAL (SPED UP).mp3
+54:new/Yb Wasg'ood & Ariis - LUNA BALA.mp3
+55:new/MRL - Power! (Sped Up).mp3
+56:new/Ogryzek - AURA 2 (Official Visualiser)(MP3_160K).mp3
+57:new/Luminary(MP3_160K).mp3
+58:new/It's Party Time (From ＂Hotel Transylvania 3＂).mp3
 playlist_end

@@ -1,0 +1,22 @@
+#!/bin/bash
+
+# wlsunset toggle script for Hyprland
+
+if pgrep -x "wlsunset" > /dev/null; then
+    pkill -x "wlsunset"
+else
+    wlsunset -t 3000 -T 4000 >/dev/null 2>&1 &
+fi
+
+
+# Robust gammastep toggle script for Hyprland
+# Uses alternative method when gamma adjustment isn't supported
+# if pgrep -x "gammastep" > /dev/null; then
+#     pkill -x "gammastep"
+# else
+#     # Try different methods until one works
+#     if ! gammastep -O 3000 -m wayland >/dev/null 2>&1 & then
+#         # Fallback method if standard wayland doesn't work
+#         gammastep -O 3000 -m drm >/dev/null 2>&1 &
+#     fi
+# fi
