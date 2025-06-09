@@ -2,8 +2,8 @@ sw_volume: 100
 audio_device_state:1:PulseAudio Output
 audio_device_state:1:Visualizer Output
 state: pause
-current: 55
-time: 5.041
+current: 53
+time: 4.9270000000000005
 random: 1
 repeat: 1
 single: 1
@@ -72,4 +72,8 @@ playlist_begin
 56:new/Ogryzek - AURA 2 (Official Visualiser)(MP3_160K).mp3
 57:new/Luminary(MP3_160K).mp3
 58:new/It's Party Time (From ＂Hotel Transylvania 3＂).mp3
+59:new/ZWE1HVNDXR, MVRLLIN, & Scythermane - Amores Deviles.mp3
+60:new/Gryffin - Hard Time Lover.mp3
+61:new/Fluxo de Sc, RITMO DE SC, & Mega Funk Sc - MEGA FUNK PRA ME ABANDONAR.mp3
+62:new/Scythermane, 6YNTHMANE, & yngastrobeatz. - SYNTHA TOMA.mp3
 playlist_end
