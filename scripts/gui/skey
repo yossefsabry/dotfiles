@@ -1,0 +1,18 @@
+#!/bin/bash
+
+# Check for screenkey-git
+if ! command -v screenkey &> /dev/null; then
+    echo "Installing screenkey-git from AUR..."
+    yay -S --noconfirm screenkey-git
+fi
+
+# Kill existing instances
+pkill screenkey &>/dev/null
+
+screenkey \
+    -s small \
+    -p fixed \
+    -g 400x60-30-60 \
+    --font-color white \
+    --bg-color black \
+    --opacity 0.7 

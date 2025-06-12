@@ -67,11 +67,11 @@ static const struct arg args[] = {
     /* function format          argument */
     {run_command, "[ %s ];", "echo fooo"},
     /*{run_command, "| lang: %s |", "~/dotfiles/scripts/lang"},*/
-    {run_command, " %s |", "~/dotfiles/scripts/updateAudio"},
+    {run_command, " %s |", "~/dotfiles/scripts/music_manga/updateAudio"},
     {datetime, " %s |", " %a %b %r "},
     {cpu_perc, " CPU:%s%% |", NULL},
     {ram_perc, " RAM:%s%% |", NULL},
     {battery_perc, " BAT:%s%% |", "BAT0"},
-    {netspeed_rx, " netspeed:%sB/s |", "wlan0 wlan1"},
-    {ipv4, "ip:%s |", "wlan0 wlan1 |"},
+    {netspeed_rx, " netspeed:%sB/s |", "wlan0"},
+    {ipv4, "ip:%s |", "wlan0"},
 };

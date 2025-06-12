@@ -321,24 +321,23 @@ service network-manager restart
 
 elif [ "$x" == "$custommac" ]; then                 #custommac   
 
-
 read -p 'Type mac address (example AA:AA:AA:AA:AA:AA) : '  m
-
-
 
 ifconfig wlan0 down
 ifconfig wlan0 hw ether $m
 ifconfig wlan0 up
-ifconfig eth0 down
-ifconfig eth0 hw ether $m
-ifconfig eth0 up
-service network-manager restart
+ifconfig eno1 down
+ifconfig eno1 hw ether $m
+ifconfig eno1 up
+systemctl restart NetworkManager
 
 sleep 3
 
 e=1
 
 clear
+
+
 
 
 elif [ "$x" == "$me" ]; then                 #CONTACT WITH ME   

@@ -2,12 +2,12 @@ sw_volume: 100
 audio_device_state:1:PulseAudio Output
 audio_device_state:1:Visualizer Output
 state: pause
-current: 53
-time: 4.9270000000000005
+current: 210
+time: 48.041000000000004
 random: 1
 repeat: 1
 single: 1
-consume: 0
+consume: 1
 crossfade: 0
 mixrampdb: 0
 mixrampdelay: -1
@@ -76,4 +76,152 @@ playlist_begin
 60:new/Gryffin - Hard Time Lover.mp3
 61:new/Fluxo de Sc, RITMO DE SC, & Mega Funk Sc - MEGA FUNK PRA ME ABANDONAR.mp3
 62:new/Scythermane, 6YNTHMANE, & yngastrobeatz. - SYNTHA TOMA.mp3
+63:good_vibe/21 Reasons (feat. Ella Henderson).mp3
+64:study2/Brenk Sinatra x Shuko - Started Ballin' (Official Audio).mp3
+65:study2/Aftermath.mp3
+66:study2/Birds Fly Higher Than The Moon.mp3
+67:study2/Still.mp3
+68:other/Moth To A Flame(M4A_128K).m4a
+69:1940's Retro Jazz ｜ Vintage Jazz 1 [7Yb7QDEc4rw].mp3
+70:other/horizons(M4A_128K).m4a
+71:other/ROYALTY(MP3_160K).mp3
+72:other/MUDD(MP3_160K).mp3
+73:other/6LACK - Ex Calling [Official Music Video](MP3_160K).mp3
+74:other/T.I. - About The Money ft. Young Thug (Official Music Video)(MP3_160K).mp3
+75:other/Sleepwalker(M4A_128K).m4a
+76:other/Sleepwalker(MP3_160K).mp3
+77:other/Alicia Creti - Going Down [Official Lyric Video](M4A_128K).m4a
+78:other/Playboi Carti - ALL RED (Official Visualizer)(MP3_160K).mp3
+79:other/Jungle(M4A_128K).m4a
+80:other/FERG - New Level (Official Video) ft. Future(MP3_160K).mp3
+81:other/hope to see you again(M4A_128K).m4a
+82:other/Ariana Grande - the boy is mine (Official Music Video)(M4A_128K).m4a
+83:other/Ariana Grande - yes_ and_ (official music video)(M4A_128K).m4a
+84:other/Travis Scott - SICKO MODE ft. Drake(MP3_160K).mp3
+85:other/A_AP Rocky - Lord Pretty Flacko Jodye 2 (LPFJ2) (Official Video)(MP3_160K).mp3
+86:other/Back To Back(MP3_160K).mp3
+87:other/DaBaby - BALL IF I WANT TO (Official Music Video)(MP3_160K).mp3
+88:other/P. Diddy [feat. Black Rob _ Mark Curry] - Bad Boy 4 Life (Official Music Video)(MP3_160K).mp3
+89:other/Bebe Rexha - Meant to Be (feat. Florida Georgia Line) [Official Music Video](M4A_128K).m4a
+90:other/Becky G - Shower(M4A_128K).m4a
+91:other/ocean eyes(M4A_128K).m4a
+92:other/Gucci Mane - Both (feat. Drake) [Official Audio](MP3_160K).mp3
+93:other/The Chainsmokers _ Coldplay - Something Just Like This (Lyric)(M4A_128K).m4a
+94:other/The Chainsmokers - Closer (Lyric) ft. Halsey(M4A_128K).m4a
+95:other/The Chainsmokers - Roses (Official Video) ft. ROZES(M4A_128K).m4a
+96:other/Charlie Puth - Marvin Gaye ft. Meghan Trainor [Official Video](M4A_128K).m4a
+97:other/Fluxxwave (Super Slowed)(M4A_128K).m4a
+98:other/Hymn for the Weekend(M4A_128K).m4a
+99:other/Cole World(MP3_160K).mp3
+100:other/Dirt Off Your Shoulder _ Lying From You (Official Audio) - Linkin Park _ JAY-Z(MP3_160K).mp3
+101:other/Eminem - Shake That (Official Music Video) ft. Nate Dogg(MP3_160K).mp3
+102:other/O.T. Genasis - Cut It (feat. Young Dolph) [Official Music Video](MP3_160K).mp3
+103:other/Lose Yourself to Dance (feat. Pharrell Williams)(M4A_128K).m4a
+104:other/Kendrick Lamar - HUMBLE(MP3_160K).mp3
+105:other/Bubba Sparxxx - Ugly(MP3_160K).mp3
+106:other/GUMMO(MP3_160K).mp3
+107:other/Big Sean - Harder Than My Demons (Official Music Video)(MP3_160K).mp3
+108:other/DNCE - Cake By The Ocean(M4A_128K).m4a
+109:other/You Right(M4A_128K).m4a
+110:other/Fair Trade(M4A_128K).m4a
+111:other/Lemon Pepper Freestyle(M4A_128K).m4a
+112:other/Dua Lipa - Dance The Night (From Barbie The Album) [Official Music Video](M4A_128K).m4a
+113:other/Dua Lipa - Don_t Start Now (Official Music Video)(M4A_128K).m4a
+114:other/Dua Lipa - Break My Heart (Official Video)(M4A_128K).m4a
+115:other/Ocean Drive(M4A_128K).m4a
+116:other/SLAY_ (Sped Up)(MP3_160K).mp3
+117:other/SLAY_ (Slowed   Reverb)(MP3_160K).mp3
+118:other/YFN Lucci - Everyday We Lit feat. PnB Rock [Official Music Video](MP3_160K).mp3
+119:other/Tyler Durden - Shadow(M4A_128K).m4a
+120:other/Rich Homie Quan - Flex (Ooh_ Ooh_ Ooh)(MP3_160K).mp3
+121:other/Flex Like Ouu(MP3_160K).mp3
+122:other/𝙉𝙞𝙜𝙝𝙩𝙚𝙭𝙥𝙧𝙚𝙨𝙨 (Slowed   Reverb) (Batman) (Music Video) (A dark knight...) (TikTok Version)(M4A_128K).m4a
+123:other/Portwave - Shadow Lady (Bruce Wayne) (Music Video) (TikTok Version) (The famous Bruce Wayne..)(M4A_128K).m4a
+124:other/50 Cent - In Da Club (Official Music Video)(MP3_160K).mp3
+125:other/Nas - Made You Look (Official HD Video)(MP3_160K).mp3
+126:other/Harry Styles - As It Was (Official Video)(M4A_128K).m4a
+127:other/Dari Ya Alby(M4A_128K).m4a
+128:other/Living Proof(MP3_160K).mp3
+129:other/Bobby Shmurda - Hot N_gga (Official Music Video)(MP3_160K).mp3
+130:other/How Deep Is Your Love.mp3
+131:other/Bel Bont El3areedh(M4A_128K).m4a
+132:other/Sunnet El Hayah(M4A_128K).m4a
+133:other/My Nigga ft. Lil Wayne_ Rich Homie Quan_ Meek Mill_ Nicki Minaj (Remix) (Official Video)(MP3_160K).mp3
+134:other/SYML - _The War_ [Official Audio](MP3_160K).mp3
+135:other/METAMORPHOSIS 3 (Sped Up)(M4A_128K).m4a
+136:other/METAMORPHOSIS 3 (Sped Up)(MP3_160K).mp3
+137:other/Crystals(M4A_128K).m4a
+138:other/21 Savage - Bank Account (Official Music Video)(MP3_160K).mp3
+139:other/First Class(M4A_128K).m4a
+140:other/Justin Bieber - Peaches ft. Daniel Caesar_ Giveon(M4A_128K).m4a
+141:other/Justin Bieber - Yummy (Official Video)(M4A_128K).m4a
+142:other/Better(M4A_128K).m4a
+143:other/OTW(M4A_128K).m4a
+144:other/Surfin_(M4A_128K).m4a
+145:other/Apogee - Toji Revival [Edit_AMV] _(M4A_128K).m4a
+146:other/Steal The Show(M4A_128K).m4a
+147:other/Whoa_(MP3_160K).mp3
+148:other/Lil Uzi Vert - You Was Right [Official Music Video](MP3_160K).mp3
+149:other/Jinx edit -  _By accident__(M4A_128K).m4a
+150:other/Lillian Hepler - Call Me Yours (Official Music Video)(M4A_128K).m4a
+151:other/Lizzo - About Damn Time [Official Video](M4A_128K).m4a
+152:other/Lola Brooke - Bend It Ova (Official Visualizer) ft. A Boogie Wit da Hoodie_ Big Freedia(MP3_160K).mp3
+153:other/Lil Wayne - Lollipop (Official Music Video) ft. Static(MP3_160K).mp3
+154:other/Dance on the Moon(M4A_128K).m4a
+155:other/Sea Of Feelings(M4A_128K).m4a
+156:other/Crystal Dreams(M4A_128K).m4a
+157:other/Kevin Gates - I Don_t Get Tired (feat. August Alsina) (_IDGT) [Official Music Video](MP3_160K).mp3
+158:other/Lil Uzi Vert - XO Tour Llif3 (Official Music Video)(MP3_160K).mp3
+159:other/With You(M4A_128K).m4a
+160:other/Midnight City(M4A_128K).m4a
+161:other/Fetty Wap - Make You Feel Good [Official Video](MP3_160K).mp3
+162:other/Uptown Funk(M4A_128K).m4a
+163:other/Maroon 5 - Beautiful Mistakes ft. Megan Thee Stallion (Official Music Video)(M4A_128K).m4a
+164:other/Maroon 5 - Payphone ft. Wiz Khalifa (Explicit) (Official Music Video)(M4A_128K).m4a
+165:other/Maroon 5 - What Lovers Do ft. SZA (Official Music Video)(M4A_128K).m4a
+166:other/Giving Chanel(MP3_160K).mp3
+167:other/Meghan Trainor - Dear Future Husband (Official Video)(M4A_128K).m4a
+168:other/Meghan Trainor - Made You Look (Official Music Video)(M4A_128K).m4a
+169:other/Meghan Trainor - Mother (Official Music Video)(M4A_128K).m4a
+170:other/Creepin_(M4A_128K).m4a
+171:other/Belly - Might Not ft. The Weeknd (Official Music Video)(MP3_160K).mp3
+172:other/Fi 3esh2 El Banat(M4A_128K).m4a
+173:other/KMT(MP3_160K).mp3
+174:other/After Dark(M4A_128K).m4a
+175:other/Sheck Wes - Mo Bamba (Official Music Video)(MP3_160K).mp3
+176:other/Ya Tabtab Wa Dallaa(M4A_128K).m4a
+177:other/Fainted (Sped Up)(M4A_128K).m4a
+178:other/Fainted(M4A_128K).m4a
+179:other/Natasha Bedingfield - Unwritten (Official Video) (as featured in Anyone But You)(M4A_128K).m4a
+180:other/The Lost Soul Down (Slowed _ Reverb)(M4A_128K).m4a
+181:other/Niall Horan - Heaven (Official Video)(M4A_128K).m4a
+182:other/Nicki Minaj ft. Lil Baby - Do We Have A Problem_ (Official Music Video)(MP3_160K).mp3
+183:other/EYE 4 AN EYE(MP3_160K).mp3
+184:other/Waka Flocka Flame - _No Hands_ (feat. Wale _ Roscoe Dash) (Official Music Video)(MP3_160K).mp3
+185:other/N.O.R.E. - Nothin_ (Official Music Video)(MP3_160K).mp3
+186:other/CJ - WHOOPTY [Official Music Video](MP3_160K).mp3
+187:other/NUNCA MUDA_ (PHONK)(MP3_160K).mp3
+188:other/NUNCA MUDA_ (Slowed)(MP3_160K).mp3
+189:other/A Moment Apart(M4A_128K).m4a
+190:other/GLORY(M4A_128K).m4a
+191:other/One Direction - What Makes You Beautiful (Official Video)(M4A_128K).m4a
+192:other/timelapse(M4A_128K).m4a
+193:other/NLE Choppa ft. (41) Kyle richh_ jenn carter_ TATA - Or What (Official Music Video)(MP3_160K).mp3
+194:other/Kodak Black - Tunnel Vision [Official Music Video](MP3_160K).mp3
+195:other/Paul Russell - Lil Boo Thang (Official Video)(M4A_128K).m4a
+196:other/Freeway - What We Do (Official Music Video) ft. JAY-Z_ Beanie Sigel(MP3_160K).mp3
+197:other/pick up the phone(MP3_160K).mp3
+198:other/Revival(MP3_160K).mp3
+199:other/Playboi Carti - wokeuplikethis_ ft. Lil Uzi Vert (Official Video)(MP3_160K).mp3
+200:other/Congratulations(M4A_128K).m4a
+201:other/Cooped Up(M4A_128K).m4a
+202:other/Motley Crew(M4A_128K).m4a
+203:other/rockstar(M4A_128K).m4a
+204:other/Sunflower (Spider-Man_ Into the Spider-Verse)(M4A_128K).m4a
+205:other/Big Sean - Precision(MP3_160K).mp3
+206:other/Mode(MP3_160K).mp3
+207:other/O.T. Genasis - Push It [Official Music Video](MP3_160K).mp3
+208:other/Guatemala (From Swaecation)(M4A_128K).m4a
+209:other/KRUSH BANDICOOT 2 (SLOWED)(MP3_160K).mp3
+210:other/KRUSH BANDICOOT 2 (SPED UP)(M4A_128K).m4a
 playlist_end
