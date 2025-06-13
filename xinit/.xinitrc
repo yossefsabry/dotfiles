@@ -16,6 +16,7 @@ exec setxkbmap -layout us,ara -variant ,digits grp:win_space_toggle caps:none &
 exec sxhkd &
 exec xset r rate 250 50 &
 exec redshift -O 2000K &
+exec skey &
 
 # bspwm {{{
 #exec flameshot &
