@@ -42,5 +42,5 @@ if [[ $# -eq 0 ]]; then
     brightnessctl
 fi
 
-setBrightness "$1"
+setBrightness "$1"%
 

@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+sudo openvpn --config ./jp-free-4.protonvpn.tcp.ovpn
+

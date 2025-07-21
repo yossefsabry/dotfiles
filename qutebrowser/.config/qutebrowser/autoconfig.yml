@@ -6,5 +6,5 @@
 
 config_version: 2
 settings:
-  content.media.audio_video_capture:
-    https://10.3.50.140:4430: true
+  content.javascript.clipboard:
+    https://chat.deepseek.com: access-paste

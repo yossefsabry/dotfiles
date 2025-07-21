@@ -255,6 +255,7 @@ dgroups_key_binder = None
 # IGNORE ERROR IN TYPE
 dgroups_app_rules = [
     Rule(Match(wm_class="brave-browser"), group="2"),  # type: ignore
+    Rule(Match(wm_class="falkon"), group="2"),  # type: ignore
     Rule(Match(wm_class="Brave-browser"), group="2"),  # type: ignore
     Rule(Match(wm_class="qutebrowser"), group="2"),  # type: ignore
 

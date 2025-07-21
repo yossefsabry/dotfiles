@@ -1,0 +1,3 @@
+#!/bin/sh
+
+df -h | grep sda2 | awk '{print $5 $4}' | sed 's/%/% /g'

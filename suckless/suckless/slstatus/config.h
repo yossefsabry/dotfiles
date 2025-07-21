@@ -69,6 +69,7 @@ static const struct arg args[] = {
     /*{run_command, "| lang: %s |", "~/dotfiles/scripts/lang"},*/
     {run_command, " %s |", "~/dotfiles/scripts/music_manga/updateAudio"},
     {datetime, " %s |", " %a %b %r "},
+    { run_command, " disk: %s |", "sh /home/yossef/dotfiles/scripts/gui/disk_dwm" },
     {cpu_perc, " CPU:%s%% |", NULL},
     {ram_perc, " RAM:%s%% |", NULL},
     {battery_perc, " BAT:%s%% |", "BAT0"},

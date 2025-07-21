@@ -172,7 +172,7 @@ alias fcd="fzf_cd"
 
 # Alias's for multiple directory listing commands
 alias la='ls -AFlh' # show hidden files
-alias ls='ls -ah --color=always' # add colors and file type extensions
+alias ls='ls --file-type -ah --color=always' # add colors and file type extensions
 alias lsg='ls | grep ' # add colors and file type extensions
 alias lsz='ls -lSrh' # sort by size
 alias lc='ls -lcrh' # sort by change time

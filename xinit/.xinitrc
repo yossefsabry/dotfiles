@@ -34,8 +34,8 @@ exec skey &
 # #: }}}
 
 #:qtile {{{
-exec feh --bg-center --bg-scale ~/Pictures/wallpaper/nearmoss.png &
-exec auto_bg &
+# exec feh --bg-center --bg-scale ~/Pictures/wallpaper/nearmoss.png &
+# exec auto_bg &
 exec flameshot &
 exec qtile start > ~/qtile.log 2>&1 
 #:}}}

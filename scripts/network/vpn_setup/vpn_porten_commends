@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+
+# for login with username
+# protonvpn-cli login your_username
+
+# too connect to vpn and --sc chooses vpn avaliable
+# protonvpn-cli c --sc
+
+# list vpns
+#protonvpn-cli s
+
+
+# connect to specific one
+# protonvpn-cli c us-free-01
+
+
+# for auto run in boot
+# protonvpn-cli config --autoconnect on
+
+
+
+# run jap file
+# sudo openvpn --config jp-free-4.protonvpn.tcp.ovpn
