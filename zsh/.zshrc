@@ -288,3 +288,5 @@ export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 
 
 . "$HOME/.local/bin/env"
+export ANDROID_HOME=$HOME/Android/Sdk
+export PATH=$PATH:$ANDROID_HOME/emulator:$ANDROID_HOME/tools:$ANDROID_HOME/tools/bin:$ANDROID_HOME/platform-tools

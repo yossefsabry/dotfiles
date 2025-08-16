@@ -12,7 +12,7 @@ pkill screenkey &>/dev/null
 screenkey \
     -s large \
     -p fixed \
-    -g 600x80-30-85 \
+    -g 600x80-30-385 \
     --font-color white \
     --bg-color black \
     --opacity 0.7 

@@ -1,0 +1,33 @@
+#!/bin/bash
+
+# --- Paths ---
+HANDSHAKES_DIR="handshakes"
+HC22000_DIR="hc22000"
+DB_FILE="db"
+
+mkdir -p "$HC22000_DIR"
+
+# --- Load MAC → SSID mapping ---
+declare -A MAC_TO_SSID
+while IFS=',' read -r mac ssid _; do
+    if [[ -n "$mac" && -n "$ssid" ]]; then
+        MAC_TO_SSID["$mac"]="$ssid"
+    fi
+done < "$DB_FILE"
+
+# --- Process .hccapx files ---
+for file in "$HANDSHAKES_DIR"/*.hccapx; do
+    [[ -f "$file" ]] || continue
+
+    mac=$(basename "$file" .hccapx)
+    ssid="${MAC_TO_SSID[$mac]:-UNKNOWN}"
+    clean_ssid=$(echo "$ssid" | tr -cd '[:alnum:]_-')
+
+    output_file="$HC22000_DIR/${clean_ssid}-${mac}.hc22000"
+
+    echo "[*] Converting $file → $output_file"
+    hcxhashtool -i "$file" -o "$output_file" --convert-hccapx-hc22000
+done
+
+echo "✅ Conversion completed."
+

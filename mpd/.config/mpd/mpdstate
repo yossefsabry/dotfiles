@@ -1,7 +1,8 @@
-sw_volume: 100
+sw_volume: 92
 audio_device_state:1:PulseAudio Output
 audio_device_state:1:Visualizer Output
 state: stop
+current: 0
 random: 0
 repeat: 0
 single: 0
@@ -11,4 +12,23 @@ mixrampdb: 0
 mixrampdelay: -1
 lastloadedplaylist: 
 playlist_begin
+0:good_vibe/21 Reasons (feat. Ella Henderson).mp3
+1:good_vibe/Call on Me (Ryan Riback Remix).mp3
+2:good_vibe/Fast Car.mp3
+3:good_vibe/SCIENTIST (R3HAB Remix).mp3
+4:good_vibe/Shameless.mp3
+5:good_vibe/Paradise.mp3
+6:good_vibe/Mistakes.mp3
+7:good_vibe/Tattoo.mp3
+8:new/1940's Retro Jazz ｜ Vintage Jazz 1 [7Yb7QDEc4rw].mp3
+9:new/Around the World (La La La La La) (Radio Version).mp3
+10:new/atmosphere - d4vd - feel it (slowed + reverb).mp3
+11:new/d4vd - Feel It.mp3
+12:new/It's Party Time (From ＂Hotel Transylvania 3＂).mp3
+13:new/LONOWN - AVANGARD (Sped Up).mp3
+14:new/Gryffin - Hard Time Lover.mp3
+15:new/DYGO & Mxng0 - FUNK INFERNAL (SPED UP).mp3
+16:new/SEKIRX - Montagem Impacto.mp3
+17:good_vibe/After Hours.mp3
+18:good_vibe/Serena - Safari (Official Video).mp3
 playlist_end

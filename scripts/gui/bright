@@ -5,7 +5,6 @@ checkCommand() {
 }
 
 setBrightness() {
-
     local action="$1"
 
     if checkCommand brightnessctl; then
@@ -20,8 +19,7 @@ setBrightness() {
                 if [[ "$action" =~ ^[0-9]+%$ ]]; then
                     brightnessctl set "$action"
                 else
-                    cecho "Invalid argument. Use 'up', 'down', or a \
-                        percentage (e.g., 50%)." red
+                    cecho "Invalid argument. Use 'up', 'down', or a percentage (e.g., 50%)." red
                     exit 1
                 fi
                 ;;
@@ -40,7 +38,8 @@ setBrightness() {
 
 if [[ $# -eq 0 ]]; then
     brightnessctl
+    exit 0
 fi
 
-setBrightness "$1"%
+setBrightness "$1"
 

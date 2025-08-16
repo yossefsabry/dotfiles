@@ -20,6 +20,10 @@ super + {Up, Down}
 super + l
     slock
 
+# using slock
+super + w
+    ~/dotfiles/scripts/hypr/ch_waypaper
+
 # # takking screen shot
 ctrl + S
    flameshot screen -c

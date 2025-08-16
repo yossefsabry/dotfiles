@@ -1,17 +1,13 @@
-#!/usr/bin/env bash
+#!/bin/bash
 
 # Storage locations
 COLOR_FILE="$HOME/.config/waybar/modules/waypick/last_color"
 HISTORY_FILE="$HOME/.config/waybar/modules/waypick/color_history"
 
-# Create files if they don't exist
-if [ ! -f "$COLOR_FILE" ]; then
-    echo "#FFFFFF " > "$COLOR_FILE"
-fi
-
-if [ ! -f "$HISTORY_FILE" ]; then
-    touch "$HISTORY_FILE"
-fi
+# Ensure files exist
+mkdir -p "$(dirname "$COLOR_FILE")"
+[ ! -f "$COLOR_FILE" ] && echo "#FFFFFF" > "$COLOR_FILE"
+[ ! -f "$HISTORY_FILE" ] && touch "$HISTORY_FILE"
 
 get_last_color() {
     cat "$COLOR_FILE"
@@ -26,20 +22,26 @@ add_to_history() {
 }
 
 pick_color() {
-    color=$(hyprpicker -a)
+    # Use xcolor or another picker (xcolor recommended)
+    color=$(xcolor)
 
-    notify-send "Color Picked" "Color $color picked" -t 3000 -a "WayPick" -u normal
-    
     if [ -n "$color" ]; then
-        color=$(echo "$color" | tr -d '[:space:]')
+        color=$(echo "$color" | tr -d '[:space:]')  # Remove extra spaces
+        notify-send "Color Picked" "Color $color picked" -t 3000 -a "WayPick" -u normal
+
+        # Save the color to the COLOR_FILE
         echo "$color" > "$COLOR_FILE"
         add_to_history "$color"
+
+        # Copy the color to clipboard automatically
+        echo -n "$color" | xclip -selection clipboard
+        notify-send "Color Copied" "Color $color copied to clipboard" -t 3000 -a "WayPick" -u normal
     fi
 }
 
 copy_to_clipboard() {
     color=$(get_last_color)
-    echo -n "$color" | wl-copy
+    echo -n "$color" | xclip -selection clipboard
     notify-send "Color Copied" "Color $color copied to clipboard" -t 3000 -a "WayPick" -u normal
 }
 
@@ -58,5 +60,5 @@ case "$1" in
     *)
         output_json
         ;;
-esac 
+esac
 

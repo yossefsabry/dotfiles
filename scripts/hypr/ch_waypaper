@@ -1,0 +1,9 @@
+#!/bin/bash
+
+if pgrep -x "waypaper" > /dev/null; then
+    echo "Waypaper is already running, doing nothing."
+else
+    echo "Waypaper is not running, starting it..."
+    waypaper &
+fi
+

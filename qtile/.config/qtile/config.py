@@ -217,6 +217,17 @@ screens = [
                     padding=5,
                     update_interval=1,  # Refreshes the widget every second
                 ),
+                widget.Battery(
+                    format='{char} {percent:2.0%}',
+                    charge_char='↑',
+                    discharge_char='↓',
+                    empty_char='⚠',
+                    unknown_char='?',
+                    full_char='⚡',
+                    update_interval=30,
+                    low_percentage=0.2,
+                    low_foreground='#ff0000',  # red text when low battery
+                ),
                 widget.Clock(format="%Y-%m-%d %a %I:%M %p"),
                 widget.DF(
                     format=" : {uf:.1f}G free",

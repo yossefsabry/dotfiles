@@ -1,0 +1,19 @@
+# Create directory for custom models (if not already there)
+mkdir -p ~/.ollama/models
+cd ~/.ollama/models
+
+# Download Aya-23 model (GGUF format)
+wget https://huggingface.co/CohereForAI/aya-23-8b-gguf/resolve/main/aya-23-8b.q4_0.gguf
+
+# Create a Modelfile to configure it for Ollama
+cat <<EOF > Modelfile
+FROM ./aya-23-8b.q4_0.gguf
+PARAMETER temperature 0.2
+EOF
+
+# Build the model in Ollama
+ollama create aya23 -f Modelfile
+
+# Run it
+ollama run aya23
+
