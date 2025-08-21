@@ -4,3 +4,11 @@ backgroud/
 ./backgroud/
 *.un*
 *.un
+
+*/*/*/*auth*.txt
+*/*/*auth*.txt
+*/*auth*.txt
+./*auth*.txt
+
+./falkon/
+falkon

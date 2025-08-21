@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+sudo mv ~/Downloads/wg-JP-FREE-30.conf /etc/wireguard/
+
+sudo chmod 600 /etc/wireguard/wg-JP-FREE-30.conf
+
+sudo wg-quick up wg-JP-FREE-30
+
+

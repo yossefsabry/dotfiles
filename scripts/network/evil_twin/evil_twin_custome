@@ -1,0 +1,50 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+# Wrapper script for the refactored evil twin implementation
+# Maintains backward compatibility with the original interface
+
+# Get the directory where this script is located
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+
+# Default values for backward compatibility
+SSID="LabPortal"
+CHANNEL="6"
+IFACE="wlan1"                 # AP-capable interface (NOT monitor mode)
+PORTAL_DIR="./sites/HUAWEI_en.portal/"
+
+# Parse args (maintaining backward compatibility)
+usage() {
+  cat <<EOF
+Usage: sudo $0 --ssid <name> --channel <1-13> --iface <wlanX> --portal-dir <folder>
+
+Example:
+  sudo $0 --ssid "My Test AP" --channel 6 --iface wlan1 --portal-dir ./TP-LINK_it.portal
+
+Note: This is a wrapper for the new modular evil_twin.sh script.
+EOF
+}
+
+while [[ $# -gt 0 ]]; do
+  case "$1" in
+    --ssid)        SSID="$2"; shift 2 ;;
+    --channel)     CHANNEL="$2"; shift 2 ;;
+    --iface)       IFACE="$2"; shift 2 ;;
+    --portal-dir)  PORTAL_DIR="$2"; shift 2 ;;
+    -h|--help)     usage; exit 0 ;;
+    *) echo "Unknown arg: $1"; usage; exit 1 ;;
+  esac
+done
+
+# Execute the new modular script with mapped parameters
+# Convert the old interface name to the new monitor interface names
+AP_IFACE="${IFACE}mon"
+DEAUTH_IFACE="wlan0mon"
+
+# Call the new script with the mapped parameters
+exec "$SCRIPT_DIR/evil_twin.sh" \
+  --ssid "$SSID" \
+  --channel "$CHANNEL" \
+  --ap-iface "$AP_IFACE" \
+  --deauth-iface "$DEAUTH_IFACE" \
+  --portal-dir "$PORTAL_DIR"

@@ -1,34 +1,134 @@
-sw_volume: 92
+sw_volume: 98
 audio_device_state:1:PulseAudio Output
 audio_device_state:1:Visualizer Output
-state: stop
-current: 0
+state: pause
+current: 25
+time: 9.786
 random: 0
-repeat: 0
-single: 0
+repeat: 1
+single: 1
 consume: 0
 crossfade: 0
 mixrampdb: 0
 mixrampdelay: -1
 lastloadedplaylist: 
 playlist_begin
-0:good_vibe/21 Reasons (feat. Ella Henderson).mp3
-1:good_vibe/Call on Me (Ryan Riback Remix).mp3
-2:good_vibe/Fast Car.mp3
-3:good_vibe/SCIENTIST (R3HAB Remix).mp3
-4:good_vibe/Shameless.mp3
-5:good_vibe/Paradise.mp3
-6:good_vibe/Mistakes.mp3
-7:good_vibe/Tattoo.mp3
-8:new/1940's Retro Jazz ｜ Vintage Jazz 1 [7Yb7QDEc4rw].mp3
-9:new/Around the World (La La La La La) (Radio Version).mp3
-10:new/atmosphere - d4vd - feel it (slowed + reverb).mp3
-11:new/d4vd - Feel It.mp3
-12:new/It's Party Time (From ＂Hotel Transylvania 3＂).mp3
-13:new/LONOWN - AVANGARD (Sped Up).mp3
-14:new/Gryffin - Hard Time Lover.mp3
-15:new/DYGO & Mxng0 - FUNK INFERNAL (SPED UP).mp3
-16:new/SEKIRX - Montagem Impacto.mp3
-17:good_vibe/After Hours.mp3
-18:good_vibe/Serena - Safari (Official Video).mp3
+0:good_vibe/Fast Car.mp3
+1:good_vibe/SCIENTIST (R3HAB Remix).mp3
+2:good_vibe/Shameless.mp3
+3:good_vibe/Paradise.mp3
+4:good_vibe/Mistakes.mp3
+5:good_vibe/Tattoo.mp3
+6:new/1940's Retro Jazz ｜ Vintage Jazz 1 [7Yb7QDEc4rw].mp3
+7:new/Around the World (La La La La La) (Radio Version).mp3
+8:new/atmosphere - d4vd - feel it (slowed + reverb).mp3
+9:new/d4vd - Feel It.mp3
+10:new/It's Party Time (From ＂Hotel Transylvania 3＂).mp3
+11:new/LONOWN - AVANGARD (Sped Up).mp3
+12:new/Gryffin - Hard Time Lover.mp3
+13:new/DYGO & Mxng0 - FUNK INFERNAL (SPED UP).mp3
+14:new/SEKIRX - Montagem Impacto.mp3
+15:good_vibe/After Hours.mp3
+16:good_vibe/Serena - Safari (Official Video).mp3
+17:good_vibe/21 Reasons (feat. Ella Henderson).mp3
+18:good_vibe/All Day And Night.mp3
+19:good_vibe/Call on Me (Ryan Riback Remix).mp3
+20:good_vibe/Caught Up.mp3
+21:good_vibe/Do It Better.mp3
+22:good_vibe/How Deep Is Your Love.mp3
+23:good_vibe/I Took A Pill In Ibiza (Seeb Remix).mp3
+24:good_vibe/I Wish (feat. Mabel).mp3
+25:other/Outside(M4A_128K).m4a
+26:other/lovely(M4A_128K).m4a
+27:other/Young Thug _Best Friend_(MP3_160K).mp3
+28:other/Eminem - Shake That (Official Music Video) ft. Nate Dogg(MP3_160K).mp3
+29:other/Elton John_ Dua Lipa - Cold Heart (PNAU Remix) (Official Video)(M4A_128K).m4a
+30:other/DRESS_ (Over Slowed   Reverb)(MP3_160K).mp3
+31:other/Eternxlkz - DRESS_ (Official Audio)(M4A_128K).m4a
+32:other/DRESS_ (Slowed   Reverb)(MP3_160K).mp3
+33:other/DRESS_ (Sped Up)(MP3_160K).mp3
+34:other/DRESS_(MP3_160K).mp3
+35:other/SLAY_(MP3_160K).mp3
+36:other/Tyler Durden - Shadow(M4A_128K).m4a
+37:other/YFN Lucci - Everyday We Lit feat. PnB Rock [Official Music Video](MP3_160K).mp3
+38:other/Fifth Harmony - Work from Home (Official Video) ft. Ty Dolla _ign(M4A_128K).m4a
+39:other/Love Sosa(MP3_160K).mp3
+40:other/ADHD(MP3_160K).mp3
+41:other/Rich Homie Quan - Flex (Ooh_ Ooh_ Ooh)(MP3_160K).mp3
+42:other/Flex Like Ouu(MP3_160K).mp3
+43:other/Future - Where Ya At (Official Music Video) ft. Drake(MP3_160K).mp3
+44:other/Busta Rhymes - Break Ya Neck (Official Video)(MP3_160K).mp3
+45:other/𝙉𝙞𝙜𝙝𝙩𝙚𝙭𝙥𝙧𝙚𝙨𝙨 (Slowed   Reverb) (Batman) (Music Video) (A dark knight...) (TikTok Version)(M4A_128K).m4a
+46:other/Portwave - Shadow Lady (Bruce Wayne) (Music Video) (TikTok Version) (The famous Bruce Wayne..)(M4A_128K).m4a
+47:other/The Game - How We Do (Official Music Video)(MP3_160K).mp3
+48:other/Bel Bont El3areedh(M4A_128K).m4a
+49:other/Dr. Dre - I Need A Doctor (Explicit) ft. Eminem_ Skylar Grey(MP3_160K).mp3
+50:other/Yo Gotti - Rake It Up ft. Nicki Minaj(MP3_160K).mp3
+51:other/METAMORPHOSIS 3 (Sped Up)(M4A_128K).m4a
+52:other/Jonas Brothers - Sucker (Official Video)(M4A_128K).m4a
+53:other/Justin Bieber - Yummy (Official Video)(M4A_128K).m4a
+54:other/Justin Timberlake - CAN_T STOP THE FEELING_ (from DreamWorks Animation_s _TROLLS_) (Official Video)(M4A_128K).m4a
+55:other/Chris Brown - Look at Me Now (Official Video) ft. Lil Wayne_ Busta Rhymes(MP3_160K).mp3
+56:other/All The Stars(M4A_128K).m4a
+57:other/DJ Khaled - EVERY CHANCE I GET (Official Music Video) ft. Lil Baby_ Lil Durk(MP3_160K).mp3
+58:other/OTW(M4A_128K).m4a
+59:other/Apogee - Toji Revival [Edit_AMV] _(M4A_128K).m4a
+60:other/Rich Gang - Lifestyle (Official Music Video) ft. Young Thug_ Rich Homie Quan(MP3_160K).mp3
+61:other/Boss(MP3_160K).mp3
+62:other/Lil Uzi Vert - Money Longer [Official Music Video](MP3_160K).mp3
+63:other/Lil Uzi Vert - You Was Right [Official Music Video](MP3_160K).mp3
+64:other/Jinx edit -  _By accident__(M4A_128K).m4a
+65:other/Lillian Hepler - Call Me Yours (Official Music Video)(M4A_128K).m4a
+66:other/Crystal Dreams (Slowed)(M4A_128K).m4a
+67:other/Crystal Dreams(M4A_128K).m4a
+68:other/Dance on the Moon(M4A_128K).m4a
+69:other/Sea Of Feelings(M4A_128K).m4a
+70:other/Lil Uzi Vert - XO Tour Llif3 (Official Music Video)(MP3_160K).mp3
+71:other/With You(M4A_128K).m4a
+72:other/Mae Stephens - If We Ever Broke Up (Official Video)(M4A_128K).m4a
+73:other/Fetty Wap - Make You Feel Good [Official Video](MP3_160K).mp3
+74:other/Future - March Madness (Official Lyric Video)(MP3_160K).mp3
+75:other/The Perfect Girl(M4A_128K).m4a
+76:other/Uptown Funk(M4A_128K).m4a
+77:other/Maroon 5 - Beautiful Mistakes ft. Megan Thee Stallion (Official Music Video)(M4A_128K).m4a
+78:other/Maroon 5 - Payphone ft. Wiz Khalifa (Explicit) (Official Music Video)(M4A_128K).m4a
+79:other/Maroon 5 - Sugar (Official Music Video)(M4A_128K).m4a
+80:other/Maroon 5 - What Lovers Do ft. SZA (Official Music Video)(M4A_128K).m4a
+81:other/Giving Chanel(MP3_160K).mp3
+82:other/Meghan Trainor - Made You Look (Official Music Video)(M4A_128K).m4a
+83:other/Meghan Trainor - Mother (Official Music Video)(M4A_128K).m4a
+84:other/MIC Drop (Steve Aoki Remix) Feat. Desiigner(MP3_160K).mp3
+85:other/Natasha Bedingfield - Unwritten (Official Video) (as featured in Anyone But You)(M4A_128K).m4a
+86:other/Till I Collapse(MP3_160K).mp3
+87:other/Eminem - Berzerk (Official Music Video) (Explicit)(MP3_160K).mp3
+88:other/Eminem - Rap God (Explicit)(MP3_160K).mp3
+89:other/Eminem - Lose Yourself(MP3_160K).mp3
+90:other/Eminem - My Name Is (Official Music Video)(MP3_160K).mp3
+91:other/Eminem - Tobey feat. Big Sean _ BabyTron (Official Music Video)(MP3_160K).mp3
+92:other/Eminem - Without Me (Official Music Video)(MP3_160K).mp3
+93:other/Eminem - Not Afraid(MP3_160K).mp3
+94:other/horizons(M4A_128K).m4a
+95:new/Portugal. The Man - Feel It Still.mp3
+96:new/ZWE1HVNDXR, MVRLLIN, & Scythermane - Amores Deviles.mp3
+97:new/Luminary(MP3_160K).mp3
+98:new/Yb Wasg'ood & Ariis - LUNA BALA.mp3
+99:new/Ogryzek - AURA 2 (Official Visualiser)(MP3_160K).mp3
+100:new/Mavis & Johnny Zing Song ｜ Hotel Transylvania ｜ CLIP.mp3
+101:new/Fluxo de Sc, RITMO DE SC, & Mega Funk Sc - MEGA FUNK PRA ME ABANDONAR.mp3
+102:new/KREZUS & Surreal_dvd - Skins (Ultra Slowed + Reverb).mp3
+103:new/KREZUS & Surreal_dvd - Skins.mp3
+104:artist/MOONLGHT - Free Bird.mp3
+105:artist/VOLKSWAGEN FUNK.mp3
+106:artist/ESSE CARA! (Slowed).mp3
+107:artist/ESSE CARA!.mp3
+108:artist/Play Hard (feat. Ne-Yo & Akon) (New Edit).mp3
+109:ramadan_songs/Sands of Time Arabic Song.mp3
+110:ramadan_songs/Best Arabic Songs.mp3
+111:ramadan_songs/Classic Arabic Songs.mp3
+112:ramadan_songs/Fajr Arabic Song.mp3
+113:ramadan_songs/Ghareeb Arabic Song.mp3
+114:ramadan_songs/Latest Arabic Songs.mp3
+115:ramadan_songs/Popular Arabic Songs.mp3
+116:ramadan_songs/Rimal.mp3
+117:ramadan_songs/Transform Arabic Song.mp3
 playlist_end

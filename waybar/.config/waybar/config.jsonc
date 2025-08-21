@@ -259,7 +259,9 @@
             "ignore-list": [
                 "rofi",
                 "kitty",
-                "kitty:scratchHypr"
+                "kitty:scratchHypr",
+                "lutris",
+                "Lutris"
             ],
             "spacing": 0
         },
