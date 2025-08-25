@@ -2,8 +2,8 @@ sw_volume: 98
 audio_device_state:1:PulseAudio Output
 audio_device_state:1:Visualizer Output
 state: pause
-current: 25
-time: 9.786
+current: 104
+time: 61.177
 random: 0
 repeat: 1
 single: 1
@@ -131,4 +131,21 @@ playlist_begin
 115:ramadan_songs/Popular Arabic Songs.mp3
 116:ramadan_songs/Rimal.mp3
 117:ramadan_songs/Transform Arabic Song.mp3
+118:good_vibe/HISTORY.mp3
+119:good_vibe/Hurts So Good.mp3
+120:good_vibe/Last Day (Dualities Remix).mp3
+121:good_vibe/Love Is Killing Me.mp3
+122:good_vibe/Melody.mp3
+123:good_vibe/Moth To A Flame.mp3
+124:good_vibe/Piece Of Me.mp3
+125:good_vibe/Never Go Back (Robin Schulz Remix).mp3
+126:good_vibe/So Am I (Steve Void Dance Remix).mp3
+127:good_vibe/So Close.mp3
+128:good_vibe/Superhero.mp3
+129:good_vibe/Water (feat. ZOHARA).mp3
+130:good_vibe/we can't be friends (wait for your love).mp3
+131:good_vibe/We Don't Talk Anymore (feat. Selena Gomez).mp3
+132:good_vibe/You Got Me.mp3
+133:good_vibe/Without Me.mp3
+134:good_vibe/You & Me (Rivo Remix).mp3
 playlist_end

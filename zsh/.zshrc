@@ -14,6 +14,10 @@ alias wine64="wine "
 alias wine32="wine "
 #alias python="python3 "
 
+# alias for mpv for quality
+alias mpv="mpv --vf='scale=854:480'"
+
+
 # for slove loss colorscheme for nvim in tmux
 alias tmux="TERM=screen-256color-bce tmux"
 

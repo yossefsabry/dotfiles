@@ -36,15 +36,15 @@ exec skey &
 # #: }}}
 
 #:qtile {{{
-exec feh --bg-center --bg-scale ~/Pictures/my_wallpapers-main/The_Almighty.jpg &
-exec flameshot &
-exec qtile start > ~/qtile.log 2>&1 
+# exec feh --bg-center --bg-scale ~/Pictures/my_wallpapers-main/The_Almighty.jpg &
+# exec flameshot &
+# exec qtile start > ~/qtile.log 2>&1 
 #:}}}
 
 # :i3 {{{
 # exec run_picom &
-# exec flameshot &
-# exec i3 > ~/.i3.log 2>&1 
+exec flameshot &
+exec i3 > ~/.i3.log 2>&1 
 # :}}}
 
 # :hyprland {{{

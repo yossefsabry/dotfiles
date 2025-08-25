@@ -282,8 +282,8 @@ dgroups_app_rules = [
     Rule(Match(wm_class="obsidian"), group="4"),  # type: ignore
     Rule(Match(wm_class="Zathura"), group="4"),  # type: ignore
     Rule(Match(wm_class="code"), group="4"),  # type: ignore
-    Rule(Match(wm_class="whatsie"), group="4"),  # type: ignore
-    Rule(Match(wm_class="WhatSie"), group="4"),  # type: ignore
+    Rule(Match(wm_class="KeePassXC"), group="4"),  # type: ignore
+    Rule(Match(wm_class="keepassxc"), group="4"),  # type: ignore
 
     # Workspace 5
     Rule(Match(wm_class="Nemo"), group="5"),  # type: ignore
