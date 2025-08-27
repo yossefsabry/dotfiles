@@ -17,6 +17,10 @@ alias wine32="wine "
 # alias for mpv for quality
 alias mpv="mpv --vf='scale=854:480'"
 
+# darkmode gtk for applicatoin darkmode preferecne
+export GTK_THEME=Arc-Dark
+export GTK_APPLICATION_PREFER_DARK_THEME=1
+
 
 # for slove loss colorscheme for nvim in tmux
 alias tmux="TERM=screen-256color-bce tmux"
@@ -291,6 +295,3 @@ export FZF_DEFAULT_OPTS='--extended --layout=reverse --height=100% '
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 
 
-. "$HOME/.local/bin/env"
-export ANDROID_HOME=$HOME/Android/Sdk
-export PATH=$PATH:$ANDROID_HOME/emulator:$ANDROID_HOME/tools:$ANDROID_HOME/tools/bin:$ANDROID_HOME/platform-tools

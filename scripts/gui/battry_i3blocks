@@ -1,13 +1,19 @@
 #!/bin/bash
 
 BAT=$(acpi -b | grep -E -o '[0-9][0-9]?%')
+BAT_NUM=${BAT%?}  # strip % sign
 
 # Full and short texts
 echo "Battery: $BAT"
 echo "BAT: $BAT"
 
-# Set urgent flag below 5% or use orange below 20%
-[ ${BAT%?} -le 5 ] && exit 33
-[ ${BAT%?} -le 20 ] && echo "#FF8000"
+# Low battery warnings
+if [ "$BAT_NUM" -le 10 ]; then
+    notify-send -u critical "⚠️ Battery Low" "Battery is at $BAT. Please plug in your charger!"
+    exit 33
+elif [ "$BAT_NUM" -le 20 ]; then
+    echo "#FF8000"
+fi
 
 exit 0
+

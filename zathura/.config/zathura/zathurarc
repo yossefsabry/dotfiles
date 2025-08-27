@@ -61,9 +61,11 @@ set notification-warning-fg "#191724" # Base background
 set notification-bg "#1f1d2e" # Darker Subtle background
 set notification-fg "#e0def4" # base Foreground
 
+
 # Highlight Colors
-set highlight-color "#a382c6" # Darkened Iris (Purple)
-set highlight-active-color "#6fa2b4" # Darkened Foam (Cyanish)
+set highlight-color             "rgba(0xeb, 0xbc, 0xba, 0.5)"
+set highlight-active-color      "rgba(0xeb, 0x6f, 0x92, 0.5)"
+
 
 # Completion Colors
 set completion-group-bg "#191724" # Base background

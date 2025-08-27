@@ -90,16 +90,31 @@ start_http_server() {
     
     log "Starting HTTP server from: $portal_dir"
     
+    # Check if port 80 is already in use
+    if lsof -i :80 -sTCP:LISTEN >/dev/null 2>&1; then
+        log "Warning: Port 80 is already in use, attempting to kill processes..."
+        fuser -k 80/tcp 2>/dev/null || true
+        sleep 2
+    fi
+    
     (
         cd "$portal_dir" || error_exit "Failed to change to portal directory"
         python3 -u -m http.server 80 --bind "$ap_ip" >"$log_file" 2>&1 &
         echo $! > "$pid_file"
     )
     
-    sleep 2
+    sleep 3
     
     # Check if HTTP server started successfully
     if [[ ! -f "$pid_file" ]]; then
         error_exit "Failed to start HTTP server"
     fi
+    
+    # Additional check to see if the server is actually listening
+    local pid=$(cat "$pid_file")
+    if ! kill -0 "$pid" 2>/dev/null; then
+        error_exit "HTTP server process died immediately after starting"
+    fi
+    
+    log "HTTP server started successfully (PID: $(cat "$pid_file"))"
 }

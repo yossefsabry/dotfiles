@@ -10,36 +10,73 @@ SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 # Default values for backward compatibility
 SSID="LabPortal"
 CHANNEL="6"
-IFACE="wlan1"                 # AP-capable interface (NOT monitor mode)
+AP_IFACE="wlan1mon"           # Monitor mode interface for AP
+DEAUTH_IFACE="wlan0mon"       # Monitor mode interface for deauth
 PORTAL_DIR="./sites/HUAWEI_en.portal/"
+HANDSHAKE_FILE=""             # Optional handshake file
+CONFIG_FILE=""                # Optional custom config file
 
 # Parse args (maintaining backward compatibility)
 usage() {
   cat <<EOF
-Usage: sudo $0 --ssid <name> --channel <1-13> --iface <wlanX> --portal-dir <folder>
+Usage: sudo $0 [OPTIONS]
 
-Example:
-  sudo $0 --ssid "My Test AP" --channel 6 --iface wlan1 --portal-dir ./TP-LINK_it.portal
+Options:
+  --ssid <name>              Set the SSID for the evil twin AP
+  --channel <1-13>           Set the channel for the evil twin AP
+  --ap-iface <iface>         Set the monitor interface for AP (default: wlan1mon)
+  --deauth-iface <iface>     Set the monitor interface for deauth (default: wlan0mon)
+  --portal-dir <folder>      Set the portal directory
+  --handshake-file <file>    Set the handshake file for the attack
+  --config-file <file>       Load configuration from a custom file
+  -h, --help                 Show this help message
+
+Examples:
+  sudo $0 --ssid "My Test AP" --channel 6 --ap-iface wlan1mon --deauth-iface wlan0mon --portal-dir ./TP-LINK_it.portal
+  sudo $0 --config-file ./my_config.conf
 
 Note: This is a wrapper for the new modular evil_twin.sh script.
+Configuration file format:
+  # Example config
+  SSID="MyNetwork"
+  CHANNEL="6"
+  AP_IFACE="wlan1mon"
+  DEAUTH_IFACE="wlan0mon"
+  PORTAL_DIR="./sites/HUAWEI_en.portal/"
+  HANDSHAKE_FILE="/path/to/handshake.cap"
 EOF
+}
+
+# Function to load configuration from a file
+load_config() {
+  local config_file="$1"
+  if [[ -f "$config_file" ]]; then
+    echo "Loading configuration from $config_file"
+    source "$config_file"
+  else
+    echo "Configuration file $config_file not found"
+    exit 1
+  fi
 }
 
 while [[ $# -gt 0 ]]; do
   case "$1" in
-    --ssid)        SSID="$2"; shift 2 ;;
-    --channel)     CHANNEL="$2"; shift 2 ;;
-    --iface)       IFACE="$2"; shift 2 ;;
-    --portal-dir)  PORTAL_DIR="$2"; shift 2 ;;
-    -h|--help)     usage; exit 0 ;;
+    --ssid)          SSID="$2"; shift 2 ;;
+    --channel)       CHANNEL="$2"; shift 2 ;;
+    --ap-iface)      AP_IFACE="$2"; shift 2 ;;
+    --deauth-iface)  DEAUTH_IFACE="$2"; shift 2 ;;
+    --portal-dir)    PORTAL_DIR="$2"; shift 2 ;;
+    --handshake-file) HANDSHAKE_FILE="$2"; shift 2 ;;
+    --config-file)   CONFIG_FILE="$2"; shift 2 ;;
+    -h|--help)       usage; exit 0 ;;
     *) echo "Unknown arg: $1"; usage; exit 1 ;;
   esac
 done
 
-# Execute the new modular script with mapped parameters
-# Convert the old interface name to the new monitor interface names
-AP_IFACE="${IFACE}mon"
-DEAUTH_IFACE="wlan0mon"
+# Load configuration file if provided
+if [[ -n "$CONFIG_FILE" ]]; then
+  load_config "$CONFIG_FILE"
+fi
 
 # Call the new script with the mapped parameters
 exec "$SCRIPT_DIR/evil_twin.sh" \
@@ -47,4 +84,5 @@ exec "$SCRIPT_DIR/evil_twin.sh" \
   --channel "$CHANNEL" \
   --ap-iface "$AP_IFACE" \
   --deauth-iface "$DEAUTH_IFACE" \
-  --portal-dir "$PORTAL_DIR"
+  --portal-dir "$PORTAL_DIR" \
+  ${HANDSHAKE_FILE:+--handshake-file "$HANDSHAKE_FILE"}

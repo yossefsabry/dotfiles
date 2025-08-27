@@ -3,11 +3,11 @@
 # Configuration for evil twin attack
 
 # Default settings
-DEFAULT_SSID="LabPortal"
+DEFAULT_SSID="EvilTwin"
 DEFAULT_CHANNEL="6"
 DEFAULT_AP_IFACE="wlan1mon"
 DEFAULT_DEAUTH_IFACE="wlan0mon"
-DEFAULT_PORTAL_DIR="~/testing/fluxion/attacks/Captive Portal/sites/HUAWEI_en.portal/"
+DEFAULT_PORTAL_DIR=""
 DEFAULT_TARGET_BSSID=""
 DEFAULT_TARGET_CHANNEL=""
 
