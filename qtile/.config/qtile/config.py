@@ -6,6 +6,7 @@ from libqtile.utils import guess_terminal
 from libqtile.config import ScratchPad, DropDown
 from function.switch_window import latest_group
 from function.toggle_treetab import toggle_treetab
+from function.battery_check import battery_warning
 
 
 
@@ -184,12 +185,47 @@ widget_defaults = dict(
 )
 extension_defaults = widget_defaults.copy()
 
+# HINT NOT WORKING  FIXING THIS
+# widget for battery and saving it here for adding a new function for 
+# to check for the battery precent and send a warning for me when 
+# it's less than 20 or 10 precent (send a notify-send warning )
+battery = widget.Battery(
+    format='{char} {percent:2.0%}',
+    charge_char='↑',
+    discharge_char='↓',
+    empty_char='⚠',
+    unknown_char='?',
+    full_char='⚡',
+    update_interval=30,
+    low_percentage=0.2,
+    low_foreground='#ff0000',  # red text when low battery
+)
+
+# Attach your function to run after each update
+battery.add_callbacks({"update": lambda w: battery_warning(battery)})
+
+
 screens = [
     Screen(
         bottom=bar.Bar(
             [
                 widget.CurrentLayout(),
-                widget.GroupBox(),
+                widget.GroupBox(
+                    highlight_method="block",
+                    invert_mouse_wheel=True,  # optional: prevents accidental scrolling
+                    active="#e0def4",   # text for active groups
+                    inactive="#6e6a86", # text for inactive groups
+                    this_current_screen_border="#9ccfd8",  # focused group highlight (foam)
+                    this_screen_border="#31748f",          # other screen (pine)
+                    other_current_screen_border="#c4a7e7", # other screen focused (iris)
+                    other_screen_border="#908caa",         # other screen unfocused (subtle)
+                    block_highlight_text_color="#191724",  # text color when highlighted
+                    highlight_color=["#21202e", "#403d52"], # background highlight layers
+                    use_mouse_wheel=False,    # disables mouse wheel switching
+                    disable_drag=True,
+                    # ⬇️ keeps all groups visible in fixed order
+                    visible_groups=[str(i) for i in range(1, 10)],
+                ),
                 widget.Prompt(),
                 widget.WindowName(),
                 widget.TextBox("Press &lt;M-p&gt; to spawn", 
@@ -217,17 +253,7 @@ screens = [
                     padding=5,
                     update_interval=1,  # Refreshes the widget every second
                 ),
-                widget.Battery(
-                    format='{char} {percent:2.0%}',
-                    charge_char='↑',
-                    discharge_char='↓',
-                    empty_char='⚠',
-                    unknown_char='?',
-                    full_char='⚡',
-                    update_interval=30,
-                    low_percentage=0.2,
-                    low_foreground='#ff0000',  # red text when low battery
-                ),
+                battery,
                 widget.Clock(format="%Y-%m-%d %a %I:%M %p"),
                 widget.DF(
                     format=" : {uf:.1f}G free",
