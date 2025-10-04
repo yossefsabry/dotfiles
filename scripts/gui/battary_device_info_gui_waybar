@@ -1,0 +1,39 @@
+#!/bin/bash
+
+BAT_PATH="/sys/class/power_supply/BAT0"
+
+status=$(cat "$BAT_PATH/status")
+capacity=$(cat "$BAT_PATH/capacity")
+time=$(acpi -b | head -n1 | awk -F', ' '{print $3}')
+power_mode="unknown"
+if command -v powerprofilesctl >/dev/null 2>&1; then
+    power_mode=$(powerprofilesctl get)
+else
+    if [[ -f "/sys/devices/system/cpu/cpu0/cpufreq/scaling_governor" ]]; then
+        power_mode=$(cat /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor)
+    fi
+fi
+
+voltage=$(cat "$BAT_PATH/voltage_now" 2>/dev/null || echo 0)
+current=$(cat "$BAT_PATH/current_now" 2>/dev/null || echo 0)
+power=$(cat "$BAT_PATH/power_now" 2>/dev/null || echo 0)
+
+voltage_v=$(echo "scale=2; $voltage / 1000000" | bc)
+current_a=$(echo "scale=2; $current / 1000000" | bc)
+if [[ $power -gt 0 ]]; then
+    power_w=$(echo "scale=2; $power / 1000000" | bc)
+else
+    power_w=$(echo "scale=2; $voltage / 1000000 * $current / 1000000" | bc)
+fi
+
+# Build output string
+output="Status: $status\nCharge: $capacity%\nTime: ${time:-N/A}\nPower mode: $power_mode\nVoltage: ${voltage_v} V\nPower: ${power_w} W"
+
+# Append current only if > 0
+current_check=$(echo "$current_a > 0" | bc)
+if [[ $current_check -eq 1 ]]; then
+    output+="\nCurrent: ${current_a} A"
+fi
+
+notify-send "Battery Info" "$output"
+

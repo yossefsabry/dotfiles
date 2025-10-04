@@ -22,7 +22,7 @@ check_root() {
 
 # Check if required binaries are installed
 check_dependencies() {
-    local deps=("hostapd" "dnsmasq" "python3" "ip" "aireplay-ng" "airodump-ng" "aircrack-ng")
+    local deps=("hostapd" "dnsmasq" "python3" "ip" "aireplay-ng" "airodump-ng" "aircrack-ng" "iw")
     for bin in "${deps[@]}"; do
         command -v "$bin" >/dev/null 2>&1 || error_exit "Missing dependency: $bin"
     done
@@ -45,24 +45,35 @@ setup_interface() {
     local iface=$1
     local ip_addr=${2:-"10.23.0.1/24"}
     
-    log "Preparing interface: $iface"
-    # Check if interface is in monitor mode
-    if iw dev "$iface" info 2>&1 | grep -q "type monitor"; then
-        log "Interface $iface is in monitor mode, temporarily disabling monitor mode for AP setup"
-        # For AP creation, we need managed mode, but we'll preserve the original state
-        # This is a limitation - hostapd requires managed mode
-        log "Warning: Interface $iface is in monitor mode. AP may not work correctly."
+    # Check if we should skip interface setup
+    if [[ "${SKIP_INTERFACE_SETUP:-false}" == "true" ]]; then
+        log "Skipping interface setup for $iface (pre-configured)"
+        return 0
     fi
     
+    log "Preparing interface: $iface"
+    
+    # Bring interface down
     ip link set "$iface" down 2>/dev/null || true
+    
+    # Set interface to managed mode for AP
+    iw dev "$iface" set type managed 2>/dev/null || true
+    
+    # Flush any existing IP addresses
     ip addr flush dev "$iface" 2>/dev/null || true
+    
+    # Assign IP address
     ip addr add "$ip_addr" dev "$iface"
+    
+    # Bring interface up
     ip link set "$iface" up
     
     # Verify interface is up
     if ! ip link show "$iface" | grep -q "state UP"; then
         error_exit "Failed to bring interface $iface up"
     fi
+    
+    log "Interface $iface configured with IP $ip_addr"
 }
 
 # Clean up function
@@ -102,6 +113,31 @@ cleanup() {
         timeout 5 tail --pid="$airodump_pid" -f /dev/null 2>/dev/null || true
     fi
     
+    # Kill monitoring processes
+    if [[ -f "$WORKDIR/monitor_http.pid" ]]; then
+        local monitor_http_pid=$(cat "$WORKDIR/monitor_http.pid")
+        log "Stopping HTTP monitor (PID: $monitor_http_pid)"
+        kill "$monitor_http_pid" 2>/dev/null || true
+    fi
+    
+    if [[ -f "$WORKDIR/monitor_dns.pid" ]]; then
+        local monitor_dns_pid=$(cat "$WORKDIR/monitor_dns.pid")
+        log "Stopping DNS monitor (PID: $monitor_dns_pid)"
+        kill "$monitor_dns_pid" 2>/dev/null || true
+    fi
+    
+    if [[ -f "$WORKDIR/monitor_dhcp.pid" ]]; then
+        local monitor_dhcp_pid=$(cat "$WORKDIR/monitor_dhcp.pid")
+        log "Stopping DHCP monitor (PID: $monitor_dhcp_pid)"
+        kill "$monitor_dhcp_pid" 2>/dev/null || true
+    fi
+    
+    if [[ -f "$WORKDIR/monitor_deauth.pid" ]]; then
+        local monitor_deauth_pid=$(cat "$WORKDIR/monitor_deauth.pid")
+        log "Stopping deauth monitor (PID: $monitor_deauth_pid)"
+        kill "$monitor_deauth_pid" 2>/dev/null || true
+    fi
+    
     # Kill any remaining related processes
     pkill -f "hostapd.*$AP_IFACE" 2>/dev/null || true
     pkill -f "dnsmasq.*$AP_IFACE" 2>/dev/null || true
@@ -117,6 +153,9 @@ cleanup() {
     
     if [[ -n "${DEAUTH_IFACE:-}" ]] && [[ "$DEAUTH_IFACE" != "$AP_IFACE" ]]; then
         log "Cleaning up deauth interface: $DEAUTH_IFACE"
+        # Set interface back to managed mode
+        ip link set "$DEAUTH_IFACE" down 2>/dev/null || true
+        iw dev "$DEAUTH_IFACE" set type managed 2>/dev/null || true
         ip link set "$DEAUTH_IFACE" down 2>/dev/null || true
     fi
     

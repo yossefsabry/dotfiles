@@ -5,8 +5,8 @@
 # Default settings
 DEFAULT_SSID="EvilTwin"
 DEFAULT_CHANNEL="6"
-DEFAULT_AP_IFACE="wlan1mon"
-DEFAULT_DEAUTH_IFACE="wlan0mon"
+DEFAULT_AP_IFACE="wlan0"      # Using managed mode for AP
+DEFAULT_DEAUTH_IFACE="wlan1"  # Using monitor mode for deauth
 DEFAULT_PORTAL_DIR=""
 DEFAULT_TARGET_BSSID=""
 DEFAULT_TARGET_CHANNEL=""

@@ -1,88 +1,133 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-# Wrapper script for the refactored evil twin implementation
-# Maintains backward compatibility with the original interface
+# Simplified wrapper script for evil twin attack
+# Pre-configured to use wlan0 for AP (managed mode) and wlan1 for deauth (monitor mode)
 
 # Get the directory where this script is located
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
-# Default values for backward compatibility
-SSID="LabPortal"
-CHANNEL="6"
-AP_IFACE="wlan1mon"           # Monitor mode interface for AP
-DEAUTH_IFACE="wlan0mon"       # Monitor mode interface for deauth
-PORTAL_DIR="./sites/HUAWEI_en.portal/"
-HANDSHAKE_FILE=""             # Optional handshake file
-CONFIG_FILE=""                # Optional custom config file
+# Simplified default values
+SSID=""
+CHANNEL=""
+AP_IFACE="wlan0"              # Managed mode interface for AP
+DEAUTH_IFACE="wlan1"          # Monitor mode interface for deauth
+PORTAL_DIR="./sites/Test.portal/"
+HANDSHAKE_FILE=""             # Optional handshake file (not directly passed to main script)
+TARGET_BSSID=""               # Target AP BSSID for handshake capture
+TARGET_CHANNEL=""             # Target AP channel for handshake capture
 
-# Parse args (maintaining backward compatibility)
+# Parse args (simplified interface)
 usage() {
   cat <<EOF
 Usage: sudo $0 [OPTIONS]
 
-Options:
-  --ssid <name>              Set the SSID for the evil twin AP
-  --channel <1-13>           Set the channel for the evil twin AP
-  --ap-iface <iface>         Set the monitor interface for AP (default: wlan1mon)
-  --deauth-iface <iface>     Set the monitor interface for deauth (default: wlan0mon)
-  --portal-dir <folder>      Set the portal directory
-  --handshake-file <file>    Set the handshake file for the attack
-  --config-file <file>       Load configuration from a custom file
+Simple interface for evil twin attack:
+  --ssid <name>              Set the SSID for the evil twin AP (required)
+  --channel <1-13>           Set the channel for the evil twin AP (required)
+  --handshake-file <file>    Set the handshake file for the attack (optional)
+  --target-bssid <mac>       Target AP BSSID for handshake capture (optional)
+  --target-channel <1-14>    Target AP channel for handshake capture (optional)
   -h, --help                 Show this help message
 
+Note: This script automatically uses:
+  - wlan0 for AP creation (managed mode)
+  - wlan1 for deauthentication (monitor mode)
+  - All logs are stored in /tmp/evil_twin_info.log
+
 Examples:
-  sudo $0 --ssid "My Test AP" --channel 6 --ap-iface wlan1mon --deauth-iface wlan0mon --portal-dir ./TP-LINK_it.portal
-  sudo $0 --config-file ./my_config.conf
-
-Note: This is a wrapper for the new modular evil_twin.sh script.
-Configuration file format:
-  # Example config
-  SSID="MyNetwork"
-  CHANNEL="6"
-  AP_IFACE="wlan1mon"
-  DEAUTH_IFACE="wlan0mon"
-  PORTAL_DIR="./sites/HUAWEI_en.portal/"
-  HANDSHAKE_FILE="/path/to/handshake.cap"
+  sudo $0 --ssid "TargetNetwork" --channel 6 --target-bssid 00:11:22:33:44:55 --target-channel 6
+  sudo $0 --ssid "FreeWiFi" --channel 11 --handshake-file /path/to/handshake.cap
 EOF
-}
-
-# Function to load configuration from a file
-load_config() {
-  local config_file="$1"
-  if [[ -f "$config_file" ]]; then
-    echo "Loading configuration from $config_file"
-    source "$config_file"
-  else
-    echo "Configuration file $config_file not found"
-    exit 1
-  fi
 }
 
 while [[ $# -gt 0 ]]; do
   case "$1" in
-    --ssid)          SSID="$2"; shift 2 ;;
-    --channel)       CHANNEL="$2"; shift 2 ;;
-    --ap-iface)      AP_IFACE="$2"; shift 2 ;;
-    --deauth-iface)  DEAUTH_IFACE="$2"; shift 2 ;;
-    --portal-dir)    PORTAL_DIR="$2"; shift 2 ;;
-    --handshake-file) HANDSHAKE_FILE="$2"; shift 2 ;;
-    --config-file)   CONFIG_FILE="$2"; shift 2 ;;
-    -h|--help)       usage; exit 0 ;;
-    *) echo "Unknown arg: $1"; usage; exit 1 ;;
+    --ssid)                 SSID="$2"; shift 2 ;;
+    --channel)              CHANNEL="$2"; shift 2 ;;
+    --handshake-file)       HANDSHAKE_FILE="$2"; shift 2 ;;
+    --target-bssid)         TARGET_BSSID="$2"; shift 2 ;;
+    --target-channel)       TARGET_CHANNEL="$2"; shift 2 ;;
+    -h|--help)              usage; exit 0 ;;
+    *) echo "Unknown argument: $1"; usage; exit 1 ;;
   esac
 done
 
-# Load configuration file if provided
-if [[ -n "$CONFIG_FILE" ]]; then
-  load_config "$CONFIG_FILE"
+# Validate required parameters
+if [[ -z "$SSID" ]]; then
+  echo "Error: SSID is required"
+  usage
+  exit 1
 fi
 
-# Call the new script with the mapped parameters
-exec "$SCRIPT_DIR/evil_twin.sh" \
-  --ssid "$SSID" \
-  --channel "$CHANNEL" \
-  --ap-iface "$AP_IFACE" \
-  --deauth-iface "$DEAUTH_IFACE" \
-  --portal-dir "$PORTAL_DIR" \
-  ${HANDSHAKE_FILE:+--handshake-file "$HANDSHAKE_FILE"}
+if [[ -z "$CHANNEL" ]]; then
+  echo "Error: Channel is required"
+  usage
+  exit 1
+fi
+
+# Validate channel is a number between 1-14
+if ! [[ "$CHANNEL" =~ ^[0-9]+$ ]] || [[ "$CHANNEL" -lt 1 ]] || [[ "$CHANNEL" -gt 14 ]]; then
+  echo "Error: Channel must be a number between 1-14"
+  exit 1
+fi
+
+# Validate that if target BSSID is provided, target channel is also provided
+if [[ -n "$TARGET_BSSID" && -z "$TARGET_CHANNEL" ]]; then
+  echo "Error: Target channel is required when target BSSID is specified"
+  exit 1
+fi
+
+if [[ -n "$TARGET_CHANNEL" && -z "$TARGET_BSSID" ]]; then
+  echo "Error: Target BSSID is required when target channel is specified"
+  exit 1
+fi
+
+# Expand tilde in handshake file path if provided
+if [[ -n "$HANDSHAKE_FILE" ]]; then
+  HANDSHAKE_FILE="${HANDSHAKE_FILE/#\~/$HOME}"
+fi
+
+# Build command arguments with fixed interfaces
+CMD_ARGS=(
+  --ssid "$SSID"
+  --channel "$CHANNEL"
+  --ap-iface "$AP_IFACE"
+  --deauth-iface "$DEAUTH_IFACE"
+  --portal-dir "$PORTAL_DIR"
+)
+
+# Logic:
+# - If handshake file is provided, don't do handshake capture (skip target BSSID/channel)
+# - If target BSSID/channel are provided, do handshake capture (skip handshake file)
+# - If neither, just run the AP without handshake capture
+
+if [[ -n "$HANDSHAKE_FILE" ]]; then
+  # Using pre-captured handshake file, skip handshake capture
+  echo "Using pre-captured handshake file: $HANDSHAKE_FILE"
+  echo "Skipping handshake capture from target network"
+elif [[ -n "$TARGET_BSSID" && -n "$TARGET_CHANNEL" ]]; then
+  # Capturing handshake from target network
+  CMD_ARGS+=(--target-bssid "$TARGET_BSSID")
+  CMD_ARGS+=(--target-channel "$TARGET_CHANNEL")
+  echo "Capturing handshake from target network:"
+  echo "  Target BSSID: $TARGET_BSSID"
+  echo "  Target Channel: $TARGET_CHANNEL"
+else
+  # No handshake file or target specified, just run AP
+  echo "Running AP only (no handshake capture)"
+fi
+
+echo "Starting Evil Twin attack with the following configuration:"
+echo "  SSID: $SSID"
+echo "  Channel: $CHANNEL"
+echo "  AP Interface: $AP_IFACE (managed mode)"
+echo "  Deauth Interface: $DEAUTH_IFACE (monitor mode)"
+echo ""
+echo "All information will be logged to: /tmp/evil_twin_info.log"
+echo ""
+echo "Press Enter to continue or Ctrl+C to cancel..."
+read -r
+
+# Call the updated script with the mapped parameters
+exec "$SCRIPT_DIR/evil_twin_updated.sh" "${CMD_ARGS[@]}"

@@ -4,6 +4,18 @@ cd ~
 
 [ -f ~/.xprofile ] && . ~/.xprofile
 
+# ~/.xprofile or ~/.xinitrc
+
+# some setting for i3 and qtile to working fine with most of applications
+# Start dbus
+eval $(dbus-launch --sh-syntax --exit-with-session)
+export XDG_SESSION_TYPE=X11
+
+# load some info from xresourse for the cursor size
+exec xrdb -merge ~/.Xresources &
+
+exec bright 20% &
+
 # for touchbad on click
 exec xinput set-prop "AlpsPS/2 ALPS DualPoint TouchPad" "libinput Tapping Enabled" 1 &
 
@@ -20,6 +32,7 @@ exec sxhkd &
 exec xset r rate 250 50 &
 exec redshift -O 2000K &
 exec skey &
+
 #
 # bspwm {{{
 #exec flameshot &
@@ -36,16 +49,17 @@ exec skey &
 # #: }}}
 
 #:qtile {{{
-exec feh --bg-center --bg-scale ~/Pictures/my_wallpapers-main/The_Almighty.jpg &
-exec flameshot &
-exec qtile start > ~/qtile.log 2>&1 
+# exec feh --bg-center --bg-scale ~/Pictures/my_wallpapers-main/The_Almighty.jpg &
+# exec flameshot &
+# exec qtile start > ~/qtile.log 2>&1 
 #:}}}
 
 # :i3 {{{
 # exec run_picom &
-# exec flameshot &
-# exec i3 > ~/.i3.log 2>&1 
-# :}}}
+exec feh --bg-center --bg-scale ~/Pictures/my_wallpapers-main/The_Almighty.jpg &
+exec flameshot &
+exec i3 > ~/.i3.log 2>&1 
+# # :}}}
 
 # :hyprland {{{
 # exec /usr/bin/Hyprland > /var/log/Hyprland.log 2>&1 

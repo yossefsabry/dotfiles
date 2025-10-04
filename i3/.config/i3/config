@@ -9,10 +9,11 @@ set $mod Mod1
 
 set $term urxvt
 
-# exec --no-startup-id picom
 # exec --no-startup-id feh --bg-scale ~/backgrounds/nice-blue-background.png
 # exec --no-startup-id xrdb -merge ~/.Xresources
 exec_always --no-startup-id setxkbmap -option ctrl:nocaps
+
+
 
 # kill any hanging polybar processes
 # exec_always killall polybar
@@ -165,20 +166,24 @@ bindsym $mod+Shift+0 move container to workspace number $ws10
 assign [class="brave-browser"] workspace 2
 assign [class="Brave-browser"] workspace 2
 assign [class="qutebrowser"] workspace 2
+assign [class="chromium"] workspace 2
+assign [class="Chromium"] workspace 2
+
 # Workspace 3
 assign [class="discord"] workspace 3
 assign [class="Microsoft To-Do Unofficial"] workspace 3
 assign [class="kuro"] workspace 3
 assign [class="Kuro"] workspace 3
-
 assign [class="mpv"] workspace 3
 assign [class="lg"] workspace 3
+assign [class="KeePassXC"] workspace 3
+assign [class="keepassxc"] workspace 3
+
 # Workspace 4
 assign [class="obsidian"] workspace 4
 assign [class="Zathura"] workspace 4
 assign [class="code"] workspace 4
-assign [class="whatsie"] workspace 4
-assign [class="WhatSie"] workspace 4
+
 # Workspace 5
 assign [class="Nemo"] workspace 5
 assign [class="Zeal"] workspace 5

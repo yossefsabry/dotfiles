@@ -1,0 +1,40 @@
+#!/bin/bash
+
+notify_levels=(3 5 10 20)
+BAT=$(ls /sys/class/power_supply | grep BAT | head -n 1)
+AC=$(ls /sys/class/power_supply | grep AC | head -n 1)  # AC adapter
+last_notify=100
+last_status=""
+
+while true; do
+    bat_lvl=$(cat /sys/class/power_supply/${BAT}/capacity)
+    status=$(cat /sys/class/power_supply/${BAT}/status)  # Charging / Discharging / Full
+
+    # Detect charging state change (plug/unplug)
+    if [[ "$status" != "$last_status" ]]; then
+        if [[ "$status" == "Charging" ]]; then
+            notify-send -u normal "Charger Connected" "Device is now charging."
+        elif [[ "$status" == "Discharging" ]]; then
+            notify-send -u normal "Charger Disconnected" "Running on battery power."
+        fi
+        last_status="$status"
+    fi
+
+    # Battery level notifications
+    if [ "$bat_lvl" -gt "$last_notify" ]; then
+        last_notify=$bat_lvl
+    fi
+
+    for notify_level in "${notify_levels[@]}"; do
+        if [ "$bat_lvl" -le "$notify_level" ]; then
+            if [ "$notify_level" -lt "$last_notify" ]; then
+                notify-send -u critical "Low Battery" "$bat_lvl% battery remaining."
+                last_notify=$bat_lvl
+                break
+            fi
+        fi
+    done
+
+    sleep 60
+done
+

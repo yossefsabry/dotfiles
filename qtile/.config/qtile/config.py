@@ -2,17 +2,18 @@ from libqtile import bar, layout, qtile, widget
 from libqtile.config import Click, Drag, Group, Key, Match, Screen
 from libqtile.config import Match, Rule
 from libqtile.lazy import lazy
-from libqtile.utils import guess_terminal
 from libqtile.config import ScratchPad, DropDown
 from function.switch_window import latest_group
 from function.toggle_treetab import toggle_treetab
 from function.battery_check import battery_warning
+# from libqtile.utils import guess_terminal
 
 
 
 # setup cursor theme
 import subprocess
 subprocess.run(["xsetroot", "-cursor_name", "left_ptr"])
+
 
 
 

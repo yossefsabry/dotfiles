@@ -8,6 +8,14 @@ export PATH="$(find "$HOME/dotfiles/scripts" -type d | tr '\n' ':')$PATH"
 # export PATH="$HOME/dotfiles/scripts:$PATH"
 # export PATH="$HOME/dotfiles/scripts/install_scripts:$PATH"
 
+export brave="brave --password-store=basic"
+
+# set auto correct commends on zsh or shell
+setopt CORRECT
+
+# alias for making hyprland using wayland always
+alias hyprland="Hyprland "
+
 
 alias gpt="tgpt "
 alias wine64="wine "
@@ -295,3 +303,10 @@ export FZF_DEFAULT_OPTS='--extended --layout=reverse --height=100% '
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 
 
+
+# bun completions
+[ -s "/home/yossef/.bun/_bun" ] && source "/home/yossef/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"

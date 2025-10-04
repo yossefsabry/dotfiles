@@ -51,7 +51,7 @@
                 "5": " 五",
                 "6": " 六",
                 "7": " 七",
-            }
+            },
         },
         "temperature": {
             "format": "{icon} {temperatureC}°C ",
@@ -65,6 +65,7 @@
             "on-click": "kitty --hold -e btop",
             "rotate": 270
         },
+
         "battery": {
             "format": "{capacity}% {icon}",
             "format-icons": [
@@ -74,8 +75,11 @@
                 "",
                 ""
             ],
-            "rotate": 270
+            "rotate": 270,
+            "on-click": "$HOME/dotfiles/scripts/gui/battary_device_info_gui_waybar"
+
         },
+
         "memory": {
             "format": "󰫗 {}% ",
             "tooltip": "false",
@@ -93,21 +97,15 @@
             "format-muted": "",
             "scroll-step": 1,
             "on-click": "pavucontrol",
-            "rotate": 270
-        },
-        "clock": {
-            "interval": 5,
-            "format": "{:%H:%M}",
-            "tooltip": true,
-            "tooltip-format": "{:%d/%m/%Y}",
-            "on-click": "clockInfo",
+            "on-click-right": "pamixer --toggle-mute",
             "rotate": 270
         },
         "backlight": {
             "device": "intel_backlight",
             "format": "{percent}% {icon}",
             "format-icons": ["", ""],
-            "rotate": 270
+            "rotate": 270,
+            "on-click": "$HOME/dotfiles/scripts/hypr/toggleBlue"
         }
     },
 
@@ -146,11 +144,13 @@
             "tooltip-format": "{controller_alias}\t{controller_address}\n\n{num_connections} connected",
             "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{num_connections} connected\n\n{device_enumerate}",
             "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
-            "tooltip-format-enumerate-connected-battery": "{device_alias}\t{device_address}\t{device_battery_percentage}%"
+            "tooltip-format-enumerate-connected-battery": "{device_alias}\t{device_address}\t{device_battery_percentage}%",
+            "on-click": "$HOME/dotfiles/scripts/gui/bluetooth_gui_waybar"
         },
+
         "disk#ssd": {
             "path": "/",
-            "format": "💿 {free}",
+            "format": "{free}",
             "interval": 60,
             "states": {
                 "ok": 80,
@@ -159,11 +159,8 @@
             "format-alt": "storage left: {free}, used: {used}",
         },
 
-
-
-
         "custom/brave-media": {
-            "exec": "playerctl -p chromium,brave metadata --format '{\"text\":\"{{artist}} - {{title}}\",\"alt\":\"{{status}}\"}' || echo '{\"text\":\"No media\",\"alt\":\"stopped\"}'",
+            "exec": "playerctl -p chromium,brave metadata --format '{\"text\":\"{{artist}} - {{title}}\",\"alt\":\"{{status}}\"}' 2>/dev/null || echo '{\"text\":\"\",\"alt\":\"stopped\"}'",
             "return-type": "json",
             "interval": 2,
             "max-length": 40,

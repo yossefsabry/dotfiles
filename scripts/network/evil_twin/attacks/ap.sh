@@ -55,6 +55,7 @@ dhcp-option=3,$ap_ip
 dhcp-option=6,$ap_ip
 log-queries
 log-dhcp
+log-facility=/tmp/dnsmasq.log
 EOF
 }
 
@@ -64,6 +65,10 @@ start_dnsmasq() {
     local iface=$2
     local pid_file=$3
     
+    # Create log file for dnsmasq
+    local dnsmasq_log="/tmp/dnsmasq.log"
+    touch "$dnsmasq_log"
+    
     log "Launching dnsmasq..."
     dnsmasq \
         --conf-file="$conf_file" \
@@ -71,9 +76,13 @@ start_dnsmasq() {
         --except-interface=lo \
         --bind-interfaces \
         --pid-file="$pid_file" \
-        --dhcp-authoritative
+        --dhcp-authoritative \
+        --log-facility="$dnsmasq_log"
     
     sleep 2
+    
+    # Link the log file to the working directory
+    ln -sf "$dnsmasq_log" "$WORKDIR/dnsmasq.log"
     
     # Check if dnsmasq started successfully
     if [[ ! -f "$pid_file" ]]; then
