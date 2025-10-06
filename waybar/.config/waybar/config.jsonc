@@ -34,6 +34,7 @@
         "custom/power_btn": {
             "format": " ",
             "on-click": "nwg-bar",
+            "on-click-right": "shutdown now",
             "tooltip": false
         },
         "hyprland/workspaces": {
@@ -134,7 +135,8 @@
             "tooltip-format": "{ifname}: ⬇ {bandwidthDownBytes} ⬆ {bandwidthUpBytes}",
             "format-alt": "{gwaddr} {ifname}: ⬇ {bandwidthDownBytes} ⬆ {bandwidthUpBytes} {essid}",
             "interval": 2,
-            "format-disconnected": "FUCKIT"
+            "format-disconnected": "FUCKIT",
+            "on-click-right": "wihotspot"
         },
         "bluetooth": {
             "format": " {status}",
