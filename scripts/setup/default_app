@@ -1,0 +1,47 @@
+#!/usr/bin/env bash
+
+# using nvim for code
+xdg-mime default nvim.desktop text/plain
+xdg-mime default nvim.desktop text/x-csrc
+xdg-mime default nvim.desktop text/x-c++src
+xdg-mime default nvim.desktop text/x-chdr
+xdg-mime default nvim.desktop text/x-c++hdr
+xdg-mime default nvim.desktop text/x-python
+xdg-mime default nvim.desktop text/x-go
+xdg-mime default nvim.desktop application/javascript
+xdg-mime default nvim.desktop application/json
+xdg-mime default nvim.desktop text/x-shellscript
+xdg-mime default nvim.desktop text/x-lua
+xdg-mime default nvim.desktop text/html
+xdg-mime default nvim.desktop text/css
+xdg-mime default nvim.desktop application/x-php
+
+
+# for image 
+xdg-mime default sxiv.desktop image/jpeg
+xdg-mime default sxiv.desktop image/png
+xdg-mime default sxiv.desktop image/gif
+xdg-mime default sxiv.desktop image/webp
+xdg-mime default sxiv.desktop image/bmp
+xdg-mime default sxiv.desktop image/svg+xml
+
+# for pdf
+xdg-mime default zathura.desktop application/pdf
+
+# for compress files 
+xdg-mime default org.gnome.FileRoller.desktop application/zip
+xdg-mime default org.gnome.FileRoller.desktop application/x-tar
+xdg-mime default org.gnome.FileRoller.desktop application/x-compressed-tar
+xdg-mime default org.gnome.FileRoller.desktop application/x-bzip-compressed-tar
+xdg-mime default org.gnome.FileRoller.desktop application/x-xz-compressed-tar
+
+
+# audio and video
+xdg-mime default mpv.desktop audio/mpeg
+xdg-mime default mpv.desktop audio/ogg
+xdg-mime default mpv.desktop audio/wav
+xdg-mime default mpv.desktop video/mp4
+xdg-mime default mpv.desktop video/x-matroska
+xdg-mime default mpv.desktop video/webm
+
+

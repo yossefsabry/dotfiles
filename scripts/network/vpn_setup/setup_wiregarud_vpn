@@ -6,4 +6,12 @@ sudo chmod 600 /etc/wireguard/wg-JP-FREE-30.conf
 
 sudo wg-quick up wg-JP-FREE-30
 
+sudo wg-quick up proton      
+
+# check connection
+curl ifconfig.me
+
+
+# for stop
+sudo wg-quick down proton
 
