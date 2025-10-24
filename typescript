@@ -1,0 +1,81 @@
+Script started on 2025-10-23 16:14:04+03:00 [TERM="xterm-kitty" TTY="/dev/pts/1" COLUMNS="51" LINES="25"]
+[?7l[1m[36m       /\
+[36m      /  \
+[36m     /\   \
+[34m    /      \
+[34m   /   ,,   \
+[34m  /   |  |  -\
+[34m /_-''    ''-_\
+[0m[7A[18C[34m[1m[35m[1myossef[1m@[35m[1marchlinux[0m[38D[7C[39m[0m
+[18C[34m[1mos[0m[2D[7C[39mArch Linux[0m
+[18C[34m[1mhost[0m[4D[7C[39mVictus HP Gaming Laptop 15-fa1xxx[0m
+[18C[34m[1mkernel[0m[6D[7C[39m6.17.1-arch1-1[0m
+[18C[34m[1muptime[0m[6D[7C[39m44m[0m
+[18C[34m[1mpkgs[0m[4D[7C[39m1586[0m
+[18C[34m[1mmemory[0m[6D[7C[39m3383M / 15622M[0m
+
+[?7hls[1m[7m%[27m[1m[0m                                                   ]2;yossef@archlinux:~/dotfiles]1;~/dotfiles]7;file://archlinux/home/yossef/dotfiles\[0m[27m[24m[J[01;32m➜  [36mdotfiles[00m [K[?1h[?2004hlls[0m[27m[24m[J[01;32m➜  [36mdotfiles[00m [01;34mgit:([31mmain[34m) [33m✗[00m ls[K[?1l[?2004l
+]2;ls --file-type -ah --color=always]1;ls[0m[01;34m.[0m/           [01;34mmybash-config[0m/   [01;34msxhkd[0m/
+[01;34m..[0m/          [01;34mncmpcpp[0m/         [01;34mtmux[0m/
+[01;34malacritty[0m/   [01;34mnvidia_setup[0m/    typescript
+[01;34mbspwm[0m/       [01;34mnvims[0m/           .vimrc
+[01;34mcava[0m/        [01;34mpicom[0m/           [01;34mwaybar[0m/
+[01;34mdunst[0m/       [01;34mpipewire[0m/        [01;34mwinapps[0m/
+[01;34mfalkon[0m/      [01;34mpolybar[0m/         [01;34mwireplumber[0m/
+[01;34m.git[0m/        [01;31mpolybar2.tar.gz[0m  [01;34mwofi[0m/
+.gitconfig   [01;31mpolybar.tar.gz[0m   [01;34mxinit[0m/
+.gitignore   [01;34mqtile[0m/           [01;34mxorg.conf.d[0m/
+[01;34mgtk[0m/         [01;34mqutebrowser[0m/     [01;34myazi[0m/
+[01;34mhypr[0m/        Readme.md        [01;34mzathura[0m/
+[01;34mi3[0m/          [01;34mrofi[0m/            [01;34mzsh[0m/
+[01;34mkitty[0m/       [01;34mscripts[0m/         [01;34mzsh-ansimotd[0m/
+.luarc.json  [01;34mstarship[0m/
+[01;34mmpd[0m/         [01;34msuckless[0m/
+[1m[7m%[27m[1m[0m                                                   ]2;yossef@archlinux:~/dotfiles]1;~/dotfiles]7;file://archlinux/home/yossef/dotfiles\[0m[27m[24m[J[01;32m➜  [36mdotfiles[00m [01;34mgit:([31mmain[34m) [33m✗[00m [K[?1h[?2004hccd[?1l[?2004l
+]2;cd]1;cd[1m[7m%[27m[1m[0m                                                   ]2;yossef@archlinux:~]1;~]7;file://archlinux/home/yossef\[0m[27m[24m[J[01;32m➜  [36m~[00m [01;34mgit:([31mmain[34m) [33m✗[00m [K[?1h[?2004h[0m[27m[24m[J[01;32m➜  [36m~[00m [Kccleaf[?1l[?2004l
+zsh: correct 'cleaf' to 'clear' [nyae]? n
+]2;cleaf]1;cleafzsh: command not found: cleaf
+[1m[7m%[27m[1m[0m                                                   ]2;yossef@archlinux:~]1;~]7;file://archlinux/home/yossef\[0m[27m[24m[J[01;31m➜  [36m~[00m [K[?1h[?2004h[?1l[?2004l
+[1m[7m%[27m[1m[0m                                                   ]2;yossef@archlinux:~]1;~]7;file://archlinux/home/yossef\[0m[27m[24m[J[01;31m➜  [36m~[00m [K[?1h[?2004hc sscrits[?1l[?2004l
+zsh: correct 'scrits' to 'scripts' [nyae]? n
+]2;scrits]1;scritszsh: command not found: scrits
+[1m[7m%[27m[1m[0m                                                   ]2;yossef@archlinux:~]1;~]7;file://archlinux/home/yossef\[0m[27m[24m[J[01;31m➜  [36m~[00m [K[?1h[?2004hsscripts[?1l[?2004l
+]2;cd /home/yossef/dotfiles/scripts]1;scripts[1m[7m%[27m[1m[0m                                                   ]2;yossef@archlinux:~/dotfiles/scripts]1;..files/scripts]7;file://archlinux/home/yossef/dotfiles/scripts\[0m[27m[24m[J[01;32m➜  [36mscripts[00m [K[?1h[?2004h[0m[27m[24m[J[01;32m➜  [36mscripts[00m [01;34mgit:([31mmain[34m) [33m✗[00m [Klls[?1l[?2004l
+]2;ls --file-type -ah --color=always]1;ls[0m[01;34m.[0m/                [01;34mnetwork[0m/
+[01;34m..[0m/               [01;32mnvim_switcher[0m
+[01;32maddNote[0m           [01;34mothers[0m/
+[01;34mbspwm_[0m/           [01;34mpayload[0m/
+[01;32mcecho[0m             [01;34mreverse_shelll[0m/
+[01;32mcpkm[0m              [01;34msearh_fzf[0m/
+[01;34mdrivers_games[0m/    [01;34mservices[0m/
+[01;34mgui[0m/              [01;34msetup[0m/
+[01;34mhypr[0m/             [01;34mstartup[0m/
+[01;34minstall_scripts[0m/  [01;34mtranslate_scripts[0m/
+[01;34mmac_change[0m/       [01;32mwwget[0m
+[01;34mmusic_manga[0m/
+[1m[7m%[27m[1m[0m                                                   ]2;yossef@archlinux:~/dotfiles/scripts]1;..files/scripts]7;file://archlinux/home/yossef/dotfiles/scripts\[0m[27m[24m[J[01;32m➜  [36mscripts[00m [01;34mgit:([31mmain[34m) [33m✗[00m [K[?1h[?2004hcclear[?1l[?2004l
+]2;clear]1;clear[H[2J[1m[7m%[27m[1m[0m                                                   ]2;yossef@archlinux:~/dotfiles/scripts]1;..files/scripts]7;file://archlinux/home/yossef/dotfiles/scripts\[0m[27m[24m[J[01;32m➜  [36mscripts[00m [01;34mgit:([31mmain[34m) [33m✗[00m [K[?1h[?2004hlls[?1l[?2004l
+]2;ls --file-type -ah --color=always]1;ls[0m[01;34m.[0m/                [01;34mnetwork[0m/
+[01;34m..[0m/               [01;32mnvim_switcher[0m
+[01;32maddNote[0m           [01;34mothers[0m/
+[01;34mbspwm_[0m/           [01;34mpayload[0m/
+[01;32mcecho[0m             [01;34mreverse_shelll[0m/
+[01;32mcpkm[0m              [01;34msearh_fzf[0m/
+[01;34mdrivers_games[0m/    [01;34mservices[0m/
+[01;34mgui[0m/              [01;34msetup[0m/
+[01;34mhypr[0m/             [01;34mstartup[0m/
+[01;34minstall_scripts[0m/  [01;34mtranslate_scripts[0m/
+[01;34mmac_change[0m/       [01;32mwwget[0m
+[01;34mmusic_manga[0m/
+[1m[7m%[27m[1m[0m                                                   ]2;yossef@archlinux:~/dotfiles/scripts]1;..files/scripts]7;file://archlinux/home/yossef/dotfiles/scripts\[0m[27m[24m[J[01;32m➜  [36mscripts[00m [01;34mgit:([31mmain[34m) [33m✗[00m [K[?1h[?2004hppwd[?1l[?2004l
+]2;pwd]1;pwd/home/yossef/dotfiles/scripts
+[1m[7m%[27m[1m[0m                                                   ]2;yossef@archlinux:~/dotfiles/scripts]1;..files/scripts]7;file://archlinux/home/yossef/dotfiles/scripts\[0m[27m[24m[J[01;32m➜  [36mscripts[00m [01;34mgit:([31mmain[34m) [33m✗[00m [K[?1h[?2004hccd services[1m/[0m[0m [?1l[?2004l
+]2;cd services]1;cd[1m[7m%[27m[1m[0m                                                   ]2;yossef@archlinux:~/dotfiles/scripts/services]1;..ipts/services]7;file://archlinux/home/yossef/dotfiles/scripts/services\[0m[27m[24m[J[01;32m➜  [36mservices[00m [01;34mgit:([31mmain[34m) [33m✗[00m [K[?1h[?2004hlls[?1l[?2004l
+]2;ls --file-type -ah --color=always]1;ls[0m[01;34m.[0m/  [01;34m..[0m/  [01;32mbattery_check.sh[0m  [01;32mbattery_service2.sh[0m
+[1m[7m%[27m[1m[0m                                                   ]2;yossef@archlinux:~/dotfiles/scripts/services]1;..ipts/services]7;file://archlinux/home/yossef/dotfiles/scripts/services\[0m[27m[24m[J[01;32m➜  [36mservices[00m [01;34mgit:([31mmain[34m) [33m✗[00m [K[?1h[?2004hppwd[?1l[?2004l
+]2;pwd]1;pwd/home/yossef/dotfiles/scripts/services
+[1m[7m%[27m[1m[0m                                                   ]2;yossef@archlinux:~/dotfiles/scripts/services]1;..ipts/services]7;file://archlinux/home/yossef/dotfiles/scripts/services\[0m[27m[24m[J[01;32m➜  [36mservices[00m [01;34mgit:([31mmain[34m) [33m✗[00m [K[?1h[?2004hppwd | pc[?1l[?2004l
+]2;pwd | xsel --input --clipboard]1;pwd[1m[7m%[27m[1m[0m                                                   ]2;yossef@archlinux:~/dotfiles/scripts/services]1;..ipts/services]7;file://archlinux/home/yossef/dotfiles/scripts/services\[0m[27m[24m[J[01;32m➜  [36mservices[00m [01;34mgit:([31mmain[34m) [33m✗[00m [K[?1h[?2004hppp[?1l[?2004l
+]2;xsel --output --clipboard]1;pp/home/yossef/dotfiles/scripts/services
+[1m[7m%[27m[1m[0m                                                   ]2;yossef@archlinux:~/dotfiles/scripts/services]1;..ipts/services]7;file://archlinux/home/yossef/dotfiles/scripts/services\[0m[27m[24m[J[01;32m➜  [36mservices[00m [01;34mgit:([31mmain[34m) [33m✗[00m [K[?1h[?2004h
+Script done on 2025-10-23 16:14:27+03:00 [COMMAND_EXIT_CODE="0"]

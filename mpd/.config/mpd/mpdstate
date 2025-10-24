@@ -2,125 +2,38 @@ sw_volume: 98
 audio_device_state:1:PulseAudio Output
 audio_device_state:1:Visualizer Output
 state: pause
-current: 53
-time: 127.635
+current: 0
+time: 72.515
 random: 0
 repeat: 1
-single: 0
+single: 1
 consume: 1
 crossfade: 0
 mixrampdb: 0
 mixrampdelay: -1
 lastloadedplaylist: 
 playlist_begin
-0:fav/B Urself.mp3
-1:fav/Birds.mp3
-2:fav/Blankets.mp3
-3:fav/Capo Blanco - Voyage.mp3
-4:fav/Catch The Moment.mp3
-5:fav/Childish Gambino - Redbone ｜ Lofi cover ｜ Instrumental ｜ AKAIA Music.mp3
-6:fav/Chill x Smooth Guitar Type Beat - ＂Saturday Nights＂ (Prod. Pacific).mp3
-7:fav/Chilling In Tokyo ☯ Japanese Lofi HipHop Mix [Lofi Fruits Release].mp3
-8:fav/comfy vibes ♫.mp3
-9:fav/Dahri.mp3
-10:fav/Daybreak.mp3
-11:fav/Deyaz - LONGS4U.mp3
-12:fav/doki doki.mp3
-13:fav/Dreaming.mp3
-14:fav/Dreamy Horizon.mp3
-15:fav/Dreamy.mp3
-16:fav/Evening Drift.mp3
-17:fav/EVISBEATS『Arayashiki』.mp3
-18:fav/Fading.mp3
-19:fav/Far From Home.mp3
-20:fav/Far Side.mp3
-21:fav/Fragments.mp3
-22:fav/galdive -  sorbet (official lyric video).mp3
-23:fav/Galdive - Pocket (Official Visualizer).mp3
-24:fav/Galdive - Sweet Sugar Getaway (Official Visualizer).mp3
-25:fav/Galdive - Window⧸Dormer (Official Lyric Video).mp3
-26:fav/Golden Frankincense and Myrrh.mp3
-27:fav/Groove at 639Hz.mp3
-28:fav/Healy - PICK ME UP (feat. Hailey Knox) [Official Music Video].mp3
-29:fav/HOME - skin (Official Music Video).mp3
-30:fav/Honeymoon _ Thomas Ng (Lyrics Video).mp3
-31:fav/Hotel Lobby.mp3
-32:fav/i wish u were here.mp3
-33:fav/Intervals.mp3
-34:fav/Jade.mp3
-35:fav/Jazzinuf - Reflections ｜ Jazzinuf and Etymology Records.mp3
-36:fav/Joey Pecoraro - Stay In and Keep Warm (Official Video).mp3
-37:fav/Just Another Day.mp3
-38:fav/Kainbeats - Easy Days (Chill Lofi Beats).mp3
-39:fav/Kainbeats - little pebbles on the hill (Sleepy Lofi Music).mp3
-40:fav/Kainbeats - Margarita Sunday [Summer Lofi Hip Hop].mp3
-41:fav/Kainbeats - Midnight Soul [Chill Lofi Hip Hop].mp3
-42:fav/Kainbeats - Shimmers of a Dream ( Sleepy Lofi Music ).mp3
-43:fav/Kainbeats - Sunken Stasis (Chill Lofi HipHop) ✨🪼.mp3
-44:fav/Kainbeats - the grass is wet, but it still feels nice (Lofi Rain - Beats to study ⧸ chill to) 🌸🍃.mp3
-45:fav/Kainbeats - Trip to the Stars (ft. Osaki)⧸⧸Shadows Fade (ft. Hevi) [relaxing lofi hiphop].mp3
-46:fav/Kainbeats - Umiko, Child of the Sea (Calm Lofi Music) 🫧.mp3
-47:fav/Kainbeats - Under the Stars [Chill Lofi Hip Hop].mp3
-48:fav/Kainbeats - Vesta (Sleepy Lofi Music).mp3
-49:fav/Kainbeats - Wanderer [Relaxing LoFi Hip Hop 🌃].mp3
-50:fav/Kainbeats - Whirlpools (Calm Lofi Music) 🌧️✨.mp3
-51:fav/Khaim - Someday ｜ Lo-Fi Type Beat ｜ Jazzy Hip Hop ⧸ R&B Instrumental ｜  フリーBGM.mp3
-52:fav/Kiefer - Everybody Loves the Sunshine, feat. Theo Croker.mp3
-53:fav/Lullaby.mp3
-54:fav/Lunar Drive.mp3
-55:fav/lyrλmbient - I don't know what else I could've done.mp3
-56:fav/MagiCXbeats - Flowers (Chill Version).mp3
-57:fav/Marc Indigo – Boy For The Weekend (Lyrics) [CC].mp3
-58:fav/Meaux.mp3
-59:fav/Mellow Skies.mp3
-60:fav/Mewmore ⧸⧸ Lake Verity (Pokémon Diamond & Pearl Remix).mp3
-61:fav/Mewmore ⧸⧸ Winter in Lacunosa (Pokémon Black & White Remix).mp3
-62:fav/Mitch Murder - Inertia.mp3
-63:fav/Moon.mp3
-64:fav/Music For Lo Fi Gaming.mp3
-65:fav/Night lofi.mp3
-66:fav/ODESZA - Always This Late - Official Audio.mp3
-67:fav/Oh Badu.mp3
-68:fav/One Day.mp3
-69:fav/Past Echoes.mp3
-70:fav/Perfect Tokyo.mp3
-71:fav/𝐏𝐥𝐚𝐲𝐥𝐢𝐬𝐭 80's Tokyo Vibes 🎧  ⧸ Lofi hiphop mix ( Chill & Study ).mp3
-72:fav/Post Malone - I Like You (A Happier Song) w. Doja Cat (Lofi Remix).mp3
-73:fav/ProleteR - Fallen King  [New Album Out].mp3
-74:fav/Rainforest.mp3
-75:fav/Rainy Daze.mp3
-76:fav/RINI - Oceane ft. Olivia Escuyos (Audio).mp3
-77:fav/Romanticizing.mp3
-78:fav/Rosarummet - Blueberries.mp3
-79:fav/Sappheiros - Need.mp3
-80:fav/seycara ｜ of frogs & lilypads.mp3
-81:fav/Silience.mp3
-82:fav/Sleep Well - d4vd (guitar loop).mp3
-83:fav/sleepless at midnight.mp3
-84:fav/Smooth Ride.mp3
-85:fav/Spiritual State.mp3
-86:fav/Starry Night.mp3
-87:fav/Starry Sky.mp3
-88:fav/Stream & Chill.mp3
-89:fav/Study Chill.mp3
-90:fav/Suzume but is it okay if it's lofi？.mp3
-91:fav/Sweet William - Please Think Twice.mp3
-92:fav/Sweet William - See, Saw.mp3
-93:fav/Tenno - By Your Side.mp3
-94:fav/Thesis Therapy.mp3
-95:fav/Tokyo Magic.mp3
-96:fav/Tokyo Music Walker - Slowly.mp3
-97:fav/Tony Ann – EUPHORIA (Official Visualizer).mp3
-98:fav/TUNIC (Original Soundtrack) - 24 Forget to Forget ⧸ Lifeformed × Janice Kwan.mp3
-99:fav/TWO LANES - Transcend.mp3
-100:fav/Underground (Super Mario Bros.) Jazz Cover.mp3
-101:fav/Velocities.mp3
-102:fav/Whale Call.mp3
-103:fav/What You Say.mp3
-104:fav/WIM - Weirdo (Music Video).mp3
-105:fav/Yusei - Nights in Tokyo (slowed + reverb).mp3
-106:fav/Zanski - Younger You.mp3
-107:fav/Zen.mp3
-108:fav/星街すいせい - NEXT COLOR PLANET (Lofi Remix by fourfifteentwenty) ｜ Short Ver..mp3
-109:fav/星街すいせい - Stellar Stellar (Lofi Remix by fourfifteentwenty & Yamakusa).mp3
+0:good_vibe/Last Day (Dualities Remix).mp3
+1:good_vibe/Love Is Killing Me.mp3
+2:good_vibe/Melody.mp3
+3:good_vibe/Mistakes.mp3
+4:good_vibe/Moth To A Flame.mp3
+5:good_vibe/Move.mp3
+6:good_vibe/Never Go Back (Robin Schulz Remix).mp3
+7:good_vibe/Paradise.mp3
+8:good_vibe/Piece Of Me.mp3
+9:good_vibe/SCIENTIST (R3HAB Remix).mp3
+10:good_vibe/Serena - Safari (Official Video).mp3
+11:good_vibe/Shameless.mp3
+12:good_vibe/So Am I (Steve Void Dance Remix).mp3
+13:good_vibe/So Close.mp3
+14:good_vibe/Superhero.mp3
+15:good_vibe/Tattoo.mp3
+16:good_vibe/There's Nothing Holdin' Me Back.mp3
+17:good_vibe/Water (feat. ZOHARA).mp3
+18:good_vibe/we can't be friends (wait for your love).mp3
+19:good_vibe/We Don't Talk Anymore (feat. Selena Gomez).mp3
+20:good_vibe/Without Me.mp3
+21:good_vibe/You & Me (Rivo Remix).mp3
+22:good_vibe/You Got Me.mp3
 playlist_end
