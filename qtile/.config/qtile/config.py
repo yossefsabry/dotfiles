@@ -14,6 +14,10 @@ from function.battery_check import battery_warning
 import subprocess
 subprocess.run(["xsetroot", "-cursor_name", "left_ptr"])
 
+# starts the services and some settings
+subprocess.Popen(["/home/yossef/dotfiles/scripts/startup/setup_desktop_enviorments"])
+subprocess.Popen(["/home/yossef/dotfiles/scripts/gui/skey"])
+
 
 
 

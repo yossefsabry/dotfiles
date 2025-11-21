@@ -1,0 +1,40 @@
+#!/bin/env bash
+
+#!/bin/bash
+
+
+# 2. Brightness
+pgrep -f "bright 20%" >/dev/null || bright 20% &
+
+# 3. Touchpad tapping
+TP="AlpsPS/2 ALPS DualPoint TouchPad"
+if xinput list | grep -q "$TP"; then
+    CUR=$(xinput list-props "$TP" | grep "Tapping Enabled" | awk '{print $NF}')
+    [ "$CUR" = "1" ] || xinput set-prop "$TP" "libinput Tapping Enabled" 1
+fi &
+
+# 5. Dunst
+pgrep -x dunst >/dev/null || dunst -config ~/.config/dunst/dunstrc &
+
+# 6. Keyboard layout
+if ! setxkbmap -query | grep -q "us,ara"; then
+    setxkbmap -layout us,ara -variant ,digits grp:win_space_toggle caps:none &
+fi
+
+# 7. sxhkd
+pgrep -x sxhkd >/dev/null || sxhkd &
+
+# 8. Key repeat speed
+xset r rate 250 50 &
+
+# 9. Redshift
+pgrep -x redshift >/dev/null || redshift -O 2000K &
+
+# 11. Wallpaper (feh)
+pgrep -f "feh --bg" >/dev/null || feh --bg-center --bg-scale ~/Pictures/my_wallpapers-main/The_Almighty.jpg &
+
+# 12. Flameshot
+pgrep -x flameshot >/dev/null || flameshot &
+
+pgrep -x unclutter >/dev/null ||  unclutter --timeout 1 &
+

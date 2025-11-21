@@ -1,0 +1,15 @@
+#!/bin/bash
+
+# Get focused window
+win=$(xdotool getwindowfocus)
+
+# Get window geometry
+eval $(xdotool getwindowgeometry --shell "$win")
+
+# Calculate center
+center_x=$((X + WIDTH / 2))
+center_y=$((Y + HEIGHT / 2))
+
+# Move the mouse
+xdotool mousemove $center_x $center_y
+

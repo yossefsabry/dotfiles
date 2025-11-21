@@ -1,0 +1,8 @@
+#!/bin/env bash
+
+docker run --name wyl \
+	-e "IFACES=wlan0" \
+    -e "TZ=Africa/Cairo" \
+	--network="host" \
+	-v $DOCKERDATAPATH/wyl:/data/WatchYourLAN \
+    aceberg/watchyourlan

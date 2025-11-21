@@ -7,9 +7,16 @@ cd ~
 # ~/.xprofile or ~/.xinitrc
 
 # some setting for i3 and qtile to working fine with most of applications
-# Start dbus
-eval $(dbus-launch --sh-syntax --exit-with-session)
 export XDG_SESSION_TYPE=X11
+
+
+# Start DBus if not running
+if [ -z "$DBUS_SESSION_BUS_ADDRESS" ]; then
+  eval $(dbus-launch --exit-with-session)
+fi
+
+# Start GNOME Keyring components
+/usr/bin/gnome-keyring-daemon --start --components=secrets,ssh,gpg,pks &
 
 # load some info from xresourse for the cursor size
 exec xrdb -merge ~/.Xresources &

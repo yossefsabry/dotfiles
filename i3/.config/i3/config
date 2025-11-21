@@ -1,8 +1,9 @@
+
+
 ## starting the configuration file for i3
 for_window [class="^.*"] border none
 # no border for scratchpad
 for_window [title="^scratch$"] border none
-
 
 set $mod Mod1
 # set $mod Mod1
@@ -10,7 +11,8 @@ set $mod Mod1
 set $term urxvt
 
 # exec --no-startup-id feh --bg-scale ~/backgrounds/nice-blue-background.png
-# exec --no-startup-id xrdb -merge ~/.Xresources
+exec --no-startup-id /home/yossef/dotfiles/scripts/startup/setup_desktop_enviorments &
+exec --no-startup-id /home/yossef/dotfiles/scripts/gui/skey &
 exec_always --no-startup-id setxkbmap -option ctrl:nocaps
 
 
@@ -29,7 +31,7 @@ bindsym Shift+Print exec maim --select "/home/$USER/Pictures/$(date).jpg"
 # bindsym Ctrl+$mod+Print exec maim --window $(xdotool getactivewindow) | xclip -selection clipboard -t image/png
 # bindsym Ctrl+Shift+Print exec maim --select | xclip -selection clipboard -t image/png
 
-font pango:FiraMono Nerd Font Propo 11
+font pango:FiraMono Nerd Font Propo 10
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
@@ -296,6 +298,7 @@ bindsym $mod+z mode "resize"
 # for the bar
 bar {
     mode hide
+
 # status_command i3status -c ~/.config/i3/i3status.conf
 status_command i3blocks -c ~/.config/i3/i3block.conf
     colors {
@@ -356,7 +359,7 @@ set $highlighthigh  #524f67
 
 # Window colors
 client.focused           $foam     $foam  #00000  $foam      $foam
-font pango:monospace bold 11
+font pango:monospace bold 9
 client.focused_inactive  $muted    $base  $text  $subtle    $surface
 client.unfocused         $overlay  $base  $text  $overlay   $overlay
 client.urgent            $love     $base  $text  $love      $love

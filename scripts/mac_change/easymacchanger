@@ -13,22 +13,11 @@ do
 
 e="0"
 
-wlan0=$(ip link show wlan0 | awk '/ether/ {print $2}')
+wlan_name=wlan1
+wlan0=$(ip link show $wlan_name | awk '/ether/ {print $2}')
 
  echo -e '\e[1;32m
      ______                    __  ___                       
-    / ____/___ ________  __   /  |/  /___ ______    \e[1;34mChange the network  \e[1;32m  
-   / __/ / __ `/ ___/ / / /  / /|_/ / __ `/ ___/    \e[1;34midentity of your device. \e[1;32m
-  / /___/ /_/ (__  ) /_/ /  / /  / / /_/ / /__               
- /_____/\__,_/____/\__, /  /_/  /_/\__,_/\___/          
-                  /____/                            \e[1;31mEasy Mac Changer is intented\e[1;32m
-    ________                                        \e[1;31mONLY FOR EDUCATIONAL PURPOSES.\e[1;32m
-   / ____/ /_  ____ _____  ____ ____  _____
-  / /   / __ \/ __ `/ __ \/ __ `/ _ \/ ___/                          
- / /___/ / / / /_/ / / / / /_/ /  __/ /             \e[1;37mCreated by "KALI LINUX TRICKS"      \e[1;32m   
- \____/_/ /_/\__,_/_/ /_/\__, /\___/_/  v1.1        \e[1;37mhttps://www.youtube.com/c/KALILINUXTRICKS \e[1;32m
-                        /____/         (Linux)   
-
 \e[1;33m
 01. DELL COMPUTER                11. HP PRINTER              \e[1;36m Mac address = '$wlan0' \e[1;33m
 02. APPLE LAPTOP                 12. CANON PRINTER           
@@ -376,25 +365,8 @@ echo -e '\e[1;33m
    / ____/ /_  ____ _____  ____ ____  _____
   / /   / __ \/ __ `/ __ \/ __ `/ _ \/ ___/   
  / /___/ / / / /_/ / / / / /_/ /  __/ /               
- \____/_/ /_/\__,_/_/ /_/\__, /\___/_/  v1.1   
-                        /____/         (Linux)  
- \e[1;31m
-
-
- https://www.youtube.com/c/KALILINUXTRICKS 
- \e[1;32m
- https://github.com/KALILINUXTRICKSYT
- \e[1;34m
- https://www.twitter.com/KALILINUXTRICKS
- \e[1;35m
- https://www.instagram.com/kali_linux_tricks_youtube
- \e[1;33m
- https://www.patreon.com/kalilinuxtricks
- \e[1;37m
- kalilinuxtricks@gmail.com
-
-
-              Press ENTER to Main Menu
+ \____/_/ /_/\__,_/_/ /_/\__, /\___/_/ 
+                        /____/        
 '
 read
 
@@ -488,32 +460,6 @@ sleep 4
 
 clear
 
-
 fi
 
-
-
-
-
-
 done
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
