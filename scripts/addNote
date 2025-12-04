@@ -58,7 +58,7 @@ EOL
   
   # Open the file in Neovim
   nvim "$file_path"
-  #notify-send "adding note: $file_path"
+  notify-send "adding note: $file_path"
   #notify-send -u low -h string:urgency:success "Success" "adding note: $file_path":
 }
 

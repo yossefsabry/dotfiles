@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+
+xfreerdp /u:"Jooo" /p:"shit22" /v:127.0.0.1 /cert:tofu
