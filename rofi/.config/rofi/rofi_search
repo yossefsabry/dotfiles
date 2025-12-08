@@ -1,0 +1,239 @@
+#!/usr/bin/env bash
+#
+# Rofi script for searching the web with prefix support and application launcher.
+#
+
+set -u
+set -e
+
+declare -A SITES
+declare -A PREFIXES
+
+# Set default variable value to empty string.
+SITE_TO_USE=""
+
+CACHE_DIR="$HOME/.cache/rofi_search_cache/web-search"
+CACHE_FILE="$CACHE_DIR/search_history.txt"
+BROWSER="brave-browser-nightly"
+
+# Site mappings
+SITES=(
+    ["google"]="https://www.google.com/search?q="
+    ["github"]="https://www.github.com/search?q="
+    ["youtube"]="https://www.youtube.com/results?search_query="
+    ["brave"]="https://search.brave.com/search?q="
+    ["reddit"]="https://www.reddit.com/search?q="
+)
+
+# Prefix mappings
+PREFIXES=(
+    [":g"]="google"
+    [":y"]="youtube"
+    [":b"]="brave"
+    [":gh"]="github"
+    [":r"]="reddit"
+)
+
+# Show usage for the script.
+usage()
+{
+    echo "web-search is a script that opens a rofi browser with which you can"
+    echo "search the web using prefixes."
+    echo ""
+    echo "Usage: $0 [-s <site to search>] [-b <browser executable>]"
+    echo "  -h      show this help"
+    echo "  -s      give the search engine to use, can be one of the following:"
+    
+    for site in "${!SITES[@]}"; do 
+        echo "              * $site"
+    done
+
+    echo ""
+    echo "Prefixes:"
+    for prefix in "${!PREFIXES[@]}"; do
+        echo "              $prefix -> ${PREFIXES[$prefix]}"
+    done
+    echo ""
+    echo "  No prefix defaults to Google search"
+    echo "  URLs (e.g., youtube.com, python.org) will open directly"
+
+    exit 1
+}
+
+# Creates the cache directory if it does not exist.
+create_cache_dir() {
+    if [ ! -d "$CACHE_DIR" ]; then
+        mkdir -p "$CACHE_DIR" >/dev/null 2>&1
+    fi
+}
+
+# Create the cache file if it does not exist.
+create_cache_file() {
+    if [ ! -f "$CACHE_FILE" ]; then
+        touch "$CACHE_FILE" >/dev/null 2>&1
+    fi
+}
+
+
+
+# Generate the list of previously used search queries.
+gen_queries_list() 
+{
+    if [ -f "$CACHE_FILE" ]; then
+        cat "$CACHE_FILE"
+    fi
+}
+
+# Generate combined list (search history only)
+gen_combined_list() {
+    gen_queries_list
+}
+
+# Write a given line to the top of the cache file.
+write_to_top()
+{
+    content=$1
+
+    # Create temporary file
+    temp_file="$CACHE_DIR/tmp.txt"
+    
+    # Move old values to temporary file
+    if [ -f "$CACHE_FILE" ]; then
+        cat "$CACHE_FILE" > "$temp_file" 2>/dev/null
+    fi
+    
+    # Print query to top
+    echo "$content" > "$CACHE_FILE" 2>/dev/null
+    
+    # Append old content if temp file exists
+    if [ -f "$temp_file" ]; then
+        cat "$temp_file" >> "$CACHE_FILE" 2>/dev/null
+        # Remove temporary file
+        rm "$temp_file" >/dev/null 2>&1
+    fi
+}
+
+# Check if input looks like a URL (contains a dot and domain-like pattern)
+is_url() {
+    local input=$1
+    
+    # Check if it contains a dot and looks like a domain
+    if [[ "$input" =~ ^[a-zA-Z0-9-]+\.[a-zA-Z]{2,}(/.*)?$ ]] || \
+       [[ "$input" =~ \.[a-zA-Z]{2,}(/.*)?$ ]]; then
+        return 0  # true
+    else
+        return 1  # false
+    fi
+}
+
+
+
+# Parse the query and determine the site and search terms
+parse_query() {
+    local input=$1
+    local site="google"  # default
+    local query=""
+    
+    # Check for prefix
+    local found_prefix=false
+    for prefix in "${!PREFIXES[@]}"; do
+        if [[ "$input" =~ ^"$prefix"[[:space:]] ]]; then
+            site="${PREFIXES[$prefix]}"
+            query="${input#$prefix }"  # Remove prefix and space
+            found_prefix=true
+            break
+        fi
+    done
+    
+    # If no prefix found, use entire input as query
+    if [ "$found_prefix" = false ]; then
+        query="$input"
+    fi
+    
+    # Return as "site|query"
+    echo "$site|$query"
+}
+
+# Handle the query.
+handle_query()
+{
+    local input=$1
+    
+    # Parse the input
+    local parsed=$(parse_query "$input")
+    local site="${parsed%|*}"
+    local query="${parsed#*|}"
+    
+    # Check if query looks like a URL
+    if is_url "$query"; then
+        # Add protocol if not present
+        if [[ ! "$query" =~ ^https?:// ]]; then
+            query="https://$query"
+        fi
+        
+        # Write to cache
+        if grep -Fxq "$input" "$CACHE_FILE" 2>/dev/null; then
+            # Remove the existing entry
+            grep -xv "$input" "$CACHE_FILE" > "$CACHE_DIR/tmp.txt" 2>/dev/null || true
+            mv "$CACHE_DIR/tmp.txt" "$CACHE_FILE" 2>/dev/null
+            write_to_top "$input"
+        else
+            write_to_top "$input"
+        fi
+        
+        # Open URL directly
+        $BROWSER "$query" >/dev/null 2>&1 &
+    else
+        # Write the query to file
+        if grep -Fxq "$input" "$CACHE_FILE" 2>/dev/null; then
+            # Remove the existing entry
+            grep -xv "$input" "$CACHE_FILE" > "$CACHE_DIR/tmp.txt" 2>/dev/null || true
+            mv "$CACHE_DIR/tmp.txt" "$CACHE_FILE" 2>/dev/null
+            write_to_top "$input"
+        else
+            write_to_top "$input"
+        fi
+
+        # Open the corresponding site in browser
+        $BROWSER "${SITES[$site]}$query" >/dev/null 2>&1 &
+    fi
+}
+
+main()
+{
+    create_cache_dir
+    create_cache_file
+
+    if [ "$@" ]
+    then 
+        handle_query "$@"
+    else
+        # Show rofi with cached queries
+        selection=$(echo "$(gen_combined_list)" | rofi -dmenu -i -p "Search (:g :y :gh :b :r or URL)")
+
+        if [ -n "$selection" ]; then
+            handle_query "$selection"
+        fi
+    fi
+}
+
+# Get argument options.
+while getopts ":s:b:h" o; do
+    case "${o}" in 
+        s)
+            SITE_TO_USE=${OPTARG}
+            ;;
+        b)
+            BROWSER=${OPTARG}
+            ;;
+        h)
+            usage
+            ;;
+        \?) 
+            usage
+            ;;
+    esac
+done
+shift $((OPTIND-1))
+
+main "$@"

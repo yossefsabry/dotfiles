@@ -2,8 +2,8 @@ sw_volume: 98
 audio_device_state:1:PulseAudio Output
 audio_device_state:1:Visualizer Output
 state: pause
-current: 6
-time: 98.73400000000001
+current: 12
+time: 201.011
 random: 0
 repeat: 1
 single: 1
@@ -26,4 +26,11 @@ playlist_begin
 10:dua lipa/Don_t Start Now(MP3_160K).mp3
 11:dua lipa/Levitating (The Blessed Madonna remix)(MP3_160K).mp3
 12:dua lipa/Levitating(MP3_160K).mp3
+13:fav/'circles' (Audio) [scenes II].mp3
+14:fav/'faces' (Audio).mp3
+15:fav/(FREE) Aesthetic Type Beat - baby stay (prod. yusei ft. cold illumination).mp3
+16:good_vibe/After Hours.mp3
+17:good_vibe/Caught Up.mp3
+18:good_vibe/Do It Better.mp3
+19:good_vibe/Piece Of Me.mp3
 playlist_end

@@ -1,0 +1,14 @@
+#!/bin/bash
+
+# Get the current window ID and the last focused window ID
+current_window=$(i3-msg -t get_tree | jq -r '.. | select(.focused == true).id')
+last_window=$(cat ~/.i3/last_window_id)
+
+# If there was a previous window, switch to it
+if [ -n "$last_window" ]; then
+  i3-msg [id=$last_window] focus
+fi
+
+# Update the last focused window
+echo $current_window > ~/.i3/last_window_id
+
