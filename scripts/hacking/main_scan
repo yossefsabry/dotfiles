@@ -1,0 +1,272 @@
+#!/usr/bin/env bash
+
+# Colors for output
+RED='\033[0;31m'
+GREEN='\033[0;32m'
+YELLOW='\033[1;33m'
+BLUE='\033[0;34m'
+MAGENTA='\033[0;35m'
+CYAN='\033[0;36m'
+NC='\033[0m' # No Color
+
+# Check if URL is provided
+if [ -z "$1" ]; then
+    echo -e "${RED}[!] Error: No URL/domain provided${NC}"
+    echo -e "${YELLOW}Usage: $0 <domain>${NC}"
+    echo -e "${YELLOW}Example: $0 monkeytype.com${NC}"
+    exit 1
+fi
+
+# Extract domain from URL (remove http://, https://, www., and trailing /)
+DOMAIN=$(echo "$1" | sed -e 's|^https\?://||' -e 's|^www\.||' -e 's|/.*$||')
+echo -e "${CYAN}[*] Target: ${DOMAIN}${NC}"
+
+# Create results directory
+RESULTS_DIR="scan_results_${DOMAIN}_$(date +%Y%m%d_%H%M%S)"
+mkdir -p "$RESULTS_DIR"
+echo -e "${GREEN}[+] Results directory created: ${RESULTS_DIR}${NC}"
+
+# ==================== STEP 1: DNS Lookup ====================
+echo -e "\n${MAGENTA}[*] Step 1: Running DNS lookups (nslookup + dig)...${NC}"
+
+# Run nslookup
+echo -e "${CYAN}[*] Running nslookup...${NC}"
+nslookup "$DOMAIN" > "$RESULTS_DIR/nslookup_dig_results.txt" 2>&1
+
+# Run dig
+echo -e "${CYAN}[*] Running dig...${NC}"
+dig "$DOMAIN" >> "$RESULTS_DIR/nslookup_dig_results.txt" 2>&1
+
+echo -e "${GREEN}[+] DNS results saved to: ${RESULTS_DIR}/nslookup_dig_results.txt${NC}"
+
+# ==================== STEP 2: Extract IP Addresses ====================
+echo -e "\n${MAGENTA}[*] Step 2: Extracting IP addresses...${NC}"
+
+# Extract IPs from nslookup output (IPv4 only)
+IPS_NSLOOKUP=$(grep -oE "\b([0-9]{1,3}\.){3}[0-9]{1,3}\b" "$RESULTS_DIR/nslookup_dig_results.txt" | grep -v "127.0.0.1" | sort -u)
+
+# Extract IPs from dig output (A records)
+IPS_DIG=$(dig +short "$DOMAIN" A | grep -oE "\b([0-9]{1,3}\.){3}[0-9]{1,3}\b" | sort -u)
+
+# Combine and deduplicate IPs
+IPS=$(echo -e "${IPS_NSLOOKUP}\n${IPS_DIG}" | grep -v "^$" | sort -u)
+
+# Check if any IPs were found
+if [ -z "$IPS" ]; then
+    echo -e "${RED}[!] No IP addresses found for ${DOMAIN}${NC}"
+    exit 1
+fi
+
+# Count IPs
+IP_COUNT=$(echo "$IPS" | wc -l)
+
+# ==================== STEP 3: IP Selection ====================
+if [ "$IP_COUNT" -eq 1 ]; then
+    # Only one IP found
+    SELECTED_IP="$IPS"
+    echo -e "${GREEN}[+] Found 1 IP address: ${SELECTED_IP}${NC}"
+else
+    # Multiple IPs found - prompt user to choose
+    echo -e "${YELLOW}[!] Found ${IP_COUNT} IP addresses:${NC}"
+    
+    # Display IPs with numbers
+    i=1
+    declare -a IP_ARRAY
+    while IFS= read -r ip; do
+        echo -e "${CYAN}  [$i] ${ip}${NC}"
+        IP_ARRAY[$i]="$ip"
+        ((i++))
+    done <<< "$IPS"
+    
+    # Prompt for selection
+    echo -e "${YELLOW}[?] Please choose an IP to continue (1-${IP_COUNT}):${NC}"
+    read -r CHOICE
+    
+    # Validate choice
+    if ! [[ "$CHOICE" =~ ^[0-9]+$ ]] || [ "$CHOICE" -lt 1 ] || [ "$CHOICE" -gt "$IP_COUNT" ]; then
+        echo -e "${RED}[!] Invalid choice. Exiting.${NC}"
+        exit 1
+    fi
+    
+    SELECTED_IP="${IP_ARRAY[$CHOICE]}"
+    echo -e "${GREEN}[+] Selected IP: ${SELECTED_IP}${NC}"
+fi
+
+# Save selected IP to file
+echo "$SELECTED_IP" > "$RESULTS_DIR/selected_ip.txt"
+
+# Construct URL with https://
+HTTPS_URL="https://${DOMAIN}"
+
+# ==================== PARALLEL SCANS ====================
+echo -e "\n${MAGENTA}[*] Step 3: Launching all scans in parallel...${NC}"
+
+# Associative array to map PIDS to scan names
+declare -A PID_NAMES
+declare -a PIDS=()
+
+# ---------- Rustscan (Background) ----------
+if command -v rustscan &> /dev/null; then
+    echo -e "${CYAN}[*] Starting rustscan on ${SELECTED_IP}...${NC}"
+    (
+        echo "[$(date '+%H:%M:%S')] Rustscan started" >> "$RESULTS_DIR/scan_timeline.log"
+        # Strip ANSI color codes from output using sed
+        rustscan -a "$SELECTED_IP" -- -sV 2>&1 | sed 's/\x1b\[[0-9;]*[a-zA-Z]//g' > "$RESULTS_DIR/rustscan_nmap_results.txt"
+        echo "[$(date '+%H:%M:%S')] Rustscan finished" >> "$RESULTS_DIR/scan_timeline.log"
+    ) &
+    PID=$!
+    PIDS+=($PID)
+    PID_NAMES[$PID]="Rustscan"
+else
+    echo -e "${YELLOW}[!] rustscan not found, skipping...${NC}"
+fi
+
+# ---------- Wappalyzer (Background) ----------
+WAPPALYZER_PATH="$HOME/tools/wappalyzer/src/drivers/npm/cli.js"
+if [ -f "$WAPPALYZER_PATH" ]; then
+    echo -e "${CYAN}[*] Starting Wappalyzer on ${HTTPS_URL}...${NC}"
+    (
+        echo "[$(date '+%H:%M:%S')] Wappalyzer started" >> "$RESULTS_DIR/scan_timeline.log"
+        if command -v jq &> /dev/null; then
+            node "$WAPPALYZER_PATH" "$HTTPS_URL" 2>&1 | jq > "$RESULTS_DIR/wappalyzer_results.json" 2>&1
+        else
+            node "$WAPPALYZER_PATH" "$HTTPS_URL" > "$RESULTS_DIR/wappalyzer_results.json" 2>&1
+        fi
+        echo "[$(date '+%H:%M:%S')] Wappalyzer finished" >> "$RESULTS_DIR/scan_timeline.log"
+    ) &
+    PID=$!
+    PIDS+=($PID)
+    PID_NAMES[$PID]="Wappalyzer"
+else
+    echo -e "${YELLOW}[!] Wappalyzer not found, skipping...${NC}"
+fi
+
+# ---------- FFUF (Background) ----------
+WORDLIST="$HOME/hacking/password_list/SecLists/Discovery/Web-Content/common.txt"
+if command -v ffuf &> /dev/null && [ -f "$WORDLIST" ]; then
+    echo -e "${CYAN}[*] Starting FFUF on ${HTTPS_URL}...${NC}"
+    (
+        echo "[$(date '+%H:%M:%S')] FFUF started" >> "$RESULTS_DIR/scan_timeline.log"
+        echo -e "${CYAN}[*] Running: ffuf -u ${HTTPS_URL}/FUZZ -w ${WORDLIST} -mc 100-399${NC}"
+        # Use -s for silent mode and format the output cleanly
+        ffuf -u "${HTTPS_URL}/FUZZ" -w "$WORDLIST" -mc 100-399 -s -o "$RESULTS_DIR/ffuf_results.json" -of json 2>&1 >/dev/null
+        
+        # Convert JSON to readable format
+        if [ -f "$RESULTS_DIR/ffuf_results.json" ]; then
+            echo -e "\n=== FFUF Scan Results ===\n" > "$RESULTS_DIR/ffuf_results.txt"
+            echo "Target: ${HTTPS_URL}/FUZZ" >> "$RESULTS_DIR/ffuf_results.txt"
+            echo "Wordlist: ${WORDLIST}" >> "$RESULTS_DIR/ffuf_results.txt"
+            echo "Match Codes: 100-399" >> "$RESULTS_DIR/ffuf_results.txt"
+            echo -e "\n=== Discovered Paths ===\n" >> "$RESULTS_DIR/ffuf_results.txt"
+            
+            # Extract and format results from JSON
+            if command -v jq &> /dev/null; then
+                jq -r '.results[] | "[\(.status)] \(.url) (Size: \(.length))"' "$RESULTS_DIR/ffuf_results.json" >> "$RESULTS_DIR/ffuf_results.txt" 2>/dev/null
+            else
+                # Fallback if jq is not available
+                grep -o '"url":"[^"]*"' "$RESULTS_DIR/ffuf_results.json" | sed 's/"url":"//;s/"//' >> "$RESULTS_DIR/ffuf_results.txt"
+            fi
+        fi
+        echo -e "${GREEN}[+] FFUF results saved to: ${RESULTS_DIR}/ffuf_results.txt${NC}"
+        echo "[$(date '+%H:%M:%S')] FFUF finished" >> "$RESULTS_DIR/scan_timeline.log"
+    ) &
+    PID=$!
+    PIDS+=($PID)
+    PID_NAMES[$PID]="FFUF"
+else
+    if ! command -v ffuf &> /dev/null; then
+        echo -e "${YELLOW}[!] ffuf not found, skipping...${NC}"
+    else
+        echo -e "${YELLOW}[!] Wordlist not found at: ${WORDLIST}, skipping ffuf...${NC}"
+    fi
+fi
+
+# ---------- Subfinder (Background) ----------
+if command -v subfinder &> /dev/null; then
+    echo -e "${CYAN}[*] Starting Subfinder on ${DOMAIN}...${NC}"
+    (
+        echo "[$(date '+%H:%M:%S')] Subfinder started" >> "$RESULTS_DIR/scan_timeline.log"
+        subfinder -d "$DOMAIN" 2>&1 | sed 's/\x1b\[[0-9;]*[a-zA-Z]//g' > "$RESULTS_DIR/subfinder_results.txt"
+        echo "[$(date '+%H:%M:%S')] Subfinder finished" >> "$RESULTS_DIR/scan_timeline.log"
+    ) &
+    PID=$!
+    PIDS+=($PID)
+    PID_NAMES[$PID]="Subfinder"
+else
+    echo -e "${YELLOW}[!] subfinder not found, skipping...${NC}"
+fi
+
+# ---------- Nikto (Background) ----------
+if command -v nikto &> /dev/null; then
+    echo -e "${CYAN}[*] Starting Nikto on ${DOMAIN}:443...${NC}"
+    (
+        echo "[$(date '+%H:%M:%S')] Nikto started" >> "$RESULTS_DIR/scan_timeline.log"
+        nikto -host "$DOMAIN" -port 443 2>&1 | sed 's/\x1b\[[0-9;]*[a-zA-Z]//g' > "$RESULTS_DIR/nikto_results.txt"
+        echo "[$(date '+%H:%M:%S')] Nikto finished" >> "$RESULTS_DIR/scan_timeline.log"
+    ) &
+    PID=$!
+    PIDS+=($PID)
+    PID_NAMES[$PID]="Nikto"
+else
+    echo -e "${YELLOW}[!] nikto not found, skipping...${NC}"
+fi
+
+# ---------- Wait for all scans to complete ----------
+if [ ${#PIDS[@]} -gt 0 ]; then
+    echo -e "\n${YELLOW}[*] Running ${#PIDS[@]} scans in parallel...${NC}\n"
+    
+    # Track which PIDS have been reported as complete
+    declare -A COMPLETED
+    SCAN_COUNT=0
+    
+    while [ $SCAN_COUNT -lt ${#PIDS[@]} ]; do
+        sleep 1
+        
+        for pid in "${PIDS[@]}"; do
+            # Check if this PID is done and hasn't been reported yet
+            if ! kill -0 $pid 2>/dev/null && [ -z "${COMPLETED[$pid]}" ]; then
+                COMPLETED[$pid]=1
+                ((SCAN_COUNT++))
+                echo -e "${GREEN}  ✓ ${PID_NAMES[$pid]} completed (${SCAN_COUNT}/${#PIDS[@]})${NC}"
+            fi
+        done
+    done
+    
+    # Wait for all background jobs
+    wait
+    
+    echo -e "\n${GREEN}[✓] All scans completed!${NC}"
+    
+    # Display parallel execution timeline
+    if [ -f "$RESULTS_DIR/scan_timeline.log" ]; then
+        echo -e "\n${YELLOW}[*] Scan Timeline (verifies parallel execution):${NC}"
+        cat "$RESULTS_DIR/scan_timeline.log"
+    fi
+    
+    # Display final summary with additional details
+    if [ -f "$RESULTS_DIR/subfinder_results.txt" ]; then
+        SUBDOMAIN_COUNT=$(grep -c "^" "$RESULTS_DIR/subfinder_results.txt" 2>/dev/null || echo "0")
+        echo -e "${CYAN}  → Subfinder found ${SUBDOMAIN_COUNT} subdomains${NC}"
+    fi
+else
+    echo -e "${RED}[!] No scans were launched (all tools missing)${NC}"
+fi
+
+# ==================== Summary ====================
+echo -e "\n${GREEN}============================================${NC}"
+echo -e "${GREEN}[✓] Scan completed successfully!${NC}"
+echo -e "${GREEN}============================================${NC}"
+echo -e "${CYAN}Target:${NC} ${DOMAIN}"
+echo -e "${CYAN}IP Address:${NC} ${SELECTED_IP}"
+echo -e "${CYAN}Results Directory:${NC} ${RESULTS_DIR}"
+echo -e "\n${YELLOW}Generated Files:${NC}"
+echo -e "  - nslookup_dig_results.txt (DNS lookup results)"
+echo -e "  - selected_ip.txt (Selected IP address)"
+[ -f "$RESULTS_DIR/rustscan_nmap_results.txt" ] && echo -e "  - rustscan_nmap_results.txt (Port scan with service detection)"
+[ -f "$RESULTS_DIR/wappalyzer_results.json" ] && echo -e "  - wappalyzer_results.json (Technology detection)"
+[ -f "$RESULTS_DIR/ffuf_results.txt" ] && echo -e "  - ffuf_results.txt (Directory/file fuzzing)"
+[ -f "$RESULTS_DIR/ffuf_results.json" ] && echo -e "  - ffuf_results.json (FFUF raw JSON output)"
+[ -f "$RESULTS_DIR/subfinder_results.txt" ] && echo -e "  - subfinder_results.txt (Subdomain enumeration)"
+[ -f "$RESULTS_DIR/nikto_results.txt" ] && echo -e "  - nikto_results.txt (Nikto vulnerability scan)"
+[ -f "$RESULTS_DIR/scan_timeline.log" ] && echo -e "  - scan_timeline.log (Parallel execution timeline)"
+echo -e "${GREEN}============================================${NC}"

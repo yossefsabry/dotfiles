@@ -86,6 +86,7 @@ bindsym $mod+w kill
 #     ~/.config/rofi/config.rasi"
 
 bindsym $mod+p exec --no-startup-id rofi -show drun -show-icons -icon-theme 'Papirus'
+bindsym $mod+Shift+p exec --no-startup-id $HOME/.config/rofi/rofi_search
 bindsym $mod+space exec --no-startup-id rofi -show combi
 bindsym $mod+Tab exec --no-startup-id rofi -show window 
 
