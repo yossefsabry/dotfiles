@@ -1,0 +1,25 @@
+#!/bin/env bash
+
+CHANNEL="xfce4-keyboard-shortcuts"
+
+echo "Configuring XFCE window switching (Alt+l / Alt+h)..."
+
+# Remove old bindings (uppercase or lowercase)
+xfconf-query -c $CHANNEL -p "/xfwm4/custom/<Alt>l" -r 2>/dev/null
+xfconf-query -c $CHANNEL -p "/xfwm4/custom/<Alt>L" -r 2>/dev/null
+xfconf-query -c $CHANNEL -p "/xfwm4/custom/<Alt>h" -r 2>/dev/null
+xfconf-query -c $CHANNEL -p "/xfwm4/custom/<Alt>H" -r 2>/dev/null
+
+# Alt+l → next window
+xfconf-query -c $CHANNEL \
+  -p "/xfwm4/custom/<Alt>l" \
+  -n -t string -s "cycle_windows_key"
+
+# Alt+h → previous window
+xfconf-query -c $CHANNEL \
+  -p "/xfwm4/custom/<Alt>h" \
+  -n -t string -s "cycle_windows_reverse_key"
+
+echo "Done."
+echo "Use Alt+l (next) and Alt+h (previous)."
+

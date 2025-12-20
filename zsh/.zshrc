@@ -1,10 +1,28 @@
+
+
+
+
+
+
+
+
+
+
+# print the date and the day
+printf "\n\e[48;2;67;126;145m\e[38;2;234;242;244m%-*s\e[0m\n" \
+  "$cols" "  $(date '+%A %m/%d/%Y %I:%M %p')"
+
+
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
 export PATH="$HOME/.local/bin/:$PATH"
 export PATH="$HOME/bin/:$PATH"
 # for scripts dotfiles
 # ====== adding all folders inside scripts folder =======
+# break the zsh ## IMPORTANT
 export PATH="$(find "$HOME/dotfiles/scripts" -type d | tr '\n' ':')$PATH"
+# export PATH="$HOME/dotfiles/scripts:$PATH"
+
 # export PATH="$HOME/dotfiles/scripts:$PATH"
 # export PATH="$HOME/dotfiles/scripts/install_scripts:$PATH"
 
@@ -155,6 +173,7 @@ export term=kitty
 #alias browser=brave-browser
 #alias brave="brave-browser"
 alias vim='nvim'
+alias v='nvim'
 alias vi='/usr/bin/vim'
 alias lutris='GTK_THEME=Adwaita:dark lutris'
 

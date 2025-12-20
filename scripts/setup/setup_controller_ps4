@@ -1,0 +1,52 @@
+#!/bin/bash
+
+# Ensure the script is run as root for installations
+if [ "$EUID" -ne 0 ]; then 
+  echo "Please run as root (use sudo)"
+  exit
+fi
+
+echo "--- DS4 Controller Setup for Arch Linux ---"
+
+# 1. Install core dependencies
+echo "[1/4] Installing Bluez and utilities..."
+pacman -S --needed bluez bluez-utils --noconfirm
+
+# 2. Enable and Start Bluetooth
+echo "[2/4] Enabling Bluetooth service..."
+systemctl enable --now bluetooth
+
+# 3. Set up Udev Rules (Important for Steam/non-root access)
+# We will create a rule to allow the 'input' group to access the controller
+echo "[3/4] Setting up udev rules..."
+cat <<EOF > /etc/udev/rules.d/99-ds4-controller.rules
+# PS4 DualShock 4 over USB
+KERNEL=="hidraw*", ATTRS{idVendor}=="054c", ATTRS{idProduct}=="05c4", MODE="0666"
+KERNEL=="hidraw*", ATTRS{idVendor}=="054c", ATTRS{idProduct}=="09cc", MODE="0666"
+
+# PS4 DualShock 4 over Bluetooth
+KERNEL=="hidraw*", KERNELS=="*054C:05C4*", MODE="0666"
+KERNEL=="hidraw*", KERNELS=="*054C:09CC*", MODE="0666"
+EOF
+
+udevadm control --reload-rules
+udevadm trigger
+
+# 4. Instructions for Connection
+echo "[4/4] Setup complete!"
+echo "-------------------------------------------------------"
+echo "HOW TO CONNECT:"
+echo "-------------------------------------------------------"
+echo "WIRELESS (Bluetooth):"
+echo "1. Hold the 'PS' button + 'SHARE' button until the light flashes white."
+echo "2. Run 'bluetoothctl' in a terminal."
+echo "3. Type: scan on"
+echo "4. Find the MAC address (e.g., AA:BB:CC:DD:EE:FF) for 'Wireless Controller'."
+echo "5. Type: pair [MAC]"
+echo "6. Type: trust [MAC]"
+echo "7. Type: connect [MAC]"
+echo ""
+echo "WIRED (USB):"
+echo "Just plug it in. The light should turn orange (charging) or blue."
+echo "Check connection by running: ls /dev/input/js*"
+echo "-------------------------------------------------------"

@@ -1,18 +1,24 @@
 #!/bin/bash
 
-# Check for screenkey-git
-if ! command -v screenkey &> /dev/null; then
-    echo "Installing screenkey-git from AUR..."
-    yay -S --noconfirm screenkey-git
+
+# 2. Start Picom (Compositor)
+# FIXED: Removed '--no-fading' which caused the crash.
+# Added '--backend glx' to fix the backend error.
+if ! pgrep -x "picom" > /dev/null; then
+    # We run picom with a null config to use defaults, but force the GLX backend
+    picom -b --backend glx --config /dev/null
 fi
 
-# Kill existing instances
+# 3. Kill existing screenkey instances
 pkill screenkey &>/dev/null
 
+# 4. Run screenkey
+# Settings: Large size, fixed position at bottom, white text, transparent background
 screenkey \
+    --scr 0 \
     -s large \
     -p fixed \
-    -g 600x80-30-385 \
+    -g 800x120-1-860 \
     --font-color white \
-    --bg-color black \
-    --opacity 0.7 
+    --bg-color "#191724" \
+    --opacity 0.5 &
