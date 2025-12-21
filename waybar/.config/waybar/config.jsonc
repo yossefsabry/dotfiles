@@ -124,8 +124,7 @@
         "modules-left": ["mpd"],
         "modules-center": ["custom/brave-media"],
         "modules-right": [ "disk#ssd", "custom/waypick", "network", "clock",
-            "bluetooth", "tray", "wlr/taskbar"],
-
+            "bluetooth", "tray"],
         "network": {
             "format": " 󰖩 ",
             "format-wifi": "{signalStrength}:WIFI",
