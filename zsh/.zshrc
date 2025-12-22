@@ -343,3 +343,7 @@ export PATH=$PATH:$ANDROID_HOME/emulator:$ANDROID_HOME/platform-tools:$PATH
 export PATH=$PATH:$ANDROID_HOME/emulator
 export PATH=$PATH:$ANDROID_HOME/platform-tools
 export QT_QPA_PLATFORM=xcb
+
+
+# Load Angular CLI autocompletion.
+source <(ng completion script)
