@@ -1,12 +1,8 @@
 #!/bin/bash
 
-# wlsunset toggle script for Hyprland
-
-if pgrep -x "wlsunset" > /dev/null; then
-    pkill -x "wlsunset"
-    return
+if pgrep -x gammastep >/dev/null; then
+    pkill -x gammastep
 else
-    wlsunset -t 3000 -T 4000 >/dev/null 2>&1 &
-    return
+    gammastep -O 3500 &
 fi
 
