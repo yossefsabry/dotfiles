@@ -1,13 +1,4 @@
 
-
-
-
-
-
-
-
-
-
 # print the date and the day
 printf "\n\e[48;2;67;126;145m\e[38;2;234;242;244m%-*s\e[0m\n" \
   "$cols" "  $(date '+%A %m/%d/%Y %I:%M %p')"
@@ -191,7 +182,6 @@ alias pc='xsel --input --clipboard'
 alias pp='xsel --output --clipboard'
 alias ping='ping -c 10'
 alias less='less -R'
-alias cls='clear'
 # for search in history alt + 3
 bindkey '\er' history-incremental-search-backward
 
@@ -205,7 +195,6 @@ alias cdv="cd /home/$USER/.config/nvim"
 alias notes="cd /home/$USER/notes"
 alias dotfiles="cd /home/$USER/dotfiles"
 alias scripts="cd /home/$USER/dotfiles/scripts"
-alias build="./build"
 alias fcd="fzf_cd"
 
 # Alias's for multiple directory listing commands
@@ -253,6 +242,7 @@ alias folders='du -h --max-depth=1'
 alias tree='tree -CAhF --dirsfirst'
 alias treed='tree -CAFd'
 alias mountedinfo='df -hT'
+alias tmem="ps -eo pid,user,comm,%mem,%cpu --sort=-%mem | head -10"
 
 # Alias's for archives
 alias mktar='tar -cvf'

@@ -1,0 +1,11 @@
+#!/bin/bash
+
+# 1. Set the prefix for this session
+export WINEPREFIX=~/Games/my_new_prefix
+
+# 2. Set the path to your GE-Proton binary for easier typing
+alias gewine='/home/yossef/.local/share/lutris/runners/proton/GE-Proton9-25/files/bin/wine'
+
+# 3. Now you can just run:
+gewine winecfg
+gewine control
