@@ -180,6 +180,8 @@ alias rm='rm -rf'
 alias cp='yes | cp -Ri'
 alias pc='xsel --input --clipboard' 
 alias pp='xsel --output --clipboard'
+alias wpc=' wl-copy '
+alias wpp=' wl-paste '
 alias ping='ping -c 10'
 alias less='less -R'
 # for search in history alt + 3

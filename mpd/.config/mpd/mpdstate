@@ -2,8 +2,8 @@ sw_volume: 100
 audio_device_state:1:PulseAudio Output
 audio_device_state:1:Visualizer Output
 state: pause
-current: 3
-time: 2.473
+current: 14
+time: 25.296
 random: 0
 repeat: 1
 single: 1
@@ -17,4 +17,15 @@ playlist_begin
 1:other/Bruno Mars - That_s What I Like [Official Music Video](M4A_128K).m4a
 2:other/Bruno Mars - That_s What I Like [Official Music Video](M4A_128K).m4a
 3:dua lipa/Kiss and Make Up(MP3_160K).mp3
+4:dua lipa/Be The One(MP3_160K).mp3
+5:dua lipa/Blow Your Mind (Mwah)(MP3_160K).mp3
+6:dua lipa/Genesis(MP3_160K).mp3
+7:dua lipa/Hotter Than Hell(MP3_160K).mp3
+8:dua lipa/Dua Lipa - Thinking _Bout You (Official Video)(MP3_160K).mp3
+9:dua lipa/New Love(MP3_160K).mp3
+10:dua lipa/Electricity (Official Video)(MP3_160K).mp3
+11:dua lipa/Love Again(MP3_160K).mp3
+12:dua lipa/Physical(MP3_160K).mp3
+13:dua lipa/Am I Evil_(MP3_160K).mp3
+14:dua lipa/Houdini(MP3_160K).mp3
 playlist_end
