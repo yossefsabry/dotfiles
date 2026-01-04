@@ -252,7 +252,11 @@ for_window [class="kitty" instance ="scratchBtop"] move scratchpad
 for_window [class="kitty" instance ="scratchBtop"] resize set 1500 1000
 for_window [class="kitty" instance="scratchBtop"] border none
 exec --no-startup-id kitty --name scratchBtop --override font_size=18 -e btop
+
 bindsym $mod+i [class="kitty" instance ="scratchBtop"]  scratchpad show;  move position center
+
+# for andriod studio
+for_window [class="Emulator"] floating enable
 
 # 4- song
 for_window [class="kitty" instance ="scratchSong"] floating enable
@@ -264,6 +268,18 @@ for_window [class="kitty" instance="scratchSong"] border none
 exec --no-startup-id kitty --name scratchSong --override font_size=18 -e ncmpcpp
 bindsym $mod+o [class="kitty" instance ="scratchSong"]  scratchpad show;  move position center
 
+
+# rules for windscribe
+# WM_CLASS(STRING) = "Windscribe", "Windscribe2"
+for_window [class="Windscribe"] floating enable
+for_window [class="Windscribe2"] floating enable
+
+# rules for windscribe
+# WM_CLASS(STRING) = "Windscribe", "Windscribe2"
+for_window [class="Windscribe"] floating enable
+for_window [class="Windscribe2"] floating enable
+
+
 #------------------------ scratchpad ------------------------
 
 # reload the configuration file
@@ -274,10 +290,8 @@ bindsym $mod+Shift+r restart
 bindsym $mod+Shift+q exec i3 exit
 
 # Bind a switch key, which focuses the previously focused window
-bindsym $mod+b [con_mark=_back] focus
-
-
-
+# not working
+# bindsym $mod+b [con_mark=_back] focus
 
 # resize window (you can also use the mouse for that)
 mode "resize" {

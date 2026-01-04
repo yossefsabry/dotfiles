@@ -241,6 +241,7 @@ alias ipconfig="ifconfig "
 # Alias's to show disk space and space used in a folder
 alias diskspace="du -S | sort -n -r |more"
 alias folders='du -h --max-depth=1'
+alias tree='tree -a'
 alias tree='tree -CAhF --dirsfirst'
 alias treed='tree -CAFd'
 alias mountedinfo='df -hT'
@@ -339,3 +340,8 @@ export QT_QPA_PLATFORM=xcb
 
 # Load Angular CLI autocompletion.
 source <(ng completion script)
+
+
+# my commend for tomorrow
+echo "fix the problem on tree view"
+echo "adding anhancement to the client browser"

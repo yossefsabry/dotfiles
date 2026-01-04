@@ -1,0 +1,92 @@
+// Work around WezTerm's initial configure bug
+// by setting an empty default-column-width.
+window-rule {
+    match app-id=r#"^org\.wezfurlong\.wezterm$"#
+    default-column-width {}
+}
+
+// Open the Firefox picture-in-picture player as floating by default.
+window-rule {
+    match app-id=r#"firefox$"# title="^Picture-in-Picture$"
+    open-floating true
+}
+
+// ========================================
+// Workspace Assignments (matching i3)
+// ========================================
+
+// Workspace 2 - Browsers
+window-rule {
+    match app-id=r#"brave-browser|Brave-browser|chromium|Chromium|qutebrowser"#
+    open-on-workspace "2"
+}
+
+// Workspace 3 - Communication & Utilities
+window-rule {
+    match app-id=r#"discord|kuro|Kuro|mpv|lg|KeePassXC|keepassxc|Microsoft To-Do Unofficial"#
+    open-on-workspace "3"
+}
+
+// Workspace 4 - Development & Productivity
+window-rule {
+    match app-id=r#"obsidian|Zathura|code"#
+    open-on-workspace "4"
+}
+
+// Workspace 5 - File Management & Media
+window-rule {
+    match app-id=r#"Nemo|Zeal|com\.github\.th_ch\.youtube_music|youtube music desktop app|Youtube Music Desktop App|fooyin|QtSpim"#
+    open-on-workspace "5"
+}
+
+// Workspace 6 - Gaming & Tools
+window-rule {
+    match app-id=r#"Postman|steam|steamwebhelper|Lutris|net\.lutris\.Lutris|Youtube Music|install4j-burp-StartBurp|burp-StartBurp"#
+    open-on-workspace "6"
+}
+
+// Workspace 7 - Creative & VMs
+window-rule {
+    match app-id=r#"Gimp|VirtualBox Manager|obs"#
+    open-on-workspace "7"
+}
+
+// ========================================
+// Floating Rules (matching i3)
+// ========================================
+
+// Android Emulator (floating)
+window-rule {
+    match app-id=r#"Emulator"#
+    open-floating true
+}
+
+// Windscribe VPN (floating)
+window-rule {
+    match app-id=r#"Windscribe|Windscribe2"#
+    open-floating true
+}
+
+// Scratchpad windows (floating)
+window-rule {
+    match app-id=r#"kitty"# title=r#"^scratch"#
+    open-floating true
+}
+
+// ========================================
+// Layer Rules
+// ========================================
+
+// Add a shadow to dmenu and waybar.
+layer-rule {
+    match namespace="^(launcher|waybar)$"
+    match at-startup=true
+    shadow { on; }
+    geometry-corner-radius 0
+}
+
+// Use current wallpaper as backdrop.
+layer-rule {
+    match namespace="^swww-daemonbackdrop$"
+    place-within-backdrop true
+}

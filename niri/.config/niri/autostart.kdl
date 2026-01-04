@@ -1,0 +1,18 @@
+// Autostart applications matching i3 setup
+spawn-at-startup "dbus-update-activation-environment" "--systemd" "WAYLAND_DISPLAY" "XDG_CURRENT_DESKTOP"
+spawn-at-startup "/usr/lib/polkit-kde-authentication-agent-1"
+spawn-at-startup "/home/yossef/dotfiles/scripts/startup/setup_desktop_enviorments"
+spawn-at-startup "/home/yossef/dotfiles/scripts/gui/skey"
+spawn-at-startup "nm-applet"
+spawn-at-startup "copyq" "--start-server"
+spawn-at-startup "keypop"
+spawn-at-startup "wl-paste" "--type" "text" "--watch" "cliphist" "store"
+spawn-at-startup "wl-paste" "--type" "image" "--watch" "cliphist" "store"
+
+// Wallpapers and Waybar
+spawn-at-startup "swww-daemon"
+spawn-at-startup "swww" "img" "/home/yossef/Pictures/img_1.gif"
+spawn-at-startup "waybar"
+
+// Audio/Brightness adjustments (not needed here if handled by keybinds, but good for defaults)
+spawn-at-startup "xss-lock" "--transfer-sleep-lock" "--" "i3lock" "--nofork"

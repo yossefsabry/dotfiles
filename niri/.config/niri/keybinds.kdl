@@ -1,0 +1,188 @@
+binds {
+    // Core Application Launchers (i3-style with Alt modifier)
+    Alt+Return      { spawn "kitty"; }
+    Alt+p           { spawn "rofi" "-show" "drun" "-show-icons" "-icon-theme" "Papirus"; }
+    Alt+w           { close-window; }
+    Alt+f           { toggle-window-floating; }
+    Alt+m           { fullscreen-window; }
+    Alt+Tab         { focus-workspace-previous; }
+    Alt+Space       { spawn "rofi" "-show" "combi"; }
+    
+    // Waypaper shortcut (from Hyprland config)
+    Mod+Shift+w     { spawn "/home/yossef/dotfiles/scripts/hypr/ch_waypaper"; }
+    
+    // Exit/Quit
+    Alt+Shift+q     { quit; }
+
+    // Mouse Actions (matching i3 floating_modifier)
+    Alt+WheelScrollDown      cooldown-ms=150 { focus-workspace-down; }
+    Alt+WheelScrollUp        cooldown-ms=150 { focus-workspace-up; }
+    Alt+Ctrl+WheelScrollDown cooldown-ms=150 { move-column-to-workspace-down; }
+    Alt+Ctrl+WheelScrollUp   cooldown-ms=150 { move-column-to-workspace-up; }
+    
+    // Mouse Drag/Resize (Built-in to Niri with Mod key, assuming Mod=Alt via external remap or direct here)
+    // Note: Niri defaults to Super+Mouse for drag. Since we want Alt, we have to rely on
+    // using 'Alt' as the modifier here if possible, but Niri hardcodes drag to 'Mod'.
+    // Best approach: Mod is typically Super. If you want Alt for dragging, we might need
+    // to map Mod to Alt at the session level or accept Super for dragging.
+    // However, we can bind specific mouse actions:
+    
+    // Media launcher and utilities
+    Mod+d           { spawn "flatpak" "run" "com.imputnet.Helium"; }
+    Mod+t           { spawn "theme-menu"; }
+    Mod+g           { spawn "trap-monitor"; }
+    Mod+c           { spawn-sh "cliphist -preview-width 125 list | fuzzel -dp 'Clipboard: ' -w '135' -l '25' | cliphist decode | wl-copy"; }
+    Mod+Shift+Space { spawn "logout-menu"; }
+    
+    // Screenshots (i3-style matching i3 config)
+    Print           { spawn "maim" "/home/yossef/Pictures/$(date).jpg"; }
+    Alt+Print       { spawn-sh "maim --window $(xdotool getactivewindow) \"/home/yossef/Pictures/$(date).jpg\""; }
+    Shift+Print     { spawn-sh "maim --select \"/home/yossef/Pictures/$(date).jpg\""; }
+    Alt+s           { spawn "flameshot" "screen" "-c"; }
+    Mod+Shift+s     { spawn "flameshot" "gui"; }
+
+    // Volume controls (XF86 keys)
+    XF86AudioRaiseVolume   allow-when-locked=true { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.02+" "-l" "1.0"; }
+    XF86AudioLowerVolume   allow-when-locked=true { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.02-"; }
+    XF86AudioMute          allow-when-locked=true { spawn "wpctl" "set-mute" "@DEFAULT_AUDIO_SINK@" "toggle"; }
+    XF86AudioMicMute       allow-when-locked=true { spawn "wpctl" "set-mute" "@DEFAULT_AUDIO_SOURCE@" "toggle"; }
+
+    // Media controls (playerctl)
+    XF86AudioPrev          allow-when-locked=true { spawn "playerctl" "previous"; }
+    XF86AudioNext          allow-when-locked=true { spawn "playerctl" "next"; }
+    XF86AudioPlay          allow-when-locked=true { spawn "playerctl" "play-pause"; }
+    XF86AudioPause         allow-when-locked=true { spawn "playerctl" "play-pause"; }
+
+    // Brightness controls
+    XF86MonBrightnessUp    allow-when-locked=true { spawn "brightnessctl" "set" "+5%"; }
+    XF86MonBrightnessDown  allow-when-locked=true { spawn "brightnessctl" "set" "5%-"; }
+
+    // Window Navigation (i3-style h/j/k/l with Alt)
+    Alt+h           { focus-column-left; }
+    Alt+j           { focus-window-or-workspace-down; }
+    Alt+k           { focus-window-or-workspace-up; }
+    Alt+l           { focus-column-right; }
+
+    // Window Movement (i3-style with Alt+Shift)
+    Alt+Shift+h     { move-column-left; }
+    Alt+Shift+j     { move-window-down-or-to-workspace-down; }
+    Alt+Shift+k     { move-window-up-or-to-workspace-up; }
+    Alt+Shift+l     { move-column-right; }
+
+    // Arrow keys for navigation (alternative)
+    Alt+Left        { focus-column-left; }
+    Alt+Down        { focus-window-or-workspace-down; }
+    Alt+Up          { focus-window-or-workspace-up; }
+    Alt+Right       { focus-column-right; }
+
+    // Arrow keys for movement
+    Alt+Shift+Left  { move-column-left; }
+    Alt+Shift+Down  { move-window-down-or-to-workspace-down; }
+    Alt+Shift+Up    { move-window-up-or-to-workspace-up; }
+    Alt+Shift+Right { move-column-right; }
+
+    // Workspace Switching (i3-style with Alt+1-8)
+    Alt+1           { focus-workspace 1; }
+    Alt+2           { focus-workspace 2; }
+    Alt+3           { focus-workspace 3; }
+    Alt+4           { focus-workspace 4; }
+    Alt+5           { focus-workspace 5; }
+    Alt+6           { focus-workspace 6; }
+    Alt+7           { focus-workspace 7; }
+    Alt+8           { focus-workspace 8; }
+
+    // Move Window to Workspace (i3-style with Alt+Shift+1-8)
+    Alt+Shift+1     { move-column-to-workspace 1; }
+    Alt+Shift+2     { move-column-to-workspace 2; }
+    Alt+Shift+3     { move-column-to-workspace 3; }
+    Alt+Shift+4     { move-column-to-workspace 4; }
+    Alt+Shift+5     { move-column-to-workspace 5; }
+    Alt+Shift+6     { move-column-to-workspace 6; }
+    Alt+Shift+7     { move-column-to-workspace 7; }
+    Alt+Shift+8     { move-column-to-workspace 8; }
+
+    // Scratchpads (i3-style)
+    Alt+y           { spawn "kitty" "--name" "scratchYazi" "-e" "yazi"; }
+    Alt+u           { spawn "kitty" "--name" "scratchTerm"; }
+    Alt+i           { spawn "kitty" "--name" "scratchBtop" "-e" "btop"; }
+    Alt+o           { spawn "kitty" "--name" "scratchSong" "-e" "ncmpcpp"; }
+
+    // Monitor focus
+    Mod+Shift+h     { focus-monitor-left; }
+    Mod+Shift+j     { focus-monitor-down; }
+    Mod+Shift+k     { focus-monitor-up; }
+    Mod+Shift+l     { focus-monitor-right; }
+
+    // Move to monitor
+    Mod+Shift+Ctrl+Left  { move-column-to-monitor-left; }
+    Mod+Shift+Ctrl+Down  { move-column-to-monitor-down; }
+    Mod+Shift+Ctrl+Up    { move-column-to-monitor-up; }
+    Mod+Shift+Ctrl+Right { move-column-to-monitor-right; }
+    Mod+Shift+Ctrl+h     { move-column-to-monitor-left; }
+    Mod+Shift+Ctrl+j     { move-column-to-monitor-down; }
+    Mod+Shift+Ctrl+k     { move-column-to-monitor-up; }
+    Mod+Shift+Ctrl+l     { move-column-to-monitor-right; }
+
+    // Workspace navigation (Page Up/Down)
+    Mod+Page_Down        { focus-workspace-down; }
+    Mod+Page_Up          { focus-workspace-up; }
+    Mod+Ctrl+Page_Down   { move-column-to-workspace-down; }
+    Mod+Ctrl+Page_Up     { move-column-to-workspace-up; }
+
+    // Mouse wheel column navigation
+    Mod+WheelScrollRight           { focus-column-right; }
+    Mod+WheelScrollLeft            { focus-column-left; }
+    Mod+Ctrl+WheelScrollRight      { move-column-right; }
+    Mod+Ctrl+WheelScrollLeft       { move-column-left; }
+
+    Mod+Shift+WheelScrollDown      { focus-column-right; }
+    Mod+Shift+WheelScrollUp        { focus-column-left; }
+    Mod+Ctrl+Shift+WheelScrollDown { move-column-right; }
+    Mod+Ctrl+Shift+WheelScrollUp   { move-column-left; }
+
+    // Column/Window management
+    Mod+BracketLeft  { consume-or-expel-window-left; }
+    Mod+BracketRight { consume-or-expel-window-right; }
+    Mod+Comma        { consume-window-into-column; }
+    Mod+Period       { expel-window-from-column; }
+
+    // Resize presets
+    Mod+r            { switch-preset-column-width; }
+    Mod+Shift+r      { switch-preset-window-height; }
+    Mod+Ctrl+r       { reset-window-height; }
+
+    // Maximize/Fullscreen
+    Mod+F            { maximize-column; }
+    Mod+Shift+F      { fullscreen-window; }
+    Mod+M            { maximize-window-to-edges; }
+
+    // Column positioning
+    Mod+Ctrl+F       { expand-column-to-available-width; }
+    Mod+Shift+c      { center-column; }
+    Mod+Ctrl+c       { center-visible-columns; }
+
+    // Manual resizing
+    Mod+Minus        { set-column-width "-10%"; }
+    Mod+Equal        { set-column-width "+10%"; }
+    Mod+Shift+Minus  { set-window-height "-10%"; }
+    Mod+Shift+Equal  { set-window-height "+10%"; }
+
+    // Floating toggle
+    Mod+V            { toggle-window-floating; }
+    Mod+Shift+V      { switch-focus-between-floating-and-tiling; }
+
+    // Overview/Quit
+    Mod+Escape       repeat=false { toggle-overview; }
+    Mod+O            repeat=false { toggle-overview; }
+    Mod+Q            repeat=false { close-window; }
+    Mod+Shift+Escape allow-inhibiting=false { toggle-keyboard-shortcuts-inhibit; }
+
+    // Power
+    Mod+Shift+P      { power-off-monitors; }
+
+    // First/Last column
+    Mod+Home         { focus-column-first; }
+    Mod+End          { focus-column-last; }
+    Mod+Ctrl+Home    { move-column-to-first; }
+    Mod+Ctrl+End     { move-column-to-last; }
+}

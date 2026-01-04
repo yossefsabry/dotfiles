@@ -18,7 +18,7 @@ screenkey \
     --scr 0 \
     -s large \
     -p fixed \
-    -g 800x120-1-860 \
+    -g 820x120-1-870 \
     --font-color white \
     --bg-color "#191724" \
     --opacity 0.5 &

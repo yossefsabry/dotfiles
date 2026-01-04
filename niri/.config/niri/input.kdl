@@ -1,0 +1,39 @@
+input {
+    keyboard {
+        xkb {
+            // Dual language layout: US English and Arabic
+            layout "us,ara"
+            // Options matching i3 config:
+            // - Win+Space to toggle layouts
+            // - Caps Lock disabled
+            // - Shift+Caps for group switch
+            // - Print Screen as compose key
+            options "grp:win_space_toggle,caps:none,grp:shift_caps_switch,compose:prsc"
+        }
+        
+        // Keyboard repeat settings matching i3
+        repeat-delay 300
+        repeat-rate 50
+    }
+
+    touchpad {
+        tap
+        natural-scroll
+    }
+
+    mouse {
+        accel-speed 0
+        accel-profile "flat"
+    }
+
+    // Mouse bindings (matching i3's floating_modifier Mod1)
+    // Niri handles window dragging with Mod+LeftMouseButton by default
+    // We just need to ensure Mod is mapped to Alt in keybinds.kdl configuration.
+    
+    // Note: Niri doesn't have a specific "floating_modifier" setting like i3,
+    // but relies on keybinds for mouse interaction.
+
+
+    focus-follows-mouse max-scroll-amount="90%"
+    // workspace-auto-back-and-forth
+}

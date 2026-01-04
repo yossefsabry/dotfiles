@@ -1,0 +1,4 @@
+[2026-01-04 22:26:01.441] [info] Using configuration file /home/yossef/.config/waybar/config.jsonc
+[2026-01-04 22:26:01.447] [info] Discovered appearance 'dark'
+[2026-01-04 22:26:01.495] [info] Using CSS file /home/yossef/.config/waybar/style.css
+[2026-01-04 22:26:01.496] [error] style.css:1:40Failed to import: Error opening file /home/yossef/.cache/reclr/waybar.css: No such file or directory

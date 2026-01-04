@@ -1,0 +1,27 @@
+layout {
+    // Matches Hyprland active_border rgba(ff42be7a) 
+    // Using the Foam color from i3 config (#9ccfd8) as primary active for consistency
+    // or the Green from Hyprland #ff42be
+    
+    background-color "#191724" // Base color from i3 config
+    
+    focus-ring {
+        active-color "#ff42be" // Hyprland active border color
+        inactive-color "#595959" // Hyprland inactive border
+    }
+
+    border {
+        off
+    }
+}
+
+overview {
+    backdrop-color "#1f1d2e" // Surface color from i3
+}
+
+recent-windows {
+    highlight {
+        active-color "#9ccfd8" // Foam
+        urgent-color "#eb6f92" // Love
+    }
+}

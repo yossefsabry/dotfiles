@@ -1,0 +1,33 @@
+// This config is in the KDL format: https://kdl.dev
+// "/-" comments out the following node.
+// Check the wiki for a full description of the configuration:
+// https://github.com/YaLTeR/niri/wiki/Configuration:-Introduction
+
+include "autostart.kdl"    // spawn-at-startup
+include "appearance.kdl"   // animations, cursor
+include "colors.kdl"       // colors
+include "debug.kdl"        // debug
+include "input.kdl"        // input
+include "keybinds.kdl"     // binds
+include "layout.kdl"       // layout, overview, recent-windows
+include "monitors.kdl"     // output
+include "rules.kdl"        // window-rule, layer-rule
+include "custom.kdl"       // custom overrides
+
+screenshot-path "~/pics/screenshots/%F-%T.png"
+
+hotkey-overlay {
+    skip-at-startup
+    hide-not-bound
+}
+
+config-notification {
+    disable-failed
+}
+
+switch-events {
+    lid-close       { spawn "swaylock"; }
+    lid-open        { spawn "theme" "-r"; }
+    tablet-mode-on  { spawn "sh" "-c" "gsettings set org.gnome.desktop.a11y.applications screen-keyboard-enabled true"; }
+    tablet-mode-off { spawn "sh" "-c" "gsettings set org.gnome.desktop.a11y.applications screen-keyboard-enabled false"; }
+}

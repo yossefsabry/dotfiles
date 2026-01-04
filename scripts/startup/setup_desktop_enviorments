@@ -31,7 +31,7 @@ xset r rate 250 50 &
 pgrep -x redshift >/dev/null || redshift -O 2000K &
 
 # 11. Wallpaper (feh)
-pgrep -f "feh --bg" >/dev/null || feh --bg-center --bg-scale ~/Pictures/my_wallpapers-main/The_Almighty.jpg &
+pgrep -f "feh --bg" >/dev/null || feh --bg-center --bg-scale ~/Pictures/my_wallpapers-main/dark_side.jpg &
 
 # 12. Flameshot # skip for now because i make autostart for it
 # pgrep -x flameshot >/dev/null || flameshot &
