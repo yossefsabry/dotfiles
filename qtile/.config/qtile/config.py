@@ -47,6 +47,7 @@ search_manager = "rofi -show drun -show-icons -icon-theme 'Papirus' -theme \
     ~/.config/rofi/config.rasi"
 
 keys = [
+
     # A list of available commands that can be bound to keys can be found
     # at https://docs.qtile.org/en/latest/manual/config/lazy.html
     # switch between the last two window
