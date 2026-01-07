@@ -343,5 +343,5 @@ source <(ng completion script)
 
 
 # my commend for tomorrow
-echo "fix the problem on tree view"
-echo "adding anhancement to the client browser"
+echo "fix the video player problem"
+echo "fix the connecetion sometimes don't connect"
