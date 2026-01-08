@@ -28,7 +28,7 @@ pgrep -x sxhkd >/dev/null || sxhkd &
 xset r rate 250 50 &
 
 # 9. Redshift
-pgrep -x redshift >/dev/null || redshift -O 2000K &
+# pgrep -x redshift >/dev/null || redshift -O 2000K &
 
 # 11. Wallpaper (feh)
 pgrep -f "feh --bg" >/dev/null || feh --bg-center --bg-scale ~/Pictures/my_wallpapers-main/dark_side.jpg &

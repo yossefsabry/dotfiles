@@ -1,0 +1,15 @@
+#!/bin/bash
+
+# Check if ulauncher is already running
+if pgrep -x "ulauncher" > /dev/null
+then
+    # If it is running, just toggle the window
+    ulauncher-toggle
+else
+    # If it's NOT running, start it with the lag-fix flags
+    env GDK_BACKEND=x11 WEBKIT_DISABLE_COMPOSITING_MODE=1 ulauncher --hide-window &
+    
+    # Wait a brief moment for it to initialize, then show the window
+    sleep 0.5
+    ulauncher-toggle
+fi
