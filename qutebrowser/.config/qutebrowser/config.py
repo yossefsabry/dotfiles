@@ -19,7 +19,7 @@ config.load_autoconfig(False)
 # aliases, while the values are the commands they map to.
 # Type: Dict
 c.aliases = {'q': 'quit', 'w': 'session-save', 'wq': 'quit --save'}
-config.bind('jk', 'mode-leave', mode='insert')
+# config.bind('jk', 'mode-leave', mode='insert')
 
 # Setting dark mode
 # Enable dark mode globally
@@ -414,7 +414,7 @@ c.fonts.prompts = '11pt "FiraMono Nerd Font Propo"'
 c.fonts.statusbar = '11pt "FiraMono Nerd Font Propo"'
 
 # Bindings for normal mode
-config.bind(',m', 'hint links spawn --detach mpv {hint-url}')
+config.bind(',m', 'hint links spawn wyt {hint-url}')
 # config.bind(",M", "spawn umpv {url}")
 # config.bind(",m", "hint links spawn umpv {hint-url}")
 # config.bind(";M", "hint --rapid links spawn umpv {hint-url}")
@@ -435,3 +435,25 @@ config.bind('K', 'tab-next')
 config.bind('J', 'tab-prev')
 
 config.set('content.blocking.enabled', True)
+
+# new scroll speed
+# Increase scroll speed for j and k
+config.bind('j', 'scroll-px 0 200')
+config.bind('k', 'scroll-px 0 -200')
+
+# Performance Optimization
+# Use the faster adblock (Rust-based) method. Requires 'adblock' python package.
+c.content.blocking.method = 'adblock'
+
+# Stop videos from autoplaying which consumes resources on load
+c.content.autoplay = False
+
+# Reduce motion animations
+c.content.prefers_reduced_motion = True
+
+# Enable hardware acceleration features
+c.qt.args = [
+    'enable-gpu-rasterization',
+    'ignore-gpu-blocklist',
+    'enable-accelerated-video-decode'
+]

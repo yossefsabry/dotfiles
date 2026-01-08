@@ -342,6 +342,5 @@ export QT_QPA_PLATFORM=xcb
 source <(ng completion script)
 
 
-# my commend for tomorrow
-echo "fix the video player problem"
-echo "fix the connecetion sometimes don't connect"
+# opencode
+export PATH=/home/yossef/.opencode/bin:$PATH
