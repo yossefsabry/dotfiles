@@ -104,9 +104,9 @@ keymap("n", "<c-j>", ":wincmd j<CR>", term_opts)
 keymap("n", "<c-h>", ":wincmd h<CR>", term_opts)
 keymap("n", "<c-l>", ":wincmd l<CR>", term_opts)
 
--- insert mode
-keymap("i", "jk", "<Esc>", { noremap = true, silent = true })
-keymap("i", "JK", "<Esc>", { noremap = true, silent = true })
+-- insert mode disable this for now
+-- keymap("i", "jk", "<Esc>", { noremap = true, silent = true })
+-- keymap("i", "JK", "<Esc>", { noremap = true, silent = true })
 
 -- disabkeymapys in insert mode ---
 vim.keymap.set({ "n", "i" }, "<left>", "<nop>", term_opts)

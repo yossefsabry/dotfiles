@@ -19,9 +19,9 @@ notify_with_sound() {
     local title=$2
     local message=$3
 
-    notify-send -u "$urgency" "$title" "$message"
-    # Play sound in background
-    mpv --no-video --quiet "$AUDIO_FILE" >/dev/null 2>&1 &
+    notify-send -u "$urgency" "$title" "$message" && \
+        paplay --volume=30000 /home/yossef/Audio/low-battery-charge-421814.mp3
+    
 }
 
 # Only notify if not charging or full
@@ -32,7 +32,7 @@ if [[ "$status" != "Charging" && "$status" != "Full" ]]; then
         notify_with_sound "critical" "Battery Low" "Battery level is below 10%."
     elif (( level < 15 )); then
         notify_with_sound "normal" "Battery Warning" "Battery level is below 15%."
-    elif (( level < 20 )); then
+    elif (( level < 50 )); then
         notify_with_sound "low" "Battery Notice" "Battery level is below 20%."
     fi
 fi

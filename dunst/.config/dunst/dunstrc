@@ -1,22 +1,23 @@
 [global]
     ### Display ###
     follow = mouse
-    width = 400
-    geometry = "400x80-20+60"
-    offset = 5x5
-    padding = 10
-    horizontal_padding = 10
-    frame_width = 1
-    gap_size = 3
-    corner_radius = 8
+    width = 420
+    geometry = "420x90-20+60"
+    offset = 8x8
+    padding = 14
+    horizontal_padding = 18
+    frame_width = 2
+    gap_size = 8
+    corner_radius = 0
 
     ### Progress bar ###
-    progress_bar_min_width = 380
-    progress_bar_max_width = 380
-    progress_bar_corner_radius = 2
+    progress_bar_min_width = 360
+    progress_bar_max_width = 360
+    progress_bar_corner_radius = 0
 
     ### Text ###
-    font = "FiraMono Nerd Font Propo 10"
+    font = "Fira Sans 13"
+    line_height = 2
     markup = full
     format = "%s\n%b"
     alignment = left
@@ -26,7 +27,7 @@
 
     ### Icons ###
     icon_position = left
-    max_icon_size = 48
+    max_icon_size = 40
     min_icon_size = 24
     icon_theme = "rose-pine-icons"
     enable_recursive_icon_lookup = true
@@ -35,32 +36,34 @@
     history_length = 20
 
     ### Default colors ###
-    background = "#26233a"
-    foreground = "#e0def4"
-    frame_color = "#44415a"
+    background = "#0f1115"
+    foreground = "#eaeef3"
+    frame_color = "#242833"
     timeout = 5
 
 [urgency_low]
-    background = "#26273d"
-    foreground = "#e0def4"
-    frame_color = "#31748f"
+    background = "#0f1115"
+    foreground = "#eaeef3"
+    frame_color = "#6ba7d6"
+    highlight = "#6ba7d6"
     default_icon = "dialog-information"
-    format = "<b><span foreground='#31748f'>%s</span></b>\n%b"
+    format = "<b><span foreground='#6ba7d6'>%s</span></b>\n<span foreground='#c8cdd6'>%b</span>\n<span foreground='#8c93a1'>%a</span> <span foreground='#8c93a1'>%c</span> <span foreground='#8c93a1'>%p</span>"
     timeout = 5
 
 [urgency_normal]
-    background = "#362e3c"
-    foreground = "#e0def4"
-    frame_color = "#f6c177"
+    background = "#0f1115"
+    foreground = "#eaeef3"
+    frame_color = "#f2b65c"
+    highlight = "#f2b65c"
     default_icon = "dialog-warning"
-    format = "<b><span foreground='#f6c177'>%s</span></b>\n%b"
+    format = "<b><span foreground='#f2b65c'>%s</span></b>\n<span foreground='#c8cdd6'>%b</span>\n<span foreground='#8c93a1'>%a</span> <span foreground='#8c93a1'>%c</span> <span foreground='#8c93a1'>%p</span>"
     timeout = 6
 
 [urgency_critical]
-    background = "#35263d"
-    foreground = "#e0def4"
-    frame_color = "#eb6f92"
+    background = "#0f1115"
+    foreground = "#eaeef3"
+    frame_color = "#e66a6a"
+    highlight = "#e66a6a"
     default_icon = "dialog-error"
-    format = "<b><span foreground='#eb6f92'>%s</span></b>\n%b"
+    format = "<b><span foreground='#e66a6a'>%s</span></b>\n<span foreground='#c8cdd6'>%b</span>\n<span foreground='#8c93a1'>%a</span> <span foreground='#8c93a1'>%c</span> <span foreground='#8c93a1'>%p</span>"
     timeout = 0   # stays until dismissed
-
