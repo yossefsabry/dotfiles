@@ -76,9 +76,9 @@ nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 
-" Escape from insert mode
-inoremap jk <Esc>
-inoremap JK <Esc>
+" Escape from insert mode disable this for now
+"inoremap jk <Esc>
+"inoremap JK <Esc>
 
 " Disable arrow keys
 nnoremap <left> <nop>
