@@ -36,34 +36,34 @@
     history_length = 20
 
     ### Default colors ###
-    background = "#0f1115"
-    foreground = "#eaeef3"
-    frame_color = "#242833"
+    background = "#25222C"
+    foreground = "#E4B4B1"
+    frame_color = "#E4B4B1"
     timeout = 5
 
 [urgency_low]
-    background = "#0f1115"
-    foreground = "#eaeef3"
-    frame_color = "#6ba7d6"
-    highlight = "#6ba7d6"
+    background = "#25222C"
+    foreground = "#E4B4B1"
+    frame_color = "#E4B4B1"
+    highlight = "#E4B4B1"
     default_icon = "dialog-information"
-    format = "<b><span foreground='#6ba7d6'>%s</span></b>\n<span foreground='#c8cdd6'>%b</span>\n<span foreground='#8c93a1'>%a</span> <span foreground='#8c93a1'>%c</span> <span foreground='#8c93a1'>%p</span>"
+    format = "<b><span foreground='#E4B4B1'>%s</span></b>\n<span foreground='#E4B4B1'>%b</span>\n<span foreground='#E4B4B1'>%a</span> <span foreground='#E4B4B1'>%c</span> <span foreground='#E4B4B1'>%p</span>"
     timeout = 5
 
 [urgency_normal]
-    background = "#0f1115"
-    foreground = "#eaeef3"
-    frame_color = "#f2b65c"
-    highlight = "#f2b65c"
+    background = "#25222C"
+    foreground = "#E4B4B1"
+    frame_color = "#E4B4B1"
+    highlight = "#E4B4B1"
     default_icon = "dialog-warning"
-    format = "<b><span foreground='#f2b65c'>%s</span></b>\n<span foreground='#c8cdd6'>%b</span>\n<span foreground='#8c93a1'>%a</span> <span foreground='#8c93a1'>%c</span> <span foreground='#8c93a1'>%p</span>"
+    format = "<b><span foreground='#E4B4B1'>%s</span></b>\n<span foreground='#E4B4B1'>%b</span>\n<span foreground='#E4B4B1'>%a</span> <span foreground='#E4B4B1'>%c</span> <span foreground='#E4B4B1'>%p</span>"
     timeout = 6
 
 [urgency_critical]
-    background = "#0f1115"
-    foreground = "#eaeef3"
-    frame_color = "#e66a6a"
-    highlight = "#e66a6a"
+    background = "#25222C"
+    foreground = "#E4B4B1"
+    frame_color = "#E4B4B1"
+    highlight = "#E4B4B1"
     default_icon = "dialog-error"
-    format = "<b><span foreground='#e66a6a'>%s</span></b>\n<span foreground='#c8cdd6'>%b</span>\n<span foreground='#8c93a1'>%a</span> <span foreground='#8c93a1'>%c</span> <span foreground='#8c93a1'>%p</span>"
+    format = "<b><span foreground='#E4B4B1'>%s</span></b>\n<span foreground='#E4B4B1'>%b</span>\n<span foreground='#E4B4B1'>%a</span> <span foreground='#E4B4B1'>%c</span> <span foreground='#E4B4B1'>%p</span>"
     timeout = 0   # stays until dismissed

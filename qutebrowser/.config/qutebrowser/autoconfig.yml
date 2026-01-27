@@ -6,5 +6,5 @@
 
 config_version: 2
 settings:
-  content.javascript.clipboard:
-    https://claude.ai: access-paste
+  content.blocking.enabled:
+    global: false

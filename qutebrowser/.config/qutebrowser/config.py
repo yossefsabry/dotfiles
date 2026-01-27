@@ -27,7 +27,7 @@ config.set("colors.webpage.darkmode.enabled", True)
 config.set("colors.webpage.darkmode.policy.images", "smart")
 config.set("colors.webpage.preferred_color_scheme", "dark")
 
-# Disable dark mode for chess.com by setting a custom stylesheet
+# Custom stylesheet (scoped inside override.css)
 config.set("content.user_stylesheets", "~/.config/qutebrowser/override.css")
 
 
@@ -413,8 +413,15 @@ c.fonts.prompts = '11pt "FiraMono Nerd Font Propo"'
 # Type: Font
 c.fonts.statusbar = '11pt "FiraMono Nerd Font Propo"'
 
-# Bindings for normal mode
-config.bind(',m', 'hint links spawn wyt {hint-url}')
+# Bindings for normal mode for copy url 
+# config.bind(',m', 'hint links spawn wyt {hint-url}')
+config.bind(',m', 'hint links yank')
+
+# Quick toggles for troubleshooting slow pages
+config.bind(',d', 'config-cycle colors.webpage.darkmode.enabled true false')
+config.bind(',b', 'config-cycle content.blocking.enabled true false')
+
+
 # config.bind(",M", "spawn umpv {url}")
 # config.bind(",m", "hint links spawn umpv {hint-url}")
 # config.bind(";M", "hint --rapid links spawn umpv {hint-url}")
@@ -442,8 +449,8 @@ config.bind('j', 'scroll-px 0 200')
 config.bind('k', 'scroll-px 0 -200')
 
 # Performance Optimization
-# Use the faster adblock (Rust-based) method. Requires 'adblock' python package.
-c.content.blocking.method = 'adblock'
+# Let qutebrowser pick the best available blocking backend.
+c.content.blocking.method = 'auto'
 
 # Stop videos from autoplaying which consumes resources on load
 c.content.autoplay = False
@@ -451,9 +458,5 @@ c.content.autoplay = False
 # Reduce motion animations
 c.content.prefers_reduced_motion = True
 
-# Enable hardware acceleration features
-c.qt.args = [
-    'enable-gpu-rasterization',
-    'ignore-gpu-blocklist',
-    'enable-accelerated-video-decode'
-]
+# Avoid forcing GPU flags; let Qt decide defaults
+c.qt.args = []

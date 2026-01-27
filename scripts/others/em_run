@@ -1,0 +1,133 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+# -----------------------------
+# Fast emulator flags (your tuned setup)
+# -----------------------------
+FAST_FLAGS=(
+  -gpu host
+  -accel on
+  -no-boot-anim
+  -snapshot default_boot
+  -memory 6144
+  -cores 6
+  -netdelay none
+  -netspeed full
+  -feature Vulkan
+)
+
+# Optional extra speed (uncomment if you want)
+# FAST_FLAGS+=( -no-audio -camera-front none -camera-back none )
+
+# -----------------------------
+# Helpers
+# -----------------------------
+bold() { printf "\033[1m%s\033[0m\n" "$*"; }
+dim()  { printf "\033[2m%s\033[0m\n" "$*"; }
+err()  { printf "\033[31mERROR:\033[0m %s\n" "$*" >&2; }
+
+# -----------------------------
+# Locate emulator binary
+# -----------------------------
+find_emulator() {
+  local cand
+
+  # 1) ANDROID_SDK_ROOT
+  if [[ -n "${ANDROID_SDK_ROOT:-}" ]]; then
+    cand="$ANDROID_SDK_ROOT/emulator/emulator"
+    [[ -x "$cand" ]] && { echo "$cand"; return 0; }
+  fi
+
+  # 2) ANDROID_HOME
+  if [[ -n "${ANDROID_HOME:-}" ]]; then
+    cand="$ANDROID_HOME/emulator/emulator"
+    [[ -x "$cand" ]] && { echo "$cand"; return 0; }
+  fi
+
+  # 3) Common Linux paths (Arch / Android Studio)
+  for cand in \
+    "$HOME/Android/Sdk/emulator/emulator" \
+    "$HOME/Android/Sdk/emulator/emulator64-arm" \
+    "/opt/android-sdk/emulator/emulator" \
+    "/opt/android-sdk/emulator/emulator64-arm" \
+    "/opt/android-studio/jbr/bin/../../plugins/android/resources/emulator/emulator" \
+    "$(command -v emulator 2>/dev/null || true)"
+  do
+    [[ -n "$cand" && -x "$cand" ]] && { echo "$cand"; return 0; }
+  done
+
+  return 1
+}
+
+EMULATOR_BIN="$(find_emulator || true)"
+if [[ -z "${EMULATOR_BIN:-}" ]]; then
+  err "Could not find emulator binary."
+  echo "Set ANDROID_SDK_ROOT or ANDROID_HOME, e.g.:"
+  echo "  export ANDROID_SDK_ROOT=\$HOME/Android/Sdk"
+  exit 1
+fi
+
+# -----------------------------
+# List AVDs
+# -----------------------------
+mapfile -t AVD_LIST < <("$EMULATOR_BIN" -list-avds | sed '/^\s*$/d' || true)
+if [[ ${#AVD_LIST[@]} -eq 0 ]]; then
+  err "No AVDs found. Create one in Android Studio > Device Manager."
+  exit 1
+fi
+
+# -----------------------------
+# Pretty header
+# -----------------------------
+clear || true
+bold "Android Emulator Launcher"
+dim  "Emulator: $EMULATOR_BIN"
+echo
+
+# -----------------------------
+# Choose AVD (fzf if available, otherwise numbered menu)
+# -----------------------------
+CHOSEN_AVD=""
+if command -v fzf >/dev/null 2>&1; then
+  bold "Select an AVD (Enter to run, Esc to quit):"
+  CHOSEN_AVD="$(printf "%s\n" "${AVD_LIST[@]}" | fzf --height=50% --border --prompt="AVD> " || true)"
+else
+  bold "Available AVDs:"
+  for i in "${!AVD_LIST[@]}"; do
+    printf "  [%d] %s\n" "$((i+1))" "${AVD_LIST[$i]}"
+  done
+  echo
+  read -rp "Choose number: " idx
+  if [[ "$idx" =~ ^[0-9]+$ ]] && (( idx >= 1 && idx <= ${#AVD_LIST[@]} )); then
+    CHOSEN_AVD="${AVD_LIST[$((idx-1))]}"
+  fi
+fi
+
+if [[ -z "$CHOSEN_AVD" ]]; then
+  dim "No selection. Bye."
+  exit 0
+fi
+
+echo
+bold "Options:"
+echo "  [1] Fast boot (default)"
+echo "  [2] Cold boot (-no-snapshot-load)"
+echo "  [3] Wipe data (-wipe-data)"
+read -rp "Pick option (1/2/3) [1]: " opt
+opt="${opt:-1}"
+
+EXTRA_FLAGS=()
+case "$opt" in
+  1) ;; # default
+  2) EXTRA_FLAGS+=( -no-snapshot-load ) ;;
+  3) EXTRA_FLAGS+=( -wipe-data ) ;;
+  *) dim "Unknown option, using default." ;;
+esac
+
+echo
+bold "Launching: $CHOSEN_AVD"
+dim  "Flags: ${FAST_FLAGS[*]} ${EXTRA_FLAGS[*]}"
+echo
+
+exec "$EMULATOR_BIN" -avd "$CHOSEN_AVD" "${FAST_FLAGS[@]}" "${EXTRA_FLAGS[@]}" -verbose
+

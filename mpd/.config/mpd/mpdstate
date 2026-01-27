@@ -1,9 +1,9 @@
 sw_volume: 100
 audio_device_state:1:PulseAudio Output
 audio_device_state:1:Visualizer Output
-state: pause
-current: 0
-time: 84.85900000000001
+state: play
+current: 28
+time: 119.989
 random: 0
 repeat: 1
 single: 1
@@ -14,4 +14,32 @@ mixrampdelay: -1
 lastloadedplaylist: 
 playlist_begin
 0:fav/Music For Lo Fi Gaming.mp3
+1:good_vibe/21 Reasons (feat. Ella Henderson).mp3
+2:good_vibe/After Hours.mp3
+3:good_vibe/All Day And Night.mp3
+4:good_vibe/Do It Better.mp3
+5:good_vibe/Fast Car.mp3
+6:dua lipa/Be The One(MP3_160K).mp3
+7:dua lipa/Blow Your Mind (Mwah)(MP3_160K).mp3
+8:dua lipa/Cold Heart (PNAU Remix)(MP3_160K).mp3
+9:dua lipa/Dance The Night (From Barbie The Album)(MP3_160K).mp3
+10:dua lipa/Last Dance(MP3_160K).mp3
+11:dua lipa/Houdini(MP3_160K).mp3
+12:dua lipa/We_re Good(MP3_160K).mp3
+13:dua lipa/Physical(MP3_160K).mp3
+14:dua lipa/Love Again(MP3_160K).mp3
+15:dua lipa/Levitating(MP3_160K).mp3
+16:dua lipa/Fever(MP3_160K).mp3
+17:dua lipa/Dua Lipa - Break My Heart (Official Video)(MP3_160K).mp3
+18:ramadan_songs/Popular Arabic Songs.mp3
+19:fav/(FREE) R&B Type Beat - After Midnight.mp3
+20:fav/After Midnight.mp3
+21:10 out of 10/Joel Sunny - Luminary.mp3
+22:10 out of 10/Billie Eilish - WILDFLOWER.mp3
+23:10 out of 10/Hamza Namira - Fady Shewaya.mp3
+24:Funk/Mtg/Mtg - Coração(MP3_160K).mp3
+25:Jazz/1940's Retro Jazz ｜ Vintage Jazz 1 [7Yb7QDEc4rw].mp3
+26:arabic_songs/Hamza Namira/Dari Ya Alby(M4A_128K).m4a
+27:arabic_songs/Saad Lamjarred/Adda El Kalam(M4A_128K).m4a
+28:arabic_songs/Sherine/Hobbo Ganna(M4A_128K).m4a
 playlist_end

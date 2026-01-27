@@ -1,0 +1,8 @@
+# This file contains fish universal variable definitions.
+# VERSION: 3.0
+SETUVAR __fish_initialized:4300
+SETUVAR _fisher_plugins:rose\x2dpine/fish
+SETUVAR _fisher_rose_2D_pine_2F_fish_files:\x7e/\x2econfig/fish/themes/Ros\u00e9\x20Pine\x20Dawn\x2etheme\x1e\x7e/\x2econfig/fish/themes/Ros\u00e9\x20Pine\x20Moon\x2etheme\x1e\x7e/\x2econfig/fish/themes/Ros\u00e9\x20Pine\x2etheme
+SETUVAR _fisher_upgraded_to_4_4:\x1d
+SETUVAR fish_greeting:\x1d
+SETUVAR fish_key_bindings:fish_vi_key_bindings

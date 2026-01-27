@@ -43,8 +43,9 @@ export GTK_APPLICATION_PREFER_DARK_THEME=1
 
 
 # for slove loss colorscheme for nvim in tmux
-alias tmux="TERM=screen-256color-bce tmux"
-
+# alias tmux="TERM=screen-256color-bce tmux"
+# for  rename session tmux
+alias rs='tmux rename-session -t $(tmux display-message -p "#S")'
 
 # alias for ncmpcppp for config for the new bindings file
 alias ncmpcpp="ncmpcpp -b ~/.config/ncmpcpp/bindings"
@@ -340,7 +341,6 @@ export QT_QPA_PLATFORM=xcb
 
 # Load Angular CLI autocompletion.
 source <(ng completion script)
-
 
 # opencode
 export PATH=/home/yossef/.opencode/bin:$PATH
