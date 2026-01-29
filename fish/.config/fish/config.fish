@@ -90,7 +90,6 @@ alias clock "tty-clock -s -c -C 4"
 
 alias mkdir "mkdir -p"
 alias rm "rm -rf"
-alias cp "yes | cp -Ri"
 
 alias pc "xsel --input --clipboard"
 alias pp "xsel --output --clipboard"

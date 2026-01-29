@@ -10,8 +10,38 @@ set $mod Mod1
 
 set $term urxvt
 
+#### Startup Applications ####
+# --- Brightness (run once) ---
+exec --no-startup-id sh -c 'pgrep -f "bright 20%" >/dev/null || bright 20% &'
+
+# --- Touchpad tapping ---
+exec --no-startup-id sh -c 'TP="AlpsPS/2 ALPS DualPoint TouchPad"; xinput list | grep -q "$TP" && CUR=$(xinput list-props "$TP" | grep "Tapping Enabled" | awk "{print \$NF}") && [ "$CUR" != "1" ] && xinput set-prop "$TP" "libinput Tapping Enabled" 1'
+
+
+# --- Keyboard layout ---
+exec --no-startup-id sh -c 'setxkbmap -query | grep -q "us,ara" || setxkbmap -layout us,ara -variant ,digits grp:win_space_toggle caps:none'
+
+
+# --- Dunst ---
+exec --no-startup-id sh -c 'pgrep -x dunst >/dev/null || dunst -config ~/.config/dunst/dunstrc &'
+
+# --- Keyboard layout ---
+exec --no-startup-id sh -c 'setxkbmap -query | grep -q "us,ara" || setxkbmap -layout us,ara -variant ,digits grp:win_space_toggle caps:none'
+
+
+# --- sxhkd ---
+exec --no-startup-id sh -c 'pgrep -x sxhkd >/dev/null || sxhkd &'
+
+# --- Key repeat speed ---
+exec --no-startup-id xset r rate 250 50
+
+# --- Unclutter ---
+exec --no-startup-id sh -c 'pgrep -x unclutter >/dev/null || unclutter --timeout 1 &'
+
+
 # exec --no-startup-id feh --bg-scale ~/backgrounds/nice-blue-background.png
-exec --no-startup-id /home/yossef/dotfiles/scripts/startup/setup_desktop_enviorments &
+# making a little delay
+# exec --no-startup-id /home/yossef/dotfiles/scripts/startup/setup_desktop_enviorments &
 exec --no-startup-id /home/yossef/dotfiles/scripts/gui/skey &
 exec_always --no-startup-id setxkbmap -option ctrl:nocaps
 
@@ -60,7 +90,6 @@ exec --no-startup-id nm-applet
 # hide_edge_borders <none|vertical|horizontal|both>
 
 
-
 # Use pactl to adjust volume in PulseAudio.
 set $refresh_i3status killall -SIGUSR1 i3status
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10% && $refresh_i3status
@@ -84,7 +113,6 @@ bindsym $mod+Return exec kitty
 bindsym $mod+w kill
 
 # dropmenu 
-
 # start rofi (a program launcher)
 # search_manager = "rofi -show drun -show-icons -icon-theme 'Papirus' -theme \
 #     ~/.config/rofi/config.rasi"
@@ -134,8 +162,15 @@ bindsym $mod+f floating toggle
 # focus the parent container
 bindsym $mod+a focus parent
 
-# focus the child container
-#bindsym $mod+d focus child
+
+
+# flameshot config
+bindsym Mod4+s exec --no-startup-id flameshot gui
+bindsym $mod+Shift+S exec --no-startup-id flameshot gui --region "all"
+
+# bright config
+bindsym Mod4+Up exec --no-startup-id /home/yossef/dotfiles/scripts/gui/bright up
+bindsym Mod4+Down exec --no-startup-id /home/yossef/dotfiles/scripts/gui/bright down
 
 # Define names for default workspaces for which we configure key bindings later on.
 # We use variables to avoid repeating the names in multiple places.

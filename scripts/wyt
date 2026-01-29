@@ -1,59 +1,67 @@
-#!/bin/bash
+#!/usr/bin/env bash
+# Play a YouTube URL from argument or clipboard (no search)
 
-# ---------------------------
-# Get URL: argument OR clipboard
-# ---------------------------
+set -euo pipefail
 
-get_clipboard() {
-    if [ "$XDG_SESSION_TYPE" = "wayland" ]; then
-        command -v wl-paste >/dev/null 2>&1 || {
-            echo "wl-paste not found (Wayland)"
-            exit 1
-        }
-        wl-paste
-    else
-        command -v xclip >/dev/null 2>&1 || {
-            echo "xclip not found (X11)"
-            exit 1
-        }
-        xclip -o -selection clipboard
-    fi
+need() { command -v "$1" >/dev/null 2>&1 || { echo "Error: missing dependency: $1"; exit 1; }; }
+
+is_youtube_url() {
+  local u="$1"
+  [[ "$u" =~ ^https?:// ]] && [[ "$u" =~ (youtube\.com|youtu\.be) ]]
 }
 
-if [ -n "$1" ]; then
-    URL="$1"
+get_clipboard() {
+  if [[ "${XDG_SESSION_TYPE:-}" == "wayland" ]]; then
+    need wl-paste
+    wl-paste
+  else
+    need xclip
+    xclip -o -selection clipboard
+  fi
+}
+
+need mpv
+need yt-dlp
+
+# Prefer 480p-ish, avoid m3u8_native when possible (often triggers 403 segment issues)
+YTDL_FMT='bestvideo[height<=480][protocol!=m3u8_native]+bestaudio[protocol!=m3u8_native]/best[height<=480][protocol!=m3u8_native]/best'
+
+play_url() {
+  local url="$1"
+
+  # Headers often fix 403s when ffmpeg fetches segments
+  local ua="User-Agent: Mozilla/5.0"
+  local ref="Referer: https://www.youtube.com/"
+
+  mpv \
+    --script-opts=ytdl_hook-ytdl_path=yt-dlp \
+    --ytdl-format="$YTDL_FMT" \
+    --http-header-fields="$ua" \
+    --http-header-fields="$ref" \
+    --cache=yes \
+    --demuxer-max-back-bytes=50MiB \
+    --demuxer-max-bytes=50MiB \
+    "$url"
+}
+
+# URL from argument or clipboard
+if [[ $# -ge 1 ]]; then
+  URL="$*"
 else
-    URL="$(get_clipboard)"
+  URL="$(get_clipboard | tr -d '\r' | head -n1 | xargs || true)"
 fi
 
-# ---------------------------
-# Validate URL
-# ---------------------------
-
-if [ -z "$URL" ]; then
-    echo "Error: No URL provided and clipboard is empty."
-    exit 1
+if [[ -z "${URL:-}" ]]; then
+  echo "Error: Clipboard is empty (and no URL argument given)."
+  exit 1
 fi
 
-# ---------------------------
-# Check if YouTube URL
-# ---------------------------
-
-if [[ ! "$URL" =~ (youtube\.com|youtu\.be) ]]; then
-    echo "Error: Clipboard URL is not a YouTube link."
-    echo "URL: $URL"
-    exit 1
+if ! is_youtube_url "$URL"; then
+  echo "Error: Not a YouTube URL."
+  echo "Got: $URL"
+  exit 1
 fi
 
-# ---------------------------
-# Run mpv
-# ---------------------------
-
-echo "Opening YouTube video in 480p:"
-echo "$URL"
-
-mpv --ytdl-format="bestvideo[height<=480]+bestaudio/best" \
-    --ytdl-raw-options=cookies=/home/yossef/.config/mpv/cookies.txt \
-    "$URL"
-
+echo "Playing from: $URL"
+play_url "$URL"
 
