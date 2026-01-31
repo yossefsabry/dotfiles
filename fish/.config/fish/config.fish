@@ -67,6 +67,9 @@ else
     set -gx EDITOR nvim
 end
 
+alias notify-send " notify-send -t 10000 "
+alias notify "notify-send"
+
 # --- Aliases ---
 alias hyprland "Hyprland"
 alias nano "vim"
@@ -259,8 +262,6 @@ function fish_user_key_bindings
     # Normal mode: yy → copy entire command line to system clipboard
     bind -M default yy 'commandline | __clip_copy'
 end
-
-
 
 starship init fish | source
 
