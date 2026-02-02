@@ -2,6 +2,8 @@
 ###  Fish config (fixed)
 ### =========================
 
+set fish_cursor_default block
+
 # --- Print date/day banner ---
 set -l cols (tput cols 2>/dev/null; or echo 80)
 printf "\n\e[48;2;67;126;145m\e[38;2;234;242;244m%-*s\e[0m\n" \
@@ -60,12 +62,12 @@ end
 # fzf opts
 set -gx FZF_DEFAULT_OPTS "--extended --layout=reverse --height=100% "
 
-# Editor selection (SSH vs local)
-if set -q SSH_CONNECTION
-    set -gx EDITOR vim
-else
-    set -gx EDITOR nvim
-end
+# # Editor selection (SSH vs local)
+# if set -q SSH_CONNECTION
+#     set -gx EDITOR vim
+# else
+#     set -gx EDITOR nvim
+# end
 
 alias notify-send " notify-send -t 10000 "
 alias notify "notify-send"
@@ -83,9 +85,9 @@ alias mpv "mpv --vf='scale=854:480'"
 
 alias ncmpcpp "ncmpcpp -b ~/.config/ncmpcpp/bindings"
 
-alias vim "nvim"
-alias v "nvim"
-alias vi "/usr/bin/vim"
+# alias vim "nvim"
+# alias v "nvim"
+# alias vi "/usr/bin/vim"
 alias lutris "env GTK_THEME=Adwaita:dark lutris"
 
 alias da "date \"+%Y-%m-%d %A %T %Z\""
@@ -205,26 +207,6 @@ end
 bind \cf __ctrl_f_tmux
 
 bind \er history-search-backward
-
-# vim key
-function fish_vi_cursor
-    switch $fish_bind_mode
-        case default
-            printf '\e[5 q'   # blinking bar (insert)
-        case insert
-            printf '\e[5 q'
-        case replace_one
-            printf '\e[3 q'   # underline
-        case visual
-            printf '\e[1 q'   # block
-        case '*'
-            printf '\e[1 q'   # block (normal)
-    end
-end
-
-function fish_bind_mode --on-variable fish_bind_mode
-    fish_vi_cursor
-end
 
 
 # --------------------------------------------------

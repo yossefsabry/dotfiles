@@ -82,38 +82,60 @@ return {
     -- LSP
     {
         "neovim/nvim-lspconfig",
-        lazy = true,
-        cmd = "LspInfo",
+        cmd = { "LspInfo", "LspInstall", "LspStart" },
         event = { "BufReadPre", "BufNewFile" },
         dependencies = {
-            "hrsh7th/cmp-nvim-lsp",
+            { "hrsh7th/cmp-nvim-lsp" },
+            { "williamboman/mason.nvim" },
+            { "williamboman/mason-lspconfig.nvim" },
+            { "WhoIsSethDaniel/mason-tool-installer.nvim" },
         },
         config = function()
+            -- This is where all the LSP shenanigans will live
             local lsp_zero = require("lsp-zero")
             lsp_zero.extend_lspconfig()
 
-            local lspconfig = require("lspconfig")
-            -- lspconfig.pyright.setup{} -- for python
-            local util = lspconfig.util
-
-            -- Set a global root_dir for all servers
-            lsp_zero.set_server_config({
-                root_dir = function(fname)
-                    return util.root_pattern( "vendor/", ".git",
-                        "package.json", "Makefile", "requirements.txt",
-                        "README.md")(fname)
-                        or util.path.dirname(fname)
-                end,
-            })
-
-            lsp_zero.on_attach(function(_, bufnr)
+            --- if you want to know more about lsp-zero and mason.nvim
+            --- read this: https://github.com/VonHeikemen/lsp-zero.nvim/blob/v3.x/doc/md/guides/integrate-with-mason-nvim.md
+            lsp_zero.on_attach(function(client, bufnr)
+                -- see :help lsp-zero-keybindings
+                -- to learn the available actions
                 lsp_zero.default_keymaps({ buffer = bufnr })
             end)
 
             require("mason").setup({})
             require("mason-lspconfig").setup({
+                ensure_installed = {
+                    "clangd",
+                    "lua_ls",
+                    "gopls",
+                    "bashls",
+                    "pyright",
+                    "phpactor",
+                },
                 handlers = {
-                    lsp_zero.default_setup,
+                    -- this first function is the "default handler"
+                    -- it applies to every language server without a "custom handler"
+                    function(server_name)
+                        require("lspconfig")[server_name].setup({})
+                    end,
+
+                    -- this is the "custom handler" for `lua_ls`
+                    lua_ls = function()
+                        -- (Optional) Configure lua language server for neovim
+                        local lua_opts = lsp_zero.nvim_lua_ls()
+                        require("lspconfig").lua_ls.setup(lua_opts)
+                    end,
+                },
+            })
+            
+            require("mason-tool-installer").setup({
+                ensure_installed = {
+                    -- "prettier", -- prettier formatter
+                    -- "prettierd", -- prettier formatter
+                    -- "stylua", -- lua formatter
+                    -- "eslint_d", -- js linter
+                    -- "biome", -- js linterk
                 },
             })
 
@@ -129,10 +151,6 @@ return {
                 hint = "",
                 info = "",
             })
-
-            -- (Optional) Configure lua language server for Neovim
-            local lua_opts = lsp_zero.nvim_lua_ls()
-            lspconfig.lua_ls.setup(lua_opts)
         end,
     },
 }

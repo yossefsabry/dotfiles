@@ -7,11 +7,13 @@ return {
         { '<leader>fs', function() require('telescope.builtin').find_files() end, desc = "Find Files with Telescope" },
         { '<leader>r', function() require('telescope.builtin').oldfiles() end, desc = "Recent Files with Telescope" },
     },
-    tag = '0.1.5',
+    -- making some problem becasue the version
+    -- tag = '0.1.5',
     dependencies = { 'nvim-lua/plenary.nvim' },
     config = function()
         require('telescope').setup {
             defaults = {
+                preview = { treesitter = false },  -- prevent ft_to_lang crash in preview
                 file_ignore_patterns = {
                     "node_modules",
                     "lib",

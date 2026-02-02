@@ -1,15 +1,22 @@
+
+
+
 return {
-  "nvim-treesitter/nvim-treesitter",
-  lazy = true,
-  event = "BufRead",
-  Cmd = { "TSInstall", "TSUpdate" }, -- Load the plugin when the TSInstall command is used
-  build = ":TSUpdate",
-  config = function()
-    local config = require("nvim-treesitter.configs")
-    config.setup({
-      auto_install = true,   -- for auto install the highlight for the languaga
-      highlight = { enable = true },
-      indent = { enable = true },
-    })
-  end
+  {
+    "nvim-treesitter/nvim-treesitter",
+    build = ":TSUpdate",
+    event = { "BufReadPost", "BufNewFile" },
+    config = function()
+      local status_ok, configs = pcall(require, "nvim-treesitter.configs")
+      if not status_ok then
+        return
+      end
+
+      configs.setup({
+        highlight = { enable = true },
+        indent = { enable = true },
+      })
+    end,
+  },
 }
+

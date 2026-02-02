@@ -2,8 +2,8 @@ sw_volume: 100
 audio_device_state:1:PulseAudio Output
 audio_device_state:1:Visualizer Output
 state: pause
-current: 0
-time: 4.464
+current: 40
+time: 38.221000000000004
 random: 0
 repeat: 1
 single: 1
@@ -52,4 +52,8 @@ playlist_begin
 36:10 out of 10/Christopher Larkin - Last Dive.mp3
 37:10 out of 10/In Love With a Ghost, Nori - Flowers.mp3
 38:10 out of 10/Lies of P - OVERTURE.mp3
+39:10 out of 10/Donia Wael, El Waili - Bekya.mp3
+40:10 out of 10/Christopher Larkin - Moss Grotto.mp3
+41:10 out of 10/Christopher Larkin - Songclave.mp3
+42:10 out of 10/Christopher Larkin - Skarrsinger Karmelita.mp3
 playlist_end

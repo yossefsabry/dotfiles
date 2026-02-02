@@ -4,7 +4,8 @@ let mapleader = " "
 " Basic settings
 set number
 set relativenumber
-set cursorline
+" set cursorline
+set guicursor=n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50
 set tabstop=4
 set softtabstop=4
 set shiftwidth=4
@@ -31,7 +32,7 @@ set completeopt=menuone,noinsert,noselect
 set wildmenu
 
 " Autocomplete from files and buffers
-set omnifunc=syntaxcomplete#Complete
+set omnifunc=lsp#syntaxcomplete#Complete
 set complete+=k
 set complete+=.
 
@@ -90,13 +91,34 @@ inoremap <right> <nop>
 inoremap <up> <nop>
 inoremap <down> <nop>
 
-" Yanking and pasting
-" Yanking and pasting to system clipboard
+
+
+" Yank to system clipboard
 nnoremap <leader>y "+y
 vnoremap <leader>y "+y
 nnoremap <leader>Y "+Y
-xnoremap <leader>p "+p
+
+" Delete without yanking (black hole register)
+nnoremap <leader>d "_d
 vnoremap <leader>d "_d
+
+" Disable Q
+nnoremap Q <nop>
+
+" Change buffers with Shift-h / Shift-l
+nnoremap <S-h> :bprevious<CR>
+nnoremap <S-l> :bnext<CR>
+
+" Quickfix list mappings only inside quickfix window
+augroup qf_maps
+  autocmd!
+  autocmd FileType qf nnoremap <buffer> <silent> <C-n> :cn<CR>|wincmd p<CR>
+  autocmd FileType qf nnoremap <buffer> <silent> <C-p> :cN<CR>|wincmd p<CR>
+augroup END
+
+" (Optional) If you truly want to remove <C-n> in Normal mode globally:
+" (Note: this will also remove default search-next-char completion behavior in some setups)
+" silent! nunmap <C-n>
 
 " for auto vsplit files equls
 autocmd WinNew * wincmd =
@@ -129,4 +151,47 @@ augroup spell_checker
     autocmd! spell_checker
     autocmd FileType markdown,txt setlocal spell spelllang=en_us
 augroup END
+
+
+""""" PLUGISN SECTION  
+
+" for install vim plug
+" curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+"   https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+
+
+" ---------------------------
+" Plugins
+" ---------------------------
+call plug#begin('~/.vim/plugged')
+
+" LSP
+Plug 'prabirshrestha/vim-lsp'
+Plug 'mattn/vim-lsp-settings'
+
+" Completion (cmp-like for Vim)
+Plug 'prabirshrestha/asyncomplete.vim'
+Plug 'prabirshrestha/asyncomplete-lsp.vim'
+
+" Optional extra completion sources
+Plug 'prabirshrestha/asyncomplete-buffer.vim'
+Plug 'prabirshrestha/asyncomplete-file.vim'
+
+call plug#end()
+
+
+" some shoutcuts
+" Trigger completion manually (your existing mapping is fine)
+inoremap <C-Space> <C-x><C-o>
+
+" Optional: use Tab / Shift-Tab to navigate completion menu
+inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<BS>"
+
+" LSP keybinds (optional but useful)
+nnoremap gd :LspDefinition<CR>
+nnoremap gr :LspReferences<CR>
+nnoremap K  :LspHover<CR>
+nnoremap <leader>rn :LspRename<CR>
+nnoremap <leader>ca :LspCodeAction<CR>
 
