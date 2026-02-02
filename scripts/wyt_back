@@ -1,0 +1,95 @@
+#!/bin/bash
+
+# ---------------------------
+# Defaults
+# ---------------------------
+DEFAULT_QUALITY="480"   # allowed: 360 480 720 1080
+
+# ---------------------------
+# Get URL: argument OR clipboard
+# ---------------------------
+get_clipboard() {
+    if [ "$XDG_SESSION_TYPE" = "wayland" ]; then
+        command -v wl-paste >/dev/null 2>&1 || { echo "wl-paste not found (Wayland)"; exit 1; }
+        wl-paste
+    else
+        command -v xclip >/dev/null 2>&1 || { echo "xclip not found (X11)"; exit 1; }
+        xclip -o -selection clipboard
+    fi
+}
+
+# ---------------------------
+# Parse arguments
+# Usage:
+#   wyt                  -> URL from clipboard, quality default
+#   wyt 720              -> URL from clipboard, quality 720
+#   wyt URL              -> URL from arg, quality default
+#   wyt URL 720          -> URL from arg, quality 720
+# ---------------------------
+URL=""
+QUALITY=""
+
+if [ -n "$1" ] && [[ "$1" =~ (youtube\.com|youtu\.be) ]]; then
+    URL="$1"
+    QUALITY="$2"
+else
+    URL="$(get_clipboard)"
+    QUALITY="$1"
+fi
+
+# ---------------------------
+# Validate URL
+# ---------------------------
+if [ -z "$URL" ]; then
+    echo "Error: No URL provided and clipboard is empty."
+    exit 1
+fi
+
+if [[ ! "$URL" =~ (youtube\.com|youtu\.be) ]]; then
+    echo "Error: URL is not a YouTube link."
+    echo "URL: $URL"
+    exit 1
+fi
+
+# ---------------------------
+# Normalize quality + build fallback list
+# (tries best <= requested, then best)
+# ---------------------------
+if [ -z "$QUALITY" ]; then
+    QUALITY="$DEFAULT_QUALITY"
+fi
+
+case "$QUALITY" in
+    360)
+        STREAM_QUALITY="360p,best"
+        ;;
+    480)
+        STREAM_QUALITY="480p,360p,best"
+        ;;
+    720)
+        STREAM_QUALITY="720p,480p,360p,best"
+        ;;
+    1080)
+        STREAM_QUALITY="1080p,720p,480p,360p,best"
+        ;;
+    *)
+        echo "Error: Unsupported quality '$QUALITY'"
+        echo "Allowed: 360 480 720 1080"
+        exit 1
+        ;;
+esac
+
+# ---------------------------
+# Run streamlink + mpv
+# ---------------------------
+echo "Opening YouTube video"
+echo "URL:     $URL"
+echo "Try:     $STREAM_QUALITY"
+
+streamlink \
+  --player mpv --player-no-close \
+  --http-timeout 60 \
+  --retry-open 5 \
+  --retry-streams 5 \
+  "$URL" "$STREAM_QUALITY"
+

@@ -1,66 +1,72 @@
 #!/bin/bash
 
-# ---------------------------
-# Get URL: argument OR clipboard
-# ---------------------------
+set -euo pipefail
 
+DEFAULT_QUALITY=480
+
+# ---------------------------
+# Clipboard helper
+# ---------------------------
 get_clipboard() {
-    if [ "$XDG_SESSION_TYPE" = "wayland" ]; then
-        command -v wl-paste >/dev/null 2>&1 || {
-            echo "wl-paste not found (Wayland)"
-            exit 1
-        }
+    if [ "${XDG_SESSION_TYPE:-}" = "wayland" ]; then
         wl-paste
     else
-        command -v xclip >/dev/null 2>&1 || {
-            echo "xclip not found (X11)"
-            exit 1
-        }
         xclip -o -selection clipboard
     fi
 }
 
-if [ -n "$1" ]; then
+# ---------------------------
+# Parse args
+# ---------------------------
+URL=""
+REQ_QUALITY=""
+
+if [ -n "${1:-}" ] && [[ "${1:-}" =~ (youtube\.com|youtu\.be) ]]; then
     URL="$1"
+    REQ_QUALITY="${2:-$DEFAULT_QUALITY}"
 else
     URL="$(get_clipboard)"
+    REQ_QUALITY="${1:-$DEFAULT_QUALITY}"
 fi
 
 # ---------------------------
-# Validate URL
+# Validate
 # ---------------------------
-
-if [ -z "$URL" ]; then
-    echo "Error: No URL provided and clipboard is empty."
-    exit 1
-fi
-
-# ---------------------------
-# Check if YouTube URL
-# ---------------------------
-
 if [[ ! "$URL" =~ (youtube\.com|youtu\.be) ]]; then
-    echo "Error: Clipboard URL is not a YouTube link."
-    echo "URL: $URL"
+    echo "Not a YouTube URL"
     exit 1
 fi
 
 # ---------------------------
-# Run mpv
+# Build quality ladder
 # ---------------------------
+case "$REQ_QUALITY" in
+    360) QLIST="360p" ;;
+    480) QLIST="480p,360p" ;;
+    720) QLIST="720p,480p,360p" ;;
+    1080) QLIST="1080p,720p,480p,360p" ;;
+    *) echo "Invalid quality"; exit 1 ;;
+esac
 
-echo "Opening YouTube video in 480p:"
-echo "$URL"
+# ---------------------------
+# Try Streamlink (probe only)
+# ---------------------------
+AVAILABLE=$(streamlink "$URL" 2>/dev/null | grep -oE '[0-9]+p' || true)
 
-# mpv --ytdl-format="bestvideo[height<=480]+bestaudio/best" \
-#     --ytdl-raw-options=cookies=/home/yossef/.config/mpv/cookies.txt \
-#     "$URL"
+if echo "$AVAILABLE" | grep -qE '480p|720p|1080p'; then
+    echo "▶ Using Streamlink"
+    streamlink \
+        --player mpv --player-no-close \
+        "$URL" "$QLIST"
+    exit 0
+fi
 
-streamlink \
-  --player mpv --player-no-close \
-  --http-timeout 60 \
-  --retry-open 5 \
-  --retry-streams 5 \
-  "$URL" best
+# ---------------------------
+# Fallback: mpv + yt-dlp
+# ---------------------------
+echo "▶ Using mpv (yt-dlp backend)"
 
+mpv \
+  --ytdl-format="bestvideo[height<=$REQ_QUALITY]+bestaudio/best" \
+  "$URL"
 
