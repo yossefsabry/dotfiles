@@ -5,33 +5,29 @@ return {
     {
         "nvim-treesitter/nvim-treesitter",
         build = ":TSUpdate",
-        event = { "BufReadPre", "BufNewFile" },
-        cmd = { "TSInstall", "TSUpdate", "TSUpdateSync", "TSInstallInfo" },
+        lazy = false,
         config = function()
-            local status_ok, configs = pcall(require, "nvim-treesitter.configs")
-            if not status_ok then
+            local ok, treesitter = pcall(require, "nvim-treesitter")
+            if not ok then
                 return
             end
 
-            local parser_install_dir = vim.fn.stdpath("data") .. "/treesitter"
-            vim.opt.runtimepath:append(parser_install_dir)
+            local cargo_bin = vim.fn.expand("~/.cargo/bin")
+            if not vim.env.PATH:find(cargo_bin, 1, true) then
+                vim.env.PATH = vim.env.PATH .. ":" .. cargo_bin
+            end
 
-            require("nvim-treesitter.install").compilers = { "clang", "gcc" }
+            treesitter.setup({
+                install_dir = vim.fn.stdpath("data") .. "/site",
+            })
 
-            configs.setup({
-                parser_install_dir = parser_install_dir,
-                ensure_installed = {
-                    "markdown",
-                    "markdown_inline",
-                    "go",
-                    "lua",
-                    "vim",
-                    "vimdoc",
-                },
-                sync_install = false,
-                auto_install = true,
-                highlight = { enable = true },
-                indent = { enable = true },
+            treesitter.install({
+                "markdown",
+                "markdown_inline",
+                "go",
+                "lua",
+                "vim",
+                "vimdoc",
             })
         end,
     },

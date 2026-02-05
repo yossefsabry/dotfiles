@@ -319,6 +319,10 @@ for_window [class="Windscribe2"] floating enable
 
 #------------------------ scratchpad ------------------------
 
+# toggle the last two window i3
+bindsym $mod+b focus previous
+
+
 # reload the configuration file
 bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
