@@ -17,6 +17,18 @@ require("options")
 
 require("lazy").setup("plugins")
 
+local open_floating_preview = vim.lsp.util.open_floating_preview
+function vim.lsp.util.open_floating_preview(contents, syntax, opts, ...)
+    if syntax == "markdown" then
+        local ok, buf, win = pcall(open_floating_preview, contents, syntax, opts, ...)
+        if ok then
+            return buf, win
+        end
+        return open_floating_preview(contents, "plaintext", opts, ...)
+    end
+    return open_floating_preview(contents, syntax, opts, ...)
+end
+
 vim.g.netrw_bufsettings = "noma nomod nu rnu nobl nowrap ro"
 
 -- diable auto comment nextline
