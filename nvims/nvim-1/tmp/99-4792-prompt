@@ -1,3 +1,17 @@
+You receive a selection in neovim that you need to replace with new code.
+The selection's contents may contain notes, incorporate the notes every time if there are some.
+consider the context of the selection and what you are suppose to be implementing
+<SELECTION_LOCATION>
+range(point(61,1),point(65,1))
+</SELECTION_LOCATION>
+<SELECTION_CONTENT>
+-- making a function 
+local function wlecome()
+    print "wlecome"
+end
+
+</SELECTION_CONTENT>
+<FILE_CONTAINING_SELECTION>
 ---@diagnostic disable: undefined-global
 -- setup for the lazyvim
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
@@ -58,7 +72,18 @@ end; check_spell()
 -- this for opencode
 vim.env.PATH = "/usr/sbin:/usr/bin:/sbin:/bin:" .. (vim.env.PATH or "")
 
--- making new welcome message 
+-- making a function 
 local function wlecome()
+    print "wlecome"
 end
 
+</FILE_CONTAINING_SELECTION>
+
+<MustObey>
+NEVER alter any file other than TEMP_FILE.
+never provide the requested changes as conversational output. Return only the code.
+ONLY provide requested changes by writing the change to TEMP_FILE
+
+never attempt to read TEMP_FILE.  It is purely for output.  Previous contents, which may not exist, can be written over without worry
+</MustObey>
+<TEMP_FILE>/home/yossef/dotfiles/nvims/nvim-1/tmp/99-4792</TEMP_FILE>

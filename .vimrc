@@ -1,11 +1,20 @@
 " Set leader key
 let mapleader = " "
 
+" ===== TTY SAFE VIM COLORS =====
+if &term ==# 'linux' || &term =~# 'screen'
+  set t_Co=256
+  set background=dark
+  syntax on
+  colorscheme desert
+endif
+
+
 " Basic settings
 set number
 set relativenumber
 " set cursorline
-set guicursor=n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50
+" set guicursor=n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50
 set tabstop=4
 set softtabstop=4
 set shiftwidth=4
@@ -14,7 +23,7 @@ set smartindent
 set wrap
 set scrolloff=8
 set colorcolumn=75
-set termguicolors
+" set termguicolors
 set wildignore+=**/node_modules/**
 set wildignore+=**/vendor/**
 set wildignore+=**/lib/**
@@ -139,7 +148,7 @@ nnoremap Q <nop>
 " Syntax highlighting
 syntax on
 set termguicolors
-colorscheme desert
+colorscheme default
 
 " Transparency
 highlight Normal ctermbg=NONE guibg=NONE

@@ -1,0 +1,61 @@
+###############################################################################
+# GNU Screen - TTY friendly config (tmux-like)
+# Prefix: Ctrl-s
+###############################################################################
+
+# Use Ctrl-s as prefix (disable default Ctrl-a)
+escape ^Ss
+
+# Basic settings
+startup_message off
+defscrollback 50000
+
+# 256 colors (TTY-safe)
+term screen-256color
+defbce on
+attrcolor b ".I"
+
+# Default shell: fish
+defshell -fish
+shelltitle "$ |fish"
+
+###############################################################################
+# Reload config
+###############################################################################
+# Ctrl-s r => reload ~/.screenrc
+unbind r
+bind r source $HOME/.screenrc
+
+###############################################################################
+# Window navigation
+###############################################################################
+# Ctrl-s b => previous/last window
+unbind b
+bind b prev
+
+# Ctrl-s c => new window
+unbind c
+bind c screen
+
+###############################################################################
+# Splits (regions) + navigation
+###############################################################################
+# Ctrl-s |  => vertical split (left/right)
+unbind |
+bind | split -v
+
+# Ctrl-s -  => horizontal split (top/bottom)
+unbind -
+bind - split
+
+# Create split + start shell in new region
+# Ctrl-s \  => vertical split + shell
+unbind \
+bind \ eval "split -v" "focus right" "screen"
+
+# Ctrl-s _  => horizontal split + shell
+unbind _
+bind _ eval "split" "focus down" "screen"
+
+# Move between regions with vim keys (under prefix
+

@@ -16,13 +16,12 @@ fish_config theme choose "Rosé Pine"
 fish_add_path -g $HOME/.local/bin
 fish_add_path -g $HOME/bin
 fish_add_path -g $HOME/.cargo/bin
-fish_add_path -g $HOME/.opencode/bin
 fish_add_path -g $HOME/.bun/bin
 fish_add_path -g $HOME/go/bin
 
-function opencode
-    $HOME/.opencode/bin/opencode $argv
-end
+# function opencode
+#     $HOME/.opencode/bin/opencode $argv
+# end
 
 # add all subfolders in ~/dotfiles/scripts
 if test -d "$HOME/dotfiles/scripts"
@@ -246,4 +245,3 @@ function fish_user_key_bindings
 end
 
 starship init fish | source
-

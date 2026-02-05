@@ -289,3 +289,5 @@ source <(ng completion script)
 
 # opencode
 export PATH=/home/yossef/.opencode/bin:$PATH
+
+printf '\ePtmux;\e\e[2 q\e\\'  # block
