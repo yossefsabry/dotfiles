@@ -35,6 +35,9 @@ exec --no-startup-id sh -c 'pgrep -x sxhkd >/dev/null || sxhkd &'
 # --- Key repeat speed ---
 exec --no-startup-id xset r rate 250 50
 
+# --- csong application
+exec --no-startup-id csong --config ~/.config/csong/x11_config.toml
+
 # --- Unclutter ---
 exec --no-startup-id sh -c 'pgrep -x unclutter >/dev/null || unclutter --timeout 1 &'
 

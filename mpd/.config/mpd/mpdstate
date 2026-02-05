@@ -2,8 +2,8 @@ sw_volume: 100
 audio_device_state:1:PulseAudio Output
 audio_device_state:1:Visualizer Output
 state: pause
-current: 6
-time: 30.293
+current: 38
+time: 1.571
 random: 0
 repeat: 1
 single: 1
@@ -63,4 +63,6 @@ playlist_begin
 47:dua lipa/Swan Song (From the Motion Picture _Alita_ Battle Angel_)(MP3_160K).mp3
 48:dua lipa/Dua Lipa - Break My Heart (Official Video)(M4A_128K).m4a
 49:Phonk/FXRCE/ROYALTY(MP3_160K).mp3
+50:10 out of 10/Lies of P - Lisrim.mp3
+51:10 out of 10/Luke Pickman - Choral Chambers (from Hollow Knight# Silksong).mp3
 playlist_end
