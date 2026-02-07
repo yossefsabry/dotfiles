@@ -14,8 +14,15 @@ Service Worker
 Shared Dictionary
 
 # Falkon browser profiles (personal data/cache)
-falkon/.config/falkon/profiles/
+falkon/.config/falkon/profiles/**
 falkon/.config/falkon/profiles.ini
+
+# Keep Falkon extensions/plugins
+!falkon/.config/falkon/profiles/
+!falkon/.config/falkon/profiles/default/
+!falkon/.config/falkon/profiles/default/extensions/
+!falkon/.config/falkon/profiles/default/extensions/**
+!falkon/.config/falkon/profiles/default/extensions/extensions.ini
 
 *.ovpn
 *.png
