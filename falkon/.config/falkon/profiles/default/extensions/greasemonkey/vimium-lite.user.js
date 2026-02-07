@@ -394,6 +394,7 @@
 
   // -------- Link hints (numeric, simple) --------
   let hintMode = false;
+  let hintAction = "click";
   let overlay = null;
   let hints = [];
   let typed = "";
@@ -406,8 +407,8 @@
     overlay = null;
   }
 
-  function clickableElements() {
-    const selectors = [
+  function clickableElements(action) {
+    const selectors = action === "copy" ? ["a[href]"] : [
       "a[href]",
       "button",
       "input:not([type='hidden'])",
@@ -427,6 +428,52 @@
       const notHidden = style.visibility !== "hidden" && style.display !== "none" && style.opacity !== "0";
       return visible && inView && notHidden;
     });
+  }
+
+  function resolveLink(el) {
+    if (!el) return "";
+    let linkEl = null;
+    if (typeof el.closest === "function") {
+      linkEl = el.closest("a[href]");
+    }
+    if (!linkEl && el.tagName && el.tagName.toLowerCase() === "a") {
+      linkEl = el;
+    }
+    const href = linkEl ? linkEl.getAttribute("href") : (el.getAttribute ? el.getAttribute("href") : "");
+    if (!href) return "";
+    try {
+      return new URL(href, location.href).href;
+    } catch (e) {
+      return href;
+    }
+  }
+
+  function legacyCopy(text) {
+    const root = document.body || document.documentElement;
+    if (!root) return;
+    const ta = document.createElement("textarea");
+    ta.value = text;
+    ta.setAttribute("readonly", "");
+    ta.style.position = "fixed";
+    ta.style.left = "-9999px";
+    ta.style.top = "0";
+    ta.style.opacity = "0";
+    root.appendChild(ta);
+    ta.select();
+    try {
+      document.execCommand("copy");
+    } catch (e) {
+    }
+    ta.remove();
+  }
+
+  function copyText(text) {
+    if (!text) return;
+    if (navigator.clipboard && typeof navigator.clipboard.writeText === "function") {
+      navigator.clipboard.writeText(text).catch(() => legacyCopy(text));
+    } else {
+      legacyCopy(text);
+    }
   }
 
   function makeOverlay() {
@@ -459,13 +506,14 @@
     return tag;
   }
 
-  function enterHintMode() {
+  function enterHintMode(action) {
     if (hintMode) return;
     hintMode = true;
+    hintAction = action || "click";
     typed = "";
     makeOverlay();
 
-    const els = clickableElements();
+    const els = clickableElements(hintAction);
     hints = els.map((el, i) => {
       const rect = el.getBoundingClientRect();
       const label = String(i + 1);
@@ -486,7 +534,12 @@
   function activateIfUnique() {
     const matches = hints.filter(h => h.label.startsWith(typed));
     if (matches.length === 1 && matches[0].label === typed) {
-      matches[0].el.click();
+      if (hintAction === "copy") {
+        const url = resolveLink(matches[0].el);
+        if (url) copyText(url);
+      } else {
+        matches[0].el.click();
+      }
       cleanupHints();
     }
   }
@@ -496,6 +549,7 @@
   }
 
   let lastG = 0;
+  let lastComma = 0;
 
   document.addEventListener("keydown", (e) => {
     if (isCommandBarToggle(e)) {
@@ -505,6 +559,14 @@
     }
 
     if (barOpen) return;
+
+    if (e.key === "Escape" && isTypingTarget(document.activeElement)) {
+      e.preventDefault();
+      if (typeof document.activeElement.blur === "function") {
+        document.activeElement.blur();
+      }
+      return;
+    }
 
     // History shortcuts (Ctrl+Alt+H/L)
     if (e.ctrlKey && e.altKey && (e.key === "h" || e.key === "H")) {
@@ -541,6 +603,22 @@
       return;
     }
 
+    // ,m => hint-copy mode
+    if (e.key === ",") {
+      e.preventDefault();
+      lastComma = Date.now();
+      return;
+    }
+    if (lastComma && Date.now() - lastComma >= 400) {
+      lastComma = 0;
+    }
+    if ((e.key === "m" || e.key === "M") && lastComma) {
+      e.preventDefault();
+      lastComma = 0;
+      enterHintMode("copy");
+      return;
+    }
+
     // Normal mode bindings
     switch (e.key) {
       case "j": e.preventDefault(); scrollByLines(+3); break;
@@ -559,7 +637,7 @@
       case "G": e.preventDefault(); scrollToBottom(); break;
       case "h": e.preventDefault(); history.back(); break;
       case "l": e.preventDefault(); history.forward(); break;
-      case "f": e.preventDefault(); enterHintMode(); break;
+      case "f": e.preventDefault(); enterHintMode("click"); break;
     }
   }, true);
 })();
