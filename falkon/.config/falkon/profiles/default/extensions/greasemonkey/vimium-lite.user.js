@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Falkon Vimium-Lite
 // @namespace    local
-// @version      1.1.0
+// @version      1.1.2
 // @description  Basic vim-style navigation + link hints for Falkon via GreaseMonkey
 // @match        *://*/*
 // @run-at       document-start
