@@ -39,6 +39,9 @@ set updatetime=10
 " Enable keyword completion with Ctrl+N and Ctrl+P
 set completeopt=menuone,noinsert,noselect
 set wildmenu
+set wildmode=longest:full,full
+set wildoptions=pum
+set wildignorecase
 
 " Autocomplete from files and buffers
 set omnifunc=lsp#syntaxcomplete#Complete
@@ -202,4 +205,3 @@ nnoremap gr :LspReferences<CR>
 nnoremap K  :LspHover<CR>
 nnoremap <leader>rn :LspRename<CR>
 nnoremap <leader>ca :LspCodeAction<CR>
-

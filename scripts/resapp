@@ -1,0 +1,213 @@
+#!/bin/bash
+set -euo pipefail
+
+usage() {
+  echo "Usage: $(basename "$0") <process-name>"
+  exit 1
+}
+
+if [[ $# -ne 1 ]]; then
+  usage
+fi
+
+name="$1"
+
+get_pids() {
+  local pids
+  pids=$(pgrep -x "$name" || true)
+  if [[ -z "$pids" ]]; then
+    pids=$(pgrep -f "$name" || true)
+  fi
+  echo "$pids"
+}
+
+format_duration() {
+  local seconds="$1"
+  local days=$((seconds / 86400))
+  local hours=$(( (seconds % 86400) / 3600 ))
+  local mins=$(( (seconds % 3600) / 60 ))
+  local secs=$((seconds % 60))
+  if (( days > 0 )); then
+    printf "%dd %dh %dm" "$days" "$hours" "$mins"
+  elif (( hours > 0 )); then
+    printf "%dh %dm" "$hours" "$mins"
+  elif (( mins > 0 )); then
+    printf "%dm %ds" "$mins" "$secs"
+  else
+    printf "%ds" "$secs"
+  fi
+}
+
+format_mem() {
+  local kib="$1"
+  local mib=$((kib / 1024))
+  local gib=$((kib / 1024 / 1024))
+  if (( gib > 0 )); then
+    printf "%dG" "$gib"
+  else
+    printf "%dM" "$mib"
+  fi
+}
+
+format_bytes() {
+  local bytes="$1"
+  local kib=$((bytes / 1024))
+  local mib=$((bytes / 1024 / 1024))
+  local gib=$((bytes / 1024 / 1024 / 1024))
+  local tib=$((bytes / 1024 / 1024 / 1024 / 1024))
+  if (( tib > 0 )); then
+    printf "%dT" "$tib"
+  elif (( gib > 0 )); then
+    printf "%dG" "$gib"
+  elif (( mib > 0 )); then
+    printf "%dM" "$mib"
+  elif (( kib > 0 )); then
+    printf "%dK" "$kib"
+  else
+    printf "%dB" "$bytes"
+  fi
+}
+
+pids=$(get_pids)
+
+if [[ -z "$pids" ]]; then
+  if command -v "$name" >/dev/null 2>&1; then
+    echo "$name app is not running"
+    exit 1
+  fi
+  echo "$name application not found"
+  exit 2
+fi
+
+total_rss_kib=0
+total_cpu=0
+max_runtime=0
+pid_count=0
+total_threads=0
+total_fds=0
+total_read_bytes=0
+total_write_bytes=0
+main_pid=""
+declare -A state_counts
+
+hz=$(getconf CLK_TCK)
+uptime_seconds=$(awk '{print int($1)}' /proc/uptime)
+
+for pid in $pids; do
+  pid_count=$((pid_count + 1))
+  if [[ -z "$main_pid" ]]; then
+    main_pid="$pid"
+  fi
+  if [[ -r "/proc/$pid/stat" ]]; then
+    read -r stat_state start_ticks < <(awk '{print $3, $22}' "/proc/$pid/stat")
+    start_ticks=${start_ticks:-0}
+    start_seconds=$((start_ticks / hz))
+    runtime=$((uptime_seconds - start_seconds))
+    if [[ -n "$stat_state" ]]; then
+      state_counts["$stat_state"]=$(( ${state_counts["$stat_state"]:-0} + 1 ))
+    fi
+    if (( runtime > max_runtime )); then
+      max_runtime=$runtime
+      main_pid="$pid"
+    fi
+  fi
+
+  if [[ -r "/proc/$pid/status" ]]; then
+    rss=$(awk '/VmRSS:/ {print $2}' "/proc/$pid/status")
+    rss=${rss:-0}
+    total_rss_kib=$((total_rss_kib + rss))
+    threads=$(awk '/Threads:/ {print $2}' "/proc/$pid/status")
+    threads=${threads:-0}
+    total_threads=$((total_threads + threads))
+  fi
+
+  if [[ -d "/proc/$pid/fd" ]]; then
+    fd_count=$(ls "/proc/$pid/fd" 2>/dev/null | wc -l | awk '{print $1}')
+    fd_count=${fd_count:-0}
+    total_fds=$((total_fds + fd_count))
+  fi
+
+  if [[ -r "/proc/$pid/io" ]]; then
+    read_bytes=$(awk '$1=="read_bytes:" {print $2}' "/proc/$pid/io")
+    write_bytes=$(awk '$1=="write_bytes:" {print $2}' "/proc/$pid/io")
+    read_bytes=${read_bytes:-0}
+    write_bytes=${write_bytes:-0}
+    total_read_bytes=$((total_read_bytes + read_bytes))
+    total_write_bytes=$((total_write_bytes + write_bytes))
+  fi
+
+  cpu=$(ps -o %cpu= -p "$pid" 2>/dev/null | awk '{print $1}' || true)
+  cpu=${cpu:-0}
+  total_cpu=$(awk -v a="$total_cpu" -v b="$cpu" 'BEGIN {printf "%.2f", a + b}')
+done
+
+if [[ -z "$main_pid" ]]; then
+  set -- $pids
+  main_pid="$1"
+fi
+
+mem_total_kib=$(awk '/MemTotal:/ {print $2}' /proc/meminfo)
+mem_used_fmt=$(format_mem "$total_rss_kib")
+mem_total_fmt=$(format_mem "$mem_total_kib")
+
+mem_percent=$(awk -v used="$total_rss_kib" -v total="$mem_total_kib" 'BEGIN {if (total>0) printf "%.1f", (used/total)*100; else print "0"}')
+
+cpu_percent=$(awk -v c="$total_cpu" 'BEGIN {printf "%.1f", c}')
+cpu_cores=$(nproc)
+cpu_capacity=$((cpu_cores * 100))
+cpu_normalized=$(awk -v c="$total_cpu" -v n="$cpu_cores" 'BEGIN {if (n>0) printf "%.1f", c/n; else print "0"}')
+runtime_fmt=$(format_duration "$max_runtime")
+
+user=$(ps -o user= -p "$main_pid" 2>/dev/null | awk '{print $1}')
+user=${user:-unknown}
+
+cmdline=$(tr '\0' ' ' < "/proc/$main_pid/cmdline" 2>/dev/null || true)
+if [[ -z "$cmdline" && -r "/proc/$main_pid/comm" ]]; then
+  cmdline=$(awk 'NR==1 {print $0}' "/proc/$main_pid/comm" 2>/dev/null || true)
+fi
+if [[ -z "$cmdline" ]]; then
+  cmdline="n/a"
+fi
+if (( ${#cmdline} > 120 )); then
+  cmdline="${cmdline:0:117}..."
+fi
+
+state_summary=""
+for st in R S D T Z I; do
+  count="${state_counts[$st]:-0}"
+  if (( count > 0 )); then
+    if [[ -n "$state_summary" ]]; then
+      state_summary+=", "
+    fi
+    state_summary+="$st:$count"
+  fi
+done
+if [[ -z "$state_summary" ]]; then
+  state_summary="n/a"
+fi
+
+read_fmt=$(format_bytes "$total_read_bytes")
+write_fmt=$(format_bytes "$total_write_bytes")
+
+if [[ -t 1 ]]; then
+  gray="$(printf '\033[90m')"
+  white="$(printf '\033[97m')"
+  reset="$(printf '\033[0m')"
+else
+  gray=""
+  white=""
+  reset=""
+fi
+
+label_width=8
+printf "%s%s app status%s\n" "$white" "$name" "$reset"
+printf "%s- %-*s => %s%s%s\n" "$gray" "$label_width" "running" "$white" "$runtime_fmt" "$reset"
+printf "%s- %-*s => %s%s/%s (%s%%)%s\n" "$gray" "$label_width" "memory" "$white" "$mem_used_fmt" "$mem_total_fmt" "$mem_percent" "$reset"
+printf "%s- %-*s => %s%s%%/%s%% (%s%% total)%s\n" "$gray" "$label_width" "cpu" "$white" "$cpu_percent" "$cpu_capacity" "$cpu_normalized" "$reset"
+printf "%s- %-*s => %s%s (main %s)%s\n" "$gray" "$label_width" "pids" "$white" "$pid_count" "$main_pid" "$reset"
+printf "%s- %-*s => %s%s%s\n" "$gray" "$label_width" "user" "$white" "$user" "$reset"
+printf "%s- %-*s => %s%s%s\n" "$gray" "$label_width" "threads" "$white" "$total_threads" "$reset"
+printf "%s- %-*s => %s%s%s\n" "$gray" "$label_width" "fds" "$white" "$total_fds" "$reset"
+printf "%s- %-*s => %s%s%s\n" "$gray" "$label_width" "states" "$white" "$state_summary" "$reset"
+printf "%s- %-*s => %s%s read / %s write%s\n" "$gray" "$label_width" "disk io" "$white" "$read_fmt" "$write_fmt" "$reset"
+printf "%s- %-*s => %s%s%s\n" "$gray" "$label_width" "cmd" "$white" "$cmdline" "$reset"

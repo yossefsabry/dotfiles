@@ -289,9 +289,23 @@
       if (document.body) cb();
       else document.addEventListener("DOMContentLoaded", cb, { once: true });
     };
-    onReady(() => {
-      if (document.getElementById(buttonId)) return;
-      const btn = document.createElement("button");
+    const getVideoUrl = () => {
+      const url = new URL(window.location.href);
+      const v = url.searchParams.get("v");
+      if (v && window.location.pathname === "/watch") {
+        return "https://www.youtube.com/watch?v=" + v;
+      }
+      if (window.location.pathname.indexOf("/shorts/") === 0) {
+        const id = window.location.pathname.split("/shorts/")[1] || "";
+        const cleanId = id.split(/[?#]/)[0];
+        if (cleanId) return "https://www.youtube.com/shorts/" + cleanId;
+      }
+      return "";
+    };
+    const ensureButton = () => {
+      let btn = document.getElementById(buttonId);
+      if (btn) return btn;
+      btn = document.createElement("button");
       btn.id = buttonId;
       btn.type = "button";
       btn.textContent = "Download";
@@ -311,10 +325,34 @@
         "box-shadow:0 4px 10px rgba(0,0,0,0.2)"
       ].join(";");
       btn.addEventListener("click", () => {
-        const url = "https://www.tikfork.com/en/yt?s=10&url=" + encodeURIComponent(window.location.href);
+        const videoUrl = btn.dataset.videoUrl || getVideoUrl();
+        if (!videoUrl) return;
+        const url = "https://www.tikfork.com/en/yt?s=10&url=" + encodeURIComponent(videoUrl);
         openInTab(url);
       });
       document.body.appendChild(btn);
+      return btn;
+    };
+    const syncButton = () => {
+      const videoUrl = getVideoUrl();
+      const existing = document.getElementById(buttonId);
+      if (!videoUrl) {
+        if (existing) existing.remove();
+        return;
+      }
+      const btn = ensureButton();
+      btn.dataset.videoUrl = videoUrl;
+    };
+    const bindNavigation = () => {
+      if (document.documentElement.dataset.ytLiteNavBound === "1") return;
+      document.documentElement.dataset.ytLiteNavBound = "1";
+      const handler = () => syncButton();
+      document.addEventListener("yt-navigate-finish", handler);
+      window.addEventListener("popstate", handler);
+    };
+    onReady(() => {
+      bindNavigation();
+      syncButton();
     });
   }
 
