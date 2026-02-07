@@ -18,6 +18,8 @@
 (function () {
   "use strict";
 
+  if (window.top !== window.self) return;
+
   const host = window.location.host;
   const isX = /(^|\.)x\.com$|(^|\.)twitter\.com$/.test(host) || host === "mobile.x.com";
   const isYoutube = /(^|\.)youtube\.com$/.test(host) || host === "music.youtube.com";
