@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+set -e
+
+repo_dir="$(cd "$(dirname "$0")/.." && pwd)"
+stow -d "$repo_dir" -t "$HOME" falkon
