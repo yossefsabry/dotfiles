@@ -10,9 +10,6 @@ backgroud/
 */*auth*.txt
 ./*auth*.txt
 
-./falkon/
-falkon
-
 *.ovpn
 *.png
 *.jpg

@@ -54,11 +54,13 @@ local function check_spell()
 end; check_spell()
 
 
-
 -- this for opencode
 vim.env.PATH = "/usr/sbin:/usr/bin:/sbin:/bin:" .. (vim.env.PATH or "")
 
--- making new welcome message 
-local function wlecome()
+-- for fbterm
+if (vim.env.TERM or ""):match("fbterm") then
+  vim.o.background = "dark"
+  vim.cmd("syntax on")
+  vim.cmd("colorscheme desert")
 end
 

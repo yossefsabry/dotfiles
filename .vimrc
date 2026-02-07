@@ -1,8 +1,8 @@
 " Set leader key
 let mapleader = " "
 
-" ===== TTY SAFE VIM COLORS =====
-if &term ==# 'linux' || &term =~# 'screen'
+" ===== fbterm-safe Vim colors =====
+if &term =~# 'fbterm'
   set t_Co=256
   set background=dark
   syntax on
@@ -147,7 +147,6 @@ nnoremap Q <nop>
 
 " Syntax highlighting
 syntax on
-set termguicolors
 colorscheme default
 
 " Transparency

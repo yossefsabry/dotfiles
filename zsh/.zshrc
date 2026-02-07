@@ -291,3 +291,9 @@ source <(ng completion script)
 export PATH=/home/yossef/.opencode/bin:$PATH
 
 printf '\ePtmux;\e\e[2 q\e\\'  # block
+export OPENAI_KEY=
+export PATH=$PATH:/usr/local/bin
+export OPENAI_KEY=
+export PATH=$PATH:/usr/local/bin
+export OPENAI_KEY=
+export PATH=$PATH:/usr/local/bin
