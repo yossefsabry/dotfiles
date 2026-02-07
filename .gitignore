@@ -1,14 +1,9 @@
-./background
 background
 backgroud/
-./backgroud/
 *.un*
 *.un
 
-*/*/*/*auth*.txt
-*/*/*auth*.txt
-*/*auth*.txt
-./*auth*.txt
+**/auth*.txt
 
 CacheStorage
 WebStorage
@@ -17,18 +12,10 @@ IndexedDB
 Local Storage
 Service Worker
 Shared Dictionary
-./falkon/.config/falkon/profiles/default/IndexedDB/
-./falkon/.config/falkon/profiles/default/WebStorage/
-./falkon/.config/falkon/profiles/default/TransportSecurity/
-./falkon/.config/falkon/profiles/default/Local Storage/
-./falkon/.config/falkon/profiles/default/Service Worker/
-./falkon/.config/falkon/profiles/default/IndexedDB
-./falkon/.config/falkon/profiles/default/WebStorage
-./falkon/.config/falkon/profiles/default/TransportSecurity
-./falkon/.config/falkon/profiles/default/Local Storage
-./falkon/.config/falkon/profiles/default/Service Worker
-./falkon/.config/falkon/profiles/default/permissions.json
 
+# Falkon browser profiles (personal data/cache)
+falkon/.config/falkon/profiles/
+falkon/.config/falkon/profiles.ini
 
 *.ovpn
 *.png

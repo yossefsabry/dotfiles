@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Win10Dark
+
+Comment="Windows 10 dark like theme" 
+
+Icon=theme.png
+Type=Service
+
+X-Falkon-Author=ItzSelenux

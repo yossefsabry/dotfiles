@@ -1,5 +1,0 @@
-2026/02/07-17:14:48.011 4ac7 Creating DB /home/yossef/.config/falkon/profiles/default/Local Storage/leveldb since it was missing.
-2026/02/07-17:14:48.045 4ac7 Reusing MANIFEST /home/yossef/.config/falkon/profiles/default/Local Storage/leveldb/MANIFEST-000001
-2026/02/07-17:26:01.416 4ac8 Level-0 table #5: started
-2026/02/07-17:26:01.425 4ac8 Level-0 table #5: 72159 bytes OK
-2026/02/07-17:26:01.442 4ac8 Delete type=0 #3

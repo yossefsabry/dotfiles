@@ -1,0 +1,39 @@
+[Desktop Entry]
+Name=Linux Dark Glass 50
+
+Comment=Default simple theme for Linux using native widget style and some basic icons from desktop icon set
+Comment[ca]=Tema senzill predeterminat per a Linux, usant l'estil natiu dels estris i diverses icones bàsiques del conjunt d'icones de l'escriptori
+Comment[ca@valencia]=Tema senzill predeterminat per a Linux, usant l'estil natiu dels estris i diverses icones bàsiques del conjunt d'icones de l'escriptori
+Comment[cs]=Výchozí jednoduchý motiv pro Linux používající nativní styl widgetu style a nějaké základní ikony ze sady ikon pracovní plochy
+Comment[da]=Standard simpelt tema til Linux som bruger systemets widgetstil og nogle basisikoner fra skrivebordets ikonsæt
+Comment[de]=Als Vorgabe ein einfaches Design für Linux, das den nativen Stil der Bedienelemente und grundlegende Symbole der Arbeitsfläche verwendet
+Comment[en_GB]=Default simple theme for Linux using native widget style and some basic icons from desktop icon set
+Comment[es]=Tema sencillo predeterminado para Linux usando un estilo de controles nativo y algunos iconos básicos desde el conjunto de iconos de escritorio
+Comment[et]=Lihtne vaikimisi Linuxi teema, mis kasutab süsteemset vidinastiili ja mõningaid ikoone töölaua ikoonikogust
+Comment[fi]=Yksinkertainen natiivia elementtityyliä käyttävä Linux-teema sekä joitakin kuvakkeita työpöytäkuvakejoukosta
+Comment[fr]=Thème simple par défaut pour Linux utilisant les styles de composants graphiques natifs et quelques icônes simples du jeu d'icônes du bureau
+Comment[gl]=Tema predeterminado simple para Linux que usa o estilo de trebellos nativo e algunhas iconas básicas do grupo de iconas do escritorio
+Comment[id]=Tema sederhana baku untuk Linux menggunakan gaya widget bawaan dan beberapa ikon dasar dari set ikon desktop
+Comment[it]=Semplice tema predefinito per Linux, che usa lo stile nativo degli oggetti ed alcune icone di base dall'insieme di icone del desktop
+Comment[ko]=네이티브 위젯 스타일을 사용하고 데스크톱 아이콘 모음의 기본 아이콘을 사용하는 간단한 리눅스 테마
+Comment[lt]=Numatytasis paprastas apipavidalinimas, skirtas Linux ir naudojantis savų valdiklių stilių ir kai kurias pagrindines piktogramas iš darbalaukio piktogramų rinkinio
+Comment[nl]=Standaard eenvoudig thema voor Linux met inheemse widgetstijl en enige basis pictogrammen uit set pictogrammen voor bureaublad
+Comment[nn]=Standardtema for Linux, som brukar systemutsjånad på skjermelement og nokre ikon frå skrivebordsikontemaet
+Comment[pl]=Domyślny, prosty wygląd dla Linuksa, używający natywnego stylu elementów interfejsu i podstawowych ikon z zestawu ikon dla pulpitu
+Comment[pt]=Tema predefinido simples para o Linux, usando o estilo gráfico nativo e alguns ícones básicos do conjunto de ícones do ambiente de trabalho
+Comment[pt_BR]=Tema simples padrão para o Linux usando estilo de widgets nativos e alguns ícones básicos do conjunto de ícones da área de trabalho
+Comment[sk]=Predvolená jednoduchá téma pre Linux používajúca natívny štýl widgetov a jednoduché ikony z o štýlu ikon plochy
+Comment[sl]=Privzeto preprosta tema za Linux z uporabo izvornega sloga gradnikov in nekaj osnovnih ikon iz nabora ikon za namizje
+Comment[sv]=Enkelt standardtema för Linux som använder inbyggd komponentstil och några grundläggande ikoner från skrivbordets ikonuppsättning
+Comment[uk]=Типова проста тема для Linux із використанням природного стилю віджетів і декількох базових піктограм із набору піктограм стільниці
+Comment[x-test]=xxDefault simple theme for Linux using native widget style and some basic icons from desktop icon setxx
+Comment[zh_CN]=给 Linux 设计的使用原生控件的默认简易主题，图标来自于桌面图标集
+Comment[zh_TW]=適用於 Linux 的預設簡單主題，使用原生元件樣式，及部份來自桌面圖示集合的基本圖示
+
+Icon=theme.png
+Type=Service
+X-Falkon-Type=Theme
+
+X-Falkon-Author=David Rosca
+X-Falkon-Email=nowrep@gmail.com
+X-Falkon-License=GPLv3
