@@ -21,7 +21,7 @@ get_clipboard() {
 URL=""
 REQ_QUALITY=""
 
-if [ -n "${1:-}" ] && [[ "${1:-}" =~ (youtube\.com|youtu\.be) ]]; then
+if [ -n "${1:-}" ]; then
     URL="$1"
     REQ_QUALITY="${2:-$DEFAULT_QUALITY}"
 else
@@ -32,8 +32,8 @@ fi
 # ---------------------------
 # Validate
 # ---------------------------
-if [[ ! "$URL" =~ (youtube\.com|youtu\.be) ]]; then
-    echo "Not a YouTube URL"
+if [ -z "$URL" ]; then
+    echo "No URL provided"
     exit 1
 fi
 
@@ -69,4 +69,3 @@ echo "▶ Using mpv (yt-dlp backend)"
 mpv \
   --ytdl-format="bestvideo[height<=$REQ_QUALITY]+bestaudio/best" \
   "$URL"
-

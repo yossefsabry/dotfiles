@@ -67,3 +67,5 @@
     default_icon = "dialog-error"
     format = "<b><span foreground='#E4B4B1'>%s</span></b>\n<span foreground='#E4B4B1'>%b</span>\n<span foreground='#E4B4B1'>%a</span> <span foreground='#E4B4B1'>%c</span> <span foreground='#E4B4B1'>%p</span>"
     timeout = 0   # stays until dismissed
+
+include "/home/yossef/.config/dunst/dunstrc.d/50-theme.conf"
