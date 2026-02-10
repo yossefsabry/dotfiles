@@ -12,8 +12,8 @@ return {
             vim.g.lsp_zero_extend_lspconfig = 0
         end,
     },
-
     -- Autocompletion
+
     {
         "hrsh7th/nvim-cmp",
         lazy = true,
@@ -111,7 +111,7 @@ return {
                     "gopls",
                     "bashls",
                     "pyright",
-                    "phpactor",
+                    "zls", -- for zig
                 },
                 handlers = {
                     -- this first function is the "default handler"

@@ -2,8 +2,8 @@ sw_volume: 100
 audio_device_state:1:PulseAudio Output
 audio_device_state:1:Visualizer Output
 state: pause
-current: 1
-time: 146.603
+current: 27
+time: 192.649
 random: 0
 repeat: 1
 single: 1
@@ -32,37 +32,30 @@ playlist_begin
 16:ramadan_songs/Popular Arabic Songs.mp3
 17:fav/(FREE) R&B Type Beat - After Midnight.mp3
 18:fav/After Midnight.mp3
-19:10 out of 10/Joel Sunny - Luminary.mp3
-20:10 out of 10/Billie Eilish - WILDFLOWER.mp3
-21:10 out of 10/Hamza Namira - Fady Shewaya.mp3
-22:Funk/Mtg/Mtg - Coração(MP3_160K).mp3
-23:Jazz/1940's Retro Jazz ｜ Vintage Jazz 1 [7Yb7QDEc4rw].mp3
-24:arabic_songs/Hamza Namira/Dari Ya Alby(M4A_128K).m4a
-25:arabic_songs/Saad Lamjarred/Adda El Kalam(M4A_128K).m4a
-26:arabic_songs/Sherine/Hobbo Ganna(M4A_128K).m4a
-27:arabic_songs/Sherine/Kadabeen(M4A_128K).m4a
-28:dua lipa/DevOps Roadmap ☁️ _ (30) خارطة تعلم الكلاود والديف اوبس - أحمد متولي _ بودكاست كلام في البرمج(MP3_1.mp3
-29:dua lipa/New Rules(MP3_160K).mp3
-30:rap_songs/Eminem - Lose Yourself(MP3_160K).mp3
-31:rap_songs/Eminem - Without Me (Official Music Video)(MP3_160K).mp3
-32:rap_songs/Till I Collapse(MP3_160K).mp3
-33:rap_songs/Eminem - Rap God (Explicit)(MP3_160K).mp3
-34:10 out of 10/Christopher Larkin - Bilewater.mp3
-35:10 out of 10/Christopher Larkin - High Halls.mp3
-36:10 out of 10/Christopher Larkin - Last Dive.mp3
-37:10 out of 10/In Love With a Ghost, Nori - Flowers.mp3
-38:10 out of 10/Lies of P - OVERTURE.mp3
-39:10 out of 10/Donia Wael, El Waili - Bekya.mp3
-40:10 out of 10/Christopher Larkin - Moss Grotto.mp3
-41:10 out of 10/Christopher Larkin - Songclave.mp3
-42:10 out of 10/Christopher Larkin - Skarrsinger Karmelita.mp3
-43:dua lipa/Am I Evil_(MP3_160K).mp3
-44:dua lipa/Illusion(MP3_160K).mp3
-45:dua lipa/Lost in Your Light(MP3_160K).mp3
-46:dua lipa/MXZI _ DJ YUKU - WAIT FOR ME (OFFICIAL VISUALISER)(MP3_160K).mp3
-47:dua lipa/Swan Song (From the Motion Picture _Alita_ Battle Angel_)(MP3_160K).mp3
-48:dua lipa/Dua Lipa - Break My Heart (Official Video)(M4A_128K).m4a
-49:Phonk/FXRCE/ROYALTY(MP3_160K).mp3
-50:10 out of 10/Lies of P - Lisrim.mp3
-51:10 out of 10/Luke Pickman - Choral Chambers (from Hollow Knight# Silksong).mp3
+19:10 out of 10/Billie Eilish - WILDFLOWER.mp3
+20:Funk/Mtg/Mtg - Coração(MP3_160K).mp3
+21:Jazz/1940's Retro Jazz ｜ Vintage Jazz 1 [7Yb7QDEc4rw].mp3
+22:arabic_songs/Hamza Namira/Dari Ya Alby(M4A_128K).m4a
+23:arabic_songs/Saad Lamjarred/Adda El Kalam(M4A_128K).m4a
+24:arabic_songs/Sherine/Hobbo Ganna(M4A_128K).m4a
+25:arabic_songs/Sherine/Kadabeen(M4A_128K).m4a
+26:dua lipa/DevOps Roadmap ☁️ _ (30) خارطة تعلم الكلاود والديف اوبس - أحمد متولي _ بودكاست كلام في البرمج(MP3_1.mp3
+27:dua lipa/New Rules(MP3_160K).mp3
+28:rap_songs/Eminem - Lose Yourself(MP3_160K).mp3
+29:rap_songs/Eminem - Without Me (Official Music Video)(MP3_160K).mp3
+30:rap_songs/Till I Collapse(MP3_160K).mp3
+31:rap_songs/Eminem - Rap God (Explicit)(MP3_160K).mp3
+32:10 out of 10/Christopher Larkin - Bilewater.mp3
+33:10 out of 10/Donia Wael, El Waili - Bekya.mp3
+34:10 out of 10/Christopher Larkin - Moss Grotto.mp3
+35:dua lipa/Am I Evil_(MP3_160K).mp3
+36:dua lipa/Illusion(MP3_160K).mp3
+37:dua lipa/Lost in Your Light(MP3_160K).mp3
+38:dua lipa/MXZI _ DJ YUKU - WAIT FOR ME (OFFICIAL VISUALISER)(MP3_160K).mp3
+39:dua lipa/Swan Song (From the Motion Picture _Alita_ Battle Angel_)(MP3_160K).mp3
+40:dua lipa/Dua Lipa - Break My Heart (Official Video)(M4A_128K).m4a
+41:Phonk/FXRCE/ROYALTY(MP3_160K).mp3
+42:10 out of 10/Luke Pickman - Choral Chambers (from Hollow Knight# Silksong).mp3
+43:10 out of 10/In Love With a Ghost, Nori - Flowers.mp3
+44:10 out of 10/Christopher Larkin - Songclave.mp3
 playlist_end
