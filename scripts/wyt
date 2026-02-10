@@ -38,27 +38,73 @@ if [ -z "$URL" ]; then
 fi
 
 # ---------------------------
-# Build quality ladder
+# Resolve requested quality
 # ---------------------------
-case "$REQ_QUALITY" in
-    360) QLIST="360p" ;;
-    480) QLIST="480p,360p" ;;
-    720) QLIST="720p,480p,360p" ;;
-    1080) QLIST="1080p,720p,480p,360p" ;;
-    *) echo "Invalid quality"; exit 1 ;;
-esac
+REQ_QUALITY="${REQ_QUALITY,,}"
+TARGET_HEIGHT=""
+QUALITY_MODE=""
+MPV_FORMAT=""
+
+if [[ "$REQ_QUALITY" =~ ^([0-9]+)p?$ ]]; then
+    TARGET_HEIGHT="${BASH_REMATCH[1]}"
+    MPV_FORMAT="bestvideo[height<=$TARGET_HEIGHT]+bestaudio/best"
+elif [[ "$REQ_QUALITY" =~ ^(best|source|worst)$ ]]; then
+    QUALITY_MODE="$REQ_QUALITY"
+    case "$QUALITY_MODE" in
+        worst) MPV_FORMAT="worstvideo+worstaudio/worst" ;;
+        *) MPV_FORMAT="bestvideo+bestaudio/best" ;;
+    esac
+else
+    echo "Invalid quality (use a number, best, source, or worst)"
+    exit 1
+fi
+
+select_streamlink_quality() {
+    local available="$1"
+    local target="$2"
+    local mode="$3"
+    local best_name=""
+    local best_height=0
+    local raw name height
+
+    if [ -n "$mode" ]; then
+        echo "$mode"
+        return 0
+    fi
+
+    IFS=',' read -r -a streams <<< "$available"
+    for raw in "${streams[@]}"; do
+        name="$(echo "$raw" | sed 's/^[[:space:]]*//; s/[[:space:]].*//')"
+        [ -z "$name" ] && continue
+        if [[ "$name" =~ ^([0-9]+)p ]]; then
+            height="${BASH_REMATCH[1]}"
+            if [ "$height" -le "$target" ] && [ "$height" -gt "$best_height" ]; then
+                best_name="$name"
+                best_height="$height"
+            fi
+        fi
+    done
+
+    if [ -n "$best_name" ]; then
+        echo "$best_name"
+    else
+        echo "best"
+    fi
+}
 
 # ---------------------------
 # Try Streamlink (probe only)
 # ---------------------------
-AVAILABLE=$(streamlink "$URL" 2>/dev/null | grep -oE '[0-9]+p' || true)
-
-if echo "$AVAILABLE" | grep -qE '480p|720p|1080p'; then
-    echo "▶ Using Streamlink"
-    streamlink \
-        --player mpv --player-no-close \
-        "$URL" "$QLIST"
-    exit 0
+if command -v streamlink >/dev/null 2>&1; then
+    AVAILABLE_LINE=$(streamlink "$URL" 2>/dev/null | sed -n 's/^Available streams: //p' || true)
+    if [ -n "$AVAILABLE_LINE" ]; then
+        STREAMLINK_QUALITY=$(select_streamlink_quality "$AVAILABLE_LINE" "$TARGET_HEIGHT" "$QUALITY_MODE")
+        echo "▶ Using Streamlink"
+        streamlink \
+            --player mpv --player-no-close \
+            "$URL" "$STREAMLINK_QUALITY"
+        exit 0
+    fi
 fi
 
 # ---------------------------
@@ -67,5 +113,5 @@ fi
 echo "▶ Using mpv (yt-dlp backend)"
 
 mpv \
-  --ytdl-format="bestvideo[height<=$REQ_QUALITY]+bestaudio/best" \
+  --ytdl-format="$MPV_FORMAT" \
   "$URL"
