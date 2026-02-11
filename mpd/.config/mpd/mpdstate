@@ -2,8 +2,8 @@ sw_volume: 100
 audio_device_state:1:PulseAudio Output
 audio_device_state:1:Visualizer Output
 state: pause
-current: 27
-time: 152.241
+current: 46
+time: 70.44
 random: 0
 repeat: 1
 single: 1
@@ -58,4 +58,6 @@ playlist_begin
 42:10 out of 10/Luke Pickman - Choral Chambers (from Hollow Knight# Silksong).mp3
 43:10 out of 10/In Love With a Ghost, Nori - Flowers.mp3
 44:10 out of 10/Christopher Larkin - Songclave.mp3
+45:10 out of 10/Joel Sunny - Luminary.mp3
+46:10 out of 10/Hamza Namira - Fady Shewaya.mp3
 playlist_end
