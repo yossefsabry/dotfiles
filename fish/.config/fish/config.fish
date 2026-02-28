@@ -176,6 +176,11 @@ alias untar "tar -xvf"
 alias unbz2 "tar -xvjf"
 alias ungz "tar -xvzf"
 
+# --- man with better look ---
+function mann --description "new man with nice looking"
+    man $argv | bat -l man --style=-numbers
+end
+
 # --- FIXED logs (function, no fish $ expansion problems) ---
 function logs --description "Tail all text logs under /var/log"
     sudo find /var/log -type f -exec file {} \; \

@@ -218,13 +218,24 @@ assign [class="Brave-browser"] workspace 2
 assign [class="qutebrowser"] workspace 2
 assign [class="chromium"] workspace 2
 assign [class="Chromium"] workspace 2
+assign [class="falkon"] workspace 2
+assign [class="firefox"] workspace 2
+assign [class="Falkon"] workspace 2
+assign [class="Firefox"] workspace 2
+
+for_window [class="Firefox"] resize set width 30 ppt
+for_window [class="Falkon"] resize set width 70 ppt
 
 # Workspace 3
 assign [class="discord"] workspace 3
 assign [class="Microsoft To-Do Unofficial"] workspace 3
 assign [class="kuro"] workspace 3
 assign [class="Kuro"] workspace 3
+
 assign [class="mpv"] workspace 3
+assign [class="chatterino"] workspace 3
+assign [class="chatterino"] workspace 3
+
 assign [class="lg"] workspace 3
 assign [class="KeePassXC"] workspace 3
 assign [class="keepassxc"] workspace 3
@@ -320,8 +331,9 @@ for_window [class="Windscribe2"] floating enable
 
 #------------------------ scratchpad ------------------------
 
-# toggle the last two window i3
-bindsym $mod+b focus previous
+## casing problem LOLLLLLLLLLLlll
+# # toggle the last two window i3
+# bindsym $mod+b focus previous
 
 
 # reload the configuration file

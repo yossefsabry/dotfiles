@@ -4,6 +4,70 @@ set -euo pipefail
 
 DEFAULT_QUALITY=480
 
+# Stream stability tuning (override via env vars)
+STREAMLINK_HLS_LIVE_EDGE="${STREAMLINK_HLS_LIVE_EDGE:-6}"
+STREAMLINK_SEGMENT_THREADS="${STREAMLINK_SEGMENT_THREADS:-2}"
+STREAMLINK_SEGMENT_TIMEOUT="${STREAMLINK_SEGMENT_TIMEOUT:-10}"
+STREAMLINK_STREAM_SEGMENT_ATTEMPTS="${STREAMLINK_STREAM_SEGMENT_ATTEMPTS:-3}"
+STREAMLINK_STREAM_SEGMENT_TIMEOUT="${STREAMLINK_STREAM_SEGMENT_TIMEOUT:-10}"
+STREAMLINK_RETRY_MAX="${STREAMLINK_RETRY_MAX:-30}"
+STREAMLINK_RETRY_STREAMS="${STREAMLINK_RETRY_STREAMS:-1}"
+STREAMLINK_DISABLE_ADS="${STREAMLINK_DISABLE_ADS:-1}"
+
+MPV_CACHE_SECS="${MPV_CACHE_SECS:-20}"
+MPV_READAHEAD_SECS="${MPV_READAHEAD_SECS:-20}"
+MPV_MAX_BYTES="${MPV_MAX_BYTES:-200MiB}"
+
+MPV_ARGS=(
+    --cache=yes
+    --cache-secs="$MPV_CACHE_SECS"
+    --demuxer-readahead-secs="$MPV_READAHEAD_SECS"
+    --demuxer-max-bytes="$MPV_MAX_BYTES"
+)
+
+MPV_PLAYER_ARGS="$(printf '%q ' "${MPV_ARGS[@]}")"
+
+STREAMLINK_HELP=""
+STREAMLINK_OPTS=()
+
+streamlink_supports() {
+    local flag="$1"
+
+    if [ -z "$STREAMLINK_HELP" ]; then
+        STREAMLINK_HELP="$(streamlink --help 2>/dev/null || true)"
+    fi
+
+    [[ "$STREAMLINK_HELP" == *"$flag"* ]]
+}
+
+add_streamlink_opt() {
+    local flag="$1"
+    local value="${2:-}"
+
+    if streamlink_supports "$flag"; then
+        if [ -n "$value" ]; then
+            STREAMLINK_OPTS+=("$flag" "$value")
+        else
+            STREAMLINK_OPTS+=("$flag")
+        fi
+    fi
+}
+
+build_streamlink_opts() {
+    STREAMLINK_OPTS=()
+    add_streamlink_opt --hls-live-edge "$STREAMLINK_HLS_LIVE_EDGE"
+    add_streamlink_opt --hls-segment-threads "$STREAMLINK_SEGMENT_THREADS"
+    add_streamlink_opt --hls-segment-timeout "$STREAMLINK_SEGMENT_TIMEOUT"
+    add_streamlink_opt --stream-segment-attempts "$STREAMLINK_STREAM_SEGMENT_ATTEMPTS"
+    add_streamlink_opt --stream-segment-timeout "$STREAMLINK_STREAM_SEGMENT_TIMEOUT"
+    add_streamlink_opt --retry-max "$STREAMLINK_RETRY_MAX"
+    add_streamlink_opt --retry-streams "$STREAMLINK_RETRY_STREAMS"
+
+    if [ "$STREAMLINK_DISABLE_ADS" = "1" ]; then
+        add_streamlink_opt --twitch-disable-ads
+    fi
+}
+
 # ---------------------------
 # Clipboard helper
 # ---------------------------
@@ -13,6 +77,39 @@ get_clipboard() {
     else
         xclip -o -selection clipboard
     fi
+}
+
+# ---------------------------
+# Twitch helpers
+# ---------------------------
+get_twitch_channel() {
+    local url="$1"
+    local channel=""
+
+    if [[ "$url" =~ ^(https?://)?(www\.|m\.)?twitch\.tv/([A-Za-z0-9_]+)(/?(\?.*)?)$ ]]; then
+        channel="${BASH_REMATCH[3]}"
+    else
+        return 1
+    fi
+
+    case "${channel,,}" in
+        videos|directory|clips|clip|p|moderator|settings|subscriptions|search|jobs|turbo)
+            return 1
+            ;;
+    esac
+
+    echo "$channel"
+}
+
+launch_chatterino() {
+    local channel="$1"
+
+    [ -z "$channel" ] && return 0
+    if ! command -v chatterino >/dev/null 2>&1; then
+        return 0
+    fi
+
+    chatterino --activate "t:$channel" >/dev/null 2>&1 &
 }
 
 # ---------------------------
@@ -35,6 +132,11 @@ fi
 if [ -z "$URL" ]; then
     echo "No URL provided"
     exit 1
+fi
+
+TWITCH_CHANNEL=""
+if channel="$(get_twitch_channel "$URL")"; then
+    TWITCH_CHANNEL="$channel"
 fi
 
 # ---------------------------
@@ -98,10 +200,14 @@ select_streamlink_quality() {
 if command -v streamlink >/dev/null 2>&1; then
     AVAILABLE_LINE=$(streamlink "$URL" 2>/dev/null | sed -n 's/^Available streams: //p' || true)
     if [ -n "$AVAILABLE_LINE" ]; then
+        build_streamlink_opts
         STREAMLINK_QUALITY=$(select_streamlink_quality "$AVAILABLE_LINE" "$TARGET_HEIGHT" "$QUALITY_MODE")
+        launch_chatterino "$TWITCH_CHANNEL"
         echo "▶ Using Streamlink"
         streamlink \
+            "${STREAMLINK_OPTS[@]}" \
             --player mpv --player-no-close \
+            --player-args="$MPV_PLAYER_ARGS" \
             "$URL" "$STREAMLINK_QUALITY"
         exit 0
     fi
@@ -113,5 +219,6 @@ fi
 echo "▶ Using mpv (yt-dlp backend)"
 
 mpv \
+  "${MPV_ARGS[@]}" \
   --ytdl-format="$MPV_FORMAT" \
   "$URL"

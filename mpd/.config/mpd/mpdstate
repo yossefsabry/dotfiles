@@ -2,8 +2,8 @@ sw_volume: 100
 audio_device_state:1:PulseAudio Output
 audio_device_state:1:Visualizer Output
 state: pause
-current: 46
-time: 70.44
+current: 52
+time: 53.38
 random: 0
 repeat: 1
 single: 1
@@ -60,4 +60,10 @@ playlist_begin
 44:10 out of 10/Christopher Larkin - Songclave.mp3
 45:10 out of 10/Joel Sunny - Luminary.mp3
 46:10 out of 10/Hamza Namira - Fady Shewaya.mp3
+47:Phonk/Tommy Gun Rally/Emshy(MP3_160K)_1.mp3
+48:rap_songs/Eminem - Berzerk (Official Music Video) (Explicit)(MP3_160K).mp3
+49:Phonk/Tommy Gun Rally/Emshy(MP3_160K).mp3
+50:Phonk/Tommy Gun Rally/Etghayart(MP3_160K).mp3
+51:rap_songs/Kendrick Lamar/All The Stars(M4A_128K).m4a
+52:Soundtrack/Yavomag Rubikdice Chilx/Tokyo Rain(MP3_160K).mp3
 playlist_end
