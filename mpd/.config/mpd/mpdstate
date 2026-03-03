@@ -2,8 +2,8 @@ sw_volume: 100
 audio_device_state:1:PulseAudio Output
 audio_device_state:1:Visualizer Output
 state: pause
-current: 53
-time: 95.611
+current: 3
+time: 3.541
 random: 0
 repeat: 1
 single: 1
@@ -67,4 +67,8 @@ playlist_begin
 51:rap_songs/Kendrick Lamar/All The Stars(M4A_128K).m4a
 52:Soundtrack/Yavomag Rubikdice Chilx/Tokyo Rain(MP3_160K).mp3
 53:dua lipa/We_re Good(MP3_160K).mp3
+54:dua lipa/Dua Lipa - Houdini (Official Music Video)(M4A_128K).m4a
+55:dua lipa/Hotter Than Hell(MP3_160K).mp3
+56:dua lipa/Kiss and Make Up(MP3_160K).mp3
+57:good_vibe/Call on Me (Ryan Riback Remix).mp3
 playlist_end
