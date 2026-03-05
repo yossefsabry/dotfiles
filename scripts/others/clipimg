@@ -1,0 +1,154 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+# Save clipboard image into ./images and print Markdown tag.
+# Supports:
+# - Wayland via wl-paste
+# - X11 via xclip
+
+timestamp="$(date +%Y%m%d_%H%M%S)"
+base_dir=""
+target_dir=""
+
+resolve_base_dir() {
+    # 1) Explicit argument takes highest priority.
+    if [[ "${1:-}" != "" ]]; then
+        base_dir="$1"
+        return 0
+    fi
+
+    # 2) External override for editor integrations.
+    if [[ "${CPIMG_BASE_DIR:-}" != "" ]]; then
+        base_dir="$CPIMG_BASE_DIR"
+        return 0
+    fi
+
+  # 3) If running from Neovim command mode, use active buffer directory.
+  local nvim_server=""
+  if [[ "${NVIM:-}" != "" ]]; then
+    nvim_server="$NVIM"
+  elif [[ "${NVIM_LISTEN_ADDRESS:-}" != "" ]]; then
+    nvim_server="$NVIM_LISTEN_ADDRESS"
+  fi
+
+  if [[ "$nvim_server" != "" ]]; then
+    local raw=""
+
+    # Prefer nvr when available; it is purpose-built for Neovim remote calls.
+    if command -v nvr >/dev/null 2>&1; then
+      raw="$(nvr --servername "$nvim_server" --remote-expr "expand('%:p:h')" 2>/dev/null || true)"
+    fi
+
+    # Fallback to Neovim legacy remote interface.
+    if [[ "$raw" == "" ]] && command -v nvim >/dev/null 2>&1; then
+      raw="$(nvim --server "$nvim_server" --remote-expr "expand('%:p:h')" 2>/dev/null || true)"
+    fi
+
+    # Normalize output that may be quoted by remote-expr.
+    raw="$(printf '%s' "$raw" | tr -d '\r')"
+    raw="${raw%\"}"
+    raw="${raw#\"}"
+    raw="${raw%\'}"
+    raw="${raw#\'}"
+
+    if [[ "$raw" != "" && -d "$raw" ]]; then
+      base_dir="$raw"
+      return 0
+    fi
+
+    echo "Failed to resolve current Neovim buffer directory." >&2
+    echo "Run with explicit base dir, for example:" >&2
+    echo "CPIMG_BASE_DIR=\"\$(dirname \"\$(realpath /path/to/current/file)\")\" clipimg" >&2
+    return 1
+  fi
+
+  # 4) Fallback to current shell directory.
+  base_dir="$(pwd)"
+}
+
+mime_to_ext() {
+    case "$1" in
+        image/png) echo "png" ;;
+        image/jpeg) echo "jpg" ;;
+        image/webp) echo "webp" ;;
+        image/gif) echo "gif" ;;
+        image/bmp) echo "bmp" ;;
+        image/tiff) echo "tiff" ;;
+        *) return 1 ;;
+    esac
+}
+
+pick_wayland_mime() {
+    local types
+    types="$(wl-paste --list-types 2>/dev/null || true)"
+    for m in image/png image/jpeg image/webp image/gif image/bmp image/tiff; do
+        if grep -qx "$m" <<<"$types"; then
+            echo "$m"
+            return 0
+        fi
+    done
+    return 1
+}
+
+pick_x11_mime() {
+    local targets
+    targets="$(xclip -selection clipboard -t TARGETS -o 2>/dev/null || true)"
+    for m in image/png image/jpeg image/webp image/gif image/bmp image/tiff; do
+        if grep -q "$m" <<<"$targets"; then
+            echo "$m"
+            return 0
+        fi
+    done
+    return 1
+}
+
+save_wayland() {
+    local mime="$1"
+    local ext
+    ext="$(mime_to_ext "$mime")"
+    local file="${target_dir}/img_${timestamp}.${ext}"
+    wl-paste --no-newline --type "$mime" >"$file"
+    echo "$file"
+}
+
+save_x11() {
+    local mime="$1"
+    local ext
+    ext="$(mime_to_ext "$mime")"
+    local file="${target_dir}/img_${timestamp}.${ext}"
+    xclip -selection clipboard -t "$mime" -o >"$file"
+    echo "$file"
+}
+
+emit_markdown() {
+    local file="$1"
+    local alt
+    alt="$(basename "$file")"
+    alt="${alt%.*}"
+    echo "![${alt}](images/$(basename "$file"))"
+}
+
+resolve_base_dir "${1:-}" || exit 1
+target_dir="${base_dir}/images"
+mkdir -p "$target_dir"
+
+if command -v wl-paste >/dev/null 2>&1; then
+    if mime="$(pick_wayland_mime)"; then
+        saved_file="$(save_wayland "$mime")"
+        emit_markdown "$saved_file"
+        exit 0
+    fi
+fi
+
+if command -v xclip >/dev/null 2>&1; then
+    if mime="$(pick_x11_mime)"; then
+        saved_file="$(save_x11 "$mime")"
+        emit_markdown "$saved_file"
+        exit 0
+    fi
+fi
+
+echo "No image found in clipboard, or required tools are missing." >&2
+echo "Install one of: wl-clipboard (Wayland) or xclip (X11)." >&2
+exit 1
