@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+# Fish 4.5 errors on startup if the inherited current directory no longer exists.
+# Recover to HOME before handing off to the real binary.
+if ! pwd -P >/dev/null 2>&1; then
+    cd "${HOME:-/}" 2>/dev/null || cd /
+fi
+
+exec /usr/bin/fish "$@"

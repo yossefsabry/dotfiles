@@ -127,6 +127,10 @@ alias labc "ls -lap"
 alias lf "sh -c \"ls -l | egrep -v '^d'\""
 alias ldir "sh -c \"ls -l | egrep '^d'\""
 
+# open VS Code with Jupyter notebook kernel support enabled
+function jcode --description "Open VS Code here with Jupyter proposed API enabled"
+    code . --enable-proposed-api ms-toolsai.jupyter --enable-proposed-api ms-python.python $argv
+end
 
 # for tmux rename session
 function rs

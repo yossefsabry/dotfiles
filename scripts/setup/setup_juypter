@@ -1,0 +1,55 @@
+#!/bin/bash
+
+set -euo pipefail
+
+PROJECT_DIR=$(pwd -P)
+
+# 1. Initialize uv project if not already initialized
+if [ ! -f "pyproject.toml" ]; then
+    uv init
+fi
+
+# 2. Reuse an existing virtual environment when available
+if [ -x ".venv/bin/python" ]; then
+    VENV_DIR=".venv"
+elif [ -x "venv/bin/python" ]; then
+    VENV_DIR="venv"
+elif [ -d ".venv" ]; then
+    VENV_DIR=".venv"
+    uv venv "$VENV_DIR"
+elif [ -d "venv" ]; then
+    VENV_DIR="venv"
+    uv venv "$VENV_DIR"
+else
+    VENV_DIR=".venv"
+    uv venv "$VENV_DIR"
+fi
+
+export VIRTUAL_ENV="$PROJECT_DIR/$VENV_DIR"
+export PATH="$VIRTUAL_ENV/bin:$PATH"
+
+# 3. Install Jupyter kernel and common data science libraries
+# Adding ipykernel is mandatory for the notebook to work
+uv add --active ipykernel pandas numpy matplotlib torch
+
+# 4. Get the name of the current directory to use as the kernel name
+DIR_NAME=$(basename "$PROJECT_DIR")
+
+# 5. Register the project-specific kernel
+# This allows VS Code to see the selected environment in the kernel list
+# THIS IS COMMENTEND IF U USING THE ENV ENVIORMENTS INSTEAD OF CREATE
+# A LINK FOR THE KERINAL FILES SO THIS THE MAIN IDEA OF THIS LINE
+# CRAETING ALINK FOR THE .venv/bin/python3 too making it like kernal
+# uv run --active python -m ipykernel install --user --name "$DIR_NAME" --display-name "Python ($DIR_NAME)"
+
+# 6. Launch VS Code with the necessary flags for Arch Linux compatibility
+if command -v code >/dev/null 2>&1; then
+    if ! (
+        cd / &&
+        code "$PROJECT_DIR" \
+            --enable-proposed-api ms-toolsai.jupyter \
+            --enable-proposed-api ms-python.python
+    ); then
+        printf 'warning: failed to open VS Code for %s\n' "$PROJECT_DIR" >&2
+    fi
+fi
