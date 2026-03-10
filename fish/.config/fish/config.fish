@@ -137,6 +137,10 @@ function rs
     tmux rename-session -t (tmux display-message -p "#S") $argv
 end
 
+function rw
+    tmux rename-window -t (tmux display-message -p "#S") $argv
+end
+
 # for tmux kill-server
 function ks
     if not set -q TMUX
