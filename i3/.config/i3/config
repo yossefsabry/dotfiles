@@ -52,6 +52,9 @@ exec_always --no-startup-id setxkbmap -option ctrl:nocaps
 # Start the daemon which listens to focus changes and sets _back mark
 exec --no-startup-id ~/.cargo/bin/i3-back
 
+# Move pointer to active window on focus changes; keep a single instance on reload.
+exec_always --no-startup-id sh -c 'pkill -f "/.config/i3/scripts/i3_mouse_wraper.bash" 2>/dev/null; ~/.config/i3/scripts/i3_mouse_wraper.bash &'
+
 
 # kill any hanging polybar processes
 # exec_always killall polybar
@@ -108,7 +111,7 @@ floating_modifier $mod
 
 # NOT WORKING GONE CHECK FOR THIS LATYER
 # follow the key when the window application change
-#focus_follows_mouse yes
+focus_follows_mouse yes
 
 # start a terminal
 bindsym $mod+Return exec kitty
@@ -444,5 +447,4 @@ client.unfocused         $overlay  $base  $text  $overlay   $overlay
 client.urgent            $love     $base  $text  $love      $love
 client.placeholder       $base     $base  $text  $overlay   $overlay
 client.background        $base
-
 
