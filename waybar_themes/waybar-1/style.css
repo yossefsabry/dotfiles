@@ -1,0 +1,100 @@
+@import "waybar.css";
+
+* {
+  border: none;
+  padding: 0;
+  margin: 0;
+  min-height: 0;
+  font-family: "JetBrains Mono Nerd Font";
+  font-weight: bold;
+  font-size: 13px;
+}
+
+window#waybar {
+  background-color: transparent;
+}
+
+/* Blocks / Containers */
+#left1, #left2, .modules-center, #right1, #right2 {
+  background-color: @background;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  margin: 2px 4px;
+  box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.5);
+}
+
+#left1 {
+  border-radius: 12px;
+  padding: 0 8px;
+}
+
+#left2 {
+  border-radius: 12px;
+  padding: 0 8px;
+}
+
+.modules-center {
+  border-radius: 12px;
+  padding: 0 10px;
+}
+
+#right2 {
+  border-radius: 12px;
+  padding: 0 8px;
+}
+
+#right1 {
+  border-radius: 12px;
+  padding: 0 8px;
+}
+
+/* Module Styling */
+#memory, #cpu, #clock, #battery, #backlight, #network, #bluetooth, #pulseaudio, #power-profiles-daemon, #custom-sys, #idle_inhibitor, #custom-gamemode {
+  padding: 0 6px;
+  margin: 0 2px;
+}
+
+/* Workspace Dots */
+#workspaces button {
+  padding: 0 4px;
+  color: @foreground;
+  opacity: 0.3;
+}
+
+#workspaces button.active {
+  opacity: 1;
+  color: #89b4fa; /* Accent color for active workspace */
+}
+
+#workspaces button:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+}
+
+/* Colors for the "First Look" */
+#custom-sys { color: #89b4fa; font-size: 15px; }
+#clock { color: #cdd6f4; }
+#custom-separator { color: rgba(255, 255, 255, 0.2); margin: 0 4px; }
+
+#backlight { color: #f9e2af; }
+#bluetooth { color: #89b4fa; }
+#network { color: #a6e3a1; }
+#pulseaudio.output { color: #cba6f7; }
+#pulseaudio.input { color: #f38ba8; }
+#memory { color: #94e2d5; }
+#cpu { color: #fab387; }
+#battery { color: #f9e2af; }
+#battery.charging { color: #a6e3a1; }
+
+#custom-gamemode.enabled { color: #a6e3a1; }
+
+/* Tooltips */
+tooltip {
+  background: #1e1e2e;
+  border: 1px solid #313244;
+  border-radius: 8px;
+  padding: 8px;
+}
+
+tooltip label {
+  color: #cdd6f4;
+}
