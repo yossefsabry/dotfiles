@@ -1,11 +1,10 @@
 /* ================================================= */
-/* Waybar Minimal Pill Style Bar                     */
-/* made by shivam (github.com/shivam-salkar)         */
+/* Waybar Minimal Style Bar                          */
 /* ================================================= */
 
 * {
     font-family: "JetbrainsMono Nerd Font", FontAwesome, Roboto, Helvetica, Arial, sans-serif;
-    font-size: 16px;
+    font-size: 15px;
     transition: background-color .3s ease-out;
 }
 
@@ -21,20 +20,11 @@ window#waybar {
 
 /* Containers for left / center / right modules */
 .modules-left,
-.modules-center,
 .modules-right {
-    background: #0b1220; /* dark navy pill background */
-    margin: 5px 10px;
-    padding: 0 5px;
-    border-radius: 100px;
-}
-
-.modules-left {
-    padding: 0;
-}
-
-.modules-center {
-    padding: 0 10px;
+    background: #0b1220; /* dark navy background */
+    margin: 6px 10px;
+    padding: 2px 8px;
+    border-radius: 10px;
 }
 
 /* Shared styling for most modules */
@@ -43,120 +33,62 @@ window#waybar {
 #cpu,
 #memory,
 #custom-gpu,
+#custom-gaming,
 #disk,
 #temperature,
 #backlight,
 #network,
 #pulseaudio,
-#wireplumber,
-#custom-media,
-#tray,
-#mode,
-#idle_inhibitor,
-#scratchpad,
-#power-profiles-daemon,
-#language,
-#mpd {
-    padding: 0 10px;
-    border-radius: 100px;
+#bluetooth,
+#custom-sysmon,
+#custom-power,
+#tray {
+    padding: 0 6px;
+    margin: 0;
 }
 
-/* Hover effect for modules */
-#clock:hover,
-#battery:hover,
-#cpu:hover,
-#memory:hover,
-#custom-gpu:hover,
-#disk:hover,
-#temperature:hover,
-#backlight:hover,
-#network:hover,
-#pulseaudio:hover,
-#wireplumber:hover,
-#custom-media:hover,
-#tray:hover,
-#mode:hover,
-#idle_inhibitor:hover,
-#scratchpad:hover,
-#power-profiles-daemon:hover,
-#language:hover,
-#mpd:hover {
-    background: #111a2e; /* slightly lighter on hover */
-}
+/* Colors for Resource Modules */
+#custom-gpu { color: #89dceb; }
+#memory     { color: #f9e2af; }
+#cpu        { color: #a6e3a1; }
+#disk       { color: #cba6f7; }
 
-/* Workspace buttons */
+/* Gaming Mode Colors */
+#custom-gaming.on  { color: #98c379; }
+#custom-gaming.off { color: #e06c75; }
+
+/* Workspace Styling */
 #workspaces button {
     background: transparent;
-    font-family:
-        SpaceMono Nerd Font,
-        feather;
-    font-weight: 900;
-    font-size: 12pt;
-    color: #e6e8ee; /* inactive workspace text */
+    color: #e6e8ee;
     border: none;
-    border-radius: 100px;
+    padding: 0 8px;
+    margin: 0 2px;
+    border-radius: 6px;
 }
 
-/* Active workspace pill */
 #workspaces button.active {
-    background: #c9c6ff; /* light lavender */
-    color: #0b1220;      /* dark text for contrast */
+    background: #c9c6ff;
+    color: #0b1220;
 }
 
-/* Hovered workspace */
 #workspaces button:hover {
     background: #c9c6ff;
     color: #0b1220;
-    box-shadow: none;
 }
 
-/* Arch logo module */
-#custom-arch {
-    margin-left: 5px;
-    padding: 0 10px;
-    font-size: 22px;
-    transition: color .5s;
-}
-
-#custom-arch:hover {
-    color: #61afef; /* blue accent */
-}
-
-/* ===================== */
-/* Extra modules         */
-/* ===================== */
-
-/* Bluetooth indicator */
-#bluetooth {
-    padding: 0 10px;
-    border-radius: 100px;
-}
-
-#bluetooth:hover {
-    background: #111a2e;
-}
-
-/* System monitor icon */
-#custom-sysmon {
-    font-size: 28px;
-    padding: 0 10px;
-    border-radius: 100px;
-}
-
-#custom-sysmon:hover {
-    background: #111a2e;
-}
-
-/* Power button */
+/* Power button styling */
 #custom-power {
-    padding: 0 12px;
-    border-radius: 100px;
-    font-size: 17px;
-    color: #e06c75; /* soft red */
+    color: #e06c75;
 }
 
 #custom-power:hover {
-    background: #111a2e;
     color: #61afef;
 }
 
+/* Arch Linux Icon */
+#custom-arch {
+    font-size: 20px;
+    padding-left: 8px;
+    padding-right: 4px;
+}

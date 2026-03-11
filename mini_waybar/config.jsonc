@@ -3,7 +3,7 @@
     "layer": "top",
     "position": "top",
     "height": 42,
-    "spacing": 6,
+    "spacing": 2,
 
     // Left side
     "modules-left": [
@@ -13,15 +13,17 @@
     ],
 
     // Center
-    "modules-center": [
-        "custom/gpu",
-        "memory",
-        "cpu"
-    ],
+    // "modules-center": [
+    // ],
 
     // Right side
     "modules-right": [
         // "idle_inhibitor",
+        "custom/gpu",
+        "memory",
+        "cpu",
+        "disk",
+        "custom/gaming",
 
         "pulseaudio",
         "bluetooth",

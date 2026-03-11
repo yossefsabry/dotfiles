@@ -2,7 +2,7 @@
     "custom/arch": {
         "format": "󰣇",
         "tooltip": true,
-        "tooltip-format": "Made with 𖹭 \n ~shivam"
+        "tooltip-format": "LEMO"
     },
 
     "hyprland/workspaces": {
@@ -52,25 +52,30 @@
         "interval": 2
     },
 
-
-
     "cpu": {
-        "format": "Cpu: {usage}%",
+        "format": "CPU {usage}%",
         "interval": 2,
         "tooltip": false
     },
 
     "memory": {
-        "format": "Ram: {percentage}%",
+        "format": "RAM {percentage}%",
         "interval": 2,
         "tooltip": false
     },
 
     "custom/gpu": {
-        "exec": "nvidia-smi --query-gpu=utilization.gpu --format=csv,noheader,nounits | awk '{print \"Gpu: \" $1 \"%\"}'",
+        "exec": "nvidia-smi --query-gpu=utilization.gpu --format=csv,noheader,nounits | awk '{print $1 \"%\"}'",
         "interval": 2,
-        "format": "{}",
+        "format": "GPU {}",
         "tooltip": false
+    },
+
+    "disk": {
+        "interval": 30,
+        "format": "DISK {free} / {total}",
+        "tooltip-format": "{used} used out of {total} on {path}",
+        "path": "/"
     },
 
     "battery": {
@@ -82,8 +87,6 @@
         "format-charging": " {capacity}%",
         "format-plugged": " {capacity}%",
         "format-icons": ["", "", "", "", ""],
-        
-
         "on-click": "~/.config/waybar/scripts/power-profiles.sh"
     },
 
@@ -92,10 +95,18 @@
         "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
     },
 
-
     "custom/power": {
         "format": "",
         "tooltip": false,
         "on-click": "~/.config/waybar/scripts/powermenu.sh"
+    },
+
+    "custom/gaming": {
+        "exec": "~/.config/waybar/scripts/gamemode_check.sh",
+        "return-type": "json",
+        "interval": 2,
+        "format": "{}",
+        "on-click": "~/.config/hypr/scripts/gamemode.sh",
+        "tooltip": true
     }
 }

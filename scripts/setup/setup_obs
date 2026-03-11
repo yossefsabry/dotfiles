@@ -1,0 +1,93 @@
+#!/bin/bash
+
+# 1. Detect hardware and recommend packages
+echo "Detecting hardware..."
+HAS_NVIDIA=$(lspci | grep -i nvidia)
+HAS_INTEL=$(lspci | grep -i intel | grep -E "VGA|3D")
+
+PACKAGES="obs-studio pipewire libva-utils v4l2loopback-dkms"
+ENCODER="obs_x264"
+
+if [ -n "$HAS_NVIDIA" ]; then
+    echo "NVIDIA GPU (RTX 4050) detected."
+    PACKAGES="$PACKAGES nvidia-utils libva-nvidia-driver"
+    ENCODER="obs_nvenc_h264_tex"
+    if echo "$HAS_NVIDIA" | grep -qi "RTX 40"; then
+        ENCODER="obs_nvenc_av1_tex"
+    fi
+elif [ -n "$HAS_INTEL" ]; then
+    echo "Intel GPU detected."
+    PACKAGES="$PACKAGES intel-media-driver"
+    ENCODER="ffmpeg_vaapi"
+fi
+
+echo "Recommended encoder: $ENCODER"
+echo "Recommended packages: $PACKAGES"
+
+# 2. Create the Configuration Directory
+PROFILE_NAME="HighQuality"
+CONF_DIR="$HOME/.config/obs-studio/basic/profiles/$PROFILE_NAME"
+mkdir -p "$CONF_DIR"
+
+# 3. Create/Update Profile (basic.ini)
+cat <<EOF > "$CONF_DIR/basic.ini"
+[General]
+Name=$PROFILE_NAME
+
+[Output]
+Mode=Advanced
+RecFormat=mkv
+RecEncoder=$ENCODER
+RecQuality=Small
+
+[AdvOut]
+RecType=Standard
+RecFormat=mkv
+RecEncoder=$ENCODER
+RecRescale=false
+RecTracks=1
+FFOutputToFile=true
+FFVEncoder=$ENCODER
+FFAEncoder=aac
+RecEncoderSettings=cq=20
+EOF
+
+# 4. Set Video Resolution (1080p 60fps)
+cat <<EOF > "$CONF_DIR/record.ini"
+[Video]
+BaseCX=1920
+BaseCY=1080
+OutputCX=1920
+OutputCY=1080
+FPSCommon=60
+EOF
+
+# 5. Ensure the profile is selected in global.ini
+GLOBAL_INI="$HOME/.config/obs-studio/global.ini"
+mkdir -p "$HOME/.config/obs-studio/basic/scenes"
+
+if [ -f "$GLOBAL_INI" ]; then
+    # Check if [Basic] section exists
+    if ! grep -q "\[Basic\]" "$GLOBAL_INI"; then
+        echo -e "\n[Basic]\nProfile=$PROFILE_NAME" >> "$GLOBAL_INI"
+    else
+        # Update Profile line in [Basic] section
+        sed -i '/\[Basic\]/,/\[/ s/Profile=.*/Profile='"$PROFILE_NAME"'/' "$GLOBAL_INI"
+    fi
+else
+    cat <<EOF > "$GLOBAL_INI"
+[Basic]
+Profile=$PROFILE_NAME
+EOF
+fi
+
+# 6. Make sure OBS is configured for Wayland/EGL
+# This can help with the EGLImage errors on Hybrid systems
+# Usually set in environment or global.ini
+if ! grep -q "Renderer=OpenGL" "$GLOBAL_INI"; then
+    sed -i '/\[Video\]/a Renderer=OpenGL' "$GLOBAL_INI"
+fi
+
+echo "Setup complete. To apply everything, run:"
+echo "sudo pacman -S --needed $PACKAGES"
+echo "Then start OBS Studio."
