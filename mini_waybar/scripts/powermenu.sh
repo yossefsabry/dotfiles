@@ -8,8 +8,21 @@ choice=$(printf "⏻  Shutdown\n  Reboot\n󰍃  Suspend\n󰌾  Lock" | \
                 window { width: 24%; }')
 
 case "$choice" in
-    *Shutdown*) systemctl poweroff ;;
-    *Reboot*) systemctl reboot ;;
-    *Suspend*) hyprctl dispatch exit ;;
-    *Lock*) hyprlock ;;
+    *Shutdown*) 
+        notify-send -t 2000 "System" "Shutting down..."
+        systemctl poweroff 
+        ;;
+    *Reboot*) 
+        notify-send -t 2000 "System" "Rebooting..."
+        systemctl reboot 
+        ;;
+    *Suspend*) 
+        notify-send -t 2000 "System" "Suspending..."
+        hyprctl dispatch exit 
+        ;;
+    *Lock*) 
+        notify-send -t 2000 "System" "Locking screen..."
+        hyprlock 
+        ;;
 esac
+

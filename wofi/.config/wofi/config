@@ -1,0 +1,12 @@
+# Wofi configuration
+width=40%
+height=40%
+location=center
+show=drun
+prompt=Search...
+filter_rate=100
+allow_images=true
+cache_file=/home/yossef/.cache/wofi_cache
+# insensitive=true
+# hide_scroll=true
+# gtk_dark=true

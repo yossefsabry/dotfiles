@@ -31,7 +31,7 @@
         "format": "",
         "tooltip": true,
         "tooltip-format": "{status}",
-        "on-click": "rofi-bluetooth"
+        "on-click": "~/.config/waybar/scripts/bluetooth.sh"
     },
 
     "network": {
@@ -41,7 +41,7 @@
         "format-ethernet": "",
         "format-disconnected": "⚠",
         "interval": 2,
-        "on-click": "networkmanager_dmenu"
+        "on-click": "~/.config/waybar/scripts/network.sh"
     },
 
     "custom/sysmon": {

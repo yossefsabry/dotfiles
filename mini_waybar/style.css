@@ -5,7 +5,7 @@
 
 * {
     font-family: "JetbrainsMono Nerd Font", FontAwesome, Roboto, Helvetica, Arial, sans-serif;
-    font-size: 17px;
+    font-size: 16px;
     transition: background-color .3s ease-out;
 }
 
@@ -89,7 +89,7 @@ window#waybar {
         SpaceMono Nerd Font,
         feather;
     font-weight: 900;
-    font-size: 13pt;
+    font-size: 12pt;
     color: #e6e8ee; /* inactive workspace text */
     border: none;
     border-radius: 100px;
@@ -112,7 +112,7 @@ window#waybar {
 #custom-arch {
     margin-left: 5px;
     padding: 0 10px;
-    font-size: 25px;
+    font-size: 22px;
     transition: color .5s;
 }
 

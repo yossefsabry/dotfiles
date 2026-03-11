@@ -1,5 +1,12 @@
 #!/bin/bash
 
-killall -9 waybar
+# Terminate already running waybar instances
+killall -q waybar
 
+# Wait until the processes have been shut down
+while pgrep -x waybar >/dev/null; do sleep 1; done
+
+# Launch Waybar
 waybar &
+
+notify-send -t 2000 "Waybar" "Bar restarted successfully"
