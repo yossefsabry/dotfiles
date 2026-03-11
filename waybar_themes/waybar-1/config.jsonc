@@ -30,8 +30,7 @@
       "power-profiles-daemon",
       "pulseaudio#output",
       "pulseaudio#input",
-      "memory", 
-      "cpu",
+      "hyprland/language",
       "battery"
     ]
   },
@@ -53,10 +52,33 @@
   "group/left2": {
     "orientation": "inherit",
     "modules": [
-      "idle_inhibitor",
-      "custom/updatespacman",
-      "mpris"
+      "disk",
+      "custom/separator",
+      "temperature",
+      "custom/separator",
+      "memory",
+      "custom/separator",
+      "cpu"
     ]
+  },
+
+  "disk": {
+    "interval": 30,
+    "format": "󰋊 {free} left",
+    "path": "/",
+    "tooltip-format": "{used} used out of {total} on {path}"
+  },
+
+  "temperature": {
+    "critical-threshold": 80,
+    "format": "{icon} {temperatureC}°C",
+    "format-icons": ["", "", ""]
+  },
+
+  "hyprland/language": {
+    "format": "󰌌 {}",
+    "format-en": "US",
+    "format-ar": "AR"
   },
 
   "group/left1": {
@@ -95,9 +117,11 @@
   },
 
   "custom/sys": {
-    "format": "󱡓",
-    "on-click": "sys-menu",
-    "tooltip-format": "System Menu"
+    "format": " {}",
+    "exec": "whoami",
+    "interval": 3600,
+    "tooltip": true,
+    "tooltip-format": "User: {}"
   },
 
   "power-profiles-daemon": {
@@ -214,6 +238,9 @@
     "format": "",
     "format-disabled": "󰂲",
     "format-connected": "󰂱",
+    "tooltip-format": "{status}",
+    "tooltip-format-connected": "{status}\n\n{device_enumerate}",
+    "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
     "on-click": "/home/yossef/.config/waybar/scripts/bluetooth.sh"
   },
 
@@ -231,14 +258,6 @@
       "default": ["", "", ""]
     },
     "on-click": "/home/yossef/.config/waybar/scripts/volume.sh"
-  },
-
-  "idle_inhibitor": {
-    "format": "{icon}",
-    "format-icons": {
-      "activated": "",
-      "deactivated": "󰾫"
-    }
   },
 
   "group/tray-expander": {
