@@ -7,7 +7,7 @@
   min-height: 0;
   font-family: "JetBrains Mono Nerd Font";
   font-weight: bold;
-  font-size: 13px;
+  font-size: 15px;
 }
 
 window#waybar {
@@ -71,7 +71,7 @@ window#waybar {
 }
 
 /* Colors for the "First Look" */
-#custom-sys { color: #89b4fa; font-size: 15px; }
+#custom-sys { color: #89b4fa; font-size: 17px; }
 #clock { color: #cdd6f4; }
 #custom-separator { color: rgba(255, 255, 255, 0.2); margin: 0 4px; }
 
