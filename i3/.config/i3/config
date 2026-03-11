@@ -2,6 +2,7 @@
 
 ## starting the configuration file for i3
 for_window [class="^.*"] border none
+workspace_layout tabbed
 # no border for scratchpad
 for_window [title="^scratch$"] border none
 
@@ -320,6 +321,10 @@ bindsym $mod+u [class="kitty" instance ="scratchTerm"]  scratchpad show;  move p
 
 # for andriod studio
 for_window [class="Emulator"] floating enable
+
+# rules for waypaper
+for_window [class="waypaper"] floating enable
+for_window [class="Waypaper"] floating enable
 
 # rules for windscribe
 # WM_CLASS(STRING) = "Windscribe", "Windscribe2"
