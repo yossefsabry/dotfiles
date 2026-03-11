@@ -75,15 +75,15 @@ window#waybar {
 #clock { color: #cdd6f4; }
 #custom-separator { color: rgba(255, 255, 255, 0.2); margin: 0 4px; }
 
-#backlight { color: #f9e2af; }
-#bluetooth { color: #89b4fa; }
+#backlight { color: #ffffff; }
+#bluetooth { color: #ffffff; }
 #network { color: #a6e3a1; }
 #pulseaudio.output { color: #cba6f7; }
 #pulseaudio.input { color: #f38ba8; }
-#memory { color: #94e2d5; }
-#cpu { color: #fab387; }
-#battery { color: #f9e2af; }
-#battery.charging { color: #a6e3a1; }
+#memory { color: #ffffff; }
+#cpu { color: #ffffff; }
+#battery { color: #ffffff; }
+#battery.charging { color: #ffffff; }
 
 #custom-gamemode.enabled { color: #a6e3a1; }
 
