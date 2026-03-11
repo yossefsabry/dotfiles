@@ -9,11 +9,14 @@
     "modules-left": [
         "custom/arch",
         "hyprland/workspaces"
+        // "hyprland/window"
     ],
 
     // Center
     "modules-center": [
-        "hyprland/window"
+        "custom/gpu",
+        "memory",
+        "cpu"
     ],
 
     // Right side
@@ -24,7 +27,6 @@
         "bluetooth",
         "network",
 
-        "custom/sysmon",
 
         "battery",
         "clock",

@@ -55,12 +55,21 @@
 
 
     "cpu": {
-        "format": "",
+        "format": "Cpu: {usage}%",
+        "interval": 2,
         "tooltip": false
     },
 
     "memory": {
-        "format": "",
+        "format": "Ram: {percentage}%",
+        "interval": 2,
+        "tooltip": false
+    },
+
+    "custom/gpu": {
+        "exec": "nvidia-smi --query-gpu=utilization.gpu --format=csv,noheader,nounits | awk '{print \"Gpu: \" $1 \"%\"}'",
+        "interval": 2,
+        "format": "{}",
         "tooltip": false
     },
 
