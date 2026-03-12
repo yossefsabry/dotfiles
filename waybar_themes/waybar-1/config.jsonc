@@ -38,8 +38,8 @@
   "custom/gamemode": {
     "format": "{}",
     "return-type": "json",
-    "exec": "/home/yossef/.config/waybar/scripts/gamemode.sh",
-    "on-click": "/home/yossef/.config/waybar/scripts/gamemode.sh toggle",
+    "exec": "./scripts/gamemode.sh",
+    "on-click": "./scripts/gamemode.sh toggle",
     "interval": 2,
     "tooltip": true
   },
@@ -128,7 +128,7 @@
     "format": "{icon}",
     "tooltip-format": "Power profile: {profile}\nDriver: {driver}",
     "tooltip": true,
-    "on-click": "/home/yossef/.config/waybar/scripts/power_profile.sh",
+    "on-click": "./scripts/power_profile.sh",
     "format-icons": {
       "performance": "",
       "balanced": "",
@@ -146,31 +146,31 @@
   },
 
   "custom/voxtype": {
-    "exec": "/home/yossef/.config/waybar/scripts/voxtype_status.sh",
+    "exec": "./scripts/voxtype_status.sh",
     "return-type": "json",
     "format": "{text}",
     "tooltip": true,
-    "on-click-right": "/home/yossef/.config/waybar/scripts/voxtype.sh ensure-daemon",
-    "on-click": "/home/yossef/.config/waybar/scripts/voxtype.sh toggle"
+    "on-click-right": "./scripts/voxtype.sh ensure-daemon",
+    "on-click": "./scripts/voxtype.sh toggle"
   },
 
   "custom/idle-indicator": {
     "on-click": "sys-toggle-idle",
-    "exec": "/home/yossef/.config/waybar/scripts/idle_indicator.sh",
+    "exec": "./scripts/idle_indicator.sh",
     "signal": 9,
     "return-type": "json"
   },
 
   "custom/notification-silencing-indicator": {
     "on-click": "sys-toggle-notification-silencing",
-    "exec": "/home/yossef/.config/waybar/scripts/notification_silencing.sh",
+    "exec": "./scripts/notification_silencing.sh",
     "signal": 10,
     "return-type": "json"
   },
 
   "custom/screenrecording-indicator": {
     "on-click": "sys-cmd-screenrecord",
-    "exec": "/home/yossef/.config/waybar/scripts/screen_recording.sh",
+    "exec": "./scripts/screen_recording.sh",
     "signal": 8,
     "return-type": "json"
   },
@@ -178,13 +178,13 @@
   "memory": {
     "interval": 2,
     "format": " {used:0.1f}G",
-    "on-click": "/home/yossef/.config/waybar/scripts/memory.sh"
+    "on-click": "./scripts/memory.sh"
   },
 
   "cpu": {
     "interval": 10,
     "format": " {usage}%",
-    "on-click": "/home/yossef/.config/waybar/scripts/cpu.sh"
+    "on-click": "./scripts/cpu.sh"
   },
 
   "backlight": {
@@ -192,7 +192,7 @@
     "format": "{icon}",
     "tooltip-format": "{percent}%",
     "format-icons": ["󰃞", "󰃝", "󰃟", "󰃠"],
-    "on-click": "/home/yossef/.config/waybar/scripts/backlight.sh"
+    "on-click": "./scripts/backlight.sh"
   },
 
   "clock": {
@@ -217,7 +217,7 @@
     "format-wifi": "{icon}",
     "format-ethernet": "󰌗",
     "format-disconnected": "󰤮",
-    "on-click": "/home/yossef/.config/waybar/scripts/network.sh"
+    "on-click": "./scripts/network.sh"
   },
 
   "battery": {
@@ -226,7 +226,7 @@
       "charging": ["󰢜", "󰂆", "󰂇", "󰂈", "󰢝", "󰂉", "󰢞", "󰂊", "󰂋", "󰂅"],
       "default": ["󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"]
     },
-    "on-click": "/home/yossef/.config/waybar/scripts/battery.sh"
+    "on-click": "./scripts/battery.sh"
   },
 
   "bluetooth": {
@@ -236,14 +236,14 @@
     "tooltip-format": "{status}",
     "tooltip-format-connected": "{status}\n\n{device_enumerate}",
     "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
-    "on-click": "/home/yossef/.config/waybar/scripts/bluetooth.sh"
+    "on-click": "./scripts/bluetooth.sh"
   },
 
   "pulseaudio#input": {
     "format": "{format_source}",
     "format-source": "",
     "format-source-muted": "",
-    "on-click": "/home/yossef/.config/waybar/scripts/mic.sh"
+    "on-click": "./scripts/mic.sh"
   },
 
   "pulseaudio#output": {
@@ -252,7 +252,7 @@
     "format-icons": {
       "default": ["", "", ""]
     },
-    "on-click": "/home/yossef/.config/waybar/scripts/volume.sh"
+    "on-click": "./scripts/volume.sh"
   },
 
   "group/tray-expander": {
