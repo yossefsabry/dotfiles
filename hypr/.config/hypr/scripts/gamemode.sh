@@ -8,7 +8,7 @@ if [ "$HYPR_STATE" = 1 ]; then
         keyword animations:enabled 0;\
         keyword decoration:blur:enabled 0;\
         keyword decoration:rounding 0;\
-        keyword decoration:drop_shadow 0;\
+        keyword decoration:shadow:enabled 0;\
         keyword misc:vrr 1;\
         keyword render:direct_scanout 1"
     notify-send -u low "Gaming Mode" "Performance optimized. Animations and blur disabled."
@@ -18,7 +18,7 @@ else
         keyword animations:enabled 1;\
         keyword decoration:blur:enabled 1;\
         keyword decoration:rounding 2;\
-        keyword decoration:drop_shadow 1;\
+        keyword decoration:shadow:enabled 1;\
         keyword misc:vrr 2;\
         keyword render:direct_scanout 0"
     notify-send -u low "Gaming Mode" "Eye candy restored."
