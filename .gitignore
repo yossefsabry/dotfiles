@@ -27,4 +27,9 @@ falkon/.config/falkon/profiles.ini
 *.ovpn
 *.png
 *.jpg
+
+# Exception: Do NOT ignore images inside the public folder
+!public/**/*.png
+!public/**/*.jpg
+
 docs
