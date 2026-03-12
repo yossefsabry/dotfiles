@@ -24,6 +24,7 @@
     "orientation": "inherit",
     "modules": [
       "custom/gamemode",
+      "custom/waypick",
       "backlight",
       "bluetooth",
       "network",
@@ -33,6 +34,18 @@
       "hyprland/language",
       "battery"
     ]
+  },
+
+  "custom/waypick": {
+    "format": "{}",
+    "return-type": "json",
+    "interval": "once",
+    "exec": "./scripts/waypick/waypick.sh",
+    "on-click": "./scripts/waypick/waypick.sh pick && pkill -RTMIN+9 waybar",
+    "on-click-right": "./scripts/waypick/waypick.sh copy",
+    "signal": 9,
+    "tooltip": true,
+    "escape": false
   },
 
   "custom/gamemode": {

@@ -48,7 +48,7 @@ window#waybar {
 }
 
 /* Module Styling */
-#memory, #cpu, #clock, #battery, #backlight, #network, #bluetooth, #pulseaudio, #power-profiles-daemon, #custom-sys, #disk, #temperature, #language, #custom-gamemode {
+#memory, #cpu, #clock, #battery, #backlight, #network, #bluetooth, #pulseaudio, #power-profiles-daemon, #custom-sys, #disk, #temperature, #language, #custom-gamemode, #custom-waypick {
   padding: 0 6px;
   margin: 0 2px;
 }
@@ -86,6 +86,7 @@ window#waybar {
 #battery.charging { color: #ffffff; }
 
 #custom-gamemode.enabled { color: #a6e3a1; }
+#custom-waypick { color: #f5c2e7; }
 
 /* Tooltips */
 tooltip {
