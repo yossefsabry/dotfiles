@@ -146,36 +146,31 @@
   },
 
   "custom/voxtype": {
-    "exec": "sys-voxtype-status",
+    "exec": "/home/yossef/.config/waybar/scripts/voxtype_status.sh",
     "return-type": "json",
-    "format": "{icon}",
-    "format-icons": {
-      "idle": "",
-      "recording": "󰍬",
-      "transcribing": "󰔟"
-    },
+    "format": "{text}",
     "tooltip": true,
-    "on-click-right": "sys-voxtype-config",
-    "on-click": "sys-voxtype-model"
+    "on-click-right": "/home/yossef/.config/waybar/scripts/voxtype.sh ensure-daemon",
+    "on-click": "/home/yossef/.config/waybar/scripts/voxtype.sh toggle"
   },
 
   "custom/idle-indicator": {
     "on-click": "sys-toggle-idle",
-    "exec": "$OMARCHY_PATH/default/waybar/indicators/idle.sh",
+    "exec": "/home/yossef/.config/waybar/scripts/idle_indicator.sh",
     "signal": 9,
     "return-type": "json"
   },
 
   "custom/notification-silencing-indicator": {
     "on-click": "sys-toggle-notification-silencing",
-    "exec": "$OMARCHY_PATH/default/waybar/indicators/notification-silencing.sh",
+    "exec": "/home/yossef/.config/waybar/scripts/notification_silencing.sh",
     "signal": 10,
     "return-type": "json"
   },
 
   "custom/screenrecording-indicator": {
     "on-click": "sys-cmd-screenrecord",
-    "exec": "$OMARCHY_PATH/default/waybar/indicators/screen-recording.sh",
+    "exec": "/home/yossef/.config/waybar/scripts/screen_recording.sh",
     "signal": 8,
     "return-type": "json"
   },
