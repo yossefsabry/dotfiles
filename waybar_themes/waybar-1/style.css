@@ -7,7 +7,8 @@
   min-height: 0;
   font-family: "JetBrains Mono Nerd Font";
   font-weight: bold;
-  font-size: 14px;
+  font-size: 16px;
+  margin: 1px; /* for all modules, to create a small gap between them */
 }
 
 window#waybar {
@@ -55,19 +56,27 @@ window#waybar {
 
 /* Workspace Dots */
 #workspaces button {
-  padding: 0 4px;
+  padding: 0 6px;
+  margin: 0 1px;
   color: @foreground;
-  opacity: 0.3;
+  font-size: 18px;
 }
 
 #workspaces button.active {
-  opacity: 1;
   color: #89b4fa; /* Accent color for active workspace */
+  text-shadow: 0 0 6px rgba(137, 180, 250, 0.35);
+  font-weight: 900; /* Extra bold for active */
+}
+
+
+#workspaces button.urgent {
+  color: #f38ba8;
 }
 
 #workspaces button:hover {
   background: rgba(255, 255, 255, 0.1);
   border-radius: 8px;
+  color: #89b4fa;
 }
 
 /* Colors for the "First Look" */

@@ -167,7 +167,9 @@
 # dir name + "~>" icon
 # --------------------------------
 
-format = " $character$directory"
+#-- if not want too showing git
+# format = " $character$directory"
+format = " $character$directory$git_branch"
 
 [directory]
 # show only the current directory name
@@ -189,7 +191,8 @@ disabled = true
 [hostname]
 disabled = true
 [git_branch]
-disabled = true
+disabled = false
+format = "[$branch](bold #a6e3a1) "
 [git_status]
 disabled = true
 [cmd_duration]

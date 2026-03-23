@@ -1,3 +1,5 @@
+
+-- TOKYONIGHT COLOR SCHEME
 -- return {
 -- 	-- {
 -- 	-- 	"folke/tokyonight.nvim",
@@ -70,6 +72,7 @@
 -- }
 
 
+-- ROSE-PINE COLOR SCHEME
 return {
     {
         "rose-pine/neovim",
@@ -124,3 +127,41 @@ return {
         "tribela/vim-transparent",
     },
 }
+
+
+-- JELLYBEANS COLOR SCHEME
+-- return {
+--     {
+--         "metalelf0/jellybeans-nvim",
+--         dependencies = { "rktjmp/lush.nvim" },
+--         priority = 1000,
+--         config = function()
+--             vim.opt.termguicolors = true
+--             vim.cmd.colorscheme("jellybeans-nvim")
+--
+--             -- custom highlights, like you did with rose-pine
+--             vim.api.nvim_set_hl(0, "Normal", { bg = "#000000" })
+--             vim.api.nvim_set_hl(0, "Cursor", { bg = "#ffffff", fg = "#000000" })
+--             vim.api.nvim_set_hl(0, "Directory", { fg = "#a1d1da", bold = false })
+--
+--             vim.api.nvim_set_hl(0, "StatusLine", { bg = "#1c1c1c", fg = "#808080" })
+--             vim.api.nvim_set_hl(0, "StatusLineTerm", { link = "StatusLine" })
+--             vim.api.nvim_set_hl(0, "StatusLineNC", { link = "StatusLine" })
+--
+--             -- gitsigns
+--             vim.api.nvim_set_hl(0, "StatusLineGitSignsAdd", { bg = "#1c1c1c", fg = "#437e91" })
+--             vim.api.nvim_set_hl(0, "StatusLineGitSignsChange", { bg = "#1c1c1c", fg = "#f6d5a7" })
+--             vim.api.nvim_set_hl(0, "StatusLineGitSignsDelete", { bg = "#1c1c1c", fg = "#ebbcba" })
+--
+--             -- diagnostics
+--             vim.api.nvim_set_hl(0, "StatusLineDiagnosticSignError", { bg = "#1c1c1c", fg = "#ff5f5f" })
+--             vim.api.nvim_set_hl(0, "StatusLineDiagnosticSignWarn", { bg = "#1c1c1c", fg = "#f6d5a7" })
+--             vim.api.nvim_set_hl(0, "StatusLineDiagnosticSignInfo", { bg = "#1c1c1c", fg = "#a1d1da" })
+--             vim.api.nvim_set_hl(0, "StatusLineDiagnosticSignHint", { bg = "#1c1c1c", fg = "#d9c7ef" })
+--             vim.api.nvim_set_hl(0, "StatusLineDiagnosticSignOk", { bg = "#1c1c1c", fg = "#437e91" })
+--         end,
+--     },
+--     {
+--         "tribela/vim-transparent",
+--     },
+-- }
