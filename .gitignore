@@ -33,3 +33,4 @@ falkon/.config/falkon/profiles.ini
 !public/**/*.jpg
 
 docs
+.cache-test
