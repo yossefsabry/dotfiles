@@ -128,7 +128,6 @@ return {
                     end,
                 },
             })
-            
             require("mason-tool-installer").setup({
                 ensure_installed = {
                     -- "prettier", -- prettier formatter
