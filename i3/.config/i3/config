@@ -71,7 +71,7 @@ bindsym Shift+Print exec maim --select "/home/$USER/Pictures/$(date).jpg"
 # bindsym Ctrl+$mod+Print exec maim --window $(xdotool getactivewindow) | xclip -selection clipboard -t image/png
 # bindsym Ctrl+Shift+Print exec maim --select | xclip -selection clipboard -t image/png
 
-font pango:FiraMono Nerd Font Propo 10
+# font pango:FiraMono Nerd Font Propo 10
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
@@ -386,14 +386,14 @@ bindsym $mod+z mode "resize"
 bar {
     mode hide
 
-# status_command i3status -c ~/.config/i3/i3status.conf
-status_command i3blocks -c ~/.config/i3/i3block.conf
-    colors {
-        background #00000000
-        background  #191724 
-        statusline  #1f1d2e 
-    }
-separator_symbol " : "
+status_command i3status
+# status_command i3blocks -c ~/.config/i3/i3block.conf
+#     colors {
+#         background #00000000
+#         background  #191724 
+#         statusline  #1f1d2e 
+#     }
+separator_symbol "  :  "
 }
 
 bindsym $mod+n bar mode toggle 
@@ -446,7 +446,7 @@ set $highlighthigh  #524f67
 
 # Window colors
 client.focused           $foam     $foam  #00000  $foam      $foam
-font pango:monospace bold 9
+font pango:Ubuntu normal 11
 client.focused_inactive  $muted    $base  $text  $subtle    $surface
 client.unfocused         $overlay  $base  $text  $overlay   $overlay
 client.urgent            $love     $base  $text  $love      $love
