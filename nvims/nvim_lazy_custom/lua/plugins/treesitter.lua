@@ -5,7 +5,7 @@ return {
     {
         "nvim-treesitter/nvim-treesitter",
         build = ":TSUpdate",
-        lazy = false,
+        event = { "BufReadPre", "BufNewFile" },
         config = function()
             local ok, treesitter = pcall(require, "nvim-treesitter")
             if not ok then
