@@ -34,3 +34,4 @@ falkon/.config/falkon/profiles.ini
 
 docs
 .cache-test
+.xdg-cache
