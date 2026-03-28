@@ -17,10 +17,9 @@ end
 return {
   {
     "OXY2DEV/markview.nvim",
-    lazy = false,
+    ft = { "markdown" },
     dependencies = {
       "nvim-treesitter/nvim-treesitter",
-      "nvim-tree/nvim-web-devicons",
     },
     keys = {
       { "<leader>mv", "<cmd>Markview toggle<cr>", desc = "Toggle Markdown preview" },
@@ -28,6 +27,9 @@ return {
     },
     config = function()
       require("markview").setup({
+        latex = {
+          enable = false,
+        },
         preview = {
           enable = true,
           enable_hybrid_mode = true,
@@ -38,9 +40,7 @@ return {
           max_buf_lines = 500,
           modes = { "n", "no", "c" },
           hybrid_modes = { "n" },
-          raw_previews = {
-            latex = { "blocks", "inlines" },
-          },
+          raw_previews = {},
           linewise_hybrid_mode = false,
           edit_range = { 0, 0 },
           map_gx = false,
@@ -68,6 +68,37 @@ return {
       })
     end,
   },
+  {
+    "yossefsabry/latex_nvim",
+    ft = { "markdown" },
+    dependencies = {
+      "nvim-treesitter/nvim-treesitter",
+    },
+    opts = {
+      compat = {
+        respect_markview = true,
+        reduce_presentation_with_markview = false,
+        disable_when_vimtex_tex = true,
+      },
+      preview = {
+        enabled = true,
+        backend = "auto",
+        fallback = "text",
+        debounce_ms = 120,
+      },
+      presentation = {
+        conceal = {
+          enabled = true,
+          reveal_on_cursor = true,
+          reveal_delay_ms = 40,
+        },
+      },
+    },
+    config = function(_, opts)
+      require("latex_nvim").setup(opts)
+    end,
+  },
+
   {
     "L3MON4D3/LuaSnip",
     version = "v2.*",

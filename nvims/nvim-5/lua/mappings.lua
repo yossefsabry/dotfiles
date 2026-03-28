@@ -36,8 +36,8 @@ map("n", "G", "Gzz",
     { desc = "page down and cursor in center" })
 
 -- new tree mapping
-map("n", "<leader>e", "<cmd>NvimTreeToggle<CR>",
-    { desc = "nvim tree toggle "})
+map("n", "<leader>e", "<cmd>Ex<CR>",
+    { desc = "open netrw explorer" })
 map("n", "<leader>-", "<cmd>Ex<CR>",
     { desc = "netrw nvim"})
 
@@ -109,4 +109,3 @@ vim.api.nvim_create_autocmd('FileType', {
 })
 
 vim.keymap.del("n", "<C-n>")
-

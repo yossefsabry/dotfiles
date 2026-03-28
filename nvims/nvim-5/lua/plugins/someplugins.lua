@@ -3,6 +3,30 @@ return {
         -- "ThePrimeagen/vim-be-good",
     },
     {
+        "windwp/nvim-autopairs",
+        enabled = false,
+    },
+    {
+        "echasnovski/mini.pairs",
+        enabled = false,
+    },
+    {
+        "stevearc/conform.nvim",
+        enabled = false,
+    },
+    {
+        "nvim-tree/nvim-tree.lua",
+        enabled = false,
+    },
+    {
+        "nvim-tree/nvim-web-devicons",
+        enabled = false,
+    },
+    {
+        "lewis6991/gitsigns.nvim",
+        enabled = false,
+    },
+    {
         "mbbill/undotree",
         cmd = { "UndotreeToggle" },
         keys = {
