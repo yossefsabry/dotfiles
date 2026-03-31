@@ -1,22 +1,57 @@
-#!/usr/bin/bash
+#!/usr/bin/env bash
 
-currentSound=$(amixer get Master | grep -oP 'Left:.*?\[\d+%\]' | grep -oP '\[\d+%\]')
+MAX_VOLUME=150
+STEP=5
+MIXER="Master"
+
+get_volume() {
+    amixer get "$MIXER" | awk -F'[][]' '/%/ {print $2; exit}' | tr -d '%'
+}
+
+is_muted() {
+    amixer get "$MIXER" | awk -F'[][]' '/%/ {print $4; exit}'
+}
+
+print_volume() {
+    local vol mute
+    vol="$(get_volume)"
+    mute="$(is_muted)"
+
+    if [ "$mute" = "off" ]; then
+        echo "muted"
+    else
+        echo "${vol}%"
+    fi
+}
+
+set_cap() {
+    local vol
+    vol="$(get_volume)"
+    if [ -n "$vol" ] && [ "$vol" -gt "$MAX_VOLUME" ]; then
+        amixer sset "$MIXER" "${MAX_VOLUME}%" > /dev/null
+    fi
+}
 
 audio() {
-    case $1 in
-        "up")
-            amixer sset Master 5%+ > /dev/null
+    case "$1" in
+        up)
+            amixer sset "$MIXER" "${STEP}%+" > /dev/null
+            set_cap
             ;;
-        "down")
-            amixer sset Master 5%- > /dev/null
+        down)
+            amixer sset "$MIXER" "${STEP}%-" > /dev/null
             ;;
-        "mute")
-            amixer sset Master toggle  > /dev/null
+        mute)
+            amixer sset "$MIXER" toggle > /dev/null
+            ;;
+        get|"")
+            print_volume
             ;;
         *)
-            echo "$currentSound"
+            echo "Usage: $0 {up|down|mute|get}"
             exit 1
             ;;
     esac
 }
+
 audio "$1"

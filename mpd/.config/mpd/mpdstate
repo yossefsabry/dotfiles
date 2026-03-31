@@ -1,9 +1,9 @@
-sw_volume: 86
+sw_volume: 84
 audio_device_state:1:PulseAudio Output
 audio_device_state:1:Visualizer Output
 state: pause
-current: 12
-time: 74.527
+current: 43
+time: 182.693
 random: 1
 repeat: 1
 single: 1
@@ -49,4 +49,13 @@ playlist_begin
 33:good_vibe/You & Me (Rivo Remix).mp3
 34:good_vibe/You Got Me.mp3
 35:good_vibe/MXZI _ DJ YUKU - WAIT FOR ME (OFFICIAL VISUALISER)(MP3_160K) (1).mp3
+36:Funk/VAI LENTO.m4a
+37:Funk/ty for all the love on this one i wanna cry ❤️.m4a
+38:Funk/VOLKSWAGEN FUNK.mp3
+39:Funk/DYGO & Mxng0 - FUNK INFERNAL (SPED UP).mp3
+40:dua lipa/Be The One(MP3_160K).mp3
+41:dua lipa/Cold Heart (PNAU Remix)(MP3_160K).mp3
+42:dua lipa/Dance The Night (From Barbie The Album)(MP3_160K).mp3
+43:fav/Capo Blanco - Voyage.mp3
+44:10 out of 10/Hamza Namira - Fady Shewaya.mp3
 playlist_end
