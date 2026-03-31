@@ -1,6 +1,7 @@
 " Set leader key
 let mapleader = " "
 
+
 " ===== fbterm-safe Vim colors =====
 if &term =~# 'fbterm'
   set t_Co=256
@@ -8,7 +9,6 @@ if &term =~# 'fbterm'
   syntax on
   colorscheme desert
 endif
-
 
 " Basic settings
 set number
@@ -30,7 +30,7 @@ set wildignore+=**/lib/**
 set wildignore+=**/venv/**
 set path=.,**
 set undofile
-set hlsearch
+set nohlsearch
 set incsearch
 set noswapfile
 set updatetime=10
@@ -104,11 +104,14 @@ inoremap <up> <nop>
 inoremap <down> <nop>
 
 
-
-" Yank to system clipboard
-nnoremap <leader>y "+y
-vnoremap <leader>y "+y
-nnoremap <leader>Y "+Y
+if has('unix') && isdirectory('/data/data/com.termux')
+  vnoremap <leader>y :w !termux-clipboard-set<CR><CR>
+  nnoremap <leader>Y :.w !termux-clipboard-set<CR><CR>
+elseif has('clipboard')
+  nnoremap <leader>y "+y
+  vnoremap <leader>y "+y
+  nnoremap <leader>Y "+Y
+endif
 
 " Delete without yanking (black hole register)
 nnoremap <leader>d "_d
