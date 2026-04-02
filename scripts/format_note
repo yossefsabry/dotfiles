@@ -29,7 +29,6 @@ format_note() {
   local folder=$(dirname "$relative_path")
 
   # Use Python for heavy lifting: formatting, wrapping, and cleaning
-  # Passing variables as arguments to avoid shell expansion issues
   python3 - "$abs_path" "$name" "$folder" "$timestamp" <<'PYEOF'
 import sys
 import re
@@ -43,19 +42,40 @@ timestamp = sys.argv[4]
 with open(file_path, 'r') as f:
     content = f.read()
 
-# 1. Remove empty python blocks
-content = re.sub(r'```python\s*```', '', content)
-content = re.sub(r'```python\n\s*\n```', '', content)
-
-# 2. Check for Header, if not there, add it
-header_pattern = r'^---[\s\S]*?dg-publish[\s\S]*?---[\s\S]*?---'
-if not re.search(header_pattern, content):
-    header = f"""---
+# 1. Normalize YAML and fix combined header fields
+# Identify and clean the first YAML block
+match = re.search(r'^---\s*\n(.*?)\n---\s*\n', content, re.DOTALL)
+if match:
+    yaml_content = match.group(1)
+    # Fix combined fields like 'dg-publish: true dg-home: false'
+    yaml_content = re.sub(r'dg-publish:\s*(true|false)\s+dg-home:\s*(true|false)', r'dg-publish: \1\ndg-home: \2', yaml_content)
+    # Clean up fields (remove trailing spaces, ensure single space after colon)
+    yaml_lines = yaml_content.split('\n')
+    cleaned_yaml = []
+    for line in yaml_lines:
+        if ':' in line:
+            key, val = line.split(':', 1)
+            cleaned_yaml.append(f"{key.strip()}: {val.strip()}")
+        else:
+            cleaned_yaml.append(line.rstrip())
+    
+    # Reconstruct content without the first YAML block
+    content = content[match.end():].strip()
+    # Normalize the YAML block to have EXACTLY dg-publish: true and dg-home: false
+    # Also preserve other fields if they exist (like cssclasses)
+    yaml_block = "---\n" + "\n".join(cleaned_yaml) + "\n---\n---\n"
+else:
+    # No YAML block found, create a default one
+    yaml_block = f"""---
 dg-publish: true
 dg-home: false
 ---
 ---
+"""
+    content = content.strip()
 
+# 2. Add the metadata info if not present
+metadata_info = f"""
 "{file_path}"
 ># path: {folder}/{name}.md
 
@@ -63,17 +83,31 @@ dg-home: false
 - **fileName**: {name}
 - **Created on**: {timestamp}
 ```
-
 """
-    content = header + content.strip()
+# Check if path is already mentioned to avoid duplicates
+if f'path: {folder}/{name}.md' not in content:
+    content = metadata_info + "\n" + content
 
-# 3. Clean up whitespace
+# 3. Final construction with only ONE YAML block + ONE extra separator at the top
+content = yaml_block + "\n" + content
+
+# 4. Remove empty python blocks
+content = re.sub(r'```python\s*```', '', content)
+content = re.sub(r'```python\n\s*\n```', '', content)
+
+# 5. Clean up redundant horizontal rules and white space
 content = re.sub(r'\n{3,}', '\n\n', content)
+# Clean up extra dashes at the top specifically
+content = re.sub(r'^---\n---\n---\n', '---\n---\n', content)
+# Ensure there are no double/triple --- markers that are just noise
+content = re.sub(r'\n---\n---\n', '\n---\n', content)
 
-# 4. Wrap text (max 70 chars), skipping blocks/headers
+# 6. Wrap text (max 70 chars), skipping blocks/headers/YAML
 lines = content.split('\n')
 formatted_lines = []
 in_code_block = False
+in_yaml = False
+yaml_count = 0
 paragraph = []
 
 def flush_paragraph():
@@ -84,6 +118,20 @@ def flush_paragraph():
         paragraph.clear()
 
 for line in lines:
+    # Detect YAML block (between first and second ---)
+    if line.strip() == '---':
+        flush_paragraph()
+        yaml_count += 1
+        # The first two --- define the YAML. Any following --- are content separators.
+        if yaml_count <= 2:
+            in_yaml = (yaml_count == 1)
+        formatted_lines.append(line)
+        continue
+
+    if in_yaml:
+        formatted_lines.append(line)
+        continue
+
     if line.startswith('```'):
         flush_paragraph()
         in_code_block = not in_code_block
@@ -95,6 +143,8 @@ for line in lines:
         formatted_lines.append('')
     elif line.startswith('#') or line.startswith('-') or line.startswith('*') or line.startswith('>') or line.startswith('**'):
         flush_paragraph()
+        # Standardize links to [[Filename]]
+        line = re.sub(r'\[\[\./(.*?)\.md\]\]', r'[[\1]]', line)
         formatted_lines.append(line)
     else:
         paragraph.append(line.strip())
@@ -102,9 +152,8 @@ flush_paragraph()
 
 content = '\n'.join(formatted_lines).strip()
 
-# 5. Ensure Footer
-if "**before**:[[" not in content:
-    content += "\n\n**before**:[[]]\n**continue**:[[]]"
+# 7. Ensure Footer links are formatted correctly
+content = re.sub(r'\[\[\./(.*?)\.md\]\]', r'[[\1]]', content)
 
 with open(file_path, 'w') as f:
     f.write(content + '\n')
