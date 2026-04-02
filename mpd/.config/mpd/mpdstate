@@ -1,9 +1,9 @@
-sw_volume: 84
+sw_volume: 54
 audio_device_state:1:PulseAudio Output
 audio_device_state:1:Visualizer Output
-state: pause
-current: 43
-time: 82.827
+state: play
+current: 45
+time: 120.07000000000001
 random: 1
 repeat: 1
 single: 1
@@ -58,4 +58,5 @@ playlist_begin
 42:dua lipa/Dance The Night (From Barbie The Album)(MP3_160K).mp3
 43:fav/Capo Blanco - Voyage.mp3
 44:10 out of 10/Hamza Namira - Fady Shewaya.mp3
+45:10 out of 10/Christopher Larkin - Moss Grotto.mp3
 playlist_end
