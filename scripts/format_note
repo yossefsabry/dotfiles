@@ -3,9 +3,10 @@
 # Function to format a markdown note
 format_note() {
   local file_path="$1"
+  local ref_tag="$2"
   
   if [ -z "$file_path" ]; then
-    echo "Usage: format_note <path_to_markdown_file>"
+    echo "Usage: format_note <path_to_markdown_file> [reference_tag]"
     return 1
   fi
 
@@ -28,8 +29,84 @@ format_note() {
   fi
   local folder=$(dirname "$relative_path")
 
-  # Use Python for heavy lifting: formatting, wrapping, and cleaning
-  python3 - "$abs_path" "$name" "$folder" "$timestamp" <<'PYEOF'
+  local before_link=""
+  local is_sequence=false
+  if [ -n "$ref_tag" ]; then
+    is_sequence=true
+    local tag_file="$HOME/notes/tags/$ref_tag"
+    if [[ "$tag_file" != *.md ]]; then tag_file="$tag_file.md"; fi
+    
+    if [ ! -f "$tag_file" ]; then
+        if [ -f "$HOME/notes/$ref_tag" ]; then
+            tag_file="$HOME/notes/$ref_tag"
+        elif [ -f "$ref_tag" ]; then
+            tag_file=$(realpath "$ref_tag")
+        fi
+    fi
+
+    if [ -f "$tag_file" ]; then
+        # Use python to find the last link that IS NOT the current file
+        local prev_note_abs=$(python3 - "$tag_file" "$abs_path" <<'PYEOF'
+import sys
+import os
+import re
+
+tag_file = sys.argv[1]
+curr_abs = sys.argv[2]
+tag_dir = os.path.dirname(tag_file)
+
+last_valid_abs = ""
+try:
+    with open(tag_file, 'r') as f:
+        for line in f:
+            match = re.search(r'\[\[(.*?)\]\]', line)
+            if match:
+                link = match.group(1)
+                abs_p = os.path.abspath(os.path.join(tag_dir, link))
+                if abs_p != curr_abs:
+                    last_valid_abs = abs_p
+    print(last_valid_abs)
+except:
+    pass
+PYEOF
+)
+        
+        if [ -n "$prev_note_abs" ] && [ -f "$prev_note_abs" ]; then
+            # Calculate relpath for 'before' link in current note
+            before_link=$(python3 -c "import os, sys; rel = os.path.relpath(sys.argv[1], sys.argv[2]); print('./' + rel if not rel.startswith('.') else rel)" "$prev_note_abs" "$(dirname "$abs_path")")
+            
+            # Update the 'continue' link in the previous note
+            local rel_from_prev_to_curr=$(python3 -c "import os, sys; rel = os.path.relpath(sys.argv[1], sys.argv[2]); print('./' + rel if not rel.startswith('.') else rel)" "$abs_path" "$(dirname "$prev_note_abs")")
+            python3 - "$prev_note_abs" "$rel_from_prev_to_curr" <<'PYEOF'
+import sys
+import re
+target_file = sys.argv[1]
+new_link = sys.argv[2]
+try:
+    with open(target_file, 'r') as f:
+        content = f.read()
+    # Flexible regex to handle various formats of continue: [[]]
+    pattern = r'(\**continue\**\s*:\s*)\[\[\]\]'
+    if re.search(pattern, content, re.IGNORECASE):
+        updated = re.sub(pattern, rf'\1[[{new_link}]]', content, flags=re.IGNORECASE)
+        with open(target_file, 'w') as f:
+            f.write(updated)
+except Exception as e:
+    pass
+PYEOF
+        fi
+        
+        # Add current note to tag file if it's not the last one
+        local last_in_tag=$(grep '\[\[.*\]\]' "$tag_file" | tail -n 1)
+        local rel_to_tag=$(python3 -c "import os, sys; rel = os.path.relpath(sys.argv[1], sys.argv[2]); print('./' + rel if not rel.startswith('.') else rel)" "$abs_path" "$(dirname "$tag_file")")
+        if [[ "$last_in_tag" != *"[[$rel_to_tag]]"* ]]; then
+            echo "- [[$rel_to_tag]]" >> "$tag_file"
+        fi
+    fi
+  fi
+
+  # Use Python for formatting the current note
+  python3 - "$abs_path" "$name" "$folder" "$timestamp" "$before_link" "$is_sequence" <<'PYEOF'
 import sys
 import re
 import textwrap
@@ -38,76 +115,44 @@ file_path = sys.argv[1]
 name = sys.argv[2]
 folder = sys.argv[3]
 timestamp = sys.argv[4]
+before_link = sys.argv[5] if len(sys.argv) > 5 else ""
+is_sequence = (sys.argv[6] == "true") if len(sys.argv) > 6 else False
 
 with open(file_path, 'r') as f:
     content = f.read()
 
-# 1. Normalize YAML and fix combined header fields
-# Identify and clean the first YAML block
-match = re.search(r'^---\s*\n(.*?)\n---\s*\n', content, re.DOTALL)
-if match:
-    yaml_content = match.group(1)
-    # Fix combined fields like 'dg-publish: true dg-home: false'
+# 1. Extract and Normalize YAML
+yaml_block = "---\ndg-publish: true\ndg-home: false\n---\n"
+match_yaml = re.search(r'^---\s*\n(.*?)\n---\s*\n', content, re.DOTALL)
+if match_yaml:
+    yaml_content = match_yaml.group(1)
     yaml_content = re.sub(r'dg-publish:\s*(true|false)\s+dg-home:\s*(true|false)', r'dg-publish: \1\ndg-home: \2', yaml_content)
-    # Clean up fields (remove trailing spaces, ensure single space after colon)
-    yaml_lines = yaml_content.split('\n')
-    cleaned_yaml = []
-    for line in yaml_lines:
-        if ':' in line:
-            key, val = line.split(':', 1)
-            cleaned_yaml.append(f"{key.strip()}: {val.strip()}")
-        else:
-            cleaned_yaml.append(line.rstrip())
-    
-    # Reconstruct content without the first YAML block
-    content = content[match.end():].strip()
-    # Normalize the YAML block to have EXACTLY dg-publish: true and dg-home: false
-    # Also preserve other fields if they exist (like cssclasses)
-    yaml_block = "---\n" + "\n".join(cleaned_yaml) + "\n---\n---\n"
+    lines = yaml_content.split('\n')
+    cleaned = []
+    for l in lines:
+        if ':' in l:
+            k, v = l.split(':', 1)
+            cleaned.append(f"{k.strip()}: {v.strip()}")
+    if cleaned:
+        yaml_block = "---\n" + "\n".join(cleaned) + "\n---\n"
+    content = content[match_yaml.end():].strip()
 else:
-    # No YAML block found, create a default one
-    yaml_block = f"""---
-dg-publish: true
-dg-home: false
----
----
-"""
     content = content.strip()
 
-# 2. Add the metadata info if not present
-metadata_info = f"""
-"{file_path}"
-># path: {folder}/{name}.md
+# 2. Remove existing metadata and footer links
+content = re.sub(r'^\s*".*?"\s*\n># path:.*?\n\n```text\n.*?\n```', '', content, flags=re.DOTALL | re.MULTILINE).strip()
+content = re.sub(r'\n\n-?\s*\**before\**\s*:\s*\[\[.*?\]\]\n-?\s*\**continue\**\s*:\s*\[\[.*?\]\]$', '', content, flags=re.DOTALL | re.IGNORECASE).strip()
 
-```text
-- **fileName**: {name}
-- **Created on**: {timestamp}
-```
-"""
-# Check if path is already mentioned to avoid duplicates
-if f'path: {folder}/{name}.md' not in content:
-    content = metadata_info + "\n" + content
+# 3. Construct Top Metadata
+top_metadata = f'"{file_path}"\n># path: {folder}/{name}.md\n\n```text\n'
+top_metadata += f'- **fileName**: {name}\n'
+top_metadata += f'- **Created on**: {timestamp}\n'
+top_metadata += '```\n'
 
-# 3. Final construction with only ONE YAML block + ONE extra separator at the top
-content = yaml_block + "\n" + content
-
-# 4. Remove empty python blocks
-content = re.sub(r'```python\s*```', '', content)
-content = re.sub(r'```python\n\s*\n```', '', content)
-
-# 5. Clean up redundant horizontal rules and white space
-content = re.sub(r'\n{3,}', '\n\n', content)
-# Clean up extra dashes at the top specifically
-content = re.sub(r'^---\n---\n---\n', '---\n---\n', content)
-# Ensure there are no double/triple --- markers that are just noise
-content = re.sub(r'\n---\n---\n', '\n---\n', content)
-
-# 6. Wrap text (max 70 chars), skipping blocks/headers/YAML
+# 4. Format content
 lines = content.split('\n')
 formatted_lines = []
 in_code_block = False
-in_yaml = False
-yaml_count = 0
 paragraph = []
 
 def flush_paragraph():
@@ -118,20 +163,6 @@ def flush_paragraph():
         paragraph.clear()
 
 for line in lines:
-    # Detect YAML block (between first and second ---)
-    if line.strip() == '---':
-        flush_paragraph()
-        yaml_count += 1
-        # The first two --- define the YAML. Any following --- are content separators.
-        if yaml_count <= 2:
-            in_yaml = (yaml_count == 1)
-        formatted_lines.append(line)
-        continue
-
-    if in_yaml:
-        formatted_lines.append(line)
-        continue
-
     if line.startswith('```'):
         flush_paragraph()
         in_code_block = not in_code_block
@@ -143,20 +174,23 @@ for line in lines:
         formatted_lines.append('')
     elif line.startswith('#') or line.startswith('-') or line.startswith('*') or line.startswith('>') or line.startswith('**'):
         flush_paragraph()
-        # Standardize links to [[Filename]]
-        line = re.sub(r'\[\[\./(.*?)\.md\]\]', r'[[\1]]', line)
         formatted_lines.append(line)
     else:
         paragraph.append(line.strip())
 flush_paragraph()
 
-content = '\n'.join(formatted_lines).strip()
+formatted_content = '\n'.join(formatted_lines).strip()
 
-# 7. Ensure Footer links are formatted correctly
-content = re.sub(r'\[\[\./(.*?)\.md\]\]', r'[[\1]]', content)
+# 5. Construct Footer Links
+footer_links = ""
+if is_sequence:
+    footer_links = f'\n\n- **before**: [[{before_link}]]\n- **continue**: [[]]'
+
+# 6. Final Assembly
+final_output = yaml_block + "\n" + top_metadata + "\n" + formatted_content + footer_links
 
 with open(file_path, 'w') as f:
-    f.write(content + '\n')
+    f.write(final_output.strip() + '\n')
 PYEOF
 
   echo "Successfully formatted: $file_path"
