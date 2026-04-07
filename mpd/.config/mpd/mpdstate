@@ -1,9 +1,9 @@
-sw_volume: 54
+sw_volume: 82
 audio_device_state:1:PulseAudio Output
 audio_device_state:1:Visualizer Output
-state: play
-current: 45
-time: 119.986
+state: pause
+current: 54
+time: 84.18900000000001
 random: 1
 repeat: 1
 single: 1
@@ -59,4 +59,13 @@ playlist_begin
 43:fav/Capo Blanco - Voyage.mp3
 44:10 out of 10/Hamza Namira - Fady Shewaya.mp3
 45:10 out of 10/Christopher Larkin - Moss Grotto.mp3
+46:10 out of 10/Luke Pickman - Choral Chambers (from Hollow Knight# Silksong).mp3
+47:10 out of 10/Christopher Larkin - Skarrsinger Karmelita.mp3
+48:10 out of 10/Christopher Larkin - Last Dive.mp3
+49:10 out of 10/In Love With a Ghost, Nori - Flowers.mp3
+50:10 out of 10/Lies of P - OVERTURE.mp3
+51:10 out of 10/Lies of P - Lisrim.mp3
+52:10 out of 10/Joel Sunny - Luminary.mp3
+53:10 out of 10/Christopher Larkin - Bilewater.mp3
+54:10 out of 10/Billie Eilish - WILDFLOWER.mp3
 playlist_end
