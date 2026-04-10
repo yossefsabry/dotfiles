@@ -1,9 +1,9 @@
-sw_volume: 82
+sw_volume: 80
 audio_device_state:1:PulseAudio Output
 audio_device_state:1:Visualizer Output
-state: play
-current: 46
-time: 110.429
+state: pause
+current: 1
+time: 48.916000000000004
 random: 1
 repeat: 1
 single: 1
@@ -68,4 +68,6 @@ playlist_begin
 52:10 out of 10/Joel Sunny - Luminary.mp3
 53:10 out of 10/Christopher Larkin - Bilewater.mp3
 54:10 out of 10/Billie Eilish - WILDFLOWER.mp3
+55:10 out of 10/Christopher Larkin - Songclave.mp3
+56:10 out of 10/Christopher Larkin - High Halls.mp3
 playlist_end
