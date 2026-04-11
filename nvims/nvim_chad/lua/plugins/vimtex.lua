@@ -70,9 +70,13 @@ return {
   },
   {
     "yossefsabry/latex_nvim",
+    main = "latex_nvim",
     ft = { "markdown" },
-    dependencies = {
-      "nvim-treesitter/nvim-treesitter",
+    cmd = {
+      "LatexNvimTogglePreview",
+      "LatexNvimToggleConceal",
+      "LatexNvimRefresh",
+      "LatexNvimPreviewStatus",
     },
     opts = {
       compat = {
@@ -84,6 +88,7 @@ return {
         enabled = true,
         backend = "auto",
         fallback = "text",
+        position = "above",
         debounce_ms = 120,
       },
       presentation = {
@@ -94,9 +99,6 @@ return {
         },
       },
     },
-    config = function(_, opts)
-      require("latex_nvim").setup(opts)
-    end,
   },
 
   {
